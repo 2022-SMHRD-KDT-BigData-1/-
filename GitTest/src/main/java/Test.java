@@ -10,6 +10,7 @@ public class Test {
 
 		System.out.println("이거 잘못 건들면 파일 큰일나서 형 누나들한테 욕 엄청 먹을꺼 같으니깐 신중하게 할꼐요");
 		System.out.println("안녕");
+		System.out.println("후,,");
 	}
 
 }
