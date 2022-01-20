@@ -12,6 +12,7 @@ public class Test {
 		System.out.println("안녕");
 		System.out.println("후,,");
 		System.out.println("저는 막내");
+		System.out.println("조용조용");
 	}
 
 }
