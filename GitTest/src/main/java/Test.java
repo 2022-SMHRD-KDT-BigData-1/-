@@ -7,6 +7,7 @@ public class Test {
 		System.out.println("하 힘들다");
 		System.out.println("하 배고프다");
 		System.out.println("나는 지원");
+		System.out.println("이거 잘못 건들면 파일 큰일나서 형 누나들한테 욕 엄청 먹을꺼 같으니깐 신중하게 할꼐요");
 	}
 
 }
