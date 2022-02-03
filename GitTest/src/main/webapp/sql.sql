@@ -33,12 +33,6 @@ delete from web_message where m_receiveEmail='a@a.a'
 
 
 
-√‚√≥: https://iberis.tistory.com/8 [Iberis]
-
-
-
-
-
 
 
 
