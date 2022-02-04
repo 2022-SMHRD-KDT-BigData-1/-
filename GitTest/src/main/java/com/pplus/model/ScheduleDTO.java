@@ -12,11 +12,17 @@ import lombok.NoArgsConstructor;
 public class ScheduleDTO {
 
 	private int p_num;
-	private String m_id;
-	private String p_text;
-	private String m_type;
-	private String book_type;
-	private String p_setting;
-	private String p_date;
+	private String s_start;
+	private String s_num_day;
+	private String s_end;
+	private String s_day_page;
+	private String schedule_date;
+	private String m_nick;
+	private int book_num;
+	private String book_title;
+	private String book_page;
+	 {
+		
+	}
 	
 }

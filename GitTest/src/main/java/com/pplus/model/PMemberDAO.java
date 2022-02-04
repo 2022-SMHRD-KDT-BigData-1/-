@@ -140,7 +140,6 @@ public class PMemberDAO {
 		return list;
 	}
 
-	// 수정 -> member에는 업데이트 member_type에는 인서트
 	public int pmemberTypeSet(PMemberDTO member) {
 		connect();
 		sql = "insert into member_type id=?, book_part1_cat=?, book_part2_cat=?,book_part3_cat=?";
@@ -215,4 +214,25 @@ public class PMemberDAO {
 
 		return cnt;
 	}
+	
+	public int memberDelete(String id, int num) {
+		connect();
+		
+		sql="delete from member where m_id=? and m_num=?";
+		
+		try {
+			psmt =conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setInt(2, num);
+			
+			cnt=psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
+
 }
