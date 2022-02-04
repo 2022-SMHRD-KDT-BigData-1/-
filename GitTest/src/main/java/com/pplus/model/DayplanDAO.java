@@ -5,8 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class TodoDAO {
+public class DayplanDAO {
 
 	private Connection conn;
 	private PreparedStatement psmt;
@@ -46,22 +47,26 @@ public class TodoDAO {
 		}
 	}
 
-	public int todoSet(TodoDTO todo) {
+	public int dayplanSet(DayplanDTO dayplan) {
 		connect();
-		sql = "insert into todo values(num_seq.nextval,?,?,?,?,?,?,?,?,sysdate)";
+		sql = "insert into dayplan values(num_seq.nextval,sysdate,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, todo.getTodo_content());
-			psmt.setString(2, todo.getBook_title());
-			psmt.setInt(3, todo.getBook_page());
-			psmt.setString(4, todo.getSchedule_num_day());
-			psmt.setString(5, todo.getAchieve_study_day());
-			psmt.setString(6, todo.getSchedule_day_page());
-			psmt.setInt(7, todo.getEditor_num());
-			psmt.setInt(8, todo.getDiary_num());
+			psmt.setInt(1, dayplan.getSchedule_num());
+			psmt.setString(2, dayplan.getMember_nick());
+			psmt.setString(3, dayplan.getDayplan_date());
+			psmt.setString(4, dayplan.getBook_title());
+			psmt.setInt(5, dayplan.getBook_page());
+			psmt.setString(6, dayplan.getSchedule_num_day());
+			psmt.setString(7, dayplan.getAchieve_study_day());
+			psmt.setInt(8, dayplan.getSchedule_day_page());
+			psmt.setInt(9, dayplan.getDayplan_check());
+			psmt.setString(10, dayplan.getEditor_date());
+			psmt.setString(11, dayplan.getDiary_date());
+			psmt.setString(12, dayplan.getTodo_date());
 
 			cnt = psmt.executeUpdate();
 
@@ -73,21 +78,20 @@ public class TodoDAO {
 		}
 		return cnt;
 	}
-	
-	public int todoUpdate(TodoDTO todo) {
+
+	public int dayplanUpdate(DayplanDTO dayplan) {
 		connect();
 
-		sql = "update todo set todo_content=?, book_title=?, book_page=?, schedule_num_day=?, achieve_study_day=? where m_nick=?";
+		sql = "update dayplan set book_title=?, book_page=?, schedule_num_day=?, achieve_study_day=? where m_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, todo.getTodo_content());
-			psmt.setString(2, todo.getBook_title());
-			psmt.setInt(3, todo.getBook_page());
-			psmt.setString(4, todo.getAchieve_study_day());
-			psmt.setString(5, todo.getSchedule_day_page());
-			psmt.setString(6, todo.getMember_nick());
-
+			psmt.setString(1, dayplan.getBook_title());
+			psmt.setInt(2, dayplan.getBook_page());
+			psmt.setString(3, dayplan.getSchedule_num_day());
+			psmt.setString(4, dayplan.getAchieve_study_day());
+			psmt.setInt(5, dayplan.getSchedule_day_page());
+			
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -100,16 +104,15 @@ public class TodoDAO {
 		return cnt;
 	}
 
-	public int todoDelete(String nick, int s_num, int t_num) {
+	public int dayplanDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from todo where m_nick=? and seq_schedule_num=? and seq_todo_num=?";
+		sql = "delete from dayplan where m_nick=? and seq_dayplan_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
-			psmt.setInt(2, s_num);
-			psmt.setInt(3, t_num);
+			psmt.setInt(2, num);
 
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
@@ -121,10 +124,10 @@ public class TodoDAO {
 		return cnt;
 	}
 
-	public int todoDeleteAll(String id, int s_num) {
+	public int dayplanDeleteAll(String id, int s_num) {
 		connect();
 
-		sql = "delete from schedule where m_id=?";
+		sql = "delete from dayplan where m_id=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -138,6 +141,54 @@ public class TodoDAO {
 			close();
 		}
 		return cnt;
+	}
+
+	public DayplanDTO dayplanSelect(String nick, int num) {
+		DayplanDTO dayplan = null;
+
+		sql = "select * from dayplan where m_nick=? and seq_dayplan_num=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				dayplan = new DayplanDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
+						rs.getInt(11), rs.getString(12),rs.getString(13),rs.getString(14));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return dayplan;
+	}
+
+	public ArrayList<DayplanDTO> dayplanSelectAll(String nick, int num) {
+		ArrayList<DayplanDTO> dayplanlist = new ArrayList<DayplanDTO>();
+		connect();
+
+		sql = "select * from dayplan where m_nick=? and seq_schedule_num=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				dayplanlist.add(new DayplanDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
+						rs.getInt(11), rs.getString(12),rs.getString(13),rs.getString(14)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return dayplanlist;
 	}
 
 }

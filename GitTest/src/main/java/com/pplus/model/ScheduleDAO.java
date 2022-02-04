@@ -58,10 +58,10 @@ public class ScheduleDAO {
 			psmt.setString(2, schedule.getS_start());
 			psmt.setString(3, schedule.getS_num_day());
 			psmt.setString(4, schedule.getS_end());
-			psmt.setString(5, schedule.getS_day_page());
+			psmt.setInt(5, schedule.getS_day_page());
 			psmt.setInt(6, schedule.getBook_num());
 			psmt.setString(7, schedule.getBook_title());
-			psmt.setString(8, schedule.getBook_page());
+			psmt.setInt(8, schedule.getBook_page());
 
 			cnt = psmt.executeUpdate();
 
@@ -84,10 +84,10 @@ public class ScheduleDAO {
 			psmt.setString(1, schedule.getS_start());
 			psmt.setString(2, schedule.getS_num_day());
 			psmt.setString(3, schedule.getS_end());
-			psmt.setString(4, schedule.getS_day_page());
+			psmt.setInt(4, schedule.getS_day_page());
 			psmt.setInt(5, schedule.getBook_num());
 			psmt.setString(6, schedule.getBook_title());
-			psmt.setString(7, schedule.getBook_page());
+			psmt.setInt(7, schedule.getBook_page());
 			psmt.setString(8, schedule.getM_nick());
 
 			cnt = psmt.executeUpdate();
@@ -151,8 +151,8 @@ public class ScheduleDAO {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				schedule = new ScheduleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
-						rs.getString(10));
+						rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
+						rs.getInt(10));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -163,7 +163,7 @@ public class ScheduleDAO {
 	}
 
 	public ArrayList<ScheduleDTO> scheduleSelectAll() {
-		ArrayList<ScheduleDTO> list = new ArrayList<ScheduleDTO>();
+		ArrayList<ScheduleDTO> schedulelist = new ArrayList<ScheduleDTO>();
 		connect();
 
 		sql = "select * from schedule where m_nick=?";
@@ -173,9 +173,9 @@ public class ScheduleDAO {
 
 			while (rs.next()) {
 
-				list.add(new ScheduleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
-						rs.getString(10)));
+				schedulelist.add(new ScheduleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
+						rs.getInt(10)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -183,7 +183,7 @@ public class ScheduleDAO {
 			close();
 		}
 
-		return list;
+		return schedulelist;
 	}
 
 }
