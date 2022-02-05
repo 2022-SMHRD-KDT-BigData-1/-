@@ -14,6 +14,7 @@ public class PMemberDAO {
 	private ResultSet rs;
 	private int cnt;
 	private String sql;
+	private boolean tf;
 
 	public void connect() {
 		try {
@@ -47,15 +48,18 @@ public class PMemberDAO {
 		}
 	}
 
+	// 회원가입 입력 변수 PMemberDTO 출력 변수 cnt(int)
+	// db에 id, pw, nick, name 입력
 	public int pmemberJoin(PMemberDTO member) {
 		connect();
-		sql = "insert into member values(?,?,?)";
+		sql = "insert into member values(?,?,?,?)";
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, member.getM_id());
 			psmt.setString(2, member.getM_pw());
 			psmt.setString(3, member.getM_nick());
+			psmt.setString(4, member.getM_name());
 
 			cnt = psmt.executeUpdate();
 
@@ -67,7 +71,9 @@ public class PMemberDAO {
 		}
 		return cnt;
 	}
-
+	
+	// 회원가입 입력 변수 id, pw 출력 변수 PMemberDTO
+	// db에서 pw를 제외한 멤버의 정보를 가져옴
 	public PMemberDTO pmemberLogin(String id, String pw) {
 		connect();
 		PMemberDTO member = null;
@@ -81,7 +87,7 @@ public class PMemberDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				member = new PMemberDTO(id, null, rs.getString("m_nick"), null, null, null);
+				member = new PMemberDTO(id, null, rs.getString("m_nick"),null, null, null, null);
 			}
 
 		} catch (SQLException e) {
@@ -92,7 +98,9 @@ public class PMemberDAO {
 		}
 		return member;
 	}
-
+	
+	// 회원가입 입력 변수 PMemberDTO, pw 출력 변수 cnt
+	// 
 	public int pmemberUpdate(PMemberDTO member) {
 		connect();
 
@@ -115,12 +123,57 @@ public class PMemberDAO {
 
 		return cnt;
 	}
+	
+	public boolean pmemberIdCheck(String id) {
+		connect();
+		
+		sql = "select * from member where m_id=?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				tf=true;
+			} else {
+				tf=false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return tf;
+	}
+	
+	public boolean pmemberNickCheck(String nick) {
+		connect();
+		
+		sql = "select * from member where m_nick=?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				tf=true;
+			} else {
+				tf=false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return tf;
+	}
+	
 
 	public ArrayList<PMemberDTO> pmemberSelectAll() {
 		ArrayList<PMemberDTO> list = new ArrayList<PMemberDTO>();
 		connect();
 
-		sql = "select m_id,m_nick from member";
+		sql = "select m_id, m_nick from member";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -129,7 +182,7 @@ public class PMemberDAO {
 				String m_id = rs.getString(1);
 				String m_nick = rs.getString(2);
 
-				list.add(new PMemberDTO(m_id, null, m_nick, null, null, null));
+				list.add(new PMemberDTO(m_id, null, m_nick, null, null,null, null));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -179,7 +232,7 @@ public class PMemberDAO {
 				String book_part2 = rs.getString(2);
 				String book_part3 = rs.getString(3);
 
-				member = new PMemberDTO(id, null, nick, book_part1, book_part2, book_part3);
+				member = new PMemberDTO(id, null, nick,null, book_part1, book_part2, book_part3);
 			}
 
 		} catch (SQLException e) {

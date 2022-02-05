@@ -14,5 +14,5 @@ public class DiaryDTO {
 	private String diary_content;
 	private String diary_date;
 	private int schedule_num;
-	private String member_id;
+	private String member_nick;
 }

@@ -5,14 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class EditorDTO {
+@NoArgsConstructor
+public class StudycheckDTO {
 
 	private int editor_num;
-	private String editor_title;
-	private String editor_content;
 	private String editor_date;
-	private int schedule_num;
 	private String member_nick;
+	private int studycheck_box;
+	
 }

@@ -77,7 +77,7 @@ public class ScheduleDAO {
 	public int scheduleUpdate(ScheduleDTO schedule) {
 		connect();
 
-		sql = "update schedule set schedule_start=?, schedule_num_day=?, schedule_end=?, schedule_day_page=?, book_num=?, book_title=?, book_page=? where m_id=?";
+		sql = "update schedule set schedule_start=?, schedule_num_day=?, schedule_end=?, schedule_day_page=?, book_num=?, book_title=?, book_page=? where m_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -102,14 +102,14 @@ public class ScheduleDAO {
 		return cnt;
 	}
 
-	public int scheduleDelete(String id, int num) {
+	public int scheduleDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from schedule where m_id=? and seq_schedule_num=?";
+		sql = "delete from schedule where m_nick=? and seq_schedule_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setString(1, nick);
 			psmt.setInt(2, num);
 
 			cnt = psmt.executeUpdate();
@@ -118,18 +118,17 @@ public class ScheduleDAO {
 		} finally {
 			close();
 		}
-
 		return cnt;
 	}
 
-	public int scheduleDeleteAll(String id) {
+	public int scheduleDeleteAll(String nick) {
 		connect();
 
-		sql = "delete from schedule where m_id=?";
+		sql = "delete from schedule where m_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setString(1, nick);
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -142,6 +141,7 @@ public class ScheduleDAO {
 
 	public ScheduleDTO scheduleSelect(String nick, int num) {
 		ScheduleDTO schedule = null;
+		connect();
 
 		sql = "select * from schedule where m_nick=? and seq_schedule_num=?";
 		try {
@@ -162,13 +162,14 @@ public class ScheduleDAO {
 		return schedule;
 	}
 
-	public ArrayList<ScheduleDTO> scheduleSelectAll() {
+	public ArrayList<ScheduleDTO> scheduleSelectAll(String nick) {
 		ArrayList<ScheduleDTO> schedulelist = new ArrayList<ScheduleDTO>();
 		connect();
 
 		sql = "select * from schedule where m_nick=?";
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {

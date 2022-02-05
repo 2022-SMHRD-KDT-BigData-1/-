@@ -6,8 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EditorDAO {
-
+public class PofolDAO {
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
@@ -46,18 +45,85 @@ public class EditorDAO {
 		}
 	}
 	
-	public int editorSet(EditorDTO editor) {
+	public int pofolSet(PofolDTO pofol) {
 		connect();
-		sql = "insert into editor values(num_seq.nextval,?,?,sysdate,?,?)";
+		sql = "insert into portfolio values(num_seq.nextval,?,?,sysdate,?,?,?)";
 
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, editor.getEditor_title());
-			psmt.setString(2, editor.getEditor_content());
-			psmt.setInt(3, editor.getSchedule_num());
-			psmt.setString(4, editor.getMember_nick());
+			psmt.setString(1, pofol.getPofol_title());
+			psmt.setString(2, pofol.getPofol_content());
+			psmt.setString(3, pofol.getMember_nick());
+			psmt.setString(4, pofol.getMember_name());
+			psmt.setInt(5, pofol.getSchedule_num());
+		
+		
+			cnt = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public int pofolDelete(String nick, int num) {
+		connect();
+
+		sql = "delete from portpolio where m_nick=? and seq_portfolio_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public PofolDTO pofolSelect(String nick, int num) {
+		PofolDTO pofol = null;
+		connect();
+
+		sql = "select * from portfolio where m_nick=? and seq_portfolio_num=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				pofol = new PofolDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5),rs.getString(6), rs.getInt(7));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return pofol;
+	}
+	
+	public int pofolUpdate(PofolDTO pofol) {
+		connect();
+
+		sql = "update portfolio set portfolio_title=?, portfolio_content=?, seq_schedule_num=? where m_nick=? and seq_portfolio_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, pofol.getPofol_title());
+			psmt.setString(2, pofol.getPofol_content());
+			psmt.setInt(3, pofol.getSchedule_num());
+			psmt.setString(4, pofol.getMember_nick());
+			psmt.setInt(5, pofol.getPofol_num());
 		
 
 			cnt = psmt.executeUpdate();
@@ -68,73 +134,8 @@ public class EditorDAO {
 		} finally {
 			close();
 		}
+
 		return cnt;
 	}
 	
-	public int editorUpdate(EditorDTO editor) {
-		connect();
-
-		sql = "update editor set editor_title=?, editor_content=? where m_id=? and seq_editor_num=?";
-
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, editor.getEditor_title());
-			psmt.setString(2, editor.getEditor_content());
-			psmt.setString(3, editor.getMember_nick());
-			psmt.setInt(4, editor.getEditor_num());
-			
-
-			cnt = psmt.executeUpdate();
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return cnt;
-	}
-	
-	public int editorDelete(String nick, int num) {
-		connect();
-
-		sql = "delete from editor where m_nick=? and seq_editor_num=?";
-
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, nick);
-			psmt.setInt(2, num);
-
-			cnt = psmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return cnt;
-	}
-	
-	public EditorDTO editorSelect(String nick, int num) {
-		EditorDTO editor =null;
-		connect();
-
-		sql = "select * from editor where m_nick=? and seq_editor_num=?";
-
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, nick);
-			psmt.setInt(2, num);
-
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				editor = new EditorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return editor;
-	}
 }

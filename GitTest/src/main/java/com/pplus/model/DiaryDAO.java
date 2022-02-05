@@ -46,7 +46,7 @@ public class DiaryDAO {
 		}
 	}
 	
-	public int diarySet(DayplanDTO dayplan) {
+	public int diarySet(DiaryDTO diary) {
 		connect();
 		sql = "insert into diary values(num_seq.nextval,?,?,sysdate,?,?)";
 
@@ -54,17 +54,11 @@ public class DiaryDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setInt(1, dayplan.getSchedule_num());
-			psmt.setString(2, dayplan.getMember_nick());
-			psmt.setString(3, dayplan.getDayplan_date());
-			psmt.setString(4, dayplan.getBook_title());
-			psmt.setInt(5, dayplan.getBook_page());
-			psmt.setString(6, dayplan.getSchedule_num_day());
-			psmt.setString(7, dayplan.getAchieve_study_day());
-			psmt.setInt(8, dayplan.getSchedule_day_page());
-			psmt.setInt(9, dayplan.getDayplan_check());
-			psmt.setString(10, dayplan.getEditor_date());
-			psmt.setString(11, dayplan.getDiary_date());
+			psmt.setString(1, diary.getDiary_title());
+			psmt.setString(2, diary.getDiary_content());
+			psmt.setInt(3, diary.getSchedule_num());
+			psmt.setString(4, diary.getMember_nick());
+		
 
 			cnt = psmt.executeUpdate();
 
@@ -76,4 +70,73 @@ public class DiaryDAO {
 		}
 		return cnt;
 	}
+	
+	public int diaryUpdate(DiaryDTO diary) {
+		connect();
+		sql = "update diary set diary_title=?, diary_content=? where m_id=? and seq_diary_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, diary.getDiary_title());
+			psmt.setString(2, diary.getDiary_content());
+			psmt.setString(3, diary.getMember_nick());
+			psmt.setInt(4, diary.getDiary_num());
+			
+
+			cnt = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public int diaryDelete(String nick, int num) {
+		connect();
+
+		sql = "delete from diary where m_nick=? and seq_diary_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public DiaryDTO diarySelect(String nick, int num) {
+		DiaryDTO diary =null;
+		connect();
+
+		sql = "select * from diary where m_nick=? and seq_diary_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				diary = new DiaryDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getString(6));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return diary;
+	}
+
+	
+	
 }

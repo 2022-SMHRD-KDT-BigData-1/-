@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TodoDTO {
+public class PofolCheckDTO {
 
-	private int todo_num;
-	private String todo_title;
-	private String todo_content;
-	private String todo_date;
-	private int schedule_num;
+	private int pofol_num;
 	private String member_nick;
+	private String member_name;
+	private int schedule_num;
+	private int dayplan_num;
+	private int pofol_check_box;
 }

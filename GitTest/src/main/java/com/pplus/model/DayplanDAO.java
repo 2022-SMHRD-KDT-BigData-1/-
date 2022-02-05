@@ -82,7 +82,7 @@ public class DayplanDAO {
 	public int dayplanUpdate(DayplanDTO dayplan) {
 		connect();
 
-		sql = "update dayplan set book_title=?, book_page=?, schedule_num_day=?, achieve_study_day=? where m_nick=?";
+		sql = "update dayplan set book_title=?, book_page=?, schedule_num_day=?, achieve_study_day=?, schedule_day_page=? where m_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -91,6 +91,8 @@ public class DayplanDAO {
 			psmt.setString(3, dayplan.getSchedule_num_day());
 			psmt.setString(4, dayplan.getAchieve_study_day());
 			psmt.setInt(5, dayplan.getSchedule_day_page());
+			psmt.setString(6, dayplan.getMember_nick());
+			psmt.setInt(7, dayplan.getDayplan_num());
 			
 			cnt = psmt.executeUpdate();
 
