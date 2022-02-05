@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 	public class PMemberDTO {
+		// 회원 아이디, 비번, 닉네임, 이름 저장
 		private String m_id;
 		private String m_pw;
 		private String m_nick;
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
 //		private String m_address;
 //		private String m_email;
 		
+		// 회원에 유형조사 저장
 		private String book_part1_cat;
 		private String book_part2_cat;
 		private String book_part3_cat;

@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScheduleDTO {
-
+	// 스케줄 번호, 공부 시작일, 공부하는 날수, 공부 끝나는 낳, 하루 페이지 수, 
+	// 작성 날짜, 회원의 닉네임, 책 번호, 책 이름, 책의 총 페이지 수 저장
 	private int p_num;
 	private String s_start;
 	private String s_num_day;

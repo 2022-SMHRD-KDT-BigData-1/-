@@ -45,7 +45,9 @@ public class ScheduleDAO {
 			e.printStackTrace();
 		}
 	}
-
+	// 스케줄을 DB에 스케줄 번호, 공부 시작하는 낳, 공부 하는 수, 공부 끝나는 날, 하루 페이지 수
+	// 작성 날짜, 회원의 닉네임, 책 번호, 책 이름, 책의 총 페이지 수 입력
+	// 스케줄 등록 입력 변수 ScheduleDTO 출력 변수 cnt(int)
 	public int scheduleSet(ScheduleDTO schedule) {
 		connect();
 		sql = "insert into schedule values(num_seq.nextval,?,?,?,?,sysdate,?,?,?,?)";
@@ -73,7 +75,10 @@ public class ScheduleDAO {
 		}
 		return cnt;
 	}
-
+	// DB에 변경할 공부 시작하는 낳, 공부 하는 수, 공부 끝나는 날, 하루 페이지 수
+	// 책 번호, 책 이름, 책의 총 페이지 수, 회원의 닉네임 
+	// 수정 날짜로 할지 맨 처음 날짜로 할지는 고민 중
+	// 스케줄 변경 입력 변수 ScheduleDTO 출력 변수 cnt(int)
 	public int scheduleUpdate(ScheduleDTO schedule) {
 		connect();
 
@@ -101,7 +106,9 @@ public class ScheduleDAO {
 
 		return cnt;
 	}
-
+	// DB에 저장된 스케줄 컬럼들을 회원의 닉네임과 스케줄 번호로 삭제
+	// 스케줄 삭제 입력 변수는  회원의 닉네임, 스케줄 번호 
+	// 출력 변수는 cnt(int)
 	public int scheduleDelete(String nick, int num) {
 		connect();
 
@@ -120,7 +127,8 @@ public class ScheduleDAO {
 		}
 		return cnt;
 	}
-
+	// 스케줄 전체 삭제는 회원의 닉네임이 갖고있는 모든 스케줄 삭제
+	// 스케줄 전체 삭제 입력 변수는 회뤈의 닉네임 출력 변수는 cnt(int)
 	public int scheduleDeleteAll(String nick) {
 		connect();
 
@@ -138,7 +146,9 @@ public class ScheduleDAO {
 		}
 		return cnt;
 	}
-
+	// 포트폴리오를 위한 스케줄 선택
+	// 스케줄 선택은 회원의 닉네임과 스케줄 번호와 일치하는 스케줄 DB가 갖고 있는 모든 컬럼들을 가지고 온다
+	// 스케줄 선택 입력 변수는 회원의 닉네임, 스케줄 번호 출력 변수는 Schedule DTO의 schedule
 	public ScheduleDTO scheduleSelect(String nick, int num) {
 		ScheduleDTO schedule = null;
 		connect();
@@ -161,7 +171,8 @@ public class ScheduleDAO {
 		}
 		return schedule;
 	}
-
+	// 스케줄 전체 선택은 회원의 닉네임과 일치하는 모든 스케줄을 가져온다
+	// 스케줄 전체 선택의 입력 변수는 회원의 닉네임 출력 변수는 ArrayList의 ScheduleDTO schdulelist
 	public ArrayList<ScheduleDTO> scheduleSelectAll(String nick) {
 		ArrayList<ScheduleDTO> schedulelist = new ArrayList<ScheduleDTO>();
 		connect();
