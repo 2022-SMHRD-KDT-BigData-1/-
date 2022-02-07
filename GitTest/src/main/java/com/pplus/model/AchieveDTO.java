@@ -12,9 +12,9 @@ public class AchieveDTO {
 	private int achieve_num;
 	private String achieve_study_day;
 	private int achieve_study_page;
-	private int p_num;
+	private int schedule_num;
 	private String member_nick;
 	private int book_page;
-	private String s_num_day;
+	private String schedule_num_day;
 	
 }

@@ -58,7 +58,7 @@ public class DiaryDAO {
 
 			psmt.setString(1, diary.getDiary_title());
 			psmt.setString(2, diary.getDiary_content());
-			psmt.setInt(3, diary.getP_num());
+			psmt.setInt(3, diary.getSchedule_num());
 			psmt.setString(4, diary.getMember_nick());
 		
 
@@ -77,7 +77,7 @@ public class DiaryDAO {
 	// diaryUpdate에 입력 변수는 DiaryDTO diary 출력 변수는 cnt(int)
 	public int diaryUpdate(DiaryDTO diary) {
 		connect();
-		sql = "update diary set diary_title=?, diary_content=? where m_nick=? and seq_diary_num=?";
+		sql = "update diary set diary_title=?, diary_content=? where member_nick=? and seq_diary_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -103,7 +103,7 @@ public class DiaryDAO {
 	public int diaryDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from diary where m_nick=? and seq_diary_num=?";
+		sql = "delete from diary where member_nick=? and seq_diary_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -125,7 +125,7 @@ public class DiaryDAO {
 		DiaryDTO diary =null;
 		connect();
 
-		sql = "select * from diary where m_nick=? and seq_diary_num=?";
+		sql = "select * from diary where member_nick=? and seq_diary_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -151,7 +151,7 @@ public class DiaryDAO {
 		ArrayList<DiaryDTO> diarylist = new ArrayList<DiaryDTO>();
 		connect();
 
-		sql = "select * from diary where m_nick=? and seq_schedule_num=?";
+		sql = "select * from diary where member_nick=? and seq_schedule_num=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
@@ -177,7 +177,7 @@ public class DiaryDAO {
 		ArrayList<DiaryDTO> diarylist = new ArrayList<DiaryDTO>();
 		connect();
 
-		sql = "select * from diary where m_nick=?";
+		sql = "select * from diary where member_nick=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);

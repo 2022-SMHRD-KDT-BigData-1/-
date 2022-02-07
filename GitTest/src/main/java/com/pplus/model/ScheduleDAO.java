@@ -56,11 +56,11 @@ public class ScheduleDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			// psmt.setInt(1, schedule.getP_num());
-			psmt.setString(1, schedule.getM_nick());
-			psmt.setString(2, schedule.getS_start());
-			psmt.setString(3, schedule.getS_num_day());
-			psmt.setString(4, schedule.getS_end());
-			psmt.setInt(5, schedule.getS_day_page());
+			psmt.setString(1, schedule.getMember_nick());
+			psmt.setString(2, schedule.getSchedule_start());
+			psmt.setString(3, schedule.getSchedule_num_day());
+			psmt.setString(4, schedule.getSchedule_end());
+			psmt.setInt(5, schedule.getSchedule_day_page());
 			psmt.setInt(6, schedule.getBook_num());
 			psmt.setString(7, schedule.getBook_title());
 			psmt.setInt(8, schedule.getBook_page());
@@ -82,18 +82,18 @@ public class ScheduleDAO {
 	public int scheduleUpdate(ScheduleDTO schedule) {
 		connect();
 
-		sql = "update schedule set schedule_start=?, schedule_num_day=?, schedule_end=?, schedule_day_page=?, book_num=?, book_title=?, book_page=? where m_nick=?";
+		sql = "update schedule set schedule_start=?, schedule_num_day=?, schedule_end=?, schedule_day_page=?, book_num=?, book_title=?, book_page=? where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, schedule.getS_start());
-			psmt.setString(2, schedule.getS_num_day());
-			psmt.setString(3, schedule.getS_end());
-			psmt.setInt(4, schedule.getS_day_page());
+			psmt.setString(1, schedule.getSchedule_start());
+			psmt.setString(2, schedule.getSchedule_num_day());
+			psmt.setString(3, schedule.getSchedule_end());
+			psmt.setInt(4, schedule.getSchedule_day_page());
 			psmt.setInt(5, schedule.getBook_num());
 			psmt.setString(6, schedule.getBook_title());
 			psmt.setInt(7, schedule.getBook_page());
-			psmt.setString(8, schedule.getM_nick());
+			psmt.setString(8, schedule.getMember_nick());
 
 			cnt = psmt.executeUpdate();
 
@@ -112,7 +112,7 @@ public class ScheduleDAO {
 	public int scheduleDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from schedule where m_nick=? and seq_schedule_num=?";
+		sql = "delete from schedule where member_nick=? and seq_schedule_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class ScheduleDAO {
 	public int scheduleDeleteAll(String nick) {
 		connect();
 
-		sql = "delete from schedule where m_nick=?";
+		sql = "delete from schedule where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -153,7 +153,7 @@ public class ScheduleDAO {
 		ScheduleDTO schedule = null;
 		connect();
 
-		sql = "select * from schedule where m_nick=? and seq_schedule_num=?";
+		sql = "select * from schedule where member_nick=? and seq_schedule_num=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
@@ -177,7 +177,7 @@ public class ScheduleDAO {
 		ArrayList<ScheduleDTO> schedulelist = new ArrayList<ScheduleDTO>();
 		connect();
 
-		sql = "select * from schedule where m_nick=?";
+		sql = "select * from schedule where member_nick=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);

@@ -58,10 +58,10 @@ public class AchieveDAO {
 
 			psmt.setString(1, achieve.getAchieve_study_day());
 			psmt.setInt(2, achieve.getAchieve_study_page());
-			psmt.setInt(3, achieve.getP_num());
+			psmt.setInt(3, achieve.getSchedule_num());
 			psmt.setString(4, achieve.getMember_nick());
 			psmt.setInt(5, achieve.getBook_page());
-			psmt.setString(6, achieve.getS_num_day());
+			psmt.setString(6, achieve.getSchedule_num_day());
 			
 			cnt = psmt.executeUpdate();
 
@@ -86,7 +86,7 @@ public class AchieveDAO {
 			psmt.setString(1, achieve.getAchieve_study_day());
 			psmt.setInt(2, achieve.getAchieve_study_page());
 			psmt.setInt(3, achieve.getBook_page());
-			psmt.setString(4, achieve.getS_num_day());
+			psmt.setString(4, achieve.getSchedule_num_day());
 			psmt.setInt(5, achieve.getAchieve_num());
 	
 			cnt = psmt.executeUpdate();
@@ -105,7 +105,7 @@ public class AchieveDAO {
 	public int achieveDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from achieve where m_nick=? and seq_achieve_num=?";
+		sql = "delete from achieve where member_nick=? and seq_achieve_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -127,7 +127,7 @@ public class AchieveDAO {
 		AchieveDTO achieve =null;
 		connect();
 
-		sql = "select * from achieve where m_nick=? and seq_schedule_num=?";
+		sql = "select * from achieve where member_nick=? and seq_schedule_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -153,7 +153,7 @@ public class AchieveDAO {
 		ArrayList<AchieveDTO> achievelist = new ArrayList<AchieveDTO>();
 		connect();
 
-		sql = "select * from achieve where m_nick=? ";
+		sql = "select * from achieve where member_nick=? ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);

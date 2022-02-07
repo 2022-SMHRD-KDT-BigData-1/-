@@ -15,5 +15,5 @@ public class PofolDTO {
 	private String pofol_day;
 	private String member_nick;
 	private String member_name;
-	private int p_num;
+	private int schedule_num;
 }

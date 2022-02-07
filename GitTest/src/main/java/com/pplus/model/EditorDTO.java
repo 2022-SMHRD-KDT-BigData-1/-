@@ -13,6 +13,6 @@ public class EditorDTO {
 	private String editor_title;
 	private String editor_content;
 	private String editor_date;
-	private int p_num;
+	private int schedule_num;
 	private String member_nick;
 }

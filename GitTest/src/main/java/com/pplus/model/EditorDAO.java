@@ -58,7 +58,7 @@ public class EditorDAO {
 
 			psmt.setString(1, editor.getEditor_title());
 			psmt.setString(2, editor.getEditor_content());
-			psmt.setInt(3, editor.getP_num());
+			psmt.setInt(3, editor.getSchedule_num());
 			psmt.setString(4, editor.getMember_nick());
 		
 

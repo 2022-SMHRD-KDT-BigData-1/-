@@ -58,7 +58,7 @@ public class TodoDAO {
 
 			psmt.setString(1, todo.getTodo_title());
 			psmt.setString(2, todo.getTodo_content());
-			psmt.setInt(3, todo.getP_num());
+			psmt.setInt(3, todo.getSchedule_num());
 			psmt.setString(4, todo.getMember_nick());
 		
 
@@ -78,7 +78,7 @@ public class TodoDAO {
 	public int todoUpdate(TodoDTO todo) {
 		connect();
 
-		sql = "update todo set todo_title=?, todo_content=? where m_nick=? and seq_todo_num=?";
+		sql = "update todo set todo_title=?, todo_content=? where member_nick=? and seq_todo_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -104,7 +104,7 @@ public class TodoDAO {
 	public int todoDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from todo where m_nick=? and seq_todo_num=?";
+		sql = "delete from todo where member_nick=? and seq_todo_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -126,7 +126,7 @@ public class TodoDAO {
 		TodoDTO todo =null;
 		connect();
 
-		sql = "select * from todo where m_nick=? and seq_todo_num=?";
+		sql = "select * from todo where member_nick=? and seq_todo_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);

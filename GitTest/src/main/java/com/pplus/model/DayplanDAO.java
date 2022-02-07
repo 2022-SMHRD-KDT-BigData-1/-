@@ -57,14 +57,14 @@ public class DayplanDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setInt(1, dayplan.getP_num());
+			psmt.setInt(1, dayplan.getSchedule_num());
 			psmt.setString(2, dayplan.getMember_nick());
 			psmt.setString(3, dayplan.getBook_title());
 			psmt.setInt(4, dayplan.getBook_page());
-			psmt.setString(5, dayplan.getS_num_day());
+			psmt.setString(5, dayplan.getSchedule_num_day());
 			psmt.setString(6, dayplan.getAchieve_study_day());
 			psmt.setInt(7, dayplan.getAchieve_study_page());
-			psmt.setInt(8, dayplan.getS_day_page());
+			psmt.setInt(8, dayplan.getSchedule_day_page());
 			psmt.setInt(9, dayplan.getDayplan_check());
 			psmt.setString(10, dayplan.getEditor_date());
 			psmt.setString(11, dayplan.getDiary_date());
@@ -86,15 +86,15 @@ public class DayplanDAO {
 	public int dayplanUpdate(DayplanDTO dayplan) {
 		connect();
 
-		sql = "update dayplan set book_title=?, book_page=?, schedule_num_day=?, achieve_study_day=?, schedule_day_page=? where m_nick=? and seq_dayplan_num = ?";
+		sql = "update dayplan set book_title=?, book_page=?, schedule_num_day=?, achieve_study_day=?, schedule_day_page=? where member_nick=? and seq_dayplan_num = ?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dayplan.getBook_title());
 			psmt.setInt(2, dayplan.getBook_page());
-			psmt.setString(3, dayplan.getS_num_day());
+			psmt.setString(3, dayplan.getSchedule_num_day());
 			psmt.setString(4, dayplan.getAchieve_study_day());
-			psmt.setInt(5, dayplan.getS_day_page());
+			psmt.setInt(5, dayplan.getSchedule_day_page());
 			psmt.setString(6, dayplan.getMember_nick());
 			psmt.setInt(7, dayplan.getDayplan_num());
 			
@@ -114,7 +114,7 @@ public class DayplanDAO {
 	public int dayplanDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from dayplan where m_nick=? and seq_dayplan_num=?";
+		sql = "delete from dayplan where member_nick=? and seq_dayplan_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -135,7 +135,7 @@ public class DayplanDAO {
 	public int dayplanDeleteAll(String id) {
 		connect();
 
-		sql = "delete from dayplan where m_id=?";
+		sql = "delete from dayplan where member_id=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -155,7 +155,7 @@ public class DayplanDAO {
 	public DayplanDTO dayplanSelect(String nick, int num) {
 		DayplanDTO dayplan = null;
 
-		sql = "select * from dayplan where m_nick=? and seq_dayplan_num=?";
+		sql = "select * from dayplan where member_nick=? and seq_dayplan_num=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
@@ -179,7 +179,7 @@ public class DayplanDAO {
 		ArrayList<DayplanDTO> dayplanlist = new ArrayList<DayplanDTO>();
 		connect();
 
-		sql = "select * from dayplan where m_nick=? and seq_schedule_num=?";
+		sql = "select * from dayplan where member_nick=? and seq_schedule_num=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);

@@ -79,7 +79,7 @@ public class PofolCheckDAO {
 		
 		connect();
 
-		sql = "select seq_dayplan_num from portfolio_check where m_nick=? and seq_pofol_num=?";
+		sql = "select seq_dayplan_num from portfolio_check where member_nick=? and seq_pofol_num=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);

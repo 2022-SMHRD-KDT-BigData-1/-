@@ -13,6 +13,6 @@ public class TodoDTO {
 	private String todo_title;
 	private String todo_content;
 	private String todo_date;
-	private int p_num;
+	private int schedule_num;
 	private String member_nick;
 }

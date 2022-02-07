@@ -58,7 +58,7 @@ public class PofolDAO {
 			psmt.setString(2, pofol.getPofol_content());
 			psmt.setString(3, pofol.getMember_nick());
 			psmt.setString(4, pofol.getMember_name());
-			psmt.setInt(5, pofol.getP_num());
+			psmt.setInt(5, pofol.getSchedule_num());
 		
 		
 			cnt = psmt.executeUpdate();
@@ -77,7 +77,7 @@ public class PofolDAO {
 	public int pofolDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from portpolio where m_nick=? and seq_portfolio_num=?";
+		sql = "delete from portpolio where member_nick=? and seq_portfolio_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -99,7 +99,7 @@ public class PofolDAO {
 		PofolDTO pofol = null;
 		connect();
 
-		sql = "select * from portfolio where m_nick=? and seq_portfolio_num=?";
+		sql = "select * from portfolio where member_nick=? and seq_portfolio_num=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
@@ -122,13 +122,13 @@ public class PofolDAO {
 	public int pofolUpdate(PofolDTO pofol) {
 		connect();
 
-		sql = "update portfolio set portfolio_title=?, portfolio_content=?, seq_schedule_num=? where m_nick=? and seq_portfolio_num=?";
+		sql = "update portfolio set portfolio_title=?, portfolio_content=?, seq_schedule_num=? where member_nick=? and seq_portfolio_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, pofol.getPofol_title());
 			psmt.setString(2, pofol.getPofol_content());
-			psmt.setInt(3, pofol.getP_num());
+			psmt.setInt(3, pofol.getSchedule_num());
 			psmt.setString(4, pofol.getMember_nick());
 			psmt.setInt(5, pofol.getPofol_num());
 		

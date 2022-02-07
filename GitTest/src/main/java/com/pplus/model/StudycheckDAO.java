@@ -77,7 +77,7 @@ public class StudycheckDAO {
 		ArrayList<StudycheckDTO> studychecklist = new ArrayList<StudycheckDTO>();
 		connect();
 
-		sql = "select * from studycheck where m_nick=?";
+		sql = "select * from studycheck where member_nick=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt = conn.prepareStatement(nick);

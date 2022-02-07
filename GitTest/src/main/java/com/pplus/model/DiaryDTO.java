@@ -13,6 +13,6 @@ public class DiaryDTO {
 	private String diary_title;
 	private String diary_content;
 	private String diary_date;
-	private int p_num;
+	private int schedule_num;
 	private String member_nick;
 }

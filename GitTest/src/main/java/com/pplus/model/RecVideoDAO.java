@@ -17,7 +17,7 @@ public class RecVideoDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -45,7 +45,9 @@ public class RecVideoDAO {
 			e.printStackTrace();
 		}
 	}
-
+	// recvideo DB에 저장할 회원의 닉네임, 대분휴, 중분류, 소분류, 영상 제목, 영상 날짜, 영상 썸네일, 영상 주소, 
+	// 영상 채널명, 영상 조회수, 영상 시간 저장
+	// rexvideoSet에 입력 변수는 RecVideoDTO recvideo 출력 변수 cnt(int)
 	public int recVideoSet(RecVideoDTO recvideo) {
 		connect();
 		sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?)";
@@ -64,7 +66,7 @@ public class RecVideoDAO {
 			psmt.setString(8, recvideo.getVideo_url());
 			psmt.setString(9, recvideo.getVideo_channel());
 			psmt.setString(10, recvideo.getVideo_hits());
-			psmt.setString(11, recvideo.getVideo_hits());
+			psmt.setString(11, recvideo.getVideo_time());
 		
 
 			cnt = psmt.executeUpdate();
@@ -77,10 +79,12 @@ public class RecVideoDAO {
 		}
 		return cnt;
 	}
-	
+	// recvideo DB에 삭제할 데이터들을 선택하기 위해서 회원의 닉네임으로 찾기
+	// 찾은 데이터들 삭제
+	// recVideoDelete에 입력 변수 회원의 닉네임(string) 출력 변수 cnt(int)
 	public int recVideoDelete(String nick) {
 		connect();
-		sql ="delete from recommend_video where id=?";
+		sql ="delete from recommend_video where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -96,12 +100,13 @@ public class RecVideoDAO {
 		}
 		return cnt;
 	}
-
+	// recvideo DB에 저장되어 있는 데이터들을 회원별로 가져오고싶기 때문에 회원에 닉네임을 통하여 찾기
+	// recvideoSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecVideoDTO> list
 	public ArrayList<RecVideoDTO> recVideoSelectAll(String nick) {
 		ArrayList<RecVideoDTO> list = new ArrayList<RecVideoDTO>();
 		connect();
 
-		sql = "select * from recommend_video where m_nick=?";
+		sql = "select * from recommend_video where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
