@@ -24,6 +24,7 @@ public class PFrontController extends HttpServlet {
 		map = new HashMap<String, iPCommand>();
 		map.put("/PLoginCon.do", new PLoginCon());
 		map.put("/PJoinCon.do", new PJoinCon());
+		map.put("/PTypeCon.do", new PTypeCon());
 	}
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response)

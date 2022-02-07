@@ -9,33 +9,38 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.pplus.model.PMemberDAO;
 import com.pplus.model.PMemberDTO;
 
-@WebServlet("/PJoinCon")
-public class PJoinCon implements iPCommand {
+@WebServlet("/PTypeCon")
+public class PTypeCon implements iPCommand {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+		HttpSession session = request.getSession();
 
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String nick = request.getParameter("nick");
-		String name = request.getParameter("name");
+		String type1 = request.getParameter("type1");
+		String type2 = request.getParameter("type2");
+		String type3 = request.getParameter("type3");
+
+		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
 		PMemberDAO dao = new PMemberDAO();
-
-		int cnt = dao.pmemberJoin(new PMemberDTO(id, pw, nick, name, null, null, null));
+		
+		member =new PMemberDTO(member.getM_id(), null, member.getM_nick(), null, type1, type2, type3);
+		int cnt = dao
+				.pmemberTypeSet(member);
 
 		if (cnt > 0) {
-			System.out.println(id+nick+name+"로 회원가입");
-			request.setAttribute("id", id);
-			request.setAttribute("nick", nick);
+			System.out.println(member.getM_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");
+			System.out.println(type1+", "+type2+", "+type3);
+			session.setAttribute("member", member);
+			response.sendRedirect("pmain_jstl.jsp");
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("pjoinsuccess.jsp");
-			dispatcher.forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
@@ -43,5 +48,6 @@ public class PJoinCon implements iPCommand {
 			out.print("location.href='pmain.jsp';");
 			out.print("</script>");
 		}
+
 	}
 }
