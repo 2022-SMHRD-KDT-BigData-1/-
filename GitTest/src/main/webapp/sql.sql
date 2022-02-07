@@ -30,10 +30,15 @@ drop table web_message cascade constraints
 delete from web_message where m_content='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
 delete from web_message where m_receiveEmail='a@a.a'
 
+create table member(
+	member_id varchar(20) not null,
+	member_pw varchar(15) not null,
+	member_nick varchar(15) not null unique,
+	member_name varchar(30) not null,
+	constraint m_m_id_pk primary key(member_id))
 
-
-
-
+insert into member values('jms', 'alstj', 'Fatal', '¹Î¼­')
+select * from member
 
 
 

@@ -36,6 +36,7 @@ public class PFrontController extends HttpServlet {
 		System.out.println(command);
 		
 		iPCommand com = map.get(command);
+		System.out.println(com);
 		com.execute(request, response);
 	}
 }

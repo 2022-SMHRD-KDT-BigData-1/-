@@ -31,18 +31,18 @@ public class PLoginCon implements iPCommand {
 		PMemberDAO dao =new PMemberDAO();
 		
 		PMemberDTO member =dao.pmemberLogin(id, pw);
-		
+
 		if(member != null) {
 			System.out.println(id+"가 로그인");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("member", member);
-			response.sendRedirect("pmain_jstl.jsp");
+			response.sendRedirect("pmain.jsp");
 			
 		} else {
 			out.print("<script>");
 			out.print("alert('로그인 실패..!');");
-			out.print("location.href='pmain_jstl.jsp';");
+			out.print("location.href='pmain.jsp';");
 			out.print("</script>");
 		}
 	

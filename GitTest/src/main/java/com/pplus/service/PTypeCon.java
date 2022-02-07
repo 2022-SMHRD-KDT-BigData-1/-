@@ -31,12 +31,12 @@ public class PTypeCon implements iPCommand {
 
 		PMemberDAO dao = new PMemberDAO();
 		
-		member =new PMemberDTO(member.getM_id(), null, member.getM_nick(), null, type1, type2, type3);
+		member =new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), null, type1, type2, type3);
 		int cnt = dao
 				.pmemberTypeSet(member);
 
 		if (cnt > 0) {
-			System.out.println(member.getM_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");
+			System.out.println(member.getMember_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");
 			System.out.println(type1+", "+type2+", "+type3);
 			session.setAttribute("member", member);
 			response.sendRedirect("pmain_jstl.jsp");
@@ -48,6 +48,5 @@ public class PTypeCon implements iPCommand {
 			out.print("location.href='pmain.jsp';");
 			out.print("</script>");
 		}
-
 	}
 }

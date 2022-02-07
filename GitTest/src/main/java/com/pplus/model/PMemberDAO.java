@@ -19,7 +19,7 @@ public class PMemberDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -56,10 +56,10 @@ public class PMemberDAO {
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, member.getM_id());
-			psmt.setString(2, member.getM_pw());
-			psmt.setString(3, member.getM_nick());
-			psmt.setString(4, member.getM_name());
+			psmt.setString(1, member.getMember_id());
+			psmt.setString(2, member.getMember_pw());
+			psmt.setString(3, member.getMember_nick());
+			psmt.setString(4, member.getMember_name());
 
 			cnt = psmt.executeUpdate();
 
@@ -77,7 +77,7 @@ public class PMemberDAO {
 	public PMemberDTO pmemberLogin(String id, String pw) {
 		connect();
 		PMemberDTO member = null;
-		sql = "select m_id, m_pw, m_nick from member where m_id = ? and m_pw = ?";
+		sql = "select member_id, member_pw, member_nick from member where member_id =? and member_pw =?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -87,7 +87,7 @@ public class PMemberDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				member = new PMemberDTO(id, null, rs.getString("m_nick"),null, null, null, null);
+				member = new PMemberDTO(id, null, rs.getString("member_nick"),null, null, null, null);
 			}
 
 		} catch (SQLException e) {
@@ -104,13 +104,13 @@ public class PMemberDAO {
 	public int pmemberUpdate(PMemberDTO member) {
 		connect();
 
-		sql = "update member set m_pw=?, m_nick=? where m_id=?";
+		sql = "update member set member_pw=?, member_nick=? where member_id=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, member.getM_pw());
-			psmt.setString(2, member.getM_nick());
-			psmt.setString(3, member.getM_id());
+			psmt.setString(1, member.getMember_pw());
+			psmt.setString(2, member.getMember_nick());
+			psmt.setString(3, member.getMember_id());
 
 			cnt = psmt.executeUpdate();
 
@@ -127,7 +127,7 @@ public class PMemberDAO {
 	public boolean pmemberIdCheck(String id) {
 		connect();
 		
-		sql = "select * from member where m_id=?";
+		sql = "select * from member where member_id=?";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -149,7 +149,7 @@ public class PMemberDAO {
 	public boolean pmemberNickCheck(String nick) {
 		connect();
 		
-		sql = "select * from member where m_nick=?";
+		sql = "select * from member where member_nick=?";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -173,16 +173,16 @@ public class PMemberDAO {
 		ArrayList<PMemberDTO> list = new ArrayList<PMemberDTO>();
 		connect();
 
-		sql = "select m_id, m_nick from member";
+		sql = "select member_id, member_nick from member";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				String m_id = rs.getString(1);
-				String m_nick = rs.getString(2);
+				String member_id = rs.getString(1);
+				String member_nick = rs.getString(2);
 
-				list.add(new PMemberDTO(m_id, null, m_nick, null, null,null, null));
+				list.add(new PMemberDTO(member_id, null, member_nick, null, null,null, null));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -195,14 +195,14 @@ public class PMemberDAO {
 
 	public int pmemberTypeSet(PMemberDTO member) {
 		connect();
-		sql = "insert into member_type id=?, book_part1_cat=?, book_part2_cat=?,book_part3_cat=?";
+		sql = "insert into member_type id=?, user_type1=?, user_type2=?,user_type3=?";
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, member.getM_id());
-			psmt.setString(2, member.getBook_part1_cat());
-			psmt.setString(3, member.getBook_part2_cat());
-			psmt.setString(4, member.getBook_part3_cat());
+			psmt.setString(1, member.getMember_id());
+			psmt.setString(2, member.getUser_type1());
+			psmt.setString(3, member.getUser_type2());
+			psmt.setString(4, member.getUser_type3());
 
 			cnt = psmt.executeUpdate();
 
@@ -215,24 +215,25 @@ public class PMemberDAO {
 		return cnt;
 	}
 
-	public PMemberDTO pmemberTypeCheck(String id, String nick) {
+	public PMemberDTO pmemberTypeCheck(String nick) {
 		connect();
 		PMemberDTO member = null;
-		sql = "select book_part1, book_part2, book_part3 from member where id=?";
+		sql = "select member_id, user_type1, user_type2, user_type3 from member where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setString(1, nick);
 
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
+				
+				String id =rs.getString(1);
+				String type1 = rs.getString(2);
+				String type2 = rs.getString(3);
+				String type3 = rs.getString(4);
 
-				String book_part1 = rs.getString(1);
-				String book_part2 = rs.getString(2);
-				String book_part3 = rs.getString(3);
-
-				member = new PMemberDTO(id, null, nick,null, book_part1, book_part2, book_part3);
+				member = new PMemberDTO(id, null, nick,null, type1, type2, type3);
 			}
 
 		} catch (SQLException e) {
@@ -247,14 +248,14 @@ public class PMemberDAO {
 	public int pmemberTypeUpdate(PMemberDTO member) {
 		connect();
 
-		sql = "update member set book_part1=?, book_part2=?, book_part3=? where m_id=?";
+		sql = "update member set user_type1=?, user_type2=?, user_type3=? where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, member.getBook_part1_cat());
-			psmt.setString(2, member.getBook_part2_cat());
-			psmt.setString(3, member.getBook_part3_cat());
-			psmt.setString(4, member.getM_id());
+			psmt.setString(1, member.getUser_type1());
+			psmt.setString(2, member.getUser_type2());
+			psmt.setString(3, member.getUser_type3());
+			psmt.setString(4, member.getMember_nick());
 
 			cnt = psmt.executeUpdate();
 
@@ -271,12 +272,11 @@ public class PMemberDAO {
 	public int memberDelete(String id, int num) {
 		connect();
 		
-		sql="delete from member where m_id=? and m_num=?";
+		sql="delete from member where member_id=?";
 		
 		try {
 			psmt =conn.prepareStatement(sql);
 			psmt.setString(1, id);
-			psmt.setInt(2, num);
 			
 			cnt=psmt.executeUpdate();
 		} catch (SQLException e) {

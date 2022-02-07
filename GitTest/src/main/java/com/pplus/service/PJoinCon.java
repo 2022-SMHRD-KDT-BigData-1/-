@@ -30,7 +30,7 @@ public class PJoinCon implements iPCommand {
 		int cnt = dao.pmemberJoin(new PMemberDTO(id, pw, nick, name, null, null, null));
 
 		if (cnt > 0) {
-			System.out.println(id+nick+name+"로 회원가입");
+			System.out.println(id+", "+nick+", "+name+"로 회원가입");
 			request.setAttribute("id", id);
 			request.setAttribute("nick", nick);
 			
