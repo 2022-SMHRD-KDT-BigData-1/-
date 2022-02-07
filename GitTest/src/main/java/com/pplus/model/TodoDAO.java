@@ -18,7 +18,7 @@ public class TodoDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -46,10 +46,11 @@ public class TodoDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	// todo DB에 저장 할 투두 번호, 투두 제목, 투두 내용, 투두 작성 일자, 스케줄 번호, 회원의 닉네임을 입력
+	// todoSet에 입력 변수는 TodoDTO todo 출력 변수는 cnt(int)
 	public int todoSet(TodoDTO todo) {
 		connect();
-		sql = "insert into todo values(num_seq.nextval,?,?,sysdate,?,?)";
+		sql = "insert into todo values(seq_todo_num.nextval,?,?,sysdate,?,?)";
 
 		cnt = 0;
 		try {
@@ -57,7 +58,7 @@ public class TodoDAO {
 
 			psmt.setString(1, todo.getTodo_title());
 			psmt.setString(2, todo.getTodo_content());
-			psmt.setInt(3, todo.getSchedule_num());
+			psmt.setInt(3, todo.getP_num());
 			psmt.setString(4, todo.getMember_nick());
 		
 
@@ -71,11 +72,13 @@ public class TodoDAO {
 		}
 		return cnt;
 	}
-	
+	// todo DB에 있는 하나의 todo 데이터를 수정하기 휘해서 회원의 닉네임, 투두 번호로 비교하여 찾기
+	// 찾은 데이터를 수정 할 투두 제목, 투두 내용을 입력
+	// todoUpdate에 입력 변수는 TodoDTO todo 출력 변수는 cnt(int)
 	public int todoUpdate(TodoDTO todo) {
 		connect();
 
-		sql = "update todo set todo_title=?, todo_content=? where m_id=? and seq_todo_num=?";
+		sql = "update todo set todo_title=?, todo_content=? where m_nick=? and seq_todo_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -95,7 +98,9 @@ public class TodoDAO {
 		}
 		return cnt;
 	}
-	
+	// todo DB에 저장되어 있는 데이터를 삭제하기 위해서 회원의 닉네임, 투두 번호로 찾기
+	// 찾은 데이터를 삭제
+	// todoDelete에 입력 변수는 회원의 닉네임(string), 투두 번호(int) 출력 변수는 cnt(int)
 	public int todoDelete(String nick, int num) {
 		connect();
 
@@ -114,7 +119,9 @@ public class TodoDAO {
 		}
 		return cnt;
 	}
-	
+	// todo DB에 저장된 데이터를 조회하기 위해서 회원의 닉네임, 투두 번호호 비교하여 찾기
+	// 찾은 데이터를 보여주기
+	// todoSelect에 입력 변수는 회원의 닉네임, 투두 번호 출력 변수는 TodoDTO todo
 	public TodoDTO todoSelect(String nick, int num) {
 		TodoDTO todo =null;
 		connect();

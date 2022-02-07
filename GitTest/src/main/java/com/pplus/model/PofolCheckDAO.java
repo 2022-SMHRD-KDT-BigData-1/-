@@ -17,7 +17,7 @@ public class PofolCheckDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -45,7 +45,8 @@ public class PofolCheckDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	// pofolcheck DB에 저장할 포트폴리오 번호, 회원 닉네임, 회원 이름, 스케줄 번호, 일정 번호, 확인 박스 입력
+	// pofolcheckSet 일벽 변수 pofolCheckDTO pofolcheck 툴력변수 cnt(int)
 	public int pofolcheckSet(PofolCheckDTO pofolcheck) {
 		connect();
 		sql = "insert into portfolio_check values(?,?,?,?,?,?)";
@@ -71,7 +72,8 @@ public class PofolCheckDAO {
 		}
 		return cnt;
 	}
-	
+	// pofolcheck DB에 저장되어 있는 회원에 모든 일정을 가져오기 위해서 외원의 닉네임, 포트폴리오 번호를 비교하여 찾기
+	// pofolcheckSelectAll에 입력 변수는 회원의 닉네임, 포트폴리오 번호 출력 변수는 ArrayList<Integer> list
 	public ArrayList<Integer> pofolcheckSelectAll(String nick, int num) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		

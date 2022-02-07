@@ -18,7 +18,7 @@ public class AchieveDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -46,10 +46,11 @@ public class AchieveDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	// achieve DB에 저장할 달성 번호, 공부한 일수, 공부한 페이지, 스케줄 번호, 회원의 닉네임, 책 페이지, (전체)일수를 입력
+	// achieveSet에 입력 변수는 AchieveDTO achieve 출력 변수는 cnt(int)
 	public int achieveSet(AchieveDTO achieve) {
 		connect();
-		sql = "insert into achieve values(num_seq.nextval,?,?,?,?,?,?)";
+		sql = "insert into achieve values(seq_achieve_num.nextval,?,?,?,?,?,?)";
 
 		cnt = 0;
 		try {
@@ -57,10 +58,10 @@ public class AchieveDAO {
 
 			psmt.setString(1, achieve.getAchieve_study_day());
 			psmt.setInt(2, achieve.getAchieve_study_page());
-			psmt.setInt(3, achieve.getSchedule_num());
+			psmt.setInt(3, achieve.getP_num());
 			psmt.setString(4, achieve.getMember_nick());
 			psmt.setInt(5, achieve.getBook_page());
-			psmt.setString(6, achieve.getSchedule_num_day());
+			psmt.setString(6, achieve.getS_num_day());
 			
 			cnt = psmt.executeUpdate();
 
@@ -72,7 +73,9 @@ public class AchieveDAO {
 		}
 		return cnt;
 	}
-	
+	// achieve DB에 저장되어 있는 데이터 중 수정 하고 싶은 데이터를 달성 번호로 찾기
+	// 찾은 데이터를 새로운 공부한 일수, 공부한 페이지, 책 페이지, (전체)일수 입력
+	// achieveUpdate에 입력 변수 AchieveDTO achieve 출력 변수 cnt(int)
 	public int achieveUpdate(AchieveDTO achieve) {
 		connect();
 
@@ -83,7 +86,7 @@ public class AchieveDAO {
 			psmt.setString(1, achieve.getAchieve_study_day());
 			psmt.setInt(2, achieve.getAchieve_study_page());
 			psmt.setInt(3, achieve.getBook_page());
-			psmt.setString(4, achieve.getSchedule_num_day());
+			psmt.setString(4, achieve.getS_num_day());
 			psmt.setInt(5, achieve.getAchieve_num());
 	
 			cnt = psmt.executeUpdate();
@@ -96,7 +99,9 @@ public class AchieveDAO {
 		}
 		return cnt;
 	}
-	
+	// achieve DB에 저장되어 있는 데이터 중 하나의 데이터 삭제를 위해 회원의 닉네임, 달성 번호로 찾기
+	// 찾은 데이터 삭제
+	// achieveDelete에 입력 변수 회원의 닉네임(string), 달성 번호(int) 출력 변수 cnt(int)
 	public int achieveDelete(String nick, int num) {
 		connect();
 
@@ -115,12 +120,14 @@ public class AchieveDAO {
 		}
 		return cnt;
 	}
-	
+	// achieve DB에 저장되어 있는 하나의 데이터를 조회하기 위해서 회원의 닉네임, 달성 번호로 찾기
+	// 찾은 데이터 조회
+	// achieveSelect에 입력 변수 회원의 닉네임(string), 스케줄 번호(int) 출력 변수 AchieveDTO achieve
 	public AchieveDTO achieveSelect(String nick, int num) {
 		AchieveDTO achieve =null;
 		connect();
 
-		sql = "select * from achieve where m_nick=? and seq_achieve_num=?";
+		sql = "select * from achieve where m_nick=? and seq_schedule_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -139,16 +146,17 @@ public class AchieveDAO {
 		}
 		return achieve;
 	}
-	
-	public ArrayList<AchieveDTO> achieveSelectAll(String nick, int num) {
+	// achieve DB에 저장되어 있는 회원에 모든 스케줄을 조회하여 시각화 시켜주기 위해서 회원의 닉네임으로 탖기
+	// 찾은 데이터 보여주기
+	// achieveSelectAll에 입력 변수는 회원의 닉네임(string) 출력 변수는 ArrayList<AchieveDTO> achievelist
+	public ArrayList<AchieveDTO> achieveSelectAll(String nick) {
 		ArrayList<AchieveDTO> achievelist = new ArrayList<AchieveDTO>();
 		connect();
 
-		sql = "select * from achieve where m_nick=? and seq_achieve_num=?";
+		sql = "select * from achieve where m_nick=? ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
-			psmt.setInt(2, num);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {

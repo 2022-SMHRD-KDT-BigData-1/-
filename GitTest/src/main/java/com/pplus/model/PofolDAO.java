@@ -16,7 +16,7 @@ public class PofolDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -44,10 +44,11 @@ public class PofolDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	// pofol DB에 저장할 포트폴리오 번호, 포트폴리오 제목, 포트폴리오 내용, 회원의 닉네임, 회원의 이름 입력
+	// pofolSet에 입력 변수 PofolDTO pofol 출력 변수 cnt(int)
 	public int pofolSet(PofolDTO pofol) {
 		connect();
-		sql = "insert into portfolio values(num_seq.nextval,?,?,sysdate,?,?,?)";
+		sql = "insert into portfolio values(seq_pofol_num.nextval,?,?,sysdate,?,?,?)";
 
 		cnt = 0;
 		try {
@@ -57,7 +58,7 @@ public class PofolDAO {
 			psmt.setString(2, pofol.getPofol_content());
 			psmt.setString(3, pofol.getMember_nick());
 			psmt.setString(4, pofol.getMember_name());
-			psmt.setInt(5, pofol.getSchedule_num());
+			psmt.setInt(5, pofol.getP_num());
 		
 		
 			cnt = psmt.executeUpdate();
@@ -70,7 +71,9 @@ public class PofolDAO {
 		}
 		return cnt;
 	}
-	
+	// pofol DB에 삭제할 데이터를 선책하기 위해서 회원에 닉네임, 포트폴리오 번호로 찾기
+	// 찾은 데이터를 삭제
+	// pofolDelete에 입력 변수 회원의 닉네임(string), 포트폴리오 번호(int) 출력 변수 cnt(int)
 	public int pofolDelete(String nick, int num) {
 		connect();
 
@@ -89,7 +92,9 @@ public class PofolDAO {
 		}
 		return cnt;
 	}
-	
+	// pofol SB에 저장되어 있는 하나의 데이터를 조회하기 위해서 회원의 닉네임, 포트폴리오 번호로 찾기
+	// 찾은 데이처를 출력
+	// pofolSelect에 입력 변수 회원의 닉네임, 포츠폴리오 번호 출력 변수 PofolDTO pofol
 	public PofolDTO pofolSelect(String nick, int num) {
 		PofolDTO pofol = null;
 		connect();
@@ -111,7 +116,9 @@ public class PofolDAO {
 		}
 		return pofol;
 	}
-	
+	// pofol DB에 저장되어 있는 하나의 데이터를 수정하기 위해서 회원의 닉네임, 포트폴리오 번호로 찾기
+	// 찾은 데이터에 수정할 포트폴리오 제목, 포트폴리오 내용 스케줄 번호를 입력
+	// pofolUpdate에 입력 변수 pofolDTO pofol 줄력 변수 cnt(int)
 	public int pofolUpdate(PofolDTO pofol) {
 		connect();
 
@@ -121,7 +128,7 @@ public class PofolDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, pofol.getPofol_title());
 			psmt.setString(2, pofol.getPofol_content());
-			psmt.setInt(3, pofol.getSchedule_num());
+			psmt.setInt(3, pofol.getP_num());
 			psmt.setString(4, pofol.getMember_nick());
 			psmt.setInt(5, pofol.getPofol_num());
 		

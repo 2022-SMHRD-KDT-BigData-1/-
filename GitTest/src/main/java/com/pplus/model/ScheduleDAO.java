@@ -17,7 +17,7 @@ public class ScheduleDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -50,7 +50,7 @@ public class ScheduleDAO {
 	// 스케줄 등록 입력 변수 ScheduleDTO 출력 변수 cnt(int)
 	public int scheduleSet(ScheduleDTO schedule) {
 		connect();
-		sql = "insert into schedule values(num_seq.nextval,?,?,?,?,sysdate,?,?,?,?)";
+		sql = "insert into schedule values(seq_shedule_num.nextval,?,?,?,?,sysdate,?,?,?,?)";
 //		 p_num;m_nick;s_start;s_num_day;s_end;s_day_page;book_num;book_title;book_page;
 		cnt = 0;
 		try {

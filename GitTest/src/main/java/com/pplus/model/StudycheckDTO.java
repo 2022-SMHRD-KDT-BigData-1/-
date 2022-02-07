@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudycheckDTO {
-
+	// 에디터 번호, 에디터 작성일자, 회원의 닉네임, 확인 저장
 	private int editor_num;
 	private String editor_date;
 	private String member_nick;

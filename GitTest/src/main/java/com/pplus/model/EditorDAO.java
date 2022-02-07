@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EditorDAO {
 
@@ -17,7 +18,7 @@ public class EditorDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -45,10 +46,11 @@ public class EditorDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	// editor DB에 에디터 제목, 에디터 내용, 스케줄 번호, 회원에 닉네임을 저장
+	// editorSet에 입력 변수는 EditorDTO editor 출력 변수는 cnt(int)
 	public int editorSet(EditorDTO editor) {
 		connect();
-		sql = "insert into editor values(num_seq.nextval,?,?,sysdate,?,?)";
+		sql = "insert into editor values(seq_editor_num.nextval,?,?,sysdate,?,?)";
 
 		cnt = 0;
 		try {
@@ -56,7 +58,7 @@ public class EditorDAO {
 
 			psmt.setString(1, editor.getEditor_title());
 			psmt.setString(2, editor.getEditor_content());
-			psmt.setInt(3, editor.getSchedule_num());
+			psmt.setInt(3, editor.getP_num());
 			psmt.setString(4, editor.getMember_nick());
 		
 
@@ -70,11 +72,13 @@ public class EditorDAO {
 		}
 		return cnt;
 	}
-	
+	// editor DB에 저장되어 있는 하나의 에디터를 수정하기 위해서 회원의 닉네임과 에디터 번호를 비교하여 찾기
+	// editor DB에 변경할 에디터 제목, 에디터 내용을 입력
+	// edirotUpdate에 입력 변수는 EditorDTO editor 츌력 변수는 cnt(int)
 	public int editorUpdate(EditorDTO editor) {
 		connect();
 
-		sql = "update editor set editor_title=?, editor_content=? where m_id=? and seq_editor_num=?";
+		sql = "update editor set editor_title=?, editor_content=? where m_nick=? and seq_editor_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -94,7 +98,9 @@ public class EditorDAO {
 		}
 		return cnt;
 	}
-	
+	// editor DB에 저장되어 있는 하나의 에디터만을 삭제하기 위해서 회원의 닉네임, 에디터 번호로 비교하여 찾기
+	// 찾은 에디터 삭제
+	// editorDelete에 입력 변수는 회원의 닉네임(string), 에디터 번호(int) 출력 변수는 cnt(int)
 	public int editorDelete(String nick, int num) {
 		connect();
 
@@ -113,7 +119,9 @@ public class EditorDAO {
 		}
 		return cnt;
 	}
-	
+	// editor DB에 저장되어 있는 하나의 에디터에 내용을 조회하기 위해서 회원의 닉네임, 에디터 번호로 비교하여 찾기
+	// 찾은 에디터 내용 조회
+	// editorSelect에 입력 변수는 회원의 닉네임(string), 에디터 번호(int)
 	public EditorDTO editorSelect(String nick, int num) {
 		EditorDTO editor =null;
 		connect();
@@ -136,5 +144,57 @@ public class EditorDAO {
 			close();
 		}
 		return editor;
+	}
+	
+	// editor DB에 하나의 스케줄에 저장되어 있는 모든 에디터들을 조회하기 위해서 회원의 닉네임, 스케줄번호로 비교하여 찾기
+	// editorSelectAll에 입력 변수 회원의 닉네임(string), 스케줄 번호(int) 출력 변수 ArrayList<EditorDTO> editorlist
+	public ArrayList<EditorDTO> editorSelectAll(String nick, int num) {
+		ArrayList<EditorDTO> editorlist = new ArrayList<EditorDTO>();
+		connect();
+
+		sql = "select * from editor where m_nick=? and seq_schedule_num=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				editorlist.add(new EditorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getString(6)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return editorlist;
+	}
+	// editor DB에 저장되어 있는 회원에 모든 일기를 가지고 오기 위해서
+	// memberEditorSelectAll에 입력 변수는 회원의 닉네임(string) 출력 변수는 ArrayList<EditorDTO> editorlist
+	public ArrayList<EditorDTO> memberEditorSelectAll(String nick) {
+		ArrayList<EditorDTO> editorlist = new ArrayList<EditorDTO>();
+		connect();
+
+		sql = "select * from diary where m_nick=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				editorlist.add(new EditorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getString(6)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return editorlist;
 	}
 }

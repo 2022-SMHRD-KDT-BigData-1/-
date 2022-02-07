@@ -18,7 +18,7 @@ public class DayplanDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
 			String password = "smhrd2";
 
@@ -46,23 +46,25 @@ public class DayplanDAO {
 			e.printStackTrace();
 		}
 	}
-
+	// dayplan DB에 일정번호, 작송날짜, 스케줄 번호, 회원 닉네임, 책 제목, 책 페이지, (전체)일수, 공부한 일수, 공부한 페이지, (하루)공부 페이지 수,
+	// 공부 체크, 에디터 작성일자, 일기 작성일자, 일정 작성일자를 입력한다
+	// dayplanSet의 입력 변수는 DayplanDTO dayplan 출력 변수는 cnt(int)
 	public int dayplanSet(DayplanDTO dayplan) {
 		connect();
-		sql = "insert into dayplan values(num_seq.nextval,sysdate,?,?,?,?,?,?,?,?,?,?,?,?)";
+		sql = "insert into dayplan values(seq_dayplan_num.nextval,sysdate,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setInt(1, dayplan.getSchedule_num());
+			psmt.setInt(1, dayplan.getP_num());
 			psmt.setString(2, dayplan.getMember_nick());
-			psmt.setString(3, dayplan.getDayplan_date());
-			psmt.setString(4, dayplan.getBook_title());
-			psmt.setInt(5, dayplan.getBook_page());
-			psmt.setString(6, dayplan.getSchedule_num_day());
-			psmt.setString(7, dayplan.getAchieve_study_day());
-			psmt.setInt(8, dayplan.getSchedule_day_page());
+			psmt.setString(3, dayplan.getBook_title());
+			psmt.setInt(4, dayplan.getBook_page());
+			psmt.setString(5, dayplan.getS_num_day());
+			psmt.setString(6, dayplan.getAchieve_study_day());
+			psmt.setInt(7, dayplan.getAchieve_study_page());
+			psmt.setInt(8, dayplan.getS_day_page());
 			psmt.setInt(9, dayplan.getDayplan_check());
 			psmt.setString(10, dayplan.getEditor_date());
 			psmt.setString(11, dayplan.getDiary_date());
@@ -78,19 +80,21 @@ public class DayplanDAO {
 		}
 		return cnt;
 	}
-
+	// dayplan DB에 입력된 책 게목, 책 페이지, (전체)일수, 공부한 일수, (하루)공부 페이지 수를 
+	// 회뤈의 닉네임, 일정 번호를 비교하여 맞는 체이블을 변경한다
+	// dayplanUpdate의 입력 변수는 DayplanDTO dayplan 출력 변수는 cnt(int)
 	public int dayplanUpdate(DayplanDTO dayplan) {
 		connect();
 
-		sql = "update dayplan set book_title=?, book_page=?, schedule_num_day=?, achieve_study_day=?, schedule_day_page=? where m_nick=?";
+		sql = "update dayplan set book_title=?, book_page=?, schedule_num_day=?, achieve_study_day=?, schedule_day_page=? where m_nick=? and seq_dayplan_num = ?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dayplan.getBook_title());
 			psmt.setInt(2, dayplan.getBook_page());
-			psmt.setString(3, dayplan.getSchedule_num_day());
+			psmt.setString(3, dayplan.getS_num_day());
 			psmt.setString(4, dayplan.getAchieve_study_day());
-			psmt.setInt(5, dayplan.getSchedule_day_page());
+			psmt.setInt(5, dayplan.getS_day_page());
 			psmt.setString(6, dayplan.getMember_nick());
 			psmt.setInt(7, dayplan.getDayplan_num());
 			
@@ -105,7 +109,8 @@ public class DayplanDAO {
 
 		return cnt;
 	}
-
+	// dayplan DB에 입력된 일정 테이블을 닉네임과 선택한 일정번호에 맞는 값을 삭제한다
+	// dayplanDelete의 입력 변수는 회원의 닉네임(string)과 일정번호(int) 풀력 변수는 cnt(int) 
 	public int dayplanDelete(String nick, int num) {
 		connect();
 
@@ -125,8 +130,9 @@ public class DayplanDAO {
 
 		return cnt;
 	}
-
-	public int dayplanDeleteAll(String id, int s_num) {
+	// dayplan DB에 저장되어 있는 회원에 일정을 모두 삭제
+	// dayplanDeleteAll에 입력 변수는 회원에 아이디(string) 출력 변수는 cnt(int)
+	public int dayplanDeleteAll(String id) {
 		connect();
 
 		sql = "delete from dayplan where m_id=?";
@@ -134,7 +140,7 @@ public class DayplanDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
-			psmt.setInt(2, s_num);
+			
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -144,7 +150,8 @@ public class DayplanDAO {
 		}
 		return cnt;
 	}
-
+	// dayplan DB에 저장되어 있는 내용을 조회하기 위해서 회원의 닉네임, 일정 번호로 비교하여 찾기
+	// dayplanSelect의 입력 변수는 회원에 닉네임(string), 일정 번호(int) 출력 변수눈 DayplanDTO dayplan
 	public DayplanDTO dayplanSelect(String nick, int num) {
 		DayplanDTO dayplan = null;
 
@@ -166,7 +173,8 @@ public class DayplanDAO {
 		}
 		return dayplan;
 	}
-
+	// dayplan DB에 하나의 스케줄에 저장되어 있는 모든 일정을 조회
+	// dayplanSelectAll에 입력 변수는 회원의 닉네임(string), 일정 번호(int) 츌력 변수는 ArrayList<DayplanDTO> dayplanlist 
 	public ArrayList<DayplanDTO> dayplanSelectAll(String nick, int num) {
 		ArrayList<DayplanDTO> dayplanlist = new ArrayList<DayplanDTO>();
 		connect();
