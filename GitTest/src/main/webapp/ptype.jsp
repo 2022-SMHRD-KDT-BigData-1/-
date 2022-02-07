@@ -23,6 +23,7 @@
 			<option value=""></option>
 		
 		</select>
+		<input type="submit" name="등록">
 	</form>
 </body>
 </html>

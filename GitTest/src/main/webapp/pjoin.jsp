@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="PloginCon.do" method="post">
+	<form action="PJoinCon.do" method="post">
 		<input type="text" name="id" placeholder="id를 입력하세요">
 		<br>
 		<input type="password" name="pw" placeholder="password를 입력하세요">
