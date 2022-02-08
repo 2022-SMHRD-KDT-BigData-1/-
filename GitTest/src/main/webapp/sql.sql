@@ -227,7 +227,7 @@ references book_part2(book_part2),
 constraint sv_bp3_fk foreign key(book_part3)
 references book_part3(book_part3)
 )
-select * from member
+select * from member_type
 
 create table member_type(
 member_nick varchar(15) not null unique,
@@ -237,3 +237,6 @@ user_type3 varchar2(20),
 constraint mt_mn_fk foreign key(member_nick)
 references member(member_nick)
 )
+
+select * from book
+

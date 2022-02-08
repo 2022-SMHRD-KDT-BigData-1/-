@@ -50,20 +50,21 @@ public class ScheduleDAO {
 	// 스케줄 등록 입력 변수 ScheduleDTO 출력 변수 cnt(int)
 	public int scheduleSet(ScheduleDTO schedule) {
 		connect();
-		sql = "insert into schedule values(seq_shedule_num.nextval,?,?,?,?,sysdate,?,?,?,?)";
+		sql = "insert into schedule values(seq_shedule_num.nextval,?,?,?,?,?,sysdate,?,?,?,?)";
 //		 p_num;m_nick;s_start;s_num_day;s_end;s_day_page;book_num;book_title;book_page;
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 			// psmt.setInt(1, schedule.getP_num());
-			psmt.setString(1, schedule.getMember_nick());
-			psmt.setString(2, schedule.getSchedule_start());
-			psmt.setString(3, schedule.getSchedule_num_day());
-			psmt.setString(4, schedule.getSchedule_end());
-			psmt.setInt(5, schedule.getSchedule_day_page());
-			psmt.setInt(6, schedule.getBook_num());
-			psmt.setString(7, schedule.getBook_title());
-			psmt.setInt(8, schedule.getBook_page());
+			psmt.setString(1, schedule.getSchedule_name());
+			psmt.setString(2, schedule.getMember_nick());
+			psmt.setString(3, schedule.getSchedule_start());
+			psmt.setString(4, schedule.getSchedule_num_day());
+			psmt.setString(5, schedule.getSchedule_end());
+			psmt.setInt(6, schedule.getSchedule_day_page());
+			psmt.setInt(7, schedule.getBook_num());
+			psmt.setString(8, schedule.getBook_title());
+			psmt.setInt(9, schedule.getBook_page());
 
 			cnt = psmt.executeUpdate();
 
@@ -82,18 +83,20 @@ public class ScheduleDAO {
 	public int scheduleUpdate(ScheduleDTO schedule) {
 		connect();
 
-		sql = "update schedule set schedule_start=?, schedule_num_day=?, schedule_end=?, schedule_day_page=?, book_num=?, book_title=?, book_page=? where member_nick=?";
+		sql = "update schedule set schedule_name=?, schedule_start=?, schedule_num_day=?, schedule_end=?, schedule_day_page=?, book_num=?, book_title=?, book_page=? where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, schedule.getSchedule_start());
-			psmt.setString(2, schedule.getSchedule_num_day());
-			psmt.setString(3, schedule.getSchedule_end());
-			psmt.setInt(4, schedule.getSchedule_day_page());
-			psmt.setInt(5, schedule.getBook_num());
-			psmt.setString(6, schedule.getBook_title());
-			psmt.setInt(7, schedule.getBook_page());
-			psmt.setString(8, schedule.getMember_nick());
+			
+			psmt.setString(1, schedule.getSchedule_name());
+			psmt.setString(2, schedule.getSchedule_start());
+			psmt.setString(3, schedule.getSchedule_num_day());
+			psmt.setString(4, schedule.getSchedule_end());
+			psmt.setInt(5, schedule.getSchedule_day_page());
+			psmt.setInt(6, schedule.getBook_num());
+			psmt.setString(7, schedule.getBook_title());
+			psmt.setInt(8, schedule.getBook_page());
+			psmt.setString(9, schedule.getMember_nick());
 
 			cnt = psmt.executeUpdate();
 
@@ -160,9 +163,9 @@ public class ScheduleDAO {
 			psmt.setInt(2, num);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				schedule = new ScheduleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
-						rs.getInt(10));
+				schedule = new ScheduleDTO(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10),
+						rs.getInt(11));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -185,9 +188,9 @@ public class ScheduleDAO {
 
 			while (rs.next()) {
 
-				schedulelist.add(new ScheduleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
-						rs.getInt(10)));
+				schedulelist.add(new ScheduleDTO(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10),
+						rs.getInt(11)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

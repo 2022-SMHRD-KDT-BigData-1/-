@@ -269,7 +269,7 @@ public class PMemberDAO {
 		return cnt;
 	}
 	
-	public int memberDelete(String id, int num) {
+	public int memberDelete(String id) {
 		connect();
 		
 		sql="delete from member where member_id=?";
