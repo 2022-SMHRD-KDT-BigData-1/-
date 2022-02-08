@@ -227,4 +227,13 @@ references book_part2(book_part2),
 constraint sv_bp3_fk foreign key(book_part3)
 references book_part3(book_part3)
 )
-select * from study_video
+select * from member
+
+create table member_type(
+member_nick varchar(15) not null unique,
+user_type1 varchar2(20),
+user_type2 varchar2(20),
+user_type3 varchar2(20),
+constraint mt_mn_fk foreign key(member_nick)
+references member(member_nick)
+)
