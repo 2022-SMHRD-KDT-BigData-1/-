@@ -195,11 +195,11 @@ public class PMemberDAO {
 
 	public int pmemberTypeSet(PMemberDTO member) {
 		connect();
-		sql = "insert into member_type id=?, user_type1=?, user_type2=?,user_type3=?";
+		sql = "insert into member_type values (?,?,?,?)";
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, member.getMember_id());
+			psmt.setString(1, member.getMember_nick());
 			psmt.setString(2, member.getUser_type1());
 			psmt.setString(3, member.getUser_type2());
 			psmt.setString(4, member.getUser_type3());
@@ -218,7 +218,7 @@ public class PMemberDAO {
 	public PMemberDTO pmemberTypeCheck(String nick) {
 		connect();
 		PMemberDTO member = null;
-		sql = "select member_id, user_type1, user_type2, user_type3 from member where member_nick=?";
+		sql = "select member_id, user_type1, user_type2, user_type3 from member_type where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);

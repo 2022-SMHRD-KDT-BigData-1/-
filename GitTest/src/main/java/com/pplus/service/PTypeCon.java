@@ -30,21 +30,20 @@ public class PTypeCon implements iPCommand {
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
 		PMemberDAO dao = new PMemberDAO();
-		
-		member =new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), null, type1, type2, type3);
-		int cnt = dao
-				.pmemberTypeSet(member);
+
+		member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), null, type1, type2, type3);
+		int cnt = dao.pmemberTypeSet(member);
 
 		if (cnt > 0) {
 			System.out.println(member.getMember_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");
-			System.out.println(type1+", "+type2+", "+type3);
+			System.out.println(type1 + ", " + type2 + ", " + type3);
 			session.setAttribute("member", member);
-			response.sendRedirect("pmain_jstl.jsp");
-			
+			response.sendRedirect("pmain.jsp");
+
 		} else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
-			out.print("alert('회원가입을 실패하셨습니다.');");
+			out.print("alert('유형 등록을 실패하셨습니다.');");
 			out.print("location.href='pmain.jsp';");
 			out.print("</script>");
 		}
