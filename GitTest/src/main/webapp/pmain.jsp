@@ -41,7 +41,7 @@ BookDTO book2=bookDao.bookSelect(5);
 				<c:when test="${member.member_id=='admin'}">
 					<a href="#">회원관리</a>
 					<a href="plogout.jsp">로그아웃</a>
-					
+					<p>안녕</p>
 
 				</c:when>
 				<c:otherwise>

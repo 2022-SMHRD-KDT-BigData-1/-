@@ -1,25 +1,45 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>Pplus</groupId>
-  <artifactId>Pplus</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>15</release>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
-      </plugin>
-    </plugins>
-  </build>
-  <!-- 필요한 라이브러리에 대한 태그를 추가하는 영역 -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Pplus</groupId>
+	<artifactId>Pplus</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<build>
+	<finalName>deploy</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<release>15</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- 서버 배포 셋팅 -->
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<server>github</server>
+						<path>/${project.build.finalName}</path>
+						<url>${my.url}</url>
+						<username>${my.username}</username>
+						<password>${my.password}</password>
+						<update>true</update>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+	<!-- 필요한 라이브러리에 대한 태그를 추가하는 영역 -->
 	<dependencies>
 		<!-- JDBC연결하는 라이브러리 태그 -->
 		<dependency>
@@ -45,6 +65,13 @@
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<version>8.5.38</version>
 		</dependency>
 
 	</dependencies>
