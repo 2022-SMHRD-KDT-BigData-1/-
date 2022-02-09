@@ -10,16 +10,15 @@
 <body>
 <script>
 	 
-	function checked() {
-		var ckeck = document.getElementsByName("ck");
-		
-		if(document.data.ckeck[0].ckecked == false && document.data.ckeck[1].ckecked == false){
-			
-			alert("동의해 주세요");
-			
-			return false;
-		}
-	}
+	
+		function checkbox_Check(){
+		     if ($("input:checkbox[name=ck]").is(":checked")) {
+		                //체크가 되어있을때.    
+		        } else {
+		                //체크가 안되어있을때.
+		        }
+		    }
+	
 		
 	</script>
 	<form action="PDeleteCon.do" method="post" name="data" onsubmit="return checked()">

@@ -26,6 +26,7 @@ public class PFrontController extends HttpServlet {
 		map.put("/PJoinCon.do", new PJoinCon());
 		map.put("/PTypeCon.do", new PTypeCon());
 		map.put("/PUpdateCon.do", new PUpdateCon());
+		map.put("/PDeleteCon.do", new PDeleteCon());
 	}
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response)

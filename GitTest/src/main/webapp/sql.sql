@@ -236,7 +236,12 @@ user_type2 varchar2(20),
 user_type3 varchar2(20),
 constraint mt_mn_fk foreign key(member_nick)
 references member(member_nick)
+on delete cascade
 )
 
 select * from book
+
+insert into member_type values('¹Ùº¸','P101','P202','')
+
+drop table member_type cascade constraints;
 
