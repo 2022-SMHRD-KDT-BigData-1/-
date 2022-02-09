@@ -106,6 +106,32 @@ public class BookDAO {
 		return cnt;
 	}
 
+	public BookDTO bookSelect(int num) {
+		BookDTO book = null;
+		connect();
+
+		sql = "select * from book where book_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, num);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+
+				book = new BookDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10),
+						rs.getString(11), rs.getString(12), rs.getString(13));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return book;
+	}
+
 	public ArrayList<BookDTO> bookSelectAll(int[] array) {
 		ArrayList<BookDTO> booklist = new ArrayList<BookDTO>();
 		connect();
@@ -119,7 +145,7 @@ public class BookDAO {
 				rs = psmt.executeQuery();
 
 				if (rs.next()) {
-					
+
 					booklist.add(new BookDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4),
 							rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
 							rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
@@ -131,5 +157,33 @@ public class BookDAO {
 			}
 		}
 		return booklist;
+	}
+
+	public ArrayList<BookDTO> bookRecAll(PMemberDTO member) {
+		ArrayList<BookDTO> recbooklist = new ArrayList<BookDTO>();
+		connect();
+
+		sql = "select * from book where book_part1=? and book_part2=? and book_part3=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, member.getUser_type1());
+			psmt.setString(2, member.getUser_type2());
+			psmt.setString(3, member.getUser_type3());
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				recbooklist.add(new BookDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
+						rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recbooklist;
 	}
 }

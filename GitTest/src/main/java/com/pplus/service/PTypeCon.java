@@ -2,6 +2,7 @@ package com.pplus.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.pplus.model.BookDAO;
+import com.pplus.model.BookDTO;
 import com.pplus.model.PMemberDAO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.RecBookDAO;
@@ -35,7 +38,14 @@ public class PTypeCon implements iPCommand {
 		member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), null, type1, type2, type3);
 		int cnt = dao.pmemberTypeSet(member);
 		
+		BookDAO bookDao =new BookDAO();
+		
 		RecBookDAO recDao =new RecBookDAO();
+		
+		ArrayList<BookDTO> recbook= bookDao.bookRecAll(member);
+		
+		
+		
 
 		if (cnt > 0) {
 			System.out.println(member.getMember_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");

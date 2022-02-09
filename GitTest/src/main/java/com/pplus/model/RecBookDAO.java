@@ -49,36 +49,38 @@ public class RecBookDAO {
 	// recBook DB에 저장할 회원에 닉네임, 대분류, 중분류, 소분류, 책 제목, 책가격
 	// 책 표지, 책 저자, 책 출판사, 책 소개, 책 페이지, 책 출판연도, 책 코드, 추천 카운터를 입력
 	// rexVookSet에 입력 변수는 RecBookDTO recbook 출력 변수는 cnt(int)
-	public int recBookSet(RecBookDTO recbook) {
+	public int recBookSet(ArrayList<BookDTO> recbook, PMemberDTO member) {
 		connect();
-		sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		for (int i = 0; i < recbook.size(); i++) {
+			sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-		cnt = 0;
-		try {
-			psmt = conn.prepareStatement(sql);
+			cnt = 0;
+			try {
+				psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, recbook.getMember_nick());
-			psmt.setString(2, recbook.getUser_type1());
-			psmt.setString(3, recbook.getUser_type2());
-			psmt.setString(4, recbook.getUser_type3());
-			psmt.setString(5, recbook.getBook_title());
-			psmt.setInt(6, recbook.getBook_price());
-			psmt.setString(7, recbook.getBook_img());
-			psmt.setString(8, recbook.getBook_author());
-			psmt.setString(9, recbook.getBook_publisher());
-			psmt.setString(10, recbook.getBook_description());
-			psmt.setInt(11, recbook.getBook_page());
-			psmt.setString(12, recbook.getBook_pubdate());
-			psmt.setString(13, recbook.getBook_isbn());
-			psmt.setString(14, recbook.getContents_cnt());
+				psmt.setString(1, member.getMember_nick());
+				psmt.setString(2, recbook.getUser_type1());
+				psmt.setString(3, recbook.getUser_type2());
+				psmt.setString(4, recbook.getUser_type3());
+				psmt.setString(5, recbook.getBook_title());
+				psmt.setInt(6, recbook.getBook_price());
+				psmt.setString(7, recbook.getBook_img());
+				psmt.setString(8, recbook.getBook_author());
+				psmt.setString(9, recbook.getBook_publisher());
+				psmt.setString(10, recbook.getBook_description());
+				psmt.setInt(11, recbook.getBook_page());
+				psmt.setString(12, recbook.getBook_pubdate());
+				psmt.setString(13, recbook.getBook_isbn());
+				psmt.setString(14, recbook.getContents_cnt());
 
-			cnt = psmt.executeUpdate();
+				cnt = psmt.executeUpdate();
 
-		} catch (SQLException e) {
+			} catch (SQLException e) {
 
-			e.printStackTrace();
-		} finally {
-			close();
+				e.printStackTrace();
+			} finally {
+				close();
+			}
 		}
 		return cnt;
 	}

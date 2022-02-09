@@ -96,10 +96,9 @@ if (member != null) {
 		</c:otherwise>
 	</c:choose>
 	<hr>
-	<a href="/BookintCon?src=<%=booklist.get(0).getBook_img() %>"> 
+	
+	<a href="BookintCon?num=<%=booklist.get(0).getBook_num() %>"> 
 	<img src=<%=booklist.get(0).getBook_img()%> width="300">
-
-
 	</a>
 </body>
 </html>
