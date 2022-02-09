@@ -18,6 +18,7 @@ import com.pplus.model.BookDTO;
 import com.pplus.model.PMemberDAO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.RecBookDAO;
+import com.pplus.model.RecBookDTO;
 
 @WebServlet("/PTypeCon")
 public class PTypeCon implements iPCommand {
@@ -44,7 +45,11 @@ public class PTypeCon implements iPCommand {
 		
 		ArrayList<BookDTO> recbook= bookDao.bookRecAll(member);
 		
+		recDao.recBookSet(recbook, member);
 		
+		ArrayList<RecBookDTO> recbooklist=recDao.recBookSelectAll(member.getMember_nick());
+		
+		session.setAttribute("recbooklist", recbooklist);
 		
 
 		if (cnt > 0) {

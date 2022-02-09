@@ -134,8 +134,9 @@ public class BookDAO {
 
 	public ArrayList<BookDTO> bookSelectAll(int[] array) {
 		ArrayList<BookDTO> booklist = new ArrayList<BookDTO>();
-		connect();
-		for (int i = 0; i < array.length; i++) {
+		
+		for (int i = 0; i < 12; i++) {
+			connect();
 			sql = "select * from book where book_num=?";
 
 			try {

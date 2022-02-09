@@ -25,7 +25,7 @@ public class RecBookDTO {
 	private int book_page;
 	private String book_pubdate;
 	private String book_isbn;
-	private String contents_cnt;
+	private int contents_cnt;
 	
 
 }

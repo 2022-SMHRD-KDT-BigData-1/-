@@ -36,7 +36,10 @@ if (member != null) {
 		}
 		booklist=bookDao.bookSelectAll(array);
 		request.setAttribute("booklist", booklist);
+	} else if (recbooklist != null){
+		
 	}
+
 	
 } else {
 
@@ -55,6 +58,7 @@ if (member != null) {
 	request.setAttribute("booklist", booklist);
 
 }
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -96,9 +100,10 @@ if (member != null) {
 		</c:otherwise>
 	</c:choose>
 	<hr>
-	
-	<a href="BookintCon?num=<%=booklist.get(0).getBook_num() %>"> 
-	<img src=<%=booklist.get(0).getBook_img()%> width="300">
-	</a>
+	<%for (int i=0; i< booklist.size(); i++){ %>
+		<a href="BookintCon?num=<%=booklist.get(i).getBook_num() %>"> 
+		<img src=<%=booklist.get(i).getBook_img()%> width="300">
+		</a>
+	<%} %>
 </body>
 </html>

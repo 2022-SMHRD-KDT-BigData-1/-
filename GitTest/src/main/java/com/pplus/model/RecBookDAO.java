@@ -7,13 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class RecBookDAO {
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
 	private int cnt;
 	private String sql;
-
+	
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -50,30 +51,31 @@ public class RecBookDAO {
 	// 책 표지, 책 저자, 책 출판사, 책 소개, 책 페이지, 책 출판연도, 책 코드, 추천 카운터를 입력
 	// rexVookSet에 입력 변수는 RecBookDTO recbook 출력 변수는 cnt(int)
 	public int recBookSet(ArrayList<BookDTO> recbook, PMemberDTO member) {
-		connect();
+		cnt = 0;
 		for (int i = 0; i < recbook.size(); i++) {
+			connect();
 			sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			
 
-			cnt = 0;
 			try {
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, member.getMember_nick());
-				psmt.setString(2, recbook.getUser_type1());
-				psmt.setString(3, recbook.getUser_type2());
-				psmt.setString(4, recbook.getUser_type3());
-				psmt.setString(5, recbook.getBook_title());
-				psmt.setInt(6, recbook.getBook_price());
-				psmt.setString(7, recbook.getBook_img());
-				psmt.setString(8, recbook.getBook_author());
-				psmt.setString(9, recbook.getBook_publisher());
-				psmt.setString(10, recbook.getBook_description());
-				psmt.setInt(11, recbook.getBook_page());
-				psmt.setString(12, recbook.getBook_pubdate());
-				psmt.setString(13, recbook.getBook_isbn());
-				psmt.setString(14, recbook.getContents_cnt());
+				psmt.setString(2, member.getUser_type1());
+				psmt.setString(3, member.getUser_type2());
+				psmt.setString(4, member.getUser_type3());
+				psmt.setString(5, recbook.get(i).getBook_title());
+				psmt.setInt(6, recbook.get(i).getBook_price());
+				psmt.setString(7, recbook.get(i).getBook_img());
+				psmt.setString(8, recbook.get(i).getBook_author());
+				psmt.setString(9, recbook.get(i).getBook_publisher());
+				psmt.setString(10, recbook.get(i).getBook_description());
+				psmt.setInt(11, recbook.get(i).getBook_page());
+				psmt.setString(12, recbook.get(i).getBook_pubdate());
+				psmt.setString(13, recbook.get(i).getBook_isbn());
+				psmt.setInt(14, 0);
 
-				cnt = psmt.executeUpdate();
+				cnt += psmt.executeUpdate();
 
 			} catch (SQLException e) {
 
@@ -124,7 +126,7 @@ public class RecBookDAO {
 
 				recbooklist.add(new RecBookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
 						rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-						rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13), rs.getString(14)));
+						rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13), rs.getInt(14)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
