@@ -32,13 +32,18 @@ public class ScheduleCon implements iPCommand {
 		String end = request.getParameter("end");
 		String day = request.getParameter("day");
 		
+		//book안에 데이터들을 session형태로 받기
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		ScheduleDAO dao = new ScheduleDAO();
 		
-		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end));
+		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end,0,null, member.getMember_nick(),));
 		
 		if(cnt > 0) {
+			System.out.println("스케줄 제목" + title);
+			System.out.println("책 제목");
 			
+			response.sendRedirect("pmain.jsp");
+			// 우선 메인 페이지로 가게 해놓았습니다. 메인페이지가 아니라 다른곳으로 가게 할거면 바꿔냐 합니다
 		}else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
