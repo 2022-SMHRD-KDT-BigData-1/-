@@ -40,7 +40,7 @@
 	    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
 	    var dif = da2 - da1;
 	    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
-	   \
+	   
 	 if(sdd && edd){
 	  
 	    document.getElementById('day').value = parseInt(dif/cDay);
