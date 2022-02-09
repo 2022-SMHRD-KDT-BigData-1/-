@@ -8,11 +8,11 @@
 </head>
 <body>
 	<form action="PJoinCon.do" method="post">
-		<input type="text" name="id" placeholder="id를 입력하세요">
+		<input type="text" name="id" placeholder="아이디를 입력하세요">
 		<br>
-		<input type="password" name="pw" placeholder="password를 입력하세요">
+		<input type="password" name="pw" placeholder="비밀번호를 입력하세요">
 		<br>
-		<input type="text" name="nick" placeholder="nickname을 입력하세요">
+		<input type="text" name="nick" placeholder="닉네임을 입력하세요">
 		<br>
 		<input type="text" name="name" placeholder="이름을 입력하세요">
 		<br>

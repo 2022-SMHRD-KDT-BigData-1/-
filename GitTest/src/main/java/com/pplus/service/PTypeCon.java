@@ -14,6 +14,7 @@ import javax.websocket.Session;
 
 import com.pplus.model.PMemberDAO;
 import com.pplus.model.PMemberDTO;
+import com.pplus.model.RecBookDAO;
 
 @WebServlet("/PTypeCon")
 public class PTypeCon implements iPCommand {
@@ -33,6 +34,8 @@ public class PTypeCon implements iPCommand {
 
 		member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), null, type1, type2, type3);
 		int cnt = dao.pmemberTypeSet(member);
+		
+		RecBookDAO recDao =new RecBookDAO();
 
 		if (cnt > 0) {
 			System.out.println(member.getMember_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");

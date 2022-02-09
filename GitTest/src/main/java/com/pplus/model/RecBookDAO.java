@@ -45,6 +45,7 @@ public class RecBookDAO {
 			e.printStackTrace();
 		}
 	}
+
 	// recBook DB에 저장할 회원에 닉네임, 대분류, 중분류, 소분류, 책 제목, 책가격
 	// 책 표지, 책 저자, 책 출판사, 책 소개, 책 페이지, 책 출판연도, 책 코드, 추천 카운터를 입력
 	// rexVookSet에 입력 변수는 RecBookDTO recbook 출력 변수는 cnt(int)
@@ -81,31 +82,32 @@ public class RecBookDAO {
 		}
 		return cnt;
 	}
+
 	// recbook DB에 삭제할 데이터들을 선택하기 위해서 회원의 닉네임으로 찾기
 	// 찾은 데이터들 삭제
 	// recBookDelete에 입력 변수 회원의 닉네임(string) 출력 변수 cnt(int)
 	public int recBookDelete(String nick) {
 		connect();
-		sql ="delete from recommend_book where member_nick=?";
+		sql = "delete from recommend_book where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
-	
+
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
 			close();
 		}
 		return cnt;
 	}
+
 	// recbook DB에 저장되어 있는 데이터들을 회원별로 가져오고싶기 때문에 회원에 닉네임을 통하여 찾기
-	// recBookSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecBookDTO> list
+	// recBookSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecBookDTO> recbooklist
 	public ArrayList<RecBookDTO> recBookSelectAll(String nick) {
-		ArrayList<RecBookDTO> list = new ArrayList<RecBookDTO>();
+		ArrayList<RecBookDTO> recbooklist = new ArrayList<RecBookDTO>();
 		connect();
 
 		sql = "select * from recommend_book where member_nick=?";
@@ -115,24 +117,18 @@ public class RecBookDAO {
 			psmt.setString(1, nick);
 
 			rs = psmt.executeQuery();
-			
+
 			while (rs.next()) {
 
-				list.add(new RecBookDTO(rs.getString(1), rs.getString(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8),
-						rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
-						rs.getString(14)));
+				recbooklist.add(new RecBookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13), rs.getString(14)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return list;
+		return recbooklist;
 	}
-	
-	
-	
-	
-
 }

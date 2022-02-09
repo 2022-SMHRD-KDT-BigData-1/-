@@ -1,3 +1,7 @@
+<%@page import="com.pplus.model.RecBookDAO"%>
+<%@page import="com.pplus.model.RecBookDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Random"%>
 <%@page import="com.pplus.model.BookDAO"%>
 <%@page import="com.pplus.model.BookDTO"%>
 <%@page import="com.pplus.model.PMemberDAO"%>
@@ -10,18 +14,47 @@
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
 PMemberDAO dao = new PMemberDAO();
+BookDAO bookDao = new BookDAO();
+RecBookDAO recDaobook = new RecBookDAO();
+ArrayList<RecBookDTO> recbooklist = (ArrayList<RecBookDTO>) session.getAttribute("recbooklist");
 
-BookDTO book =(BookDTO)session.getAttribute("book");
+ArrayList<BookDTO> booklist=null;
 
-BookDAO bookDao= new BookDAO();
 
-BookDTO book2=bookDao.bookSelect(5);
+if (member != null) {
+	if (recbooklist == null) {
+		int[] array = new int[12];
+		Random rd = new Random();
+		for (int a = 0; a <= array.length - 1; a++) {
+			array[a] = rd.nextInt(877);
+			for (int b = 0; b < a; b++) {
+				if (array[b] == array[a]) {
+					a--;
+					break;
+				}
+			}
+		}
+		booklist=bookDao.bookSelectAll(array);
+		request.setAttribute("booklist", booklist);
+	}
+	
+} else {
 
-/* if(member != null){
-	msglist = dao.messageSelect(member.getM_email());
-	pageContext.setAttribute("msglist", msglist);
-} */
+	int[] array = new int[12];
+	Random rd = new Random();
+	for (int a = 0; a <= array.length - 1; a++) {
+		array[a] = rd.nextInt(877);
+		for (int b = 0; b < a; b++) {
+			if (array[b] == array[a]) {
+				a--;
+				break;
+			}
+		}
+	}
+	booklist=bookDao.bookSelectAll(array);
+	request.setAttribute("booklist", booklist);
 
+}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -34,7 +67,7 @@ BookDTO book2=bookDao.bookSelect(5);
 		<c:when test="${empty member}">
 			<a href="plogin.jsp">로그인</a>
 			<a href="pjoin.jsp">회원가입</a>
-			
+
 		</c:when>
 		<c:otherwise>
 			<c:choose>
@@ -52,7 +85,8 @@ BookDTO book2=bookDao.bookSelect(5);
 						<c:when
 							test="${empty member.user_type1 && empty member.user_type2 && empty member.user_type3}">
 							<script langauge="javascript">
-								window.open("ptype3.jsp", "ptype",
+								window
+										.open("ptype3.jsp", "ptype",
 												"width=800, height=300, left=100, top=50");
 							</script>
 						</c:when>
@@ -62,9 +96,9 @@ BookDTO book2=bookDao.bookSelect(5);
 		</c:otherwise>
 	</c:choose>
 	<hr>
-	<a href="bookint.jsp">
-		<img src=<%="book2.getBook_img()" %>>
-		
+	<a href="/BookintCon?src=<%=booklist.get(0).getBook_img() %>"> 
+	<img src=<%=booklist.get(0).getBook_img()%> width="300">
+
 
 	</a>
 </body>

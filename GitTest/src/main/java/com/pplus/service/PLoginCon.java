@@ -31,6 +31,8 @@ public class PLoginCon implements iPCommand {
 		PMemberDAO dao =new PMemberDAO();
 		
 		PMemberDTO member =dao.pmemberLogin(id, pw);
+		
+		
 
 		if(member != null) {
 			System.out.println(id+"가 로그인");

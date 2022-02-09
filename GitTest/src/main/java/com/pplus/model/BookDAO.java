@@ -1,5 +1,6 @@
 package com.pplus.model;
 
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -104,30 +105,31 @@ public class BookDAO {
 		}
 		return cnt;
 	}
-	
-	public BookDTO bookSelect(int num) {
-		BookDTO book =new BookDTO();
+
+	public ArrayList<BookDTO> bookSelectAll(int[] array) {
+		ArrayList<BookDTO> booklist = new ArrayList<BookDTO>();
 		connect();
-		
-		sql = "select * from book where book_num=?";
+		for (int i = 0; i < array.length; i++) {
+			sql = "select * from book where book_num=?";
 
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, num);
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, array[i]);
 
-			rs = psmt.executeQuery();
-			
-			if (rs.next()) {
+				rs = psmt.executeQuery();
 
-				book=(new BookDTO(rs.getInt(1), rs.getString(2), rs.getInt(3),
-						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8),
-						rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+				if (rs.next()) {
+					
+					booklist.add(new BookDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4),
+							rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),
+							rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
 		}
-		return book;
+		return booklist;
 	}
 }
