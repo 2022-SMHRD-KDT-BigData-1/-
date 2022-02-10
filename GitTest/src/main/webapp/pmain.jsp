@@ -70,7 +70,7 @@ if (member != null) {
 <head>
 <meta charset="UTF-8">
 <title>메인 페이지</title>
- <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+ <script  src="jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<c:choose>

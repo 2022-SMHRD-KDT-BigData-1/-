@@ -7,14 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 public class RecBookDAO {
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
 	private int cnt;
 	private String sql;
-	
+
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -52,13 +51,12 @@ public class RecBookDAO {
 	// rexVookSet에 입력 변수는 RecBookDTO recbook 출력 변수는 cnt(int)
 	public int recBookSet(ArrayList<BookDTO> recbook, PMemberDTO member) {
 		cnt = 0;
-		connect();
 		for (int i = 0; i < recbook.size(); i++) {
-			
-			sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			
+			connect();
 
 			try {
+
+				sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, member.getMember_nick());
@@ -79,11 +77,11 @@ public class RecBookDAO {
 				cnt += psmt.executeUpdate();
 
 			} catch (SQLException e) {
-
 				e.printStackTrace();
-			} 
+			} finally {
+				close();
+			}
 		}
-		close();
 		return cnt;
 	}
 

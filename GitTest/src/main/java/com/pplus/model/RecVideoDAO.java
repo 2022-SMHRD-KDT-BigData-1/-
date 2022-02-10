@@ -45,18 +45,18 @@ public class RecVideoDAO {
 			e.printStackTrace();
 		}
 	}
-	// recvideo DB에 저장할 회원의 닉네임, 대분휴, 중분류, 소분류, 영상 제목, 영상 날짜, 영상 썸네일, 영상 주소, 
+
+	// recvideo DB에 저장할 회원의 닉네임, 대분휴, 중분류, 소분류, 영상 제목, 영상 날짜, 영상 썸네일, 영상 주소,
 	// 영상 채널명, 영상 조회수, 영상 시간 저장
 	// rexvideoSet에 입력 변수는 RecVideoDTO recvideo 출력 변수 cnt(int)
 	public int recVideoSet(ArrayList<VideoDTO> recvideo, PMemberDTO member) {
 		cnt = 0;
-		connect();
 		for (int i = 0; i < recvideo.size(); i++) {
-			
-			sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			
+			connect();
 
 			try {
+
+				sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, member.getMember_nick());
@@ -77,22 +77,25 @@ public class RecVideoDAO {
 			} catch (SQLException e) {
 
 				e.printStackTrace();
-			} 
+
+			} finally {
+				close();
+			}
 		}
-		close();
 		return cnt;
 	}
+
 	// recvideo DB에 삭제할 데이터들을 선택하기 위해서 회원의 닉네임으로 찾기
 	// 찾은 데이터들 삭제
 	// recVideoDelete에 입력 변수 회원의 닉네임(string) 출력 변수 cnt(int)
 	public int recVideoDelete(String nick) {
 		connect();
-		sql ="delete from recommend_video where member_nick=?";
+		sql = "delete from recommend_video where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
-	
+
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -103,6 +106,7 @@ public class RecVideoDAO {
 		}
 		return cnt;
 	}
+
 	// recvideo DB에 저장되어 있는 데이터들을 회원별로 가져오고싶기 때문에 회원에 닉네임을 통하여 찾기
 	// recvideoSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecVideoDTO> list
 	public ArrayList<RecVideoDTO> recVideoSelectAll(String nick) {
@@ -116,12 +120,12 @@ public class RecVideoDAO {
 			psmt.setString(1, nick);
 
 			rs = psmt.executeQuery();
-			
+
 			while (rs.next()) {
 
-				list.add(new RecVideoDTO(rs.getString(1), rs.getString(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),
-						rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12)));
+				list.add(new RecVideoDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10), rs.getString(11), rs.getInt(12)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

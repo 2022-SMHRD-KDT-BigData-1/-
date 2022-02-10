@@ -51,7 +51,7 @@
 	        type:'POST',
 	        data: allData,
 	        success:function(data){
-	        	if(data==1){
+	        	if(data!=0){
 	            alert("완료!");
 	            console.log(data);
 	            //window.opener.location.reload();

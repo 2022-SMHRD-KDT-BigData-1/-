@@ -60,15 +60,17 @@ public class PTypeCon implements iPCommand {
 		
 		
 		int cnt2 =recbookDao.recBookSet(recbook, member);
-		recvideoDao.recVideoSet(recvideo, member);
+		int cnt3 =recvideoDao.recVideoSet(recvideo, member);
 		
 		ArrayList<RecBookDTO> recbooklist=recbookDao.recBookSelectAll(member.getMember_nick());
 		ArrayList<RecVideoDTO> recvideolist=recvideoDao.recVideoSelectAll(member.getMember_nick()); 
 		
 		System.out.println(cnt2);
+		System.out.println(cnt3);
 		if (cnt > 0) {
 			System.out.println(member.getMember_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");
 			System.out.println(type1 + ", " + type2 + ", " + type3);
+			System.out.println(member.toString());
 			session.setAttribute("member", member);
 			if (cnt2>0) {
 				session.setAttribute("recbooklist", recbooklist);
