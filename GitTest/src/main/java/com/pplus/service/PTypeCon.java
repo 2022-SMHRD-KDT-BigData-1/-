@@ -31,11 +31,16 @@ public class PTypeCon implements iPCommand {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
+		PrintWriter out =response.getWriter();
 
 		String type1 = request.getParameter("type1");
 		String type2 = request.getParameter("type2");
 		String type3 = request.getParameter("type3");
 
+		System.out.println("test1"+type1);
+		System.out.println("test2"+type2);
+		System.out.println("test3"+type3);
+		
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
 		PMemberDAO dao = new PMemberDAO();
@@ -68,11 +73,12 @@ public class PTypeCon implements iPCommand {
 			if (cnt2>0) {
 				session.setAttribute("recbooklist", recbooklist);
 				session.setAttribute("recvideolist", recvideolist);
+				out.print(cnt+"");
 				response.sendRedirect("pmain.jsp");
-				
+			
 			}
+			
 		} else {
-			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('유형 등록을 실패하셨습니다.');");
 			out.print("location.href='pmain.jsp';");

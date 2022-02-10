@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="pmain.jsp" method="post">
     
     <select name="type1" >
 			<option value="대분류">대분류</option>
@@ -23,16 +22,21 @@
 			<option value="소분류">소분류</option>
 			<option value="0"></option>
 		</select>
-    
-    <input type="submit" value="확인" onclick="sendTypeValue()">
-</form>
- 
+    <button onclick="sendTypeValue()">확인</button>
+ <script  src="jquery-3.6.0.min.js"></script>
 <script>
 	function sendTypeValue() {
-		document.getElementById("type1").value = opener.document.getElementByName("type1").value;
-		document.getElementById("type2").value = opener.document.getElementByName("type2").value;
-		document.getElementById("type3").value = opener.document.getElementByName("type3").value;
-		window.close();
+		var type1 = $("select[name = type1]").val();
+		var type2 = $("select[name = type2]").val();
+		var type3 = $("select[name = type3]").val();
+		console.log(type1+" "+type2+" "+type3);
+		
+		location.href = "PTypeCon.do?data1="+type1+"&data2="+type2+"&data3="+type3;
+		//opener.setTypeValues(type1,type2,type3);
+		
+		alert("유형조사가 완료되었습니다!");
+		
+		//window.close();
 	}
 </script>
 

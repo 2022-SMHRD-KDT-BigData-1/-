@@ -12,12 +12,14 @@
 	 
 	
 		function checkbox_Check(){
-		     if ($("input:checkbox[name=ck]").is(":checked")) {
-		                //체크가 되어있을때.    
+		     if ($("input:checkbox[name=ck][0]").is(":checked") && $("input:checkbox[name=ck][1]").is(":checked")) {
+		                //체크가 되어있을때.
 		        } else {
 		                //체크가 안되어있을때.
 		        }
 		    }
+		
+		
 	
 		
 	</script>
