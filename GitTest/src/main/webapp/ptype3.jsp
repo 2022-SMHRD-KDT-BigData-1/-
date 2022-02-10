@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="PTypeCon.do" method="post">
+<form action="pmain.jsp" method="post">
     
     <select name="type1" >
 			<option value="대분류">대분류</option>
@@ -24,11 +24,16 @@
 			<option value="0"></option>
 		</select>
     
-    <input type="submit" value="확인" onclick="window.close()"
+    <input type="submit" value="확인" onclick="sendTypeValue()">
 </form>
  
 <script>
-
+	function sendTypeValue() {
+		document.getElementById("type1").value = opener.document.getElementByName("type1").value;
+		document.getElementById("type2").value = opener.document.getElementByName("type2").value;
+		document.getElementById("type3").value = opener.document.getElementByName("type3").value;
+		window.close();
+	}
 </script>
 
 </body>

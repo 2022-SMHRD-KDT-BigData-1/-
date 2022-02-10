@@ -85,10 +85,21 @@ if (member != null) {
 					<a href="ptype.jsp">유형조사</a>
 					<c:choose>
 						<c:when test="${empty member.user_type1}">
+							<input type="text" id="type1" style="display: none; " name="type1" onchange="call()" value="">
+							<input type="text" id="type2" style="display: none; " name="type2" onchange="call()" value="">
+							<input type="text" id="type3" style="display: none; " name="type3" onchange="call()" value="">
 							<script langauge="javascript">
-								window
-										.open("ptype3.jsp", "ptype",
-												"width=800, height=300, left=100, top=50");
+								window.open("ptype3.jsp", "ptype","width=800, height=300, left=100, top=50");
+								function call() {
+									var type1 = document.getElementById("type1").value;
+									var type2 = document.getElementById("type2").value;
+									var type3 = document.getElementById("type3").value;
+									
+									if(type1 && type2 && type3){
+										location.href='PTypeCon.do';
+									}
+								}
+								console.log(type1);
 							</script>
 						</c:when>
 					</c:choose>
