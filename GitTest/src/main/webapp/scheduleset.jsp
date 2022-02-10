@@ -14,8 +14,10 @@
 		<%-- <c:choose>
 			<c:when test="${empty requestScope.book_data  }">
 				<c:otherwise> --%>
-					책 검색 : <input type="text" id="book" onclick="book()" placeholder="책을 입력 해 주세요">
+					책 검색 : <input type="text" id="book" onclick="book()" placeholder="책을 입력 해 주세요" name="book_title">
 					<input type="button" value="검색" onclick="book()"><br>
+					<input type="text" id="book_num" style="display: none; " name="book_num">
+					<input type="text" id="book_page" style="display: none;" name="book_page">
 					위시리스트에서 찾기 : <input type="button" value="내 위시리스트" onclick="mybook()">
 			<%-- 	</c:otherwise>
 			</c:when>
@@ -54,8 +56,12 @@
 		window.open("","","width=500, height=400, scrollbars=no, resizable=no");
 		// 위시리스트 페이지 만들면 넣기
 	}
-	
-	
+	function setBookValues(name,num,page){
+		document.getElementById("book").value = name;
+		document.getElementById("book_num").value = num;
+		document.getElementById("book_page").value = page;
+	}
+	console.log(num);
 	</script>
 </body>
 </html>

@@ -27,16 +27,22 @@ public class ScheduleCon implements iPCommand {
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
 		
+		String bookTitle = request.getParameter("book_title");
 		String title = request.getParameter("title");
 		String start = request.getParameter("start");
 		String end = request.getParameter("end");
 		String day = request.getParameter("day");
+		int book_num = Integer.parseInt(request.getParameter("book_num"));
+		int book_page = Integer.parseInt(request.getParameter("book_page"));
+		
 		
 		//book안에 데이터들을 session형태로 받기
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		ScheduleDAO dao = new ScheduleDAO();
 		
-		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end,0,null, member.getMember_nick(),));
+		
+		
+		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end,0,null, member.getMember_nick(),book_num,bookTitle,book_page));
 		
 		if(cnt > 0) {
 			System.out.println("스케줄 제목" + title);
