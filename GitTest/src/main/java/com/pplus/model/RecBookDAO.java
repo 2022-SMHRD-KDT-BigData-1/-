@@ -52,8 +52,9 @@ public class RecBookDAO {
 	// rexVookSet에 입력 변수는 RecBookDTO recbook 출력 변수는 cnt(int)
 	public int recBookSet(ArrayList<BookDTO> recbook, PMemberDTO member) {
 		cnt = 0;
+		connect();
 		for (int i = 0; i < recbook.size(); i++) {
-			connect();
+			
 			sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 
@@ -80,10 +81,9 @@ public class RecBookDAO {
 			} catch (SQLException e) {
 
 				e.printStackTrace();
-			} finally {
-				close();
-			}
+			} 
 		}
+		close();
 		return cnt;
 	}
 

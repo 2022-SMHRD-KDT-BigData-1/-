@@ -48,36 +48,38 @@ public class RecVideoDAO {
 	// recvideo DB에 저장할 회원의 닉네임, 대분휴, 중분류, 소분류, 영상 제목, 영상 날짜, 영상 썸네일, 영상 주소, 
 	// 영상 채널명, 영상 조회수, 영상 시간 저장
 	// rexvideoSet에 입력 변수는 RecVideoDTO recvideo 출력 변수 cnt(int)
-	public int recVideoSet(RecVideoDTO recvideo) {
-		connect();
-		sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?)";
-
+	public int recVideoSet(ArrayList<VideoDTO> recvideo, PMemberDTO member) {
 		cnt = 0;
-		try {
-			psmt = conn.prepareStatement(sql);
+		connect();
+		for (int i = 0; i < recvideo.size(); i++) {
+			
+			sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			
 
-			psmt.setString(1, recvideo.getMember_nick());
-			psmt.setString(2, recvideo.getUser_type1());
-			psmt.setString(3, recvideo.getUser_type2());
-			psmt.setString(4, recvideo.getUser_type3());
-			psmt.setString(5, recvideo.getVideo_title());
-			psmt.setString(6, recvideo.getVideo_upload());
-			psmt.setString(7, recvideo.getVideo_thumnail());
-			psmt.setString(8, recvideo.getVideo_url());
-			psmt.setString(9, recvideo.getVideo_channel());
-			psmt.setString(10, recvideo.getVideo_hits());
-			psmt.setString(11, recvideo.getVideo_time());
-			psmt.setInt(12, recvideo.getVideo_num());
-		
+			try {
+				psmt = conn.prepareStatement(sql);
 
-			cnt = psmt.executeUpdate();
+				psmt.setString(1, member.getMember_nick());
+				psmt.setString(2, member.getUser_type1());
+				psmt.setString(3, member.getUser_type2());
+				psmt.setString(4, member.getUser_type3());
+				psmt.setString(5, recvideo.get(i).getVideo_title());
+				psmt.setString(6, recvideo.get(i).getVideo_upload());
+				psmt.setString(7, recvideo.get(i).getVideo_thumbnail());
+				psmt.setString(8, recvideo.get(i).getVideo_url());
+				psmt.setString(9, recvideo.get(i).getVideo_channel());
+				psmt.setString(10, recvideo.get(i).getVideo_hits());
+				psmt.setString(11, recvideo.get(i).getVideo_time());
+				psmt.setInt(12, recvideo.get(i).getVideo_num());
 
-		} catch (SQLException e) {
+				cnt += psmt.executeUpdate();
 
-			e.printStackTrace();
-		} finally {
-			close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			} 
 		}
+		close();
 		return cnt;
 	}
 	// recvideo DB에 삭제할 데이터들을 선택하기 위해서 회원의 닉네임으로 찾기

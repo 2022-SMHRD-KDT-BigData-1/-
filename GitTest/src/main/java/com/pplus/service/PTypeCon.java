@@ -19,6 +19,10 @@ import com.pplus.model.PMemberDAO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.RecBookDAO;
 import com.pplus.model.RecBookDTO;
+import com.pplus.model.RecVideoDAO;
+import com.pplus.model.RecVideoDTO;
+import com.pplus.model.VideoDAO;
+import com.pplus.model.VideoDTO;
 
 @WebServlet("/PTypeCon")
 public class PTypeCon implements iPCommand {
@@ -41,27 +45,32 @@ public class PTypeCon implements iPCommand {
 		int cnt = dao.pmemberTypeSet(member);
 		System.out.println(member.toString());
 		BookDAO bookDao =new BookDAO();
+		VideoDAO videoDao =new VideoDAO();
 		
-		RecBookDAO recDao =new RecBookDAO();
+		RecBookDAO recbookDao =new RecBookDAO();
+		RecVideoDAO recvideoDao =new RecVideoDAO();
 		
 		ArrayList<BookDTO> recbook= bookDao.bookRecAll(member);
-		System.out.println(recbook.size());
+		ArrayList<VideoDTO> recvideo =videoDao.videoRecAll(member);
 		
-		int cnt2 =recDao.recBookSet(recbook, member);
 		
-		ArrayList<RecBookDTO> recbooklist=recDao.recBookSelectAll(member.getMember_nick());
-
+		int cnt2 =recbookDao.recBookSet(recbook, member);
+		recvideoDao.recVideoSet(recvideo, member);
+		
+		ArrayList<RecBookDTO> recbooklist=recbookDao.recBookSelectAll(member.getMember_nick());
+		ArrayList<RecVideoDTO> recvideolist=recvideoDao.recVideoSelectAll(member.getMember_nick()); 
+		
 		System.out.println(cnt2);
 		if (cnt > 0) {
 			System.out.println(member.getMember_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");
 			System.out.println(type1 + ", " + type2 + ", " + type3);
 			session.setAttribute("member", member);
 			if (cnt2>0) {
-				response.sendRedirect("pmain.jsp");
 				session.setAttribute("recbooklist", recbooklist);
+				session.setAttribute("recvideolist", recvideolist);
+				response.sendRedirect("pmain.jsp");
+				
 			}
-			
-
 		} else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");

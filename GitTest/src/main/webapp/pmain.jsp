@@ -1,3 +1,5 @@
+<%@page import="com.pplus.model.VideoDAO"%>
+<%@page import="com.pplus.model.VideoDTO"%>
 <%@page import="com.pplus.model.RecBookDAO"%>
 <%@page import="com.pplus.model.RecBookDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -15,10 +17,12 @@ PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
 PMemberDAO dao = new PMemberDAO();
 BookDAO bookDao = new BookDAO();
+VideoDAO videoDao = new VideoDAO();
 RecBookDAO recDaobook = new RecBookDAO();
 ArrayList<RecBookDTO> recbooklist = (ArrayList<RecBookDTO>) session.getAttribute("recbooklist");
 
 ArrayList<BookDTO> booklist = null;
+ArrayList<VideoDTO> videolist = null;
 // 로그인
 if (member != null) {
 	if (member.getUser_type1() == null) {
@@ -35,7 +39,9 @@ if (member != null) {
 	}
 		}
 		booklist = bookDao.bookSelectAll(array);
+		videolist = videoDao.videoSelectAll(array);
 		request.setAttribute("booklist", booklist);
+		request.setAttribute("videolist", videolist);
 	} else if (recbooklist != null) {
 		// 로그인 유형조사 했을 때
 
@@ -54,8 +60,9 @@ if (member != null) {
 		}
 	}
 	booklist = bookDao.bookSelectAll(array);
+	videolist = videoDao.videoSelectAll(array);
 	request.setAttribute("booklist", booklist);
-	
+	request.setAttribute("videolist", videolist);
 }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -85,18 +92,26 @@ if (member != null) {
 					<a href="ptype.jsp">유형조사</a>
 					<c:choose>
 						<c:when test="${empty member.user_type1}">
-							<input type="text" id="type1" style="display: none; " name="type1" onchange="call()" value="">
-							<input type="text" id="type2" style="display: none; " name="type2" onchange="call()" value="">
-							<input type="text" id="type3" style="display: none; " name="type3" onchange="call()" value="">
+							<input type="text" id="type1" style="display: none;" name="type1"
+								onchange="call()" value="">
+							<input type="text" id="type2" style="display: none;" name="type2"
+								onchange="call()" value="">
+							<input type="text" id="type3" style="display: none;" name="type3"
+								onchange="call()" value="">
 							<script langauge="javascript">
-								window.open("ptype3.jsp", "ptype","width=800, height=300, left=100, top=50");
+								window
+										.open("ptype3.jsp", "ptype",
+												"width=800, height=300, left=100, top=50");
 								function call() {
-									var type1 = document.getElementById("type1").value;
-									var type2 = document.getElementById("type2").value;
-									var type3 = document.getElementById("type3").value;
-									
-									if(type1 && type2 && type3){
-										location.href='PTypeCon.do';
+									var type1 = document
+											.getElementById("type1").value;
+									var type2 = document
+											.getElementById("type2").value;
+									var type3 = document
+											.getElementById("type3").value;
+
+									if (type1 && type2 && type3) {
+										location.href = 'PTypeCon.do';
 									}
 								}
 								console.log(type1);
@@ -119,11 +134,21 @@ if (member != null) {
 			<%
 			}
 			%>
+			<hr>
+			<%
+			for (int i = 0; i < videolist.size(); i++) {
+			%>
+			<a href="VideointCon?num=<%=videolist.get(i).getVideo_num()%>"> <img
+				src=<%=videolist.get(i).getVideo_thumbnail()%> width="100">
+			</a>
+			<%
+			}
+			%>
 		</c:when>
-		
+
 		<c:otherwise>
 			<c:choose>
-				
+
 				<c:when test="${empty member.getUser_type1() }">
 					<%
 					for (int i = 0; i < booklist.size(); i++) {
@@ -134,8 +159,19 @@ if (member != null) {
 					<%
 					}
 					%>
+					<hr>
+					<%
+					for (int i = 0; i < videolist.size(); i++) {
+					%>
+					<a href="VideointCon?num=<%=videolist.get(i).getVideo_num()%>">
+						<img src=<%=videolist.get(i).getVideo_thumbnail()%> width="100">
+					</a>
+					<%
+					}
+					%>
+
 				</c:when>
-				
+
 				<c:otherwise>
 
 					<%

@@ -221,6 +221,7 @@ video_time varchar2(20) not null,
 book_part1 varchar2(10) not null,
 book_part2 varchar2(10),
 book_part3 varchar2(10),
+
 constraint sv_vn_pk primary key(video_num),
 constraint sv_bp1_fk foreign key(book_part1)
 references book_part1(book_part1),
@@ -274,6 +275,7 @@ select * from recommend_book
 select * from member
 select * from member_type
 select * from book_part3
+select * from study_video
 
 delete from member_type where member_nick='Fatal'
 
@@ -285,3 +287,25 @@ select NVL(book_part3, '0') from book
 
 update book set book_part2 = '0' where book_part2 is null
 update book set book_part3 = '0' where book_part3 is null
+
+update study_video set book_part2 = '0' where book_part2 is null
+update study_video set book_part3 = '0' where book_part3 is null
+
+create table recommend_video(
+member_nick varchar(20) not null,
+user_type1 varchar(20),
+user_type2 varchar(20),
+user_type3 varchar(20),
+video_title varchar(100) not null,
+video_upload date not null,
+video_thumbnail blob,
+video_url blob,
+video_channel varchar(50) not null,
+video_hits varchar(30) not null,
+video_time varchar(10) not null,
+video_num number,
+
+constraint rv_mn_fk foreign key(member_nick)
+references member(member_nick),
+constraint rv_vn_pk primary key(video_num)
+)
