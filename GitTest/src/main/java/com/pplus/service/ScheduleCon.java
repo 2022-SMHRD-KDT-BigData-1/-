@@ -34,6 +34,7 @@ public class ScheduleCon implements iPCommand {
 		String day = request.getParameter("day");
 		int book_num = Integer.parseInt(request.getParameter("book_num"));
 		int book_page = Integer.parseInt(request.getParameter("book_page"));
+		int page = book_page / Integer.parseInt(day);
 		
 		
 		//book안에 데이터들을 session형태로 받기
@@ -42,7 +43,7 @@ public class ScheduleCon implements iPCommand {
 		
 		
 		
-		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end,0,null, member.getMember_nick(),book_num,bookTitle,book_page));
+		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end, page, null, member.getMember_nick(),book_num,bookTitle,book_page));
 		
 		if(cnt > 0) {
 			System.out.println("스케줄 제목" + title);

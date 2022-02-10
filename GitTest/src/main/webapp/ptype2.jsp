@@ -56,9 +56,11 @@
 	            console.log(data);
 	            //window.opener.location.reload();
 	            //self.close();
+	            window.close();
 	            }
 	        	else {
 	        		alert("실패!");
+	        		window.close();
 	        	}
 	        },
 	        error:function(){

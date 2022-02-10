@@ -268,7 +268,7 @@ contents_cnt number,
 
 constraint rb_mn_fk foreign key(member_nick)
 references member(member_nick),
-constraint rb_bi_pk primary key(book_isbn)
+constraint rb_bi_pk primary key(member_nick, book_isbn)
 )
 
 select * from recommend_book
