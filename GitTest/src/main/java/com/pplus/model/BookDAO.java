@@ -106,15 +106,15 @@ public class BookDAO {
 		return cnt;
 	}
 
-	public BookDTO bookSelect(int num) {
+	public BookDTO bookSelect(String isbn) {
 		BookDTO book = null;
 		connect();
 
-		sql = "select * from book where book_num=?";
+		sql = "select * from book where book_isbn=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, num);
+			psmt.setString(1, isbn);
 
 			rs = psmt.executeQuery();
 

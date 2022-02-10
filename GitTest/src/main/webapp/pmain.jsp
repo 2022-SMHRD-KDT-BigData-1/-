@@ -18,47 +18,45 @@ BookDAO bookDao = new BookDAO();
 RecBookDAO recDaobook = new RecBookDAO();
 ArrayList<RecBookDTO> recbooklist = (ArrayList<RecBookDTO>) session.getAttribute("recbooklist");
 
-ArrayList<BookDTO> booklist=null;
-
-
+ArrayList<BookDTO> booklist = null;
+// 로그인
 if (member != null) {
-	if (recbooklist == null) {
+	if (member.getUser_type1() == null) {
+		// 유형조사를 안했을 때
 		int[] array = new int[12];
 		Random rd = new Random();
 		for (int a = 0; a <= array.length - 1; a++) {
-			array[a] = rd.nextInt(877);
-			for (int b = 0; b < a; b++) {
-				if (array[b] == array[a]) {
-					a--;
-					break;
-				}
-			}
+	array[a] = rd.nextInt(877);
+	for (int b = 0; b < a; b++) {
+		if (array[b] == array[a]) {
+			a--;
+			break;
 		}
-		booklist=bookDao.bookSelectAll(array);
-		request.setAttribute("booklist", booklist);
-	} else if (recbooklist != null){
-		
 	}
+		}
+		booklist = bookDao.bookSelectAll(array);
+		request.setAttribute("booklist", booklist);
+	} else if (recbooklist != null) {
+		// 로그인 유형조사 했을 때
 
-	
+	}
 } else {
-
+	// 로그인 안했을 떄
 	int[] array = new int[12];
 	Random rd = new Random();
 	for (int a = 0; a <= array.length - 1; a++) {
 		array[a] = rd.nextInt(877);
 		for (int b = 0; b < a; b++) {
-			if (array[b] == array[a]) {
-				a--;
-				break;
-			}
+	if (array[b] == array[a]) {
+		a--;
+		break;
+	}
 		}
 	}
-	booklist=bookDao.bookSelectAll(array);
+	booklist = bookDao.bookSelectAll(array);
 	request.setAttribute("booklist", booklist);
-
+	
 }
-
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -86,8 +84,7 @@ if (member != null) {
 					<a href="plogout.jsp">로그아웃</a>
 					<a href="ptype.jsp">유형조사</a>
 					<c:choose>
-						<c:when
-							test="${empty member.user_type1 && empty member.user_type2 && empty member.user_type3}">
+						<c:when test="${empty member.user_type1}">
 							<script langauge="javascript">
 								window
 										.open("ptype3.jsp", "ptype",
@@ -100,10 +97,49 @@ if (member != null) {
 		</c:otherwise>
 	</c:choose>
 	<hr>
-	<%for (int i=0; i< booklist.size(); i++){ %>
-		<a href="BookintCon?num=<%=booklist.get(i).getBook_num() %>"> 
-		<img src=<%=booklist.get(i).getBook_img()%> width="300">
-		</a>
-	<%} %>
+	<c:choose>
+		<c:when test="${empty member}">
+			<%
+			for (int i = 0; i < booklist.size(); i++) {
+			%>
+			<a href="BookintCon?isbn=<%=booklist.get(i).getBook_isbn()%>"> <img
+				src=<%=booklist.get(i).getBook_img()%> width="100">
+			</a>
+			<%
+			}
+			%>
+		</c:when>
+		
+		<c:otherwise>
+			<c:choose>
+				
+				<c:when test="${empty member.getUser_type1() }">
+					<%
+					for (int i = 0; i < booklist.size(); i++) {
+					%>
+					<a href="BookintCon?isbn=<%=booklist.get(i).getBook_isbn()%>">
+						<img src=<%=booklist.get(i).getBook_img()%> width="100">
+					</a>
+					<%
+					}
+					%>
+				</c:when>
+				
+				<c:otherwise>
+
+					<%
+					for (int i = 0; i < recbooklist.size(); i++) {
+					%>
+					<a href="BookintCon?isbn=<%=recbooklist.get(i).getBook_isbn()%>">
+						<img src=<%=recbooklist.get(i).getBook_img()%> width="100">
+					</a>
+					<%
+					}
+					%>
+				</c:otherwise>
+			</c:choose>
+		</c:otherwise>
+
+	</c:choose>
 </body>
 </html>

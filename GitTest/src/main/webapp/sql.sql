@@ -33,11 +33,11 @@ delete from web_message where m_receiveEmail='a@a.a'
 create table member(
 	member_id varchar(20) not null,
 	member_pw varchar(15) not null,
-	member_nick varchar(15) not null unique,
+	member_nick varchar(20) not null unique,
 	member_name varchar(30) not null,
 	constraint m_m_id_pk primary key(member_id))
 
-insert into member values('jms', 'alstj', 'Fatal', '민서')
+insert into member_type values('jms', 'alstj', 'Fatal', '민서')
 select * from member
 
 create table book_part1(
@@ -200,6 +200,8 @@ insert into book_part3 values('P325','전자상거래 관리사')
 insert into book_part3 values('P326','e-test')
 insert into book_part3 values('P327','코딩')
 insert into book_part3 values('P328','컴퓨터자격증 일반')
+insert into book_part3 values('0','선택안함')
+insert into book_part2 values('0','선택안함')
 
 
 
@@ -230,7 +232,7 @@ references book_part3(book_part3)
 select * from member_type
 
 create table member_type(
-member_nick varchar(15) not null unique,
+member_nick varchar(20) not null,
 user_type1 varchar2(20),
 user_type2 varchar2(20),
 user_type3 varchar2(20),
@@ -244,4 +246,42 @@ select * from book
 insert into member_type values('바보','P101','P202','')
 
 drop table member_type cascade constraints;
+drop table member cascade constraints;
+drop table recommend_book cascade constraints;
 
+create table recommend_book(
+member_nick varchar(20) not null,
+user_type1 varchar(20),
+user_type2 varchar(20),
+user_type3 varchar(20),
+book_title varchar(100) not null,
+book_price number not null,
+book_img clob not null,
+book_author varchar2(100) not null,
+book_publisher varchar2(50) not null,
+book_description clob,
+book_page number not null,
+book_pubdate varchar2(20) not null,
+book_isbn varchar2(30) not null,
+contents_cnt number,
+
+constraint rb_mn_fk foreign key(member_nick)
+references member(member_nick),
+constraint rb_bi_pk primary key(book_isbn)
+)
+
+select * from recommend_book
+select * from member
+select * from member_type
+select * from book_part3
+
+delete from member_type where member_nick='Fatal'
+
+select * from book where book_part1='P102' and book_part2='P206' and book_part3='0'
+
+select * from book
+select NVL(book_part2, '0') from book
+select NVL(book_part3, '0') from book
+
+update book set book_part2 = '0' where book_part2 is null
+update book set book_part3 = '0' where book_part3 is null

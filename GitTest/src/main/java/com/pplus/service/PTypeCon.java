@@ -36,27 +36,31 @@ public class PTypeCon implements iPCommand {
 
 		PMemberDAO dao = new PMemberDAO();
 
-		member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), null, type1, type2, type3);
-		int cnt = dao.pmemberTypeSet(member);
+		member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), member.getMember_name(), type1, type2, type3);
 		
+		int cnt = dao.pmemberTypeSet(member);
+		System.out.println(member.toString());
 		BookDAO bookDao =new BookDAO();
 		
 		RecBookDAO recDao =new RecBookDAO();
 		
 		ArrayList<BookDTO> recbook= bookDao.bookRecAll(member);
+		System.out.println(recbook.size());
 		
-		recDao.recBookSet(recbook, member);
+		int cnt2 =recDao.recBookSet(recbook, member);
 		
 		ArrayList<RecBookDTO> recbooklist=recDao.recBookSelectAll(member.getMember_nick());
-		
-		session.setAttribute("recbooklist", recbooklist);
-		
 
+		System.out.println(cnt2);
 		if (cnt > 0) {
 			System.out.println(member.getMember_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");
 			System.out.println(type1 + ", " + type2 + ", " + type3);
 			session.setAttribute("member", member);
-			response.sendRedirect("pmain.jsp");
+			if (cnt2>0) {
+				response.sendRedirect("pmain.jsp");
+				session.setAttribute("recbooklist", recbooklist);
+			}
+			
 
 		} else {
 			PrintWriter out = response.getWriter();
@@ -65,5 +69,6 @@ public class PTypeCon implements iPCommand {
 			out.print("location.href='pmain.jsp';");
 			out.print("</script>");
 		}
+		
 	}
 }

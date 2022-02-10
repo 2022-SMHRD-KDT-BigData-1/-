@@ -16,11 +16,11 @@
 		<select name="type2" >
 			<option value="중분류">중분류</option>
 			<option value="P206">IT일반서</option>
-		
+			<option value="1"></option>
 		</select>
 		<select name="type3" >
 			<option value="소분류">소분류</option>
-			<option value=""></option>
+			<option value="0"></option>
 		
 		</select>
 		<input type="submit" name="등록" >

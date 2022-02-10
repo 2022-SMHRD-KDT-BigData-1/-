@@ -77,7 +77,7 @@ public class PMemberDAO {
 	public PMemberDTO pmemberLogin(String id, String pw) {
 		connect();
 		PMemberDTO member = null;
-		sql = "select member_id, member_pw, member_nick from member where member_id =? and member_pw =?";
+		sql = "select * from member where member_id =? and member_pw =?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -87,7 +87,7 @@ public class PMemberDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				member = new PMemberDTO(id, null, rs.getString("member_nick"),null, null, null, null);
+				member = new PMemberDTO(id, null, rs.getString("member_nick"),rs.getString(4),null,null,null);
 			}
 
 		} catch (SQLException e) {
@@ -215,25 +215,24 @@ public class PMemberDAO {
 		return cnt;
 	}
 
-	public PMemberDTO pmemberTypeCheck(String nick) {
+	public PMemberDTO pmemberTypeCheck(PMemberDTO member) {
 		connect();
-		PMemberDTO member = null;
-		sql = "select member_id, user_type1, user_type2, user_type3 from member_type where member_nick=?";
+		
+		sql = "select user_type1, user_type2, user_type3 from member_type where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, nick);
+			psmt.setString(1, member.getMember_nick());
 
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
 				
-				String id =rs.getString(1);
-				String type1 = rs.getString(2);
-				String type2 = rs.getString(3);
-				String type3 = rs.getString(4);
+				String type1 = rs.getString(1);
+				String type2 = rs.getString(2);
+				String type3 = rs.getString(3);
 
-				member = new PMemberDTO(id, null, nick,null, type1, type2, type3);
+				member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(),member.getMember_name(), type1, type2, type3);
 			}
 
 		} catch (SQLException e) {

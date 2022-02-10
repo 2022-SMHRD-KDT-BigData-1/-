@@ -17,13 +17,13 @@ public class BookintCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String num = request.getParameter("num");
+		String isbn = request.getParameter("isbn");
 	
-		int book_num = Integer.parseInt(num);
+		// int book_num = Integer.parseInt(num);
 		
 		BookDAO bookDao =new BookDAO();
 		
-		BookDTO book=bookDao.bookSelect(book_num);
+		BookDTO book=bookDao.bookSelect(isbn);
 		
 		HttpSession session =request.getSession();
 		session.setAttribute("book", book);

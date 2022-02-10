@@ -1,9 +1,9 @@
 <%@page import="javax.websocket.Session"%>
 <%@page import="com.pplus.model.BookDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% BookDTO book = (BookDTO)session.getAttribute("book");
-
+	pageEncoding="UTF-8"%>
+<%
+BookDTO book = (BookDTO) session.getAttribute("book");
 %>
 <!DOCTYPE html>
 <html>
@@ -21,5 +21,11 @@
 	<p>${book.book_page }</p>
 	<p>${book.book_pubdate }</p>
 	<p>${book.book_isbn }</p>
+	<button onclick="goBack()">앞쪽 페이지로</button>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
 </body>
 </html>
