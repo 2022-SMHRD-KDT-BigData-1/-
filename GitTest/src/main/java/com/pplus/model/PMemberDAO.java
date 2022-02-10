@@ -14,7 +14,6 @@ public class PMemberDAO {
 	private ResultSet rs;
 	private int cnt;
 	private String sql;
-	private boolean tf;
 
 	public void connect() {
 		try {
@@ -124,29 +123,30 @@ public class PMemberDAO {
 		return cnt;
 	}
 	
-	public boolean pmemberIdCheck(String id) {
+	public int pmemberIdCheck(String id) {
 		connect();
 		
 		sql = "select * from member where member_id=?";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 
-			if (rs.next()) {
-				tf=true;
+			if (rs.next() || id.equals("")) {
+				cnt=0;
 			} else {
-				tf=false;
+				cnt=1;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return tf;
+		return cnt;
 	}
 	
-	public boolean pmemberNickCheck(String nick) {
+	public int pmemberNickCheck(String nick) {
 		connect();
 		
 		sql = "select * from member where member_nick=?";
@@ -155,17 +155,17 @@ public class PMemberDAO {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
-			if (rs.next()) {
-				tf=true;
+			if (rs.next() || nick.equals("")) {
+				cnt=0;
 			} else {
-				tf=false;
+				cnt=1;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return tf;
+		return cnt;
 	}
 	
 
