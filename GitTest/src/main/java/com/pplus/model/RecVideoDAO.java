@@ -50,7 +50,7 @@ public class RecVideoDAO {
 	// rexvideoSet에 입력 변수는 RecVideoDTO recvideo 출력 변수 cnt(int)
 	public int recVideoSet(RecVideoDTO recvideo) {
 		connect();
-		sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?)";
+		sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		cnt = 0;
 		try {
@@ -67,6 +67,7 @@ public class RecVideoDAO {
 			psmt.setString(9, recvideo.getVideo_channel());
 			psmt.setString(10, recvideo.getVideo_hits());
 			psmt.setString(11, recvideo.getVideo_time());
+			psmt.setInt(12, recvideo.getVideo_num());
 		
 
 			cnt = psmt.executeUpdate();
@@ -118,7 +119,7 @@ public class RecVideoDAO {
 
 				list.add(new RecVideoDTO(rs.getString(1), rs.getString(2), rs.getString(3),
 						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),
-						rs.getString(9), rs.getString(10), rs.getString(11)));
+						rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -127,9 +128,5 @@ public class RecVideoDAO {
 		}
 		return list;
 	}
-	
-	
-	
-	
 
 }

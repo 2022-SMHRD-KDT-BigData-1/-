@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="form1" name="form1" method="post">
+<form action="PTypeCon.do" method="post">
     
     <select name="type1" >
 			<option value="대분류">대분류</option>
@@ -21,31 +21,14 @@
 		</select>
 		<select name="type3" >
 			<option value="소분류">소분류</option>
-			<option value=""></option>
+			<option value="0"></option>
+		</select>
     
-    <input type="button" value="확인" onclick="test1(); return false;">
+    <input type="submit" value="확인" onclick="window.close()"
 </form>
  
 <script>
-    function test2(){
-        var form = $("form")[0];        
-        var formData = new FormData(form);
 
-        $.ajax({
-            cache : false,
-            url : "${pageContext.request.contextPath}/PTypeCon.do", // 요기에
-            processData: false,
-            contentType: false,
-            type : 'POST', 
-            data : formData, 
-            success : function(data) {
-                var jsonObj = JSON.parse(data);
-            }, // success 
-    
-            error : function(xhr, status) {
-                alert(xhr + " : " + status);
-            }
-        }); // $.ajax */    }
 </script>
 
 </body>
