@@ -15,6 +15,8 @@ import com.pplus.model.PMemberDAO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.RecBookDAO;
 import com.pplus.model.RecBookDTO;
+import com.pplus.model.RecVideoDAO;
+import com.pplus.model.RecVideoDTO;
 
 
 
@@ -34,6 +36,7 @@ public class PLoginCon implements iPCommand {
 		
 		PMemberDAO dao =new PMemberDAO();
 		RecBookDAO recbookDAO =new RecBookDAO();
+		RecVideoDAO recvideodao = new RecVideoDAO();
 		
 		PMemberDTO member =dao.pmemberLogin(id, pw);
 		
@@ -41,12 +44,15 @@ public class PLoginCon implements iPCommand {
 		
 		ArrayList<RecBookDTO> recbooklist=recbookDAO.recBookSelectAll(member.getMember_nick());
 		
+		ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member.getMember_nick());
+		
 		
 		
 		if(member != null) {
 			System.out.println(id+"가 로그인");
 			
 			session.setAttribute("recbooklist", recbooklist);
+			session.setAttribute("recvideolist", recvideolist);
 			session.setAttribute("member", member);
 			response.sendRedirect("pmain.jsp");
 			

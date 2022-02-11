@@ -58,7 +58,7 @@
 		// 위시리스트 페이지 만들면 넣기
 	}
 	function setBookValues(name,num,page){
-		document.getElementById("book").value = name;
+		document.getElementById("book_title").value = name;
 		document.getElementById("book_num").value = num;
 		document.getElementById("book_page").value = page;
 		console.log(page);
