@@ -45,6 +45,7 @@
 		</table>
 		<script type="text/javascript">
 			function sendBookValues(name,num,page) {
+				console.log(name);
 				opener.setBookValues(name,num,page);
 				window.close();
 			}		

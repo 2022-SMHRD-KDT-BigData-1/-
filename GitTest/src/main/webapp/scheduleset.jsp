@@ -11,19 +11,19 @@
 <body>
 	
 	<h1>스케줄</h1>
-	
+	<form action="ScheduleCon.do" method="post">
 		<%-- <c:choose>
 			<c:when test="${empty requestScope.book_data  }">
 				<c:otherwise> --%>
-					책 검색 : <input type="text" id="book" onclick="book()" placeholder="책을 입력 해 주세요" name="book_title">
+					책 검색 : <input type="text" id="book_title" onclick="book()" placeholder="책을 입력 해 주세요" name="book_title">
 					<input type="button" value="검색" onclick="book()"><br>
 					<input type="text" id="book_num" style="display: none; " name="book_num">
 					<input type="text" id="book_page" style="display: none;" name="book_page">
-					위시리스트에서 찾기 : <input type="button" value="내 위시리스트" onclick="mybook()">
+					위시리스트에서 찾기 : <input type="button" value="내 위시리스트" onclick="mybook()"><br>
 			<%-- 	</c:otherwise>
 			</c:when>
 		</c:choose> --%>
-	<form action="ScheduleCon.do?book_title=" method="post" name="f1">
+
 		제목 : <input type="text" name="title"> <br>
 		시작일 : <input type="date" name="start" id="Date1" onchange="call()" value="">   ~   
 		종료일 : <input type="date" name="end" id="Date2" onchange="call()" value=""> <p></p>
@@ -31,7 +31,7 @@
 		
 	 	일차이 계산 : <input type="text" id="day" size="6" style="text-align:center;" name="day">
 		
-		<input type="submit" value="등록">
+		<input type="submit" value="등록" id="submit">
 	</form>
 	<script langauge="javascript">
 	function call() {
@@ -63,7 +63,6 @@
 		document.getElementById("book_page").value = page;
 		console.log(page);
 	}
-	
 	
 	
 
