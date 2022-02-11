@@ -153,6 +153,7 @@ public class PMemberDAO {
 		
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
 			rs = psmt.executeQuery();
 
 			if (rs.next() || nick.equals("")) {

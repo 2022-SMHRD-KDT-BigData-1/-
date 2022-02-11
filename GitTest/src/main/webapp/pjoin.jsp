@@ -23,7 +23,7 @@
 	</form>
 	<script src="jquery-3.6.0.min.js"></script>
 	<script>
-	$('#input_id').focusout(function(){
+	$('#input_id').keyup(function(){
 		let memberid=$('#input_id').val();
 		$.ajax({
 			url : "IdCheck.do",
@@ -45,8 +45,8 @@
 		})
 	})
 	
-	$('#input_nick').focusout(function(){
-		let memberid=$('#input_nick').val();
+	$('#input_nick').keyup(function(){
+		let membernick=$('#input_nick').val();
 		$.ajax({
 			url : "NickCheck.do",
 			type: "post",

@@ -26,7 +26,7 @@ public class BookintCon extends HttpServlet {
 		BookDTO book=bookDao.bookSelect(book_num);
 		
 		HttpSession session =request.getSession();
-		session.setAttribute("book", book_num);
+		session.setAttribute("book", book);
 		response.sendRedirect("bookint.jsp");
 	}
 }

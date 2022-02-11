@@ -110,7 +110,7 @@ public class BookDAO {
 		BookDTO book = null;
 		connect();
 
-		sql = "select * from book where book_int=?";
+		sql = "select * from book where book_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);

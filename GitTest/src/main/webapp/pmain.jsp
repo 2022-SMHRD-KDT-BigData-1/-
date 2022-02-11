@@ -94,6 +94,7 @@ if (member != null) {
 					<a href="plogout.jsp">로그아웃</a>
 					<a href="ptype.jsp">유형조사</a>
 					<a href="scheduleset.jsp">스케줄등록</a>
+					<a href="scheduleindex.jsp">스케줄목록</a>
 					<c:choose>
 						<c:when test="${empty member.user_type1}">
 							<script langauge="javascript">
@@ -157,22 +158,30 @@ if (member != null) {
 				</c:when>
 
 				<c:otherwise>
-
+					<table>
 					<%
 					for (int i = 0; i < recbooklist.size(); i++) {
 					%>
-					<a href="BookintCon?num=<%=recbooklist.get(i).getBook_num()%>">
-						<img src=<%=recbooklist.get(i).getBook_img()%> width="100">
-					</a>
+					<tr>
+						<td><a href="BookintCon?num=<%=recbooklist.get(i).getBook_num()%>">
+								<img src=<%=recbooklist.get(i).getBook_img()%> width="80">
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td><button id="wish" name="wish"></button>
+						</td>
+					</tr>
 					<%
 					}
 					%>
+					</table>
 					<hr>
                <%
                for (int i = 0; i < recvideolist.size(); i++) {
                %>
                <a href="VideointCon?num=<%=recvideolist.get(i).getVideo_num()%>">
-                  <img src=<%=recvideolist.get(i).getVideo_thumnail()%> width="100">
+                  <img src=<%=recvideolist.get(i).getVideo_thumnail()%> width="80">
                </a>
                <%
                }
