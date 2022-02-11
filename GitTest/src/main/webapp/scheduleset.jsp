@@ -6,6 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+ <script  src="jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	
@@ -22,7 +23,7 @@
 			<%-- 	</c:otherwise>
 			</c:when>
 		</c:choose> --%>
-	<form action="ScheduleCon.do" method="post">
+	<form action="ScheduleCon.do?book_title=" method="post" name="f1">
 		제목 : <input type="text" name="title"> <br>
 		시작일 : <input type="date" name="start" id="Date1" onchange="call()" value="">   ~   
 		종료일 : <input type="date" name="end" id="Date2" onchange="call()" value=""> <p></p>
@@ -60,8 +61,12 @@
 		document.getElementById("book").value = name;
 		document.getElementById("book_num").value = num;
 		document.getElementById("book_page").value = page;
+		console.log(page);
 	}
-	console.log(num);
+	
+	
+	
+
 	</script>
 </body>
 </html>

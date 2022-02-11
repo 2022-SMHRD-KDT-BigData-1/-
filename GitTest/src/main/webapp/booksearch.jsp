@@ -33,7 +33,7 @@
 				<c:forEach var="i" items="${requestScope.books }">
 				<tr>
 					<td>
-						<a href="javascript:sendBookValues('${i.book_title}, ${i.book_num}, ${i.book_page }')">
+						<a href="javascript:sendBookValues('${i.book_title}', '${i.book_num}', '${i.book_page}' )">
 						${i.book_title }
 						</a>
 					</td>
