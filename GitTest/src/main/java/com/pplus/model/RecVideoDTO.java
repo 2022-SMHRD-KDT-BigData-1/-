@@ -17,7 +17,7 @@ public class RecVideoDTO {
 	
 	private String video_title;
 	private String video_upload;
-	private String video_thumnail;
+	private String video_thumbnail;
 	private String video_url;
 	private String video_channel;
 	private String video_hits;

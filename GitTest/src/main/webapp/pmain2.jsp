@@ -110,35 +110,50 @@ if (member != null) {
 	<hr>
 	<c:choose>
 		<c:when test="${empty member}">
-			<c:forEach var="book" items="${booklist }">
-				<a href="BookintCon?num=${book.book_num }"> <img
-					src="${book.book_img}" width="80">
-				</a>
-			</c:forEach>
+			<%
+			for (int i = 0; i < booklist.size(); i++) {
+			%>
+			<a href="BookintCon?num=<%=booklist.get(i).getBook_num()%>"> <img
+				src=<%=booklist.get(i).getBook_img()%> width="100">
+			</a>
+			<%
+			}
+			%>
 			<hr>
-			<c:forEach var="video" items="${videolist }">
-				<a href="VideointCon?num="${video.video_num}"> <img
-					src="${video.video_thumbnail}" width="80">
-				</a>
-			</c:forEach>
-			
+			<%
+			for (int i = 0; i < videolist.size(); i++) {
+			%>
+			<a href="VideointCon?num=<%=videolist.get(i).getVideo_num()%>"> <img
+				src=<%=videolist.get(i).getVideo_thumbnail()%> width="100">
+			</a>
+			<%
+			}
+			%>
 		</c:when>
 
 		<c:otherwise>
 			<c:choose>
 
 				<c:when test="${empty member.getUser_type1() }">
-					<c:forEach var="book" items="${booklist }">
-						<a href="BookintCon?num=${book.book_num }"> <img
-							src="${book.book_img}" width="80">
-						</a>
-					</c:forEach>
+					<%
+					for (int i = 0; i < booklist.size(); i++) {
+					%>
+					<a href="BookintCon?num=<%=booklist.get(i).getBook_num()%>"> <img
+						src=<%=booklist.get(i).getBook_img()%> width="100">
+					</a>
+					<%
+					}
+					%>
 					<hr>
-					<c:forEach var="video" items="${videolist }">
-						<a href="VideointCon?num="${video.video_num}"> <img
-							src="${video.video_thumbnail}" width="80">
-						</a>
-					</c:forEach>
+					<%
+					for (int i = 0; i < videolist.size(); i++) {
+					%>
+					<a href="VideointCon?num=<%=videolist.get(i).getVideo_num()%>">
+						<img src=<%=videolist.get(i).getVideo_thumbnail()%> width="100">
+					</a>
+					<%
+					}
+					%>
 
 				</c:when>
 
@@ -146,35 +161,40 @@ if (member != null) {
 					<table>
 
 						<tr>
-							<c:forEach var="recbook" items="${recbooklist }">
-								<td><a
-									href="BookintCon?num=${recbook.book_num }"> <img
-										src="${recbook.book_img}" width="80">
-								</a></td>
-							</c:forEach>
+							<%
+							for (int i = 0; i < recbooklist.size(); i++) {
+							%>
+							<td colspan="2"><a
+								href="BookintCon?num=<%=recbooklist.get(i).getBook_num()%>">
+									<img src=<%=recbooklist.get(i).getBook_img()%> width="80">
+							</a></td>
+							<%
+							}
+							%>
 						</tr>
 						<tr>
-							<c:forEach var="recbook" items="${recbooklist }">
-
-								<c:choose>
-									<input type="text" name="recbook" value="${recbook.book_num}" style="display : none">
-									<c:when test="${recbook.contents_cnt==1 }">
-										<td><button type="button" class="wish" name="wish" value="${recbook.contents_cnt}"><img src="heart1.png" width="20"></button>
-									</c:when>
-									<c:otherwise>
-										<td><button type="button" class="wish" name="wish" value="${recbook.contents_cnt}"><img src="heart0.png" width="20"></button>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
+							<%
+							for (int i = 0; i < recbooklist.size(); i++) {
+							%>
+							<td><button id="wish" name="wish">위시</button></td>
+							<td id="wishcnt">0</td>
+							<%
+							}
+							%>
 						</tr>
 
 					</table>
 					<hr>
-					<c:forEach var="recvideo" items="${recvideolist }">
-						<a href="VideointCon?num=${recvideo.video_num}"> <img
-							src="${recvideo.video_thumbnail}" width="80">
-						</a>
-					</c:forEach>
+					<%
+					for (int i = 0; i < recvideolist.size(); i++) {
+					%>
+					<a href="VideointCon?num=<%=recvideolist.get(i).getVideo_num()%>">
+						<img src=<%=recvideolist.get(i).getVideo_thumbnail()%> width="80">
+					</a>
+					<%
+					}
+					%>
+
 				</c:otherwise>
 			</c:choose>
 		</c:otherwise>
@@ -182,35 +202,38 @@ if (member != null) {
 	</c:choose>
 	<script src="jquery-3.6.0.min.js"></script>
 	<script>
-	$(".wish").click( function(){
-		var rec_book_num=$("input[name=recbook]").val();
-		var num = $("button[name = wish]").val();
-		if(num==0){
-			num=1;
+	var bSubmit = 0;
+	
+	$("#wish").click( function(){
+		if(bSubmit==0){
+			$("#wish").css("color","red");
+			bSubmit=1;
 			
 			$.ajax({
 				type : "post",
 				url : "WishCon.do"
 				async : true,
-				data : {"num" : num, "recbooknum" : rec_book_num},
+				data : {"bSubmit" : bSubmit},
 				success : function(result) {
 					alert("Wishlist에 등록되었습니다.")
-					$(".wish").attr("src","heart1.png")
+					$("#wishcnt").html(result)
 				},
 				error : function(){
 					alert("서버요청실패");
 				}
 			});
 		} else {
-			num =0;
+			$("#wish").css("color","black");
+			bSubmit =0;
+			
 			$.ajax({
 				type : "post",
 				url : "WishCon.do"
 				async : true,
-				data : {"num" : num, "recbooknum" : rec_book_num},
+				data : {"bSubmit" : bSubmit},
 				success : function(result) {
 					alert("Wishlist에 제거되었습니다.")
-					$(".wish").attr("src","heart0.png")
+					$("#wishcnt").html(result)
 				},
 				error : function(){
 					alert("서버요청실패");
