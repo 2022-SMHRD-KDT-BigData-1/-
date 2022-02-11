@@ -93,6 +93,7 @@ if (member != null) {
 					<a href="pmypage.jsp">마이페이지</a>
 					<a href="plogout.jsp">로그아웃</a>
 					<a href="ptype.jsp">유형조사</a>
+					<a href="scheduleset.jsp">스케줄등록</a>
 					<c:choose>
 						<c:when test="${empty member.user_type1}">
 							<script langauge="javascript">
@@ -167,15 +168,15 @@ if (member != null) {
 					}
 					%>
 					<hr>
-					<%
-					for (int i = 0; i < recvideolist.size(); i++) {
-					%>
-					<a href="VideointCon?num=<%=recvideolist.get(i).getVideo_num()%>">
-						<img src=<%=recvideolist.get(i).getVideo_thumnail()%> width="100">
-					</a>
-					<%
-					}
-					%>
+               <%
+               for (int i = 0; i < recvideolist.size(); i++) {
+               %>
+               <a href="VideointCon?num=<%=recvideolist.get(i).getVideo_num()%>">
+                  <img src=<%=recvideolist.get(i).getVideo_thumnail()%> width="100">
+               </a>
+               <%
+               }
+               %>
 					
 				</c:otherwise>
 			</c:choose>
