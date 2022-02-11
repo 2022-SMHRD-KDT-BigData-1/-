@@ -50,18 +50,18 @@ public class ScheduleDAO {
 	// 스케줄 등록 입력 변수 ScheduleDTO 출력 변수 cnt(int)
 	public int scheduleSet(ScheduleDTO schedule) {
 		connect();
-		sql = "insert into schedule values(seq_shedule_num.nextval,?,?,?,?,?,sysdate,?,?,?,?)";
+		sql = "insert into schedule values(seq_schedule_num.nextval,?,?,?,?,?,sysdate,?,?,?,?)";
 //		 p_num;m_nick;s_start;s_num_day;s_end;s_day_page;book_num;book_title;book_page;
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 			// psmt.setInt(1, schedule.getP_num());
 			psmt.setString(1, schedule.getSchedule_name());
-			psmt.setString(2, schedule.getMember_nick());
-			psmt.setString(3, schedule.getSchedule_start());
-			psmt.setString(4, schedule.getSchedule_num_day());
-			psmt.setString(5, schedule.getSchedule_end());
-			psmt.setInt(6, schedule.getSchedule_day_page());
+			psmt.setString(2, schedule.getSchedule_start());
+			psmt.setString(3, schedule.getSchedule_num_day());
+			psmt.setString(4, schedule.getSchedule_end());
+			psmt.setInt(5, schedule.getSchedule_day_page());
+			psmt.setString(6, schedule.getMember_nick());
 			psmt.setInt(7, schedule.getBook_num());
 			psmt.setString(8, schedule.getBook_title());
 			psmt.setInt(9, schedule.getBook_page());

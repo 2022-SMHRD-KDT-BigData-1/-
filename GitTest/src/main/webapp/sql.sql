@@ -34,6 +34,10 @@ delete from web_message where m_receiveEmail='a@a.a'
 
 create문
 
+create sequence seq_schedule_num
+		increment by 1
+		start with 1;
+
 create table member(
 	member_id varchar(20) not null,
 	member_pw varchar(15) not null,
@@ -124,7 +128,9 @@ create table recommend_book(
 	contents_cnt number,
 	book_num number,
 	constraint rb_mn_fk foreign key(member_nick)
-	references member(member_nick))
+	references member(member_nick)
+	on delete cascade
+	)
 	
 create table recommend_video(
 	member_nick varchar(20) not null,
@@ -140,7 +146,30 @@ create table recommend_video(
 	video_time varchar(20) not null,
 	video_num number,
 	constraint rv_mn_fk foreign key(member_nick)
-	references member(member_nick))
+	references member(member_nick)
+	on delete cascade
+	)
+	
+create table schedule(
+	schedule_num number,
+	schedule_name varchar2(1000),
+	schedule_start varchar2(20),
+	schedule_num_day varchar2(10),
+	schedule_end varchar2(20),
+	schedule_day_page number,
+	schedule_date date,
+	member_nick varchar(20) not null,
+	book_num number,
+	book_title varchar2(130),
+	book_page number,
+	constraint sc_sn_pk primary key(schedule_num),
+	constraint sc_mn_fk foreign key(member_nick)
+	references member(member_nick)
+	on delete cascade,
+	constraint sc_bn_fk foreign key(book_num)
+	references book(book_num)
+
+)
 	
 insert문
 
@@ -269,6 +298,8 @@ select * from study_video where book_part1='P102' and book_part2='P206' and book
 select * from book
 select NVL(book_part2, '0') from book
 select NVL(book_part3, '0') from book
+select * from schedule
+
 
 drop문
 
@@ -278,6 +309,8 @@ drop table member_type cascade constraints;
 drop table member cascade constraints;
 drop table recommend_book cascade constraints;
 drop table recommend_video cascade constraints;
+drop table schedule cascade constraints;
+
 
 delete문
 

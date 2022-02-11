@@ -2,6 +2,7 @@ package com.pplus.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,15 +44,19 @@ public class ScheduleCon implements iPCommand {
 		//book안에 데이터들을 session형태로 받기
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		ScheduleDAO dao = new ScheduleDAO();
+		System.out.println(member.getMember_nick());
 		
 		
 		
-		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end, page, null, member.getMember_nick(),book_num,bookTitle,book_page));
+		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end, page, null, member.getMember_nick(), book_num,
+				bookTitle, book_page));
 		
 		if(cnt > 0) {
 			System.out.println("스케줄 제목" + title);
 			System.out.println("책 제목");
 			
+		 	ArrayList<ScheduleDTO> schedulelist = dao.scheduleSelectAll(member.getMember_nick());
+			session.setAttribute("schedulelist", schedulelist);
 			response.sendRedirect("pmain.jsp");
 			// 우선 메인 페이지로 가게 해놓았습니다. 메인페이지가 아니라 다른곳으로 가게 할거면 바꿔냐 합니다
 		}else {
