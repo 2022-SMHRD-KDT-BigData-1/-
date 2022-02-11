@@ -45,6 +45,28 @@
 		})
 	})
 	
+	$('#input_nick').focusout(function(){
+		let memberid=$('#input_nick').val();
+		$.ajax({
+			url : "NickCheck.do",
+			type: "post",
+			data : {membernick : membernick},
+			dataType : 'json',
+			success : function(result){
+				if(result==0){
+					$("#checkNick").html('사용불가');
+					$("#checkNick").attr('color', 'red');
+				} else {
+					$("#checkNick").html('사용가능');
+					$("#checkNick").attr('color', 'green');
+				}
+			},
+			error : function(){
+				alert("서버요청실패");
+			}
+		})
+	})
+	
 	
 	</script>
 </body>

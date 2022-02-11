@@ -14,6 +14,7 @@ public class RecVideoDTO {
 	private String user_type1;
 	private String user_type2;
 	private String user_type3;
+	
 	private String video_title;
 	private String video_upload;
 	private String video_thumnail;

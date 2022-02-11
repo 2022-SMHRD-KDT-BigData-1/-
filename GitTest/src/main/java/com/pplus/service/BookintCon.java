@@ -17,16 +17,16 @@ public class BookintCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String isbn = request.getParameter("isbn");
+		String num = request.getParameter("num");
 	
-		// int book_num = Integer.parseInt(num);
+		int book_num = Integer.parseInt(num);
 		
 		BookDAO bookDao =new BookDAO();
 		
-		BookDTO book=bookDao.bookSelect(isbn);
+		BookDTO book=bookDao.bookSelect(book_num);
 		
 		HttpSession session =request.getSession();
-		session.setAttribute("book", book);
+		session.setAttribute("book", book_num);
 		response.sendRedirect("bookint.jsp");
 	}
 }

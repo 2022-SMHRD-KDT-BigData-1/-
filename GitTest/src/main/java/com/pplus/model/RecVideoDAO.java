@@ -51,12 +51,12 @@ public class RecVideoDAO {
 	// rexvideoSet에 입력 변수는 RecVideoDTO recvideo 출력 변수 cnt(int)
 	public int recVideoSet(ArrayList<VideoDTO> recvideo, PMemberDTO member) {
 		cnt = 0;
-		for (int i = 0; i < recvideo.size(); i++) {
-			connect();
 
+		connect();
+		for (int i = 0; i < recvideo.size(); i++) {
 			try {
 
-				sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?)";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, member.getMember_nick());
@@ -75,13 +75,10 @@ public class RecVideoDAO {
 				cnt += psmt.executeUpdate();
 
 			} catch (SQLException e) {
-
 				e.printStackTrace();
-
-			} finally {
-				close();
 			}
 		}
+		close();
 		return cnt;
 	}
 

@@ -55,15 +55,18 @@ public class PTypeCon implements iPCommand {
 		RecBookDAO recbookDao =new RecBookDAO();
 		RecVideoDAO recvideoDao =new RecVideoDAO();
 		
+		
 		ArrayList<BookDTO> recbook= bookDao.bookRecAll(member);
 		ArrayList<VideoDTO> recvideo =videoDao.videoRecAll(member);
-		
+		System.out.println("test1 : "+recvideo.size());
 		
 		int cnt2 =recbookDao.recBookSet(recbook, member);
 		int cnt3 =recvideoDao.recVideoSet(recvideo, member);
+		System.out.println("test2 : "+cnt3);
 		
 		ArrayList<RecBookDTO> recbooklist=recbookDao.recBookSelectAll(member.getMember_nick());
 		ArrayList<RecVideoDTO> recvideolist=recvideoDao.recVideoSelectAll(member.getMember_nick()); 
+		System.out.println("test3 : "+recvideolist.size());
 		
 		System.out.println(cnt2);
 		System.out.println(cnt3);

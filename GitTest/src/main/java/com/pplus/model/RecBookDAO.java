@@ -51,12 +51,11 @@ public class RecBookDAO {
 	// rexVookSet에 입력 변수는 RecBookDTO recbook 출력 변수는 cnt(int)
 	public int recBookSet(ArrayList<BookDTO> recbook, PMemberDTO member) {
 		cnt = 0;
+		connect();
 		for (int i = 0; i < recbook.size(); i++) {
-			connect();
-
 			try {
 
-				sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, member.getMember_nick());
@@ -73,15 +72,15 @@ public class RecBookDAO {
 				psmt.setString(12, recbook.get(i).getBook_pubdate());
 				psmt.setString(13, recbook.get(i).getBook_isbn());
 				psmt.setInt(14, 0);
+				psmt.setInt(15, recbook.get(i).getBook_num());
 
 				cnt += psmt.executeUpdate();
 
 			} catch (SQLException e) {
 				e.printStackTrace();
-			} finally {
-				close();
 			}
 		}
+		close();
 		return cnt;
 	}
 
@@ -124,7 +123,7 @@ public class RecBookDAO {
 
 				recbooklist.add(new RecBookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
 						rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-						rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13), rs.getInt(14)));
+						rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13), rs.getInt(14) ,rs.getInt(15)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

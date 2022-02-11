@@ -1,3 +1,4 @@
+<%@page import="com.pplus.model.RecVideoDTO"%>
 <%@page import="com.pplus.model.VideoDAO"%>
 <%@page import="com.pplus.model.VideoDTO"%>
 <%@page import="com.pplus.model.RecBookDAO"%>
@@ -20,6 +21,7 @@ BookDAO bookDao = new BookDAO();
 VideoDAO videoDao = new VideoDAO();
 RecBookDAO recDaobook = new RecBookDAO();
 ArrayList<RecBookDTO> recbooklist = (ArrayList<RecBookDTO>) session.getAttribute("recbooklist");
+ArrayList<RecVideoDTO> recvideolist = (ArrayList<RecVideoDTO>)session.getAttribute("recvideolist");
 
 ArrayList<BookDTO> booklist = null;
 ArrayList<VideoDTO> videolist = null;
@@ -109,7 +111,7 @@ if (member != null) {
 			<%
 			for (int i = 0; i < booklist.size(); i++) {
 			%>
-			<a href="BookintCon?isbn=<%=booklist.get(i).getBook_isbn()%>"> <img
+			<a href="BookintCon?num=<%=booklist.get(i).getBook_num()%>"> <img
 				src=<%=booklist.get(i).getBook_img()%> width="100">
 			</a>
 			<%
@@ -134,7 +136,7 @@ if (member != null) {
 					<%
 					for (int i = 0; i < booklist.size(); i++) {
 					%>
-					<a href="BookintCon?isbn=<%=booklist.get(i).getBook_isbn()%>">
+					<a href="BookintCon?num=<%=booklist.get(i).getBook_num()%>">
 						<img src=<%=booklist.get(i).getBook_img()%> width="100">
 					</a>
 					<%
@@ -158,12 +160,23 @@ if (member != null) {
 					<%
 					for (int i = 0; i < recbooklist.size(); i++) {
 					%>
-					<a href="BookintCon?isbn=<%=recbooklist.get(i).getBook_isbn()%>">
+					<a href="BookintCon?num=<%=recbooklist.get(i).getBook_num()%>">
 						<img src=<%=recbooklist.get(i).getBook_img()%> width="100">
 					</a>
 					<%
 					}
 					%>
+					<hr>
+					<%
+					for (int i = 0; i < recvideolist.size(); i++) {
+					%>
+					<a href="VideointCon?num=<%=recvideolist.get(i).getVideo_num()%>">
+						<img src=<%=recvideolist.get(i).getVideo_thumnail()%> width="100">
+					</a>
+					<%
+					}
+					%>
+					
 				</c:otherwise>
 			</c:choose>
 		</c:otherwise>

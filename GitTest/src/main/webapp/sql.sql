@@ -30,63 +30,121 @@ drop table web_message cascade constraints
 delete from web_message where m_content='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
 delete from web_message where m_receiveEmail='a@a.a'
 
+'==================================절취선======================================================='
+
+create문
+
 create table member(
 	member_id varchar(20) not null,
 	member_pw varchar(15) not null,
 	member_nick varchar(20) not null unique,
 	member_name varchar(30) not null,
 	constraint m_m_id_pk primary key(member_id))
+	
+create table book_part1(
+	book_part1 varchar2(10),
+	book_part1_cat varchar2(30),
+	constraint bk_bp1_pk primary key(book_part1))
+	
+create table book_part2(
+	book_part2 varchar2(10),
+	book_part2_cat varchar2(40),
+	constraint bk_bp2_pk primary key(book_part2))
+	
+create table book_part3(
+	book_part3 varchar2(10),
+	book_part3_cat varchar2(40),
+	constraint bk_bp3_pk primary key(book_part3))
+	
+create table book(
+	book_num number,
+	book_title varchar2(130) not null,
+	book_price number not null,
+	book_img clob not null,
+	book_author varchar2(100) not null,
+	book_publisher varchar2(50) not null,
+	book_description clob,
+	book_page number not null,
+	book_pubdate varchar2(20) not null,
+	book_isbn varchar2(30) not null,
+	book_part1 varchar2(10),
+	book_part2 varchar2(10),
+	book_part3 varchar2(10),
+	constraint bk_bn_pk primary key(book_num),
+	constraint bk_bp1_fk foreign key(book_part1)
+	references book_part1(book_part1),
+	constraint bk_bp2_fk foreign key(book_part2)
+	references book_part2(book_part2),
+	constraint bk_bp3_fk foreign key(book_part3)
+	references book_part3(book_part3))
+	
+create table study_video(
+	video_num number,
+	video_title varchar2(1000)not null,
+	video_upload varchar2(20) not null,
+	video_thumbnail clob not null,
+	video_url clob not null,
+	video_channel varchar2(100) not null,
+	video_hits number not null,
+	video_time varchar2(20) not null,
+	book_part1 varchar2(10) not null,
+	book_part2 varchar2(10),
+	book_part3 varchar2(10),
+	constraint sv_vn_pk primary key(video_num),
+	constraint sv_bp1_fk foreign key(book_part1)
+	references book_part1(book_part1),
+	constraint sv_bp2_fk foreign key(book_part2)
+	references book_part2(book_part2),
+	constraint sv_bp3_fk foreign key(book_part3)
+	references book_part3(book_part3))
+	
+create table member_type(
+	member_nick varchar(20) not null,
+	user_type1 varchar2(20),
+	user_type2 varchar2(20),
+	user_type3 varchar2(20),
+	constraint mt_mn_fk foreign key(member_nick)
+	references member(member_nick)
+	on delete cascade)
+	
+create table recommend_book(
+	member_nick varchar(20) not null,
+	user_type1 varchar(20),
+	user_type2 varchar(20),
+	user_type3 varchar(20),
+	book_title varchar(130) not null,
+	book_price number not null,
+	book_img clob not null,
+	book_author varchar2(100) not null,
+	book_publisher varchar2(50) not null,
+	book_description clob,
+	book_page number not null,
+	book_pubdate varchar2(20) not null,
+	book_isbn varchar2(30) not null,
+	contents_cnt number,
+	book_num number,
+	constraint rb_mn_fk foreign key(member_nick)
+	references member(member_nick))
+	
+create table recommend_video(
+	member_nick varchar(20) not null,
+	user_type1 varchar(20),
+	user_type2 varchar(20),
+	user_type3 varchar(20),
+	video_title varchar(1000) not null,
+	video_upload varchar(20) not null,
+	video_thumbnail clob,
+	video_url clob,
+	video_channel varchar(50) not null,
+	video_hits varchar(30) not null,
+	video_time varchar(20) not null,
+	video_num number,
+	constraint rv_mn_fk foreign key(member_nick)
+	references member(member_nick))
+	
+insert문
 
 insert into member_type values('jms', 'alstj', 'Fatal', '민서')
-select * from member
-
-create table book_part1(
-book_part1 varchar2(10),
-book_part1_cat varchar2(30),
-constraint bk_bp1_pk primary key(book_part1)
-
-)
-select * from book
-
-create table book_part2(
-book_part2 varchar2(10),
-book_part2_cat varchar2(40),
-constraint bk_bp2_pk primary key(book_part2)
-
-)
-
-create table book_part3(
-book_part3 varchar2(10),
-book_part3_cat varchar2(40),
-constraint bk_bp3_pk primary key(book_part3)
-
-)
-
-create table book(
-book_num number,
-book_title varchar2(130) not null,
-book_price number not null,
-book_img clob not null,
-book_author varchar2(100) not null,
-book_publisher varchar2(50) not null,
-book_description clob,
-book_page number not null,
-book_pubdate varchar2(20) not null,
-book_isbn varchar2(30) not null,
-book_part1 varchar2(10),
-book_part2 varchar2(10),
-book_part3 varchar2(10),
-constraint bk_bn_pk primary key(book_num),
-constraint bk_bp1_fk foreign key(book_part1)
-references book_part1(book_part1),
-constraint bk_bp2_fk foreign key(book_part2)
-references book_part2(book_part2),
-constraint bk_bp3_fk foreign key(book_part3)
-references book_part3(book_part3)
-)
-
-drop table book_part3 cascade constraints;
-
 
 insert into book_part1 values('P101','컴퓨터공학')
 insert into book_part1 values('P102','IT일반')
@@ -103,11 +161,6 @@ insert into book_part1 values('P112','모바일 프로그래밍')
 insert into book_part1 values('P113','OA/사무자동화')
 insert into book_part1 values('P114','웹사이트')
 insert into book_part1 values('P115','자격증/수험서')
-
-
-
-
-
 
 insert into book_part2 values('P201','컴퓨터공학/과학개론')
 insert into book_part2 values('P202','소프트웨어공학')
@@ -171,9 +224,6 @@ insert into book_part2 values('P259','정보 네트워크 보안')
 insert into book_part2 values('P261','그래픽/디자인')
 insert into book_part2 values('P262','기타자격증')
 
-
-
-
 insert into book_part3 values('P301','인공지능 일반')
 insert into book_part3 values('P302','딥러닝/머신러닝')
 insert into book_part3 values('P303','네트워크 일반')
@@ -203,109 +253,40 @@ insert into book_part3 values('P328','컴퓨터자격증 일반')
 insert into book_part3 values('0','선택안함')
 insert into book_part2 values('0','선택안함')
 
-
-
-
-drop table STUDY_video cascade constraints;
-
-
-create table study_video(
-video_num number,
-video_title varchar2(1000)not null,
-video_upload varchar2(20) not null,
-video_thumbnail clob not null,
-video_url clob not null,
-video_channel varchar2(100) not null,
-video_hits number not null,
-video_time varchar2(20) not null,
-book_part1 varchar2(10) not null,
-book_part2 varchar2(10),
-book_part3 varchar2(10),
-
-constraint sv_vn_pk primary key(video_num),
-constraint sv_bp1_fk foreign key(book_part1)
-references book_part1(book_part1),
-constraint sv_bp2_fk foreign key(book_part2)
-references book_part2(book_part2),
-constraint sv_bp3_fk foreign key(book_part3)
-references book_part3(book_part3)
-)
-select * from member_type
-
-create table member_type(
-member_nick varchar(20) not null,
-user_type1 varchar2(20),
-user_type2 varchar2(20),
-user_type3 varchar2(20),
-constraint mt_mn_fk foreign key(member_nick)
-references member(member_nick)
-on delete cascade
-)
-
-select * from book
-
 insert into member_type values('바보','P101','P202','')
 
-drop table member_type cascade constraints;
-drop table member cascade constraints;
-drop table recommend_book cascade constraints;
+select문
 
-create table recommend_book(
-member_nick varchar(20) not null,
-user_type1 varchar(20),
-user_type2 varchar(20),
-user_type3 varchar(20),
-book_title varchar(100) not null,
-book_price number not null,
-book_img clob not null,
-book_author varchar2(100) not null,
-book_publisher varchar2(50) not null,
-book_description clob,
-book_page number not null,
-book_pubdate varchar2(20) not null,
-book_isbn varchar2(30) not null,
-contents_cnt number,
-
-constraint rb_mn_fk foreign key(member_nick)
-references member(member_nick),
-constraint rb_bi_pk primary key(member_nick, book_isbn)
-)
-
-select * from recommend_book
 select * from member
+select * from book
 select * from member_type
+select * from recommend_book
 select * from book_part3
 select * from study_video
-
-delete from member_type where member_nick='Fatal'
-
+select * from recommend_video
 select * from book where book_part1='P102' and book_part2='P206' and book_part3='0'
-
+select * from study_video where book_part1='P102' and book_part2='P206' and book_part3='0'
 select * from book
 select NVL(book_part2, '0') from book
 select NVL(book_part3, '0') from book
 
+drop문
+
+drop table book_part3 cascade constraints;
+drop table STUDY_video cascade constraints;
+drop table member_type cascade constraints;
+drop table member cascade constraints;
+drop table recommend_book cascade constraints;
+drop table recommend_video cascade constraints;
+
+delete문
+
+delete from member_type where member_nick='Fatal'
+
+update문
+
 update book set book_part2 = '0' where book_part2 is null
 update book set book_part3 = '0' where book_part3 is null
-
 update study_video set book_part2 = '0' where book_part2 is null
 update study_video set book_part3 = '0' where book_part3 is null
 
-create table recommend_video(
-member_nick varchar(20) not null,
-user_type1 varchar(20),
-user_type2 varchar(20),
-user_type3 varchar(20),
-video_title varchar(100) not null,
-video_upload date not null,
-video_thumbnail blob,
-video_url blob,
-video_channel varchar(50) not null,
-video_hits varchar(30) not null,
-video_time varchar(10) not null,
-video_num number,
-
-constraint rv_mn_fk foreign key(member_nick)
-references member(member_nick),
-constraint rv_vn_pk primary key(video_num)
-)
