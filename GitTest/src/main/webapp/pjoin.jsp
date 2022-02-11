@@ -15,7 +15,7 @@
 		<br>
 		<input type="text" name="nick" id="input_nick" placeholder="닉네임을 입력하세요">
 		<font id="checkNick" size="2"></font>
-		<br>
+		<br>  
 		<input type="text" name="name" id="input_name" placeholder="이름을 입력하세요">
 		<br>
 		<input type="submit" value="회원가입">

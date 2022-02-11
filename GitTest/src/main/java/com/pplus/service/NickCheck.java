@@ -24,13 +24,13 @@ public class NickCheck implements iPCommand {
 
 		PMemberDAO dao = new PMemberDAO();
 
-		int nickCheck = dao.pmemberIdCheck(member_nick);
+		int nickCheck = dao.pmemberNickCheck(member_nick);
 		System.out.println(nickCheck);
 
 		if (nickCheck == 0) {
-			System.out.println("이미 존재하는 아이디입니다.");
+			System.out.println("이미 존재하는 닉네임입니다.");
 		} else if (nickCheck == 1) {
-			System.out.println("사용 가능한 아이디입니다.");
+			System.out.println("사용 가능한 닉네임입니다.");
 		}
 		out.write(nickCheck + "");
 	}
