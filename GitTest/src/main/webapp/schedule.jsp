@@ -24,6 +24,9 @@
 	</form>
 	<form action="" method="post">
 		<input type="submit" value="학습 진행 상황">
+		</form>
+	<form action="pmain.jsp" method="post">
+		<input type="submit" value="메인창">
 	</form>
 </body>
 </html>

@@ -79,15 +79,13 @@ public class AchieveDAO {
 	public int achieveUpdate(AchieveDTO achieve) {
 		connect();
 
-		sql = "update achieve set achieve_study_day=?, achieve_study_page=?, book_page=?, schedule_num_day=? where achieve_num=?";
+		sql = "update achieve set achieve_study_day=?, achieve_study_page=? where achieve_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, achieve.getAchieve_study_day());
 			psmt.setInt(2, achieve.getAchieve_study_page());
-			psmt.setInt(3, achieve.getBook_page());
-			psmt.setString(4, achieve.getSchedule_num_day());
-			psmt.setInt(5, achieve.getAchieve_num());
+			psmt.setInt(3, achieve.getAchieve_num());
 	
 			cnt = psmt.executeUpdate();
 

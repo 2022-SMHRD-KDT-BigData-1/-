@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="EditorIndexCon.do" method="post">
+	
 	<c:set value="0" var="j" />
 		<table border="1">
 			<tr>
@@ -33,11 +33,11 @@
 						${i.editor_title }
 					</td>
 					<td>
-						<input type="submit" value="확인">
+						<a href="EditorIndexCon.do?num=${i.editor_num}&nick=${i.member_nick}"><input type="submit" value="확인"></a>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-	</form>
+
 </body>
 </html>

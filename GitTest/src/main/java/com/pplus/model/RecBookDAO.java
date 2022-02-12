@@ -136,26 +136,21 @@ public class RecBookDAO {
 	public int recBookWish(String nick, int recbooknum, int num) {
 		connect();
 
-		sql = "update recommend_book set book_num=? where member_nick=? and contents_cnt=?";
+		sql = "update recommend_book set contents_cnt=? where book_num=? and member_nick=?";
 		
 		try {
 			psmt= conn.prepareStatement(sql);
-			psmt.setInt(1, num);
-			psmt.setString(2, nick);
-			psmt.setInt(3, recbooknum);
+			psmt.setInt(2, num);
+			psmt.setString(3, nick);
+			psmt.setInt(1, recbooknum);
 			
 			cnt=psmt.executeUpdate();
 			
-			if(cnt>0) {
-				System.out.println(nick+"dao위시리스트 등록 성공");
-			} else {
-				System.out.println(nick+"dao위시리스트 등록 실패");
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return num;
+		return cnt;
 	}
 }

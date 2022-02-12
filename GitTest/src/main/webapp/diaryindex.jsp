@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="DiaryIndexCon.do" method="post">
+	<form action="" method="post">
 	<c:set value="0" var="j" />
 		<table border="1">
 			<tr>
@@ -33,7 +33,7 @@
 						${i.diary_title }
 					</td>
 					<td>
-						<input type="submit" value="확인">
+						<a href="DiaryIndexCon.do?num${i.diary_num}&nick=${i.member_nick}"><input type="submit" value="확인"></a>
 					</td>
 				</tr>
 			</c:forEach>

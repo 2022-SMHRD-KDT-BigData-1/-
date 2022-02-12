@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form  method="post">
+
 		<table border="1">
 		<c:set value="0" var="j" />
 			<tr>
@@ -57,12 +57,12 @@
 						
 					</td>
 					<td>
-						<input type="submit" value="확인" formaction="ScheduleIndexCon.do">
-						<input type="submit" value="수정/삭제" formaction="ScheduleDelete.do">
+						<a href="ScheduleIndexCon.do?num=${i.schedule_num}&nick=${i.member_nick}"><input type="submit" value="확인"></a>
+						<a href="ScheduleDelete.do?num=${i.schedule_num}&nick=${i.member_nick}"><input type="submit" value="수정/삭제"></a>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-	</form>
+	
 </body>
 </html>

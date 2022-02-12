@@ -2,6 +2,7 @@ package com.pplus.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,12 +14,13 @@ import javax.websocket.Session;
 
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.RecBookDAO;
+import com.pplus.model.RecBookDTO;
 
 @WebServlet("/WishCon")
 public class WishCon implements iPCommand{
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		  request.setCharacterEncoding("utf-8");
 	      response.setContentType("text/html; charset=utf-8");
 	      HttpSession session = request.getSession();
 	      PrintWriter out =response.getWriter();
@@ -26,10 +28,29 @@ public class WishCon implements iPCommand{
 			int num = Integer.parseInt(request.getParameter("num"));
 			int recbooknum=Integer.parseInt(request.getParameter("recbooknum"));
 			
+			if(recbooknum == 0) {
+				recbooknum = 1;
+			}else {
+				recbooknum = 0;
+			}
+			
 			PMemberDTO member =(PMemberDTO) session.getAttribute("member");
 			RecBookDAO recbookDao= new RecBookDAO();		
-			recbookDao.recBookWish(member.getMember_nick(),recbooknum, num);
+			int cnt = recbookDao.recBookWish(member.getMember_nick(),recbooknum, num);
 
-			out.write(num + "");
+			
+			if(cnt > 0) {
+				
+				ArrayList<RecBookDTO> recbooklist = recbookDao.recBookSelectAll(member.getMember_nick());
+				session.setAttribute("recbooklist", recbooklist);
+				
+				response.sendRedirect("pmain.jsp");
+				
+			}else {
+				out.print("<script>");
+				out.print("alert('wishlist 등록을 실패하셨습니다.');");
+				out.print("location.href='pmain.jsp';");
+				out.print("</script>");
+			}
 	}
 }

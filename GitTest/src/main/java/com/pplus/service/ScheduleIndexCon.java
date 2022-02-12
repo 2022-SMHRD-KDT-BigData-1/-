@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pplus.model.DiaryDAO;
+import com.pplus.model.DiaryDTO;
 import com.pplus.model.EditorDAO;
 import com.pplus.model.EditorDTO;
 import com.pplus.model.ScheduleDAO;
@@ -31,12 +33,14 @@ public class ScheduleIndexCon implements iPCommand {
 		
 		ScheduleDAO dao = new ScheduleDAO();
 		EditorDAO editorDAO = new EditorDAO();
+		DiaryDAO diaryDAO = new DiaryDAO();
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String nick = request.getParameter("nick");
 		
 		ScheduleDTO schedule = dao.scheduleSelect(nick, num);
 		ArrayList<EditorDTO> editorlist = editorDAO.editorSelectAll(nick, num);
+		ArrayList<DiaryDTO> diarylist = diaryDAO.diarySelectAll(nick, num);
 		
 		
 		
@@ -47,8 +51,10 @@ public class ScheduleIndexCon implements iPCommand {
 			out.print("location.href='pmain.jsp';");
 			out.print("</script>");
 		}else {
+			System.out.println("스케줄 번호" + num);
 			session.setAttribute("schedule", schedule);
 			session.setAttribute("editorlist", editorlist);
+			session.setAttribute("diarylist", diarylist);
 			response.sendRedirect("schedule.jsp");
 		}
 		

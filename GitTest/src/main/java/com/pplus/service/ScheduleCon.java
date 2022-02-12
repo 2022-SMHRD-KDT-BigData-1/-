@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pplus.model.AchieveDAO;
+import com.pplus.model.AchieveDTO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.ScheduleDAO;
 import com.pplus.model.ScheduleDTO;
@@ -50,6 +52,7 @@ public class ScheduleCon implements iPCommand {
 		
 		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end, page, null, member.getMember_nick(), book_num,
 				bookTitle, book_page));
+	
 		
 		if(cnt > 0) {
 			System.out.println("스케줄 제목" + title);

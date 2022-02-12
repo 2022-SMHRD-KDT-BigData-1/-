@@ -155,14 +155,21 @@ if (member != null) {
 						</tr>
 						<tr>
 							<c:forEach var="recbook" items="${recbooklist }">
-								<input type="text" name="recbook" value="${recbook.book_num}" style="display : none">
 								<c:choose>
-									
 									<c:when test="${recbook.contents_cnt==1 }">
-										<td><button type="button" class="wish" name="wish" value="${recbook.contents_cnt}"><img src="heart1.png" width="20"></button>
+									
+										<td>
+											<a href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
+												<button type="button"><img src="heart1.png" width="20"></button>
+											</a>
+										</td>
 									</c:when>
 									<c:otherwise>
-										<td><button type="button" class="wish" name="wish" value="${recbook.contents_cnt}"><img src="heart0.png" width="20"></button>
+										<td>
+											<a href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
+												<button type="button"><img src="heart0.png" width="20"></button>
+											</a>
+										</td>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -182,43 +189,7 @@ if (member != null) {
 	</c:choose>
 	<script src="jquery-3.6.0.min.js"></script>
 	<script>
-	$(".wish").click( function(){
-		var rec_book_num=$("input[name=recbook]").val();
-		var num = $("button[name = wish]").val();
-		if(num==0){
-			num=1;
-			
-			$.ajax({
-				type : "post",
-				url : "WishCon.do"
-				async : true,
-				data : {"num" : num, "recbooknum" : rec_book_num},
-				success : function(result) {
-					alert("Wishlist에 등록되었습니다.")
-					$(".wish").attr("src","heart1.png")
-				},
-				error : function(){
-					alert("서버요청실패");
-				}
-			});
-		} else {
-			num =0;
-			$.ajax({
-				type : "post",
-				url : "WishCon.do"
-				async : true,
-				data : {"num" : num, "recbooknum" : rec_book_num},
-				success : function(result) {
-					alert("Wishlist에 제거되었습니다.")
-					$(".wish").attr("src","heart0.png")
-				},
-				error : function(){
-					alert("서버요청실패");
-				}
-			});
-		}
-	});
-	
+
 	</script>
 </body>
 </html>
