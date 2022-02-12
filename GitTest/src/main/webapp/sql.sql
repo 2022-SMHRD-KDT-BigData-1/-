@@ -37,7 +37,22 @@ create문
 create sequence seq_schedule_num
 		increment by 1
 		start with 1;
+		
 
+create sequence seq_editor_num
+		increment by 1
+		start with 1;
+		
+create sequence seq_diary_num
+		increment by 1
+		start with 1;
+		
+		
+create sequence seq_achieve_num
+		increment by 1
+		start with 1;
+
+		
 create table member(
 	member_id varchar(20) not null,
 	member_pw varchar(15) not null,
@@ -151,7 +166,7 @@ create table recommend_video(
 	)
 	
 create table schedule(
-	schedule_num number,
+	seq_schedule_num number,
 	schedule_name varchar2(1000),
 	schedule_start varchar2(20),
 	schedule_num_day varchar2(10),
@@ -162,13 +177,63 @@ create table schedule(
 	book_num number,
 	book_title varchar2(130),
 	book_page number,
-	constraint sc_sn_pk primary key(schedule_num),
+	constraint sc_sn_pk primary key(seq_schedule_num),
 	constraint sc_mn_fk foreign key(member_nick)
 	references member(member_nick)
 	on delete cascade,
 	constraint sc_bn_fk foreign key(book_num)
 	references book(book_num)
 
+)
+
+create table editor(
+	seq_editor_num number,
+	editor_title varchar2(20),
+	editor_content clob,
+	editor_date date,
+	seq_schedule_num number,
+	member_nick varchar(20),
+	constraint ed_en_pk primary key(seq_editor_num),
+	constraint ed_en_fk foreign key(member_nick)
+	references member(member_nick)
+	on delete cascade,
+	constraint ed_sn_fk foreign key(seq_schedule_num)
+	references schedule(seq_schedule_num)
+	on delete cascade
+	
+)
+
+create table diary(
+	seq_diary_num number,
+	diary_title varchar2(20),
+	diary_content clob,
+	diary_date date,
+	seq_schedule_num number,
+	member_nick varchar(20),
+	constraint di_dn_pk primary key(seq_diary_num),
+	constraint di_mi_fk foreign key(member_nick)
+	references member(member_nick)
+	on delete cascade,
+	constraint di_sn_fk foreign key(seq_schedule_num)
+	references schedule(seq_schedule_num)
+	on delete cascade
+)
+
+create table achieve(
+	seq_achieve_num number,
+	achieve_study_day varchar2(10),
+	achieve_study_page varchar2(10),
+	seq_schedule_num number,
+	member_nick varchar(20),
+	book_page number,
+	schedule_num_day varchar2(10),
+	constraint ac_an_pk primary key(seq_achieve_num),
+	constraint ac_mi_fk foreign key(member_nick)
+	references member(member_nick)
+	on delete cascade,
+	constraint ac_sn_fk foreign key(seq_schedule_num)
+	references schedule(seq_schedule_num)
+	on delete cascade
 )
 	
 insert문
@@ -299,6 +364,9 @@ select * from book
 select NVL(book_part2, '0') from book
 select NVL(book_part3, '0') from book
 select * from schedule
+select * from editor
+select * from diary
+
 
 
 drop문
@@ -310,6 +378,9 @@ drop table member cascade constraints;
 drop table recommend_book cascade constraints;
 drop table recommend_video cascade constraints;
 drop table schedule cascade constraints;
+drop table editor cascade constraints;
+drop table diary cascade constraints;
+
 
 
 delete문

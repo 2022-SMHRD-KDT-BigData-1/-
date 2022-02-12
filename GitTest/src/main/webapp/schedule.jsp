@@ -16,10 +16,10 @@
 	<form action="editorindex.jsp" method="post">
 		<input type="submit" value="에디터 목록">
 	</form>
-	<form action="" method="post">
-		<input type="submit" value="일기">
+	<form action="diaryset.jsp" method="post">
+		<input type="submit" value="일기 등록">
 	</form>
-	<form action="" method="post">
+	<form action="diaryindex.jsp" method="post">
 		<input type="submit" value="일기 목록">
 	</form>
 	<form action="" method="post">

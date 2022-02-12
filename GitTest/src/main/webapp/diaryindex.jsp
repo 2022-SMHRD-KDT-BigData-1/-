@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="EditorIndexCon.do" method="post">
+	<form action="DiaryIndexCon.do" method="post">
 	<c:set value="0" var="j" />
 		<table border="1">
 			<tr>
@@ -16,21 +16,21 @@
 					NO
 				</td>
 				<td>
-					에디터 이름
+					일기 제목
 				</td>
 				<td>
 					선택
 				</td>
 			</tr>
-			<c:forEach var="i" items="${sessionScope.editorlist }">
+			<c:forEach var="i" items="${sessionScope.diarylist }">
 				<tr>
 					<td>
-						<input value="${i.editor_num }" style="display: none;" name="num">
+						<input value="${i.diary_num }" style="display: none;" name="num">
 						<input value="${i.member_nick }" style="display: none;" name="nick">
-						${j = j + 1}
+						${j += 1}
 					</td>
 					<td>
-						${i.editor_title }
+						${i.diary_title }
 					</td>
 					<td>
 						<input type="submit" value="확인">

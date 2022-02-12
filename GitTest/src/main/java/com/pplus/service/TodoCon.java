@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.pplus.model.EditorDAO;
-import com.pplus.model.EditorDTO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.ScheduleDTO;
+import com.pplus.model.TodoDAO;
+import com.pplus.model.TodoDTO;
 
 
-@WebServlet("/EditorCon")
-public class EditorCon implements iPCommand{
+@WebServlet("/TodoCon")
+public class TodoCon implements iPCommand{
 	
 
 	
@@ -32,29 +32,29 @@ public class EditorCon implements iPCommand{
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
+		ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
-		ScheduleDTO schedule = (ScheduleDTO)session.getAttribute("schedule");
 		
-		EditorDAO dao = new EditorDAO();
+		TodoDAO dao = new TodoDAO();
 		
-		int cnt = dao.editorSet(new EditorDTO(0, title, content, null, schedule.getSchedule_num(), member.getMember_nick()));
+		int cnt = dao.todoSet(new TodoDTO(0, title, content, null, schedule.getSchedule_num(), member.getMember_nick()));
 		
 		if(cnt > 0) {
-			System.out.println("에디터 제목" + title);
-			System.out.println("에디터 내용" + content);
+			System.out.println("todo 제목" + title);
+			System.out.println("회원 닉네임" + member.getMember_nick());
 			
-			ArrayList<EditorDTO> editorlist = dao.editorSelectAll(member.getMember_nick(), schedule.getSchedule_num());
+			ArrayList<TodoDTO> todolist = dao.todoSelectAll(member.getMember_nick(), schedule.getSchedule_num());
 			
-			session.setAttribute("editorlist", editorlist);
+			session.setAttribute("todolist", todolist);
 			response.sendRedirect("schedule.jsp");
-			// 우선 메인 페이지로 가게 햇고 경우에 따라서 다른 페이지로 가게 하면 괼것 같습니다
 		}else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
-			out.print("alert('에디터 등록을 실패하셨습니다.');");
+			out.print("alert('todo 등록을 실패하셨습니다.');");
 			out.print("location.href='pmain.jsp';");
 			out.print("</script>");
 		}
+		
 	}
 
 }

@@ -60,6 +60,8 @@ public class DiaryDAO {
 			psmt.setString(2, diary.getDiary_content());
 			psmt.setInt(3, diary.getSchedule_num());
 			psmt.setString(4, diary.getMember_nick());
+			
+			
 		
 
 			cnt = psmt.executeUpdate();

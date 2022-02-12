@@ -155,9 +155,9 @@ if (member != null) {
 						</tr>
 						<tr>
 							<c:forEach var="recbook" items="${recbooklist }">
-
+								<input type="text" name="recbook" value="${recbook.book_num}" style="display : none">
 								<c:choose>
-									<input type="text" name="recbook" value="${recbook.book_num}" style="display : none">
+									
 									<c:when test="${recbook.contents_cnt==1 }">
 										<td><button type="button" class="wish" name="wish" value="${recbook.contents_cnt}"><img src="heart1.png" width="20"></button>
 									</c:when>

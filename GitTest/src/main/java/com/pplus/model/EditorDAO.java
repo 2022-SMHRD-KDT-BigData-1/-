@@ -78,7 +78,7 @@ public class EditorDAO {
 	public int editorUpdate(EditorDTO editor) {
 		connect();
 
-		sql = "update editor set editor_title=?, editor_content=? where m_nick=? and seq_editor_num=?";
+		sql = "update editor set editor_title=?, editor_content=? where member_nick=? and seq_editor_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -104,7 +104,7 @@ public class EditorDAO {
 	public int editorDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from editor where m_nick=? and seq_editor_num=?";
+		sql = "delete from editor where member_nick=? and seq_editor_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -126,7 +126,7 @@ public class EditorDAO {
 		EditorDTO editor =null;
 		connect();
 
-		sql = "select * from editor where m_nick=? and seq_editor_num=?";
+		sql = "select * from editor where member_nick=? and seq_editor_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -152,7 +152,7 @@ public class EditorDAO {
 		ArrayList<EditorDTO> editorlist = new ArrayList<EditorDTO>();
 		connect();
 
-		sql = "select * from editor where m_nick=? and seq_schedule_num=?";
+		sql = "select * from editor where member_nick=? and seq_schedule_num=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
@@ -178,7 +178,7 @@ public class EditorDAO {
 		ArrayList<EditorDTO> editorlist = new ArrayList<EditorDTO>();
 		connect();
 
-		sql = "select * from diary where m_nick=?";
+		sql = "select * from diary where member_nick=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TodoDAO {
 
@@ -144,5 +145,29 @@ public class TodoDAO {
 			close();
 		}
 		return todo;
+	}
+	public ArrayList<TodoDTO> todoSelectAll(String nick, int num) {
+		ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
+		connect();
+
+		sql = "select * from todo where member_nick=? and seq_schedule_num=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				todolist.add(new TodoDTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return todolist;
 	}
 }
