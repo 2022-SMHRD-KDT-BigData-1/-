@@ -19,18 +19,20 @@ session.setAttribute("wishlist", wishlist);
 </head>
 <body><h3>도서위시리스트 목록</h3>
 
-<ol>
+
 	<c:forEach var="wish" items="${wishlist }">
 		<td>
-			<li>
-				<a href="BookintCon?num=${wish.book_num }"> 
-					<img src="${wish.book_img}" width="80">
-				</a>
-				<button onclick="location.href='scheduleset.jsp?num=${wish.book_num}&title=${wish.book_title }&page=${wish.book_page }'">스케줄 등록</button>
-			</li>
+			<ol>
+				<li>
+					<a href="BookintCon?num=${wish.book_num }"> 
+						<img src="${wish.book_img}" width="80">
+					</a>
+					<button onclick="location.href='scheduleset.jsp?num=${wish.book_num}&title=${wish.book_title }&page=${wish.book_page }'">스케줄 등록</button>
+				</li>
+			</ol>
 		</td>
 	</c:forEach>
-</ol>
+
 
 </body>
 </html>
