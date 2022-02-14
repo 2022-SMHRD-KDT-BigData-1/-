@@ -153,4 +153,31 @@ public class RecBookDAO {
 		}
 		return cnt;
 	}
+	
+	public ArrayList<RecBookDTO> recBookWishSelectAll(String nick) {
+		ArrayList<RecBookDTO> recbookwishlist = new ArrayList<RecBookDTO>();
+		connect();
+
+		sql = "select * from recommend_book where member_nick=? and contents_cnt=1";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				recbookwishlist.add(new RecBookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13), rs.getInt(14) ,rs.getInt(15)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recbookwishlist;
+	}
+	
 }

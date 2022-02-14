@@ -37,7 +37,7 @@ public class WishCon implements iPCommand{
 			PMemberDTO member =(PMemberDTO) session.getAttribute("member");
 			RecBookDAO recbookDao= new RecBookDAO();		
 			int cnt = recbookDao.recBookWish(member.getMember_nick(),recbooknum, num);
-
+			
 			
 			if(cnt > 0) {
 				

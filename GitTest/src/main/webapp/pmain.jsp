@@ -93,6 +93,7 @@ if (member != null) {
 					<a href="pmypage.jsp">마이페이지</a>
 					<a href="plogout.jsp">로그아웃</a>
 					<a href="ptype.jsp">유형조사</a>
+					<a href="mywish.jsp">도서위시리스트</a>
 					<a href="scheduleset.jsp">스케줄등록</a>
 					<a href="scheduleindex.jsp">스케줄목록</a>
 					<c:choose>
