@@ -182,5 +182,30 @@ public class RecBookDAO {
 		}
 		return recbookwishlist;
 	}
+	public RecBookDTO recBookSelect(int num) {
+		RecBookDTO recbook = null;
+		connect();
+
+		sql = "select * from recommend_book where book_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, num);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+
+				recbook = new RecBookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+						rs.getInt(11), rs.getString(12), rs.getString(13), rs.getInt(14), rs.getInt(15));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recbook;
+	}
 	
 }

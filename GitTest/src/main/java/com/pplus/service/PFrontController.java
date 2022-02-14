@@ -32,6 +32,7 @@ public class PFrontController extends HttpServlet {
 		map.put("/IdCheck.do", new IdCheck());
 		map.put("/NickCheck.do", new NickCheck());
 		map.put("/WishCon.do",new WishCon());
+		map.put("/WishCon2.do",new WishCon2());
 		map.put("/EditorCon.do", new EditorCon());
 		map.put("/ScheduleIndexCon.do", new ScheduleIndexCon());
 		map.put("/EditorIndexCon.do", new EditorIndexCon());

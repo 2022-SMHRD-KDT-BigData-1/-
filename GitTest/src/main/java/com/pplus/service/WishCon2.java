@@ -16,8 +16,8 @@ import com.pplus.model.PMemberDTO;
 import com.pplus.model.RecBookDAO;
 import com.pplus.model.RecBookDTO;
 
-@WebServlet("/WishCon")
-public class WishCon implements iPCommand{
+@WebServlet("/WishCon2")
+public class WishCon2 implements iPCommand{
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		  request.setCharacterEncoding("utf-8");
@@ -42,14 +42,17 @@ public class WishCon implements iPCommand{
 			if(cnt > 0) {
 				
 				ArrayList<RecBookDTO> recbooklist = recbookDao.recBookSelectAll(member);
-				session.setAttribute("recbooklist", recbooklist);
+				RecBookDTO recbook = recbookDao.recBookSelect(num);
 				
-				response.sendRedirect("pmain.jsp");
+				session.setAttribute("recbooklist", recbooklist);
+				session.setAttribute("recbook", recbook);
+				
+				response.sendRedirect("bookint.jsp");
 				
 			}else {
 				out.print("<script>");
 				out.print("alert('wishlist 등록을 실패하셨습니다.');");
-				out.print("location.href='pmain.jsp';");
+				out.print("location.href='bookint.jsp';");
 				out.print("</script>");
 			}
 	}

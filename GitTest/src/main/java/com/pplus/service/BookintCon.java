@@ -27,10 +27,11 @@ public class BookintCon extends HttpServlet {
 		RecBookDAO recbookDAO = new RecBookDAO();
 		
 		BookDTO book=bookDao.bookSelect(book_num);
-		RecBookDTO rexbook = recbookDAO.recBookselect()
+		RecBookDTO recbook = recbookDAO.recBookSelect(book_num);
 		
 		HttpSession session =request.getSession();
 		session.setAttribute("book", book);
+		session.setAttribute("recbook", recbook);
 		response.sendRedirect("bookint.jsp");
 	}
 }

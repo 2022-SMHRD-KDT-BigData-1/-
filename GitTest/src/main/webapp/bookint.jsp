@@ -31,12 +31,12 @@ BookDTO book = (BookDTO) session.getAttribute("book");
 			<img src="${book.book_img }">
 			<c:choose>
 				<c:when test="${recbook.contents_cnt==1}">
-						<a href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
+						<a href="WishCon2.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
 						<button type="button"><img src="heart1.png" width="20"></button>
 						</a>
 				</c:when>
 				<c:otherwise>
-						<a href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
+						<a href="WishCon2.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
 						<button type="button"><img src="heart0.png" width="20"></button>
 						</a>
 				</c:otherwise>
@@ -54,7 +54,7 @@ BookDTO book = (BookDTO) session.getAttribute("book");
 	<button onclick="goBack()">앞쪽 페이지로</button>
 	<script>
 		function goBack() {
-			window.history.back();
+			location.href='pmain.jsp';
 		}
 	</script>
 </body>
