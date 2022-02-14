@@ -24,6 +24,6 @@ public class RecVideoDTO {
 	private String video_hits;
 	private String video_time;
 	private int video_num;
-	
+	private int contents_cnt;
 
 }

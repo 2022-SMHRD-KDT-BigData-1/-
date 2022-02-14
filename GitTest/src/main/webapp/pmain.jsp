@@ -93,9 +93,10 @@ if (member != null) {
 					<a href="pmypage.jsp">마이페이지</a>
 					<a href="plogout.jsp">로그아웃</a>
 					<a href="ptype.jsp">유형조사</a>
-					<a href="mywish.jsp">도서위시리스트</a>
+					<a href="mywish.jsp">위시리스트</a>
 					<a href="scheduleset.jsp">스케줄등록</a>
 					<a href="scheduleindex.jsp">스케줄목록</a>
+					<a href="dayplanset.jsp">일정등록</a>
 					<c:choose>
 						<c:when test="${empty member.user_type1}">
 							<script langauge="javascript">
@@ -178,11 +179,38 @@ if (member != null) {
 
 					</table>
 					<hr>
-					<c:forEach var="recvideo" items="${recvideolist }">
-						<a href="VideointCon?num=${recvideo.video_num}"> <img
-							src="${recvideo.video_thumbnail}" width="80">
-						</a>
-					</c:forEach>
+					<table>
+						<tr>
+							<c:forEach var="recvideo" items="${recvideolist }">
+							<td>
+								<a href="VideointCon?num=${recvideo.video_num}"> <img
+									src="${recvideo.video_thumbnail}" width="80">
+								</a>
+							</td>
+							</c:forEach>
+						</tr>
+						<tr>
+							<c:forEach var="recvideo" items="${recvideolist }">
+								<c:choose>
+									<c:when test="${recvideo.contents_cnt==1 }">
+									
+										<td>
+											<a href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
+												<button type="button"><img src="heart1.png" width="20"></button>
+											</a>
+										</td>
+									</c:when>
+									<c:otherwise>
+										<td>
+											<a href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
+												<button type="button"><img src="heart0.png" width="20"></button>
+											</a>
+										</td>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</tr>
+					</table>
 				</c:otherwise>
 			</c:choose>
 		</c:otherwise>

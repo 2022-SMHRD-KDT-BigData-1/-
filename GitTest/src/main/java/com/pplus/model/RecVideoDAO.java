@@ -56,7 +56,7 @@ public class RecVideoDAO {
 		for (int i = 0; i < recvideo.size(); i++) {
 			try {
 
-				sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?)";
+				sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, member.getMember_nick());
@@ -71,6 +71,7 @@ public class RecVideoDAO {
 				psmt.setString(10, recvideo.get(i).getVideo_hits());
 				psmt.setString(11, recvideo.get(i).getVideo_time());
 				psmt.setInt(12, recvideo.get(i).getVideo_num());
+				psmt.setInt(13, 0);
 
 				cnt += psmt.executeUpdate();
 
@@ -106,11 +107,59 @@ public class RecVideoDAO {
 
 	// recvideo DB에 저장되어 있는 데이터들을 회원별로 가져오고싶기 때문에 회원에 닉네임을 통하여 찾기
 	// recvideoSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecVideoDTO> list
-	public ArrayList<RecVideoDTO> recVideoSelectAll(String nick) {
+	public ArrayList<RecVideoDTO> recVideoSelectAll(PMemberDTO member) {
 		ArrayList<RecVideoDTO> list = new ArrayList<RecVideoDTO>();
 		connect();
 
-		sql = "select * from recommend_video where member_nick=?";
+		sql = "select * from recommend_video where member_nick=? and user_type1 = ? and user_type2 = ? and user_type3 = ?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, member.getMember_nick());
+			psmt.setString(2, member.getUser_type1());
+			psmt.setString(3, member.getUser_type2());
+			psmt.setString(4, member.getUser_type3());
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				list.add(new RecVideoDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+	public int recVideoWish(String nick, int recvideonum, int num) {
+		connect();
+
+		sql = "update recommend_video set contents_cnt=? where video_num=? and member_nick=?";
+		
+		try {
+			psmt= conn.prepareStatement(sql);
+			psmt.setInt(2, num);
+			psmt.setString(3, nick);
+			psmt.setInt(1, recvideonum);
+			
+			cnt=psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	public ArrayList<RecVideoDTO> recVideoWishSelectAll(String nick) {
+		ArrayList<RecVideoDTO> recvideowishlist = new ArrayList<RecVideoDTO>();
+		connect();
+
+		sql = "select * from recommend_video where member_nick=? and contents_cnt=1";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -120,16 +169,41 @@ public class RecVideoDAO {
 
 			while (rs.next()) {
 
-				list.add(new RecVideoDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+				recvideowishlist.add(new RecVideoDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
 						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-						rs.getString(10), rs.getString(11), rs.getInt(12)));
+						rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return list;
+		return recvideowishlist;
+	}
+	public RecVideoDTO recVideoSelect(int num) {
+		RecVideoDTO recvideo = null;
+		connect();
+
+		sql = "select * from recommend_video where video_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, num);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+
+				recvideo = new RecVideoDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+						rs.getString(11), rs.getInt(12), rs.getInt(13));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recvideo;
 	}
 
 }

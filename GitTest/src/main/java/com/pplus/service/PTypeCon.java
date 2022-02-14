@@ -65,7 +65,7 @@ public class PTypeCon implements iPCommand {
       System.out.println("test2 : "+cnt3);
       
       ArrayList<RecBookDTO> recbooklist=recbookDao.recBookSelectAll(member);
-      ArrayList<RecVideoDTO> recvideolist=recvideoDao.recVideoSelectAll(member.getMember_nick()); 
+      ArrayList<RecVideoDTO> recvideolist=recvideoDao.recVideoSelectAll(member); 
       System.out.println("test3 : "+recvideolist.size());
       
       System.out.println(cnt2);

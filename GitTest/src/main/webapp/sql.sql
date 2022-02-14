@@ -160,6 +160,7 @@ create table recommend_video(
 	video_hits varchar(30) not null,
 	video_time varchar(20) not null,
 	video_num number,
+	contents_cnt number,
 	constraint rv_mn_fk foreign key(member_nick)
 	references member(member_nick)
 	on delete cascade
