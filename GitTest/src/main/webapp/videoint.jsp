@@ -30,12 +30,12 @@
 		<img src="${video.video_thumbnail }">
 		<c:choose>
 				<c:when test="${recvideo.contents_cnt==1}">
-						<a href="WishVideoCon2.do?num=${recvideo.video_num}&recbooknum=${recvideo.contents_cnt}">
+						<a href="WishVideoCon2.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
 						<button type="button"><img src="heart1.png" width="20"></button>
 						</a>
 				</c:when>
 				<c:otherwise>
-						<a href="WishVideoCon2.do?num=${recvideo.video_num}&recbooknum=${recvideo.contents_cnt}">
+						<a href="WishVideoCon2.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
 						<button type="button"><img src="heart0.png" width="20"></button>
 						</a>
 				</c:otherwise>
@@ -54,7 +54,7 @@
 	<button onclick="goBack()">앞쪽 페이지로</button>
 	<script>
 		function goBack() {
-			window.history.back();
+			location.href='pmain.jsp';
 		}
 	</script>
 

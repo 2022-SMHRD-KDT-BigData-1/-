@@ -42,7 +42,7 @@ session.setAttribute("wishlistvideo", wishlistvideo);
 	<ol>
 		<c:forEach var="wish" items="${wishlistvideo }">
 			<li>
-				<a href="videointCon?num=${wish.video_num }"> 
+				<a href="VideointCon?num=${wish.video_num }"> 
 					<img src="${wish.video_thumbnail}" width="80">
 				</a>
 			</li>

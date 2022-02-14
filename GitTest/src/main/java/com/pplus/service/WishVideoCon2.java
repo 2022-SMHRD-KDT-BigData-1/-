@@ -34,17 +34,17 @@ public class WishVideoCon2 implements iPCommand {
 	      PrintWriter out =response.getWriter();
 		
 			int num = Integer.parseInt(request.getParameter("num"));
-			int recvideoknum=Integer.parseInt(request.getParameter("recvideoknum"));
+			int recvideonum=Integer.parseInt(request.getParameter("recvideonum"));
 			
-			if(recvideoknum == 0) {
-				recvideoknum = 1;
+			if(recvideonum == 0) {
+				recvideonum = 1;
 			}else {
-				recvideoknum = 0;
+				recvideonum = 0;
 			}
 			
 			PMemberDTO member =(PMemberDTO) session.getAttribute("member");
 			RecVideoDAO recvideoDao = new RecVideoDAO();	
-			int cnt = recvideoDao.recVideoWish(member.getMember_nick(),recvideoknum, num);
+			int cnt = recvideoDao.recVideoWish(member.getMember_nick(),recvideonum, num);
 			
 			 
 			if(cnt > 0) {

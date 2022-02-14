@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String num = request.getParameter("num");
-	int wish_book_num = Integer.parseInt(num);
-	String wish_book_title =request.getParameter("title");
-	String book_page =request.getParameter("page");
-	int wish_book_page = Integer.parseInt(book_page);
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,27 +9,64 @@
 <title>Insert title here</title>
  <script  src="jquery-3.6.0.min.js"></script>
 </head>
-<body>
+<body><script src="jquery-3.6.0.min"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+if("${serviceType}" == "wish"){
+	 $('input:radio[name="serviceType"][value="wish"]').prop('checked', true);
+	 $("#viewsearch" ).hide();
+	 $("#viewuser" ).hide();
+	 $("#viewwish" ).show();
+}
+
+$("input[name='serviceType']:radio").change(function () {
+    var serviceType = this.value;
+                    
+    if(serviceType == "wish"){
+        $( "#viewsearch" ).hide();
+        $( "#viewuser" ).hide();
+        $( "#viewwish" ).show();
+    }else if(serviceType == "search"){
+        $( "#viewsearch" ).show();
+        $( "#viewwish" ).hide();
+        $( "#viewuser" ).hide();
+    }else if(serviceType == "user"){
+        $( "#viewuser" ).show();
+        $( "#viewsearch" ).hide();
+        $( "#viewwish" ).hide();
+    }
+                    
+});
+});
+
+</script>
 	
 	<h1>스케줄</h1>
 	<form action="ScheduleCon.do" method="post">
-		<c:choose>
-			<c:when test="${empty wish_book_title  }">
+		<input type="radio" value="wish" name="serviceType" checked="checked">위시리스트 찾기
+		<input type="radio" value="search" name="serviceType">검색
+		<input type="radio" value="user" name="serviceType">입력
+		<br>
+		<br>
+			<span id="viewwish" >
 				위시리스트에서 찾기 : <input type="button" value="내 위시리스트" onclick="mybook()"><br>
-				<c:choose>
-					<c:when test="${empty }">
+						<input type="text" id="book_title1"  style="display: none; " name="book_title1"><br>
+						<input type="text" id="book_num1" style="display: none; " name="book_num1">
+						<input type="text" id="book_page1" style="display: none;" name="book_page1">
+			</span>
+			<span id="viewsearch" style="display: none;">
 				책 검색 : <input type="text" id="book_title" onclick="book()" placeholder="책을 입력 해 주세요" name="book_title">
 						<input type="button" value="검색" onclick="book()"><br>
 						<input type="text" id="book_num" style="display: none; " name="book_num">
 						<input type="text" id="book_page" style="display: none;" name="book_page">
-					</c:when>
-				</c:choose>
-			</c:when>
-			<c:otherwise>
-					책 제목 : ${wish_book_title } 
-			</c:otherwise>
+				</span>
+				<span id="viewuser" style="display: none;">
 			
-		</c:choose> 
+					책 제목 : <input type="text" name="book_title2"><br>
+					책 페이지 수 : <input type="text" name="book_page2"><br>
+			</span>
+			<br>
+			<br>
 
 		제목 : <input type="text" name="title"> <br>
 		시작일 : <input type="date" name="start" id="Date1" onchange="call()" value="">   ~   
@@ -75,6 +106,7 @@
 		document.getElementById("book_num").value = num;
 		document.getElementById("book_page").value = page;
 		console.log(page);
+		console.log(num);
 	}
 	
 	

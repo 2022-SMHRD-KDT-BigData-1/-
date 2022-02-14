@@ -30,13 +30,36 @@ public class ScheduleCon implements iPCommand {
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
 		
-		String bookTitle = request.getParameter("book_title");
+		String bookTitle =null;
+		int book_num = 0;
+		int book_page = 0;
+		
+		
+		if(request.getParameter("book_title1").equals(null)) {
+			
+			bookTitle = request.getParameter("book_title1");
+			book_num = Integer.parseInt(request.getParameter("book_num1"));
+			book_page = Integer.parseInt(request.getParameter("book_page1"));
+			
+		}else if(request.getParameter("book_title2").equals(null)) {
+			
+			bookTitle = request.getParameter("book_title2");
+			book_num = Integer.parseInt(request.getParameter("book_num2"));
+			book_page = Integer.parseInt(request.getParameter("book_page2"));
+			
+		}else {
+			bookTitle = request.getParameter("book_title");
+			book_num = Integer.parseInt(request.getParameter("book_num"));
+			book_page = Integer.parseInt(request.getParameter("book_page"));
+		}
+		
+		
+		
 		String title = request.getParameter("title");
 		String start = request.getParameter("start");
 		String end = request.getParameter("end"); 
 		String day = request.getParameter("day");
-		int book_num = Integer.parseInt(request.getParameter("book_num"));
-		int book_page = Integer.parseInt(request.getParameter("book_page"));
+		
 		int page = book_page / Integer.parseInt(day);
 		System.out.println(bookTitle);
 		System.out.println(book_page);
