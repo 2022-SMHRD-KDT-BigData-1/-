@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VideoDTO {
+public class VideoDTO { 
 
 		// 대분휴, 중분류,소분류, 영상 제목, 영상 날짜, 영상 썸네일, 영상 주소
 		// 영상 채널 주소, 영상 조회수, 영상 시간 저장

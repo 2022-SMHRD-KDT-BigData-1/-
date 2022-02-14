@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TodoDTO {
+	
 	// 투두 번호, 투두 제목, 투두 내용, 투두 작성일자, 스케줄 번호, 회원의 닉네임 저장
 	private int todo_num;
 	private String todo_title;

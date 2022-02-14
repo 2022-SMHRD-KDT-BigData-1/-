@@ -38,7 +38,7 @@ public class WishCon2 implements iPCommand{
 			RecBookDAO recbookDao= new RecBookDAO();		
 			int cnt = recbookDao.recBookWish(member.getMember_nick(),recbooknum, num);
 			
-			
+			 
 			if(cnt > 0) {
 				
 				ArrayList<RecBookDTO> recbooklist = recbookDao.recBookSelectAll(member);

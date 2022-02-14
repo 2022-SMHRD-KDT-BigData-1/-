@@ -24,7 +24,7 @@ public void execute(HttpServletRequest request, HttpServletResponse response)
 	PrintWriter out = response.getWriter();
 	
 	PMemberDAO dao = new PMemberDAO();
-	
+	 
 	int idCheck =dao.pmemberIdCheck(member_id);
 	System.out.println(idCheck);
 	

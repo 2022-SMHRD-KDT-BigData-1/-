@@ -29,6 +29,6 @@ public class VideointCon extends HttpServlet {
 		session.setAttribute("video", video);
 		response.sendRedirect("videoint.jsp");
 	
-	}
+	} 
 
 }

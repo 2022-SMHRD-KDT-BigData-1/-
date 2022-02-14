@@ -11,7 +11,7 @@
 	<form action="" method="post">
 		<table border="1">
 		
-			<tr>
+			<tr> 
 				<td>
 					제목
 				</td>

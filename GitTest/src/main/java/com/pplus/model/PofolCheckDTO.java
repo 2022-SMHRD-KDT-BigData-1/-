@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PofolCheckDTO {
+	
 	//포트폴리오 번호, 회원 닉네임, 회원 이름, 스케줄 번호, 일정 번호, 확인 저장
 	private int pofol_num;
 	private String member_nick;

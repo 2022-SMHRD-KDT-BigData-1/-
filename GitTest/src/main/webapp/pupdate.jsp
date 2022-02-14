@@ -25,4 +25,4 @@
 		<input type="submit" value="정보 수정">
 	</form>
 </body>
-</html>
+</html> 

@@ -14,7 +14,7 @@ BookDTO book = (BookDTO) session.getAttribute("book");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body> 
 	<c:choose>
 		<c:when test="${empty member }">
 			<img src="${book.book_img }">

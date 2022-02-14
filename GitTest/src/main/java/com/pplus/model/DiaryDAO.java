@@ -15,7 +15,7 @@ public class DiaryDAO {
 	private int cnt;
 	private String sql;
 
-	public void connect() {
+	public void connect() { 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";

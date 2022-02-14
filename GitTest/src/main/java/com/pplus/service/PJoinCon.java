@@ -23,7 +23,7 @@ public class PJoinCon implements iPCommand {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String nick = request.getParameter("nick");
-		String name = request.getParameter("name");
+		String name = request.getParameter("name"); 
 
 		PMemberDAO dao = new PMemberDAO();
 

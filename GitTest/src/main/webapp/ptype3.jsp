@@ -24,7 +24,7 @@
 		</select>
     <button onclick="sendTypeValue()">확인</button>
  <script  src="jquery-3.6.0.min.js"></script>
-<script>
+<script> 
 	function sendTypeValue() {
 		var type1 = $("select[name = type1]").val();
 		var type2 = $("select[name = type2]").val();

@@ -24,7 +24,7 @@ ArrayList<RecBookDTO> recbooklist = (ArrayList<RecBookDTO>) session.getAttribute
 ArrayList<RecVideoDTO> recvideolist = (ArrayList<RecVideoDTO>) session.getAttribute("recvideolist");
 
 ArrayList<BookDTO> booklist = null;
-ArrayList<VideoDTO> videolist = null;
+ArrayList<VideoDTO> videolist = null; 
 // 로그인
 if (member != null) {
 	if (member.getUser_type1() == null) {

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RecBookDTO {
+	
 	// 회원에 닉네임, 대분류, 중분류, 소분휴 저장
 	private String member_nick;
 	private String user_type1;

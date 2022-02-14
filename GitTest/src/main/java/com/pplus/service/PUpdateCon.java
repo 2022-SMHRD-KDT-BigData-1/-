@@ -27,7 +27,7 @@ public class PUpdateCon implements iPCommand {
 		HttpSession session = request.getSession();
 		
 		String pw = request.getParameter("pw");
-		String nick = request.getParameter("nick");
+		String nick = request.getParameter("nick"); 
 		
 		PMemberDTO member = (PMemberDTO)session.getAttribute("member");
 		

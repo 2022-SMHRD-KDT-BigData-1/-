@@ -32,7 +32,7 @@ public class PDeleteCon  implements iPCommand {
 		
 		
 		
-		int cnt = dao.memberDelete(member.getMember_id());
+		int cnt = dao.memberDelete(member.getMember_id()); 
 		
 		if(cnt > 0) {
 			System.out.println("ลปล๐วั id" + member.getMember_id());

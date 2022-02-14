@@ -36,7 +36,7 @@ public class ScheduleIndexCon implements iPCommand {
 		DiaryDAO diaryDAO = new DiaryDAO();
 		
 		int num = Integer.parseInt(request.getParameter("num"));
-		String nick = request.getParameter("nick");
+		String nick = request.getParameter("nick"); 
 		
 		ScheduleDTO schedule = dao.scheduleSelect(nick, num);
 		ArrayList<EditorDTO> editorlist = editorDAO.editorSelectAll(nick, num);

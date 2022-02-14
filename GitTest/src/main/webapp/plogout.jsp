@@ -10,5 +10,5 @@
 <body>
 	<c:remove var="member" scope="session"/>
 	<c:redirect url="pmain.jsp"/>
-</body>
+</body> 
 </html>

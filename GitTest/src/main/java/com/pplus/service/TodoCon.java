@@ -35,7 +35,7 @@ public class TodoCon implements iPCommand{
 		ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		
-		TodoDAO dao = new TodoDAO();
+		TodoDAO dao = new TodoDAO(); 
 		
 		int cnt = dao.todoSet(new TodoDTO(0, title, content, null, schedule.getSchedule_num(), member.getMember_nick()));
 		

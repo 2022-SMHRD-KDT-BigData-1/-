@@ -19,7 +19,7 @@ public class BookintCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String num = request.getParameter("num");
+		String num = request.getParameter("num"); 
 	
 		int book_num = Integer.parseInt(num);
 		

@@ -27,7 +27,7 @@
 		제목 : <input type="text" name="title"> <br>
 		시작일 : <input type="date" name="start" id="Date1" onchange="call()" value="">   ~   
 		종료일 : <input type="date" name="end" id="Date2" onchange="call()" value=""> <p></p>
- 
+  
 		
 	 	일차이 계산 : <input type="text" id="day" size="6" style="text-align:center;" name="day">
 		

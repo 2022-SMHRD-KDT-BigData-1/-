@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DayplanDTO {
+public class DayplanDTO { 
 	// 일정 번호, 작성날짜, 스케줄 번호, 회원의 닉네임 저장
 	private int dayplan_num;
 	private String dayplan_date;

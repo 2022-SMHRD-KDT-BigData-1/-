@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body> 
 	<form action="" method="post">
 	<c:set value="0" var="j" />
 		<table border="1">

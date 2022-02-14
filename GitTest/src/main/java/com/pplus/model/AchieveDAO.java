@@ -13,7 +13,7 @@ public class AchieveDAO {
 	private PreparedStatement psmt;
 	private ResultSet rs;
 	private int cnt;
-	private String sql;
+	private String sql; 
 
 	public void connect() {
 		try {

@@ -12,5 +12,5 @@
 	<a href="pdelete.jsp">회원탈퇴</a>
 	<br>
 	<a href="pmain.jsp">메인</a>
-</body>
+</body> 
 </html>

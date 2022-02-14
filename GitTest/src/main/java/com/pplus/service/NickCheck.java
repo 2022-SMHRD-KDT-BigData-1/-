@@ -24,7 +24,7 @@ public class NickCheck implements iPCommand {
 
 		PMemberDAO dao = new PMemberDAO();
 
-		int nickCheck = dao.pmemberNickCheck(member_nick);
+		int nickCheck = dao.pmemberNickCheck(member_nick); 
 		System.out.println(nickCheck);
 
 		if (nickCheck == 0) {

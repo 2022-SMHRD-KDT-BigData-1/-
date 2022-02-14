@@ -34,7 +34,7 @@ public class PLoginCon implements iPCommand {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		
+		 
 		String id =request.getParameter("id");
 		String pw = request.getParameter("pw");
 		

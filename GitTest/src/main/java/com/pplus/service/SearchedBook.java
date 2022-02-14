@@ -35,7 +35,7 @@ public class SearchedBook implements iPCommand {
 			pageNum = 1;
 		}else{
 			pageNum = Integer.parseInt(request.getParameter("page"));
-		}
+		} 
 		//한 페이지에 나타낼 리스트 변수 선언
 		int pageList = 4;
 

@@ -20,7 +20,7 @@
 	<a href="${video.video_url }">${video.video_url }</a>
 	
 	<p>${video.video_channel }</p>
-	<p>${video.video_hits }</p>
+	<p>${video.video_hits }</p> 
 	<p>${video.video_time }</p>
 	
 	<button onclick="goBack()">앞쪽 페이지로</button>

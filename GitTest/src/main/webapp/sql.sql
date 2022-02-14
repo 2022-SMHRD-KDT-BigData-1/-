@@ -4,7 +4,7 @@
 create table web_member(m_email varchar(50), m_pw varchar(50) not null, m_tel varchar(50) not null, m_address varchar(50) not null, constraint w_m_m_email_pk primary key(m_email))
 
 drop table web_member cascade constraints;
-
+ 
 
 select * from web_member
 

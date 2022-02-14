@@ -22,7 +22,7 @@
 		<input type="button" value="뒤로가기" onclick = "location.href = 'pmain.jsp'">
 	</form>
 	<script src="jquery-3.6.0.min.js"></script>
-	<script>
+	<script> 
 	$('#input_id').keyup(function(){
 		let memberid=$('#input_id').val();
 		$.ajax({

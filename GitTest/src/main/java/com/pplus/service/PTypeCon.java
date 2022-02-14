@@ -38,7 +38,7 @@ public class PTypeCon implements iPCommand {
       String type3 = request.getParameter("type3");
 
       System.out.println("test1"+type1);
-      System.out.println("test2"+type2);
+      System.out.println("test2"+type2); 
       System.out.println("test3"+type3);
       
       PMemberDTO member = (PMemberDTO) session.getAttribute("member");

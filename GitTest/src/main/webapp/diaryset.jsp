@@ -13,7 +13,7 @@
     resize: none;
   }
 </style>
-</head>
+</head> 
 <body>
 	<h1>일기</h1>
 	<form action="DiaryCon.do" method="post">

@@ -23,14 +23,14 @@ public class PFrontController extends HttpServlet {
 
 		map = new HashMap<String, iPCommand>();
 		map.put("/PLoginCon.do", new PLoginCon());
-		map.put("/PJoinCon.do", new PJoinCon());
+		map.put("/PJoinCon.do", new PJoinCon()); 
 		map.put("/PTypeCon.do", new PTypeCon());
 		map.put("/PUpdateCon.do", new PUpdateCon());
 		map.put("/PDeleteCon.do", new PDeleteCon());
 		map.put("/ScheduleCon.do", new ScheduleCon());
 		map.put("/SearchedBook.do", new SearchedBook());
 		map.put("/IdCheck.do", new IdCheck());
-		map.put("/NickCheck.do", new NickCheck());
+		map.put("/NickCheck.do", new NickCheck()); 
 		map.put("/WishCon.do",new WishCon());
 		map.put("/WishCon2.do",new WishCon2());
 		map.put("/EditorCon.do", new EditorCon());

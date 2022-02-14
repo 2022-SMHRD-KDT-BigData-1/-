@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 	public class PMemberDTO {
+	
 		// 회원 아이디, 비번, 닉네임, 이름 저장
 		private String member_id;
 		private String member_pw;

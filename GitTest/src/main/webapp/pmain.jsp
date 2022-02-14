@@ -25,7 +25,7 @@ ArrayList<RecVideoDTO> recvideolist = (ArrayList<RecVideoDTO>) session.getAttrib
 
 ArrayList<BookDTO> booklist = null;
 ArrayList<VideoDTO> videolist = null;
-// 로그인
+// 로그인 
 if (member != null) {
 	if (member.getUser_type1() == null) {
 		// 유형조사를 안했을 때

@@ -13,7 +13,7 @@ public class RecVideoDAO {
 	private ResultSet rs;
 	private int cnt;
 	private String sql;
-
+  
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

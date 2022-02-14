@@ -19,7 +19,7 @@
 				  alert("개인정보동의에 체크하세요.");
 				  return false;
 				}
-		}
+		} 
 	</script>
 	
 </body>

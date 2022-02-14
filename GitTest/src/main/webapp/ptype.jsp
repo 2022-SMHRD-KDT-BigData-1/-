@@ -25,5 +25,5 @@
 		</select>
 		<input type="submit" name="등록" >
 	</form>
-</body>
+</body> 
 </html>

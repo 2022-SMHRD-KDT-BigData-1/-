@@ -18,7 +18,7 @@
 	<h1>에디터</h1>
 	<form action="EditorCon.do" method="post">
 		<table border="1" width="400px">
-			<tr>
+			<tr> 
 				<td align="center">
 					제목
 				</td>

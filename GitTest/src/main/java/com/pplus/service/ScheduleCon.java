@@ -33,7 +33,7 @@ public class ScheduleCon implements iPCommand {
 		String bookTitle = request.getParameter("book_title");
 		String title = request.getParameter("title");
 		String start = request.getParameter("start");
-		String end = request.getParameter("end");
+		String end = request.getParameter("end"); 
 		String day = request.getParameter("day");
 		int book_num = Integer.parseInt(request.getParameter("book_num"));
 		int book_page = Integer.parseInt(request.getParameter("book_page"));

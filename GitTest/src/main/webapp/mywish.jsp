@@ -9,7 +9,7 @@
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 RecBookDAO recBookDao = new RecBookDAO();
 ArrayList<RecBookDTO> wishlist = (ArrayList<RecBookDTO>) recBookDao.recBookWishSelectAll(member.getMember_nick());
-session.setAttribute("wishlist", wishlist)
+session.setAttribute("wishlist", wishlist);
 %>
 <!DOCTYPE html>
 <html>

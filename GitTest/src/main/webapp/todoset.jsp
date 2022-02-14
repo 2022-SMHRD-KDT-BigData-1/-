@@ -19,7 +19,7 @@
 	<form action="Todo.do" method="post">
 		<table border="1" width="400px">
 			<tr>
-				<td align="center">
+				<td align="center"> 
 					제목
 				</td>
 				<td>
