@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String num = request.getParameter("num");
+	int wish_book_num = Integer.parseInt(num);
+	String wish_book_title =request.getParameter("title");
+	String book_page =request.getParameter("page");
+	int wish_book_page = Integer.parseInt(book_page);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +19,23 @@
 	
 	<h1>스케줄</h1>
 	<form action="ScheduleCon.do" method="post">
-		<%-- <c:choose>
-			<c:when test="${empty requestScope.book_data  }">
-				<c:otherwise> --%>
-					책 검색 : <input type="text" id="book_title" onclick="book()" placeholder="책을 입력 해 주세요" name="book_title">
-					<input type="button" value="검색" onclick="book()"><br>
-					<input type="text" id="book_num" style="display: none; " name="book_num">
-					<input type="text" id="book_page" style="display: none;" name="book_page">
-					위시리스트에서 찾기 : <input type="button" value="내 위시리스트" onclick="mybook()"><br>
-			<%-- 	</c:otherwise>
+		<c:choose>
+			<c:when test="${empty wish_book_title  }">
+				위시리스트에서 찾기 : <input type="button" value="내 위시리스트" onclick="mybook()"><br>
+				<c:choose>
+					<c:when test="${empty }">
+				책 검색 : <input type="text" id="book_title" onclick="book()" placeholder="책을 입력 해 주세요" name="book_title">
+						<input type="button" value="검색" onclick="book()"><br>
+						<input type="text" id="book_num" style="display: none; " name="book_num">
+						<input type="text" id="book_page" style="display: none;" name="book_page">
+					</c:when>
+				</c:choose>
 			</c:when>
-		</c:choose> --%>
+			<c:otherwise>
+					책 제목 : ${wish_book_title } 
+			</c:otherwise>
+			
+		</c:choose> 
 
 		제목 : <input type="text" name="title"> <br>
 		시작일 : <input type="date" name="start" id="Date1" onchange="call()" value="">   ~   
