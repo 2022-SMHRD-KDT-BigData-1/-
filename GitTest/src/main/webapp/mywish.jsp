@@ -24,7 +24,7 @@ ArrayList<RecBookDTO> wishlist = (ArrayList<RecBookDTO>) recBookDao.recBookWishS
 			<a href="BookintCon?num=${wish.book_num }"> 
 				<img src="${wish.book_img}" width="80">
 			</a>
-			<a href=></a>
+			<button onclick="location.href='scheduleset.jsp?num=${wish.book_num}&title=${wish.book_title }&page=${wish.book_page }'">스케줄 등록</button>
 			
 			</li>
 		</td>
