@@ -19,7 +19,7 @@ public class DayplanCon implements iPCommand{
 		HttpSession session = request.getSession();
 		
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
-		
+		String book_title 
 		
 	}
 
