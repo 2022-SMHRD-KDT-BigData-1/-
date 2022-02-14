@@ -47,7 +47,7 @@ public class PLoginCon implements iPCommand {
 		
 		member=dao.pmemberTypeCheck(member);
 		
-		ArrayList<RecBookDTO> recbooklist=recbookDAO.recBookSelectAll(member.getMember_nick());
+		ArrayList<RecBookDTO> recbooklist=recbookDAO.recBookSelectAll(member);
 		ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member.getMember_nick());
 		ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
 		

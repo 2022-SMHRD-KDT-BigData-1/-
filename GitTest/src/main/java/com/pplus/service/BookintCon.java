@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.pplus.model.BookDAO;
 import com.pplus.model.BookDTO;
+import com.pplus.model.RecBookDAO;
+import com.pplus.model.RecBookDTO;
 
 @WebServlet("/BookintCon")
 public class BookintCon extends HttpServlet {
@@ -22,8 +24,10 @@ public class BookintCon extends HttpServlet {
 		int book_num = Integer.parseInt(num);
 		
 		BookDAO bookDao =new BookDAO();
+		RecBookDAO recbookDAO = new RecBookDAO();
 		
 		BookDTO book=bookDao.bookSelect(book_num);
+		RecBookDTO rexbook = recbookDAO.recBookselect()
 		
 		HttpSession session =request.getSession();
 		session.setAttribute("book", book);

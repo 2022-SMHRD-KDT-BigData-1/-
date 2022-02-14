@@ -107,15 +107,18 @@ public class RecBookDAO {
 
 	// recbook DB에 저장되어 있는 데이터들을 회원별로 가져오고싶기 때문에 회원에 닉네임을 통하여 찾기
 	// recBookSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecBookDTO> recbooklist
-	public ArrayList<RecBookDTO> recBookSelectAll(String nick) {
+	public ArrayList<RecBookDTO> recBookSelectAll(PMemberDTO member) {
 		ArrayList<RecBookDTO> recbooklist = new ArrayList<RecBookDTO>();
 		connect();
 
-		sql = "select * from recommend_book where member_nick=?";
+		sql = "select * from recommend_book where member_nick=? and user_type1 = ? and user_type2 = ? and user_type3 = ?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, nick);
+			psmt.setString(1, member.getMember_nick());
+			psmt.setString(2, member.getUser_type1());
+			psmt.setString(3, member.getUser_type2());
+			psmt.setString(4, member.getUser_type3());
 
 			rs = psmt.executeQuery();
 
