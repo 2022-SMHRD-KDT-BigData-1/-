@@ -9,6 +9,7 @@
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 RecBookDAO recBookDao = new RecBookDAO();
 ArrayList<RecBookDTO> wishlist = (ArrayList<RecBookDTO>) recBookDao.recBookWishSelectAll(member.getMember_nick());
+session.setAttribute("wishlist", wishlist)
 %>
 <!DOCTYPE html>
 <html>
@@ -17,18 +18,19 @@ ArrayList<RecBookDTO> wishlist = (ArrayList<RecBookDTO>) recBookDao.recBookWishS
 <title>Insert title here</title>
 </head>
 <body><h3>도서위시리스트 목록</h3>
+
 <ol>
 	<c:forEach var="wish" items="${wishlist }">
 		<td>
 			<li>
-			<a href="BookintCon?num=${wish.book_num }"> 
-				<img src="${wish.book_img}" width="80">
-			</a>
-			<button onclick="location.href='scheduleset.jsp?num=${wish.book_num}&title=${wish.book_title }&page=${wish.book_page }'">스케줄 등록</button>
-			
+				<a href="BookintCon?num=${wish.book_num }"> 
+					<img src="${wish.book_img}" width="80">
+				</a>
+				<button onclick="location.href='scheduleset.jsp?num=${wish.book_num}&title=${wish.book_title }&page=${wish.book_page }'">스케줄 등록</button>
 			</li>
 		</td>
 	</c:forEach>
 </ol>
+
 </body>
 </html>
