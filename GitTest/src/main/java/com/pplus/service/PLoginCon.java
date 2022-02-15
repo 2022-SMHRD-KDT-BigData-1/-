@@ -48,6 +48,8 @@ public class PLoginCon implements iPCommand {
 		member=dao.pmemberTypeCheck(member);
 		
 		ArrayList<RecBookDTO> recbooklist=recbookDAO.recBookSelectAll(member);
+		ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) recbookDAO.recBookWishSelectAll(member.getMember_nick());
+		ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>) recvideodao.recVideoWishSelectAll(member.getMember_nick());
 		ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member);
 		ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
 		
@@ -60,6 +62,8 @@ public class PLoginCon implements iPCommand {
 			session.setAttribute("schedulelist", schedulelist);
 			session.setAttribute("recbooklist", recbooklist);
 			session.setAttribute("recvideolist", recvideolist);
+			session.setAttribute("wishlistbook", wishlistbook);
+			session.setAttribute("wishlistvideo", wishlistvideo);
 			session.setAttribute("member", member);
 			response.sendRedirect("pmain.jsp");
 			

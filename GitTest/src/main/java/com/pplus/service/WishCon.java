@@ -42,7 +42,10 @@ public class WishCon implements iPCommand{
 			if(cnt > 0) {
 				
 				ArrayList<RecBookDTO> recbooklist = recbookDao.recBookSelectAll(member);
+				ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) recbookDao.recBookWishSelectAll(member.getMember_nick());
+				
 				session.setAttribute("recbooklist", recbooklist);
+				session.setAttribute("wishlistbook", wishlistbook);
 				
 				response.sendRedirect("pmain.jsp");
 				

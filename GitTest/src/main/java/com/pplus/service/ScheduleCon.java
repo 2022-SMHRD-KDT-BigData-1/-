@@ -35,22 +35,21 @@ public class ScheduleCon implements iPCommand {
 		int book_page = 0;
 		
 		
-		if(request.getParameter("book_title1").equals(null)) {
+		if(request.getParameter("book_title") != null) {
 			
-			bookTitle = request.getParameter("book_title1");
-			book_num = Integer.parseInt(request.getParameter("book_num1"));
-			book_page = Integer.parseInt(request.getParameter("book_page1"));
-			
-		}else if(request.getParameter("book_title2").equals(null)) {
-			
-			bookTitle = request.getParameter("book_title2");
-			book_num = Integer.parseInt(request.getParameter("book_num2"));
-			book_page = Integer.parseInt(request.getParameter("book_page2"));
-			
-		}else {
 			bookTitle = request.getParameter("book_title");
 			book_num = Integer.parseInt(request.getParameter("book_num"));
 			book_page = Integer.parseInt(request.getParameter("book_page"));
+			
+		}else if(request.getParameter("wishbook_title") != null) {
+			
+			bookTitle = request.getParameter("wishbook_title");
+			book_num = Integer.parseInt(request.getParameter("wishbook_num"));
+			book_page = Integer.parseInt(request.getParameter("wishbook_page"));
+			
+		}else {
+			bookTitle = request.getParameter("searchbook_title");
+			book_page = Integer.parseInt(request.getParameter("searchbook_page"));
 		}
 		
 		
@@ -59,7 +58,6 @@ public class ScheduleCon implements iPCommand {
 		String start = request.getParameter("start");
 		String end = request.getParameter("end"); 
 		String day = request.getParameter("day");
-		
 		int page = book_page / Integer.parseInt(day);
 		System.out.println(bookTitle);
 		System.out.println(book_page);

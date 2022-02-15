@@ -49,10 +49,10 @@ $("input[name='serviceType']:radio").change(function () {
 		<br>
 		<br>
 			<span id="viewwish" >
-				위시리스트에서 찾기 : <input type="button" value="내 위시리스트" onclick="mybook()"><br>
-						<input type="text" id="book_title1"  style="display: none; " name="book_title1"><br>
-						<input type="text" id="book_num1" style="display: none; " name="book_num1">
-						<input type="text" id="book_page1" style="display: none;" name="book_page1">
+				위시리스트에서 찾기 : <input type="text" id="wishbook_title" name="wishbook_title" onclick="mybook()" placeholder="내 위시리스트"><br>
+						 <input type="button" value="내 위시리스트" onclick="mybook()"><br>
+						<input type="text" id="wishbook_num" style="display: none; " name="wishbook_num">
+						<input type="text" id="wishbook_page" style="display: none;" name="wishbook_page">
 			</span>
 			<span id="viewsearch" style="display: none;">
 				책 검색 : <input type="text" id="book_title" onclick="book()" placeholder="책을 입력 해 주세요" name="book_title">
@@ -62,8 +62,8 @@ $("input[name='serviceType']:radio").change(function () {
 				</span>
 				<span id="viewuser" style="display: none;">
 			
-					책 제목 : <input type="text" name="book_title2"><br>
-					책 페이지 수 : <input type="text" name="book_page2"><br>
+					책 제목 : <input type="text" name="searchbook_title"><br>
+					책 페이지 수 : <input type="text" name="searchbook_page"><br>
 			</span>
 			<br>
 			<br>
@@ -75,7 +75,7 @@ $("input[name='serviceType']:radio").change(function () {
 		
 	 	일차이 계산 : <input type="text" id="day" size="6" style="text-align:center;" name="day">
 		
-		<input type="submit" value="등록" id="submit">
+		<input type="submit" value="등록" >
 	</form>
 	<script langauge="javascript">
 	function call() {
@@ -98,7 +98,7 @@ $("input[name='serviceType']:radio").change(function () {
 		window.open("booksearch.jsp","bk","width=500, height=400, scrollbars=no, resizable=no");
 	}
 	function mybook() {
-		window.open("","","width=500, height=400, scrollbars=no, resizable=no");
+		window.open("wishsearch.jsp","ws","width=500, height=400, scrollbars=no, resizable=no");
 		// 위시리스트 페이지 만들면 넣기
 	}
 	function setBookValues(name,num,page){
@@ -107,6 +107,13 @@ $("input[name='serviceType']:radio").change(function () {
 		document.getElementById("book_page").value = page;
 		console.log(page);
 		console.log(num);
+	}
+	function setBookValues1(name,num,page){
+		document.getElementById("wishbook_title").value = name;
+		document.getElementById("wishbook_num").value = num;
+		document.getElementById("wishbook_page").value = page;
+		console.log(document.getElementById("wishbook_title").value);
+		console.log(document.getElementById("wishbook_num").value);
 	}
 	
 	
