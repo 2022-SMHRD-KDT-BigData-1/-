@@ -42,41 +42,58 @@ $("input[name='serviceType']:radio").change(function () {
 </script>
 	
 	<h1>스케줄</h1>
-	<form action="ScheduleCon.do" method="post">
+	
 		<input type="radio" value="wish" name="serviceType" checked="checked">위시리스트 찾기
 		<input type="radio" value="search" name="serviceType">검색
 		<input type="radio" value="user" name="serviceType">입력
 		<br>
 		<br>
+		<form action="ScheduleCon.do" method="post">
 			<span id="viewwish" >
-				위시리스트에서 찾기 : <input type="text" id="wishbook_title" name="wishbook_title" onclick="mybook()" placeholder="내 위시리스트"><br>
-						 <input type="button" value="내 위시리스트" onclick="mybook()"><br>
+		위시리스트에서 찾기 : <input type="text" id="wishbook_title" name="wishbook_title" onclick="mybook()" placeholder="내 위시리스트"><br>
+						<input type="button" value="내 위시리스트" onclick="mybook()"><br>
 						<input type="text" id="wishbook_num" style="display: none; " name="wishbook_num">
 						<input type="text" id="wishbook_page" style="display: none;" name="wishbook_page">
+						
+				 제목 : <input type="text" name="title"> <br>
+				시작일 : <input type="date" name="start" id="Date1" onchange="call()" value="">   ~   
+				종료일 : <input type="date" name="end" id="Date2" onchange="call()" value=""> <p></p>
+			 	일차이 계산 : <input type="text" id="day1" size="6" style="text-align:center;" name="day">
+				
+				<input type="submit" value="등록" >	
 			</span>
+		</form>
+		<form action="ScheduleCon.do" method="post">
 			<span id="viewsearch" style="display: none;">
 				책 검색 : <input type="text" id="book_title" onclick="book()" placeholder="책을 입력 해 주세요" name="book_title">
 						<input type="button" value="검색" onclick="book()"><br>
 						<input type="text" id="book_num" style="display: none; " name="book_num">
 						<input type="text" id="book_page" style="display: none;" name="book_page">
-				</span>
-				<span id="viewuser" style="display: none;">
-			
-					책 제목 : <input type="text" name="searchbook_title"><br>
-					책 페이지 수 : <input type="text" name="searchbook_page"><br>
+				 제목 : <input type="text" name="title"> <br>
+				시작일 : <input type="date" name="start" id="Date3" onchange="call2()" value="">   ~   
+				종료일 : <input type="date" name="end" id="Date4" onchange="call2()" value=""> <p></p>
+			 	일차이 계산 : <input type="text" id="day2" size="6" style="text-align:center;" name="day">
+				
+					<input type="submit" value="등록" >	
+			</span>
+		</form>
+		<form action="ScheduleCon.do" method="post">
+			<span id="viewuser" style="display: none;">
+			책 제목 : <input type="text" name="searchbook_title"><br>
+		책 페이지 수 : <input type="text" name="searchbook_page"><br>
+				 제목 : <input type="text" name="title"> <br>
+				 
+				시작일 : <input type="date" name="start" id="Date5" onchange="call3()" value="">   ~   
+				종료일 : <input type="date" name="end" id="Date6" onchange="call3()" value=""> <p></p>
+			 	일차이 계산 : <input type="text" id="day3" size="6" style="text-align:center;" name="day">
+			 	
+				<input type="submit" value="등록" >	
 			</span>
 			<br>
 			<br>
-
-		제목 : <input type="text" name="title"> <br>
-		시작일 : <input type="date" name="start" id="Date1" onchange="call()" value="">   ~   
-		종료일 : <input type="date" name="end" id="Date2" onchange="call()" value=""> <p></p>
-  
+		</form>
 		
-	 	일차이 계산 : <input type="text" id="day" size="6" style="text-align:center;" name="day">
-		
-		<input type="submit" value="등록" >
-	</form>
+	
 	<script langauge="javascript">
 	function call() {
 	    var sdd = document.getElementById("Date1").value;
@@ -90,7 +107,37 @@ $("input[name='serviceType']:radio").change(function () {
 	   
 	 if(sdd && edd){
 	  
-	    document.getElementById('day').value = parseInt(dif/cDay);
+	    document.getElementById('day1').value = parseInt(dif/cDay);
+	 }
+	}
+	function call2() {
+	    var sdd = document.getElementById("Date3").value;
+	    var edd = document.getElementById("Date4").value;
+	    var ar1 = sdd.split('-');
+	    var ar2 = edd.split('-');
+	    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+	    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+	    var dif = da2 - da1;
+	    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+	   
+	 if(sdd && edd){
+	  
+	    document.getElementById('day2').value = parseInt(dif/cDay);
+	 }
+	}
+	function call3() {
+	    var sdd = document.getElementById("Date5").value;
+	    var edd = document.getElementById("Date6").value;
+	    var ar1 = sdd.split('-');
+	    var ar2 = edd.split('-');
+	    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+	    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+	    var dif = da2 - da1;
+	    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+	   
+	 if(sdd && edd){
+	  
+	    document.getElementById('day3').value = parseInt(dif/cDay);
 	 }
 	}
 	
@@ -112,8 +159,8 @@ $("input[name='serviceType']:radio").change(function () {
 		document.getElementById("wishbook_title").value = name;
 		document.getElementById("wishbook_num").value = num;
 		document.getElementById("wishbook_page").value = page;
-		console.log(document.getElementById("wishbook_title").value);
-		console.log(document.getElementById("wishbook_num").value);
+		console.log("위시제목",document.getElementById("wishbook_title").value);
+		console.log("위시번호",document.getElementById("wishbook_num").value);
 	}
 	
 	

@@ -41,6 +41,7 @@ BookDTO book = (BookDTO) session.getAttribute("book");
 						</a>
 				</c:otherwise>
 			</c:choose>
+			<button onclick="location.href='BookScheduleCon.do?num=${recbook.book_num}'">스케줄 등록</button>
 			<p>${book.book_title }</p>
 			<p>${book.book_price }</p>
 			<p>${book.book_author }</p>

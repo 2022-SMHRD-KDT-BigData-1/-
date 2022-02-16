@@ -34,7 +34,7 @@ session.setAttribute("wishlistvideo", wishlistvideo);
 				<a href="BookintCon?num=${wish.book_num }"> 
 					<img src="${wish.book_img}" width="80">
 				</a>
-				<button onclick="location.href='scheduleset.jsp?num=${wish.book_num}&title=${wish.book_title }&page=${wish.book_page }'">스케줄 등록</button>
+				<button onclick="location.href='BookScheduleCon.do?num=${wish.book_num}'">스케줄 등록</button>
 			</li>
 		</c:forEach>
 	</ol>
