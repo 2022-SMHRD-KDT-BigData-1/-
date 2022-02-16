@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.pplus.model.BookDAO;
 import com.pplus.model.BookDTO;
+import com.pplus.model.PMemberDTO;
 import com.pplus.model.RecBookDAO;
 import com.pplus.model.RecBookDTO;
 
@@ -19,19 +20,27 @@ public class BookintCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		HttpSession session = request.getSession();
+		
 		String num = request.getParameter("num"); 
 	
 		int book_num = Integer.parseInt(num);
 		
 		BookDAO bookDao =new BookDAO();
 		RecBookDAO recbookDAO = new RecBookDAO();
+		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+		
 		
 		BookDTO book=bookDao.bookSelect(book_num);
-		RecBookDTO recbook = recbookDAO.recBookSelect(book_num);
+		if(member != null) {
+			RecBookDTO recbook = recbookDAO.recBookSelect(book_num,member);
+			session.setAttribute("recbook", recbook);
+		}
 		
-		HttpSession session =request.getSession();
+		
+		
 		session.setAttribute("book", book);
-		session.setAttribute("recbook", recbook);
+		
 		response.sendRedirect("bookint.jsp");
 	}
 }

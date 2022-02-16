@@ -59,9 +59,9 @@ public class RecBookDAO {
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, member.getMember_nick());
-				psmt.setString(2, member.getUser_type1());
-				psmt.setString(3, member.getUser_type2());
-				psmt.setString(4, member.getUser_type3());
+				psmt.setString(2, recbook.get(i).getUser_type1());
+				psmt.setString(3,recbook.get(i).getUser_type2());
+				psmt.setString(4, recbook.get(i).getUser_type3());
 				psmt.setString(5, recbook.get(i).getBook_title());
 				psmt.setInt(6, recbook.get(i).getBook_price());
 				psmt.setString(7, recbook.get(i).getBook_img());
@@ -72,6 +72,40 @@ public class RecBookDAO {
 				psmt.setString(12, recbook.get(i).getBook_pubdate());
 				psmt.setString(13, recbook.get(i).getBook_isbn());
 				psmt.setInt(14, 0);
+				psmt.setInt(15, recbook.get(i).getBook_num());
+
+				cnt += psmt.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		close();
+		return cnt;
+	}
+	public int recBookSet2(ArrayList<BookDTO> recbook, PMemberDTO member) {
+		cnt = 0;
+		connect();
+		for (int i = 0; i < recbook.size(); i++) {
+			try {
+
+				sql = "insert into recommend_book values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				psmt = conn.prepareStatement(sql);
+
+				psmt.setString(1, member.getMember_nick());
+				psmt.setString(2, recbook.get(i).getUser_type1());
+				psmt.setString(3,recbook.get(i).getUser_type2());
+				psmt.setString(4, recbook.get(i).getUser_type3());
+				psmt.setString(5, recbook.get(i).getBook_title());
+				psmt.setInt(6, recbook.get(i).getBook_price());
+				psmt.setString(7, recbook.get(i).getBook_img());
+				psmt.setString(8, recbook.get(i).getBook_author());
+				psmt.setString(9, recbook.get(i).getBook_publisher());
+				psmt.setString(10, recbook.get(i).getBook_description());
+				psmt.setInt(11, recbook.get(i).getBook_page());
+				psmt.setString(12, recbook.get(i).getBook_pubdate());
+				psmt.setString(13, recbook.get(i).getBook_isbn());
+				psmt.setInt(14, 1);
 				psmt.setInt(15, recbook.get(i).getBook_num());
 
 				cnt += psmt.executeUpdate();
@@ -182,15 +216,19 @@ public class RecBookDAO {
 		}
 		return recbookwishlist;
 	}
-	public RecBookDTO recBookSelect(int num) {
+	public RecBookDTO recBookSelect(int num, PMemberDTO member) {
 		RecBookDTO recbook = null;
 		connect();
 
-		sql = "select * from recommend_book where book_num=?";
+		sql = "select * from recommend_book where book_num=? and member_nick=? and user_type1 = ? and user_type2 = ? and user_type3 = ?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, num);
+			psmt.setString(2, member.getMember_nick());
+			psmt.setString(3, member.getUser_type1());
+			psmt.setString(4, member.getUser_type2());
+			psmt.setString(5, member.getUser_type3());
 
 			rs = psmt.executeQuery();
 
@@ -207,5 +245,35 @@ public class RecBookDAO {
 		}
 		return recbook;
 	}
+	public RecBookDTO recBookSelect2(BookDTO book, PMemberDTO member) {
+		RecBookDTO recbook = null;
+		connect();
+
+		sql = "select * from recommend_book where book_num=? and member_nick=? and user_type1 = ? and user_type2 = ? and user_type3 = ?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, book.getBook_num());
+			psmt.setString(2, member.getMember_nick());
+			psmt.setString(3, book.getUser_type1());
+			psmt.setString(4, book.getUser_type2());
+			psmt.setString(5, book.getUser_type3());
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+
+				recbook = new RecBookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+						rs.getInt(11), rs.getString(12), rs.getString(13), rs.getInt(14), rs.getInt(15));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recbook;
+	}
+	
 	
 }

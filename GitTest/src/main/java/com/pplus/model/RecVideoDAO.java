@@ -82,6 +82,39 @@ public class RecVideoDAO {
 		close();
 		return cnt;
 	}
+	public int recVideoSet2(ArrayList<VideoDTO> recvideo, PMemberDTO member) {
+		cnt = 0;
+
+		connect();
+		for (int i = 0; i < recvideo.size(); i++) {
+			try {
+
+				sql = "insert into recommend_video values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				psmt = conn.prepareStatement(sql);
+
+				psmt.setString(1, member.getMember_nick());
+				psmt.setString(2, recvideo.get(i).getUser_type1());
+				psmt.setString(3, recvideo.get(i).getUser_type2());
+				psmt.setString(4, recvideo.get(i).getUser_type3());
+				psmt.setString(5, recvideo.get(i).getVideo_title());
+				psmt.setString(6, recvideo.get(i).getVideo_upload());
+				psmt.setString(7, recvideo.get(i).getVideo_thumbnail());
+				psmt.setString(8, recvideo.get(i).getVideo_url());
+				psmt.setString(9, recvideo.get(i).getVideo_channel());
+				psmt.setString(10, recvideo.get(i).getVideo_hits());
+				psmt.setString(11, recvideo.get(i).getVideo_time());
+				psmt.setInt(12, recvideo.get(i).getVideo_num());
+				psmt.setInt(13, 1);
+
+				cnt += psmt.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		close();
+		return cnt;
+	}
 
 	// recvideo DB에 삭제할 데이터들을 선택하기 위해서 회원의 닉네임으로 찾기
 	// 찾은 데이터들 삭제
@@ -180,15 +213,48 @@ public class RecVideoDAO {
 		}
 		return recvideowishlist;
 	}
-	public RecVideoDTO recVideoSelect(int num) {
+	public RecVideoDTO recVideoSelect(int num, PMemberDTO member) {
 		RecVideoDTO recvideo = null;
 		connect();
 
-		sql = "select * from recommend_video where video_num=?";
+		sql = "select * from recommend_video where video_num=? and member_nick=? and user_type1 = ? and user_type2 = ? and user_type3 = ?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, num);
+			psmt.setString(2, member.getMember_nick());
+			psmt.setString(3, member.getUser_type1());
+			psmt.setString(4, member.getUser_type2());
+			psmt.setString(5, member.getUser_type3());
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+
+				recvideo = new RecVideoDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+						rs.getString(11), rs.getInt(12), rs.getInt(13));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recvideo;
+	}
+	public RecVideoDTO recVideoSelect2(VideoDTO video, PMemberDTO member) {
+		RecVideoDTO recvideo = null;
+		connect();
+
+		sql = "select * from recommend_video where video_num=? and member_nick=? and user_type1 = ? and user_type2 = ? and user_type3 = ?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, video.getVideo_num());
+			psmt.setString(2, member.getMember_nick());
+			psmt.setString(3, video.getUser_type1());
+			psmt.setString(4, video.getUser_type2());
+			psmt.setString(5, video.getUser_type3());
 
 			rs = psmt.executeQuery();
 

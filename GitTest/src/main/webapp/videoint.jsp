@@ -17,36 +17,46 @@
 <c:choose>
 	<c:when test="${empty member }">
 		<img src="${video.video_thumbnail }">
-			
 			<p>${video.video_title }</p>
 			<p>${video.video_upload }</p>
 			<a href="${video.video_url }">${video.video_url }</a>
-			
 			<p>${video.video_channel }</p>
 			<p>${video.video_hits }</p> 
 			<p>${video.video_time }</p>
 	</c:when>
 	<c:otherwise>
-		<img src="${video.video_thumbnail }">
 		<c:choose>
-				<c:when test="${recvideo.contents_cnt==1}">
-						<a href="WishVideoCon2.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
-						<button type="button"><img src="heart1.png" width="20"></button>
-						</a>
+				<c:when test="${empty recvideo } ">
+					<img src="${video.video_thumbnail }">
+					<p>${video.video_title }</p>
+					<p>${video.video_upload }</p>
+					<a href="${video.video_url }">${video.video_url }</a>
+					<p>${video.video_channel }</p>
+					<p>${video.video_hits }</p> 
+					<p>${video.video_time }</p>
 				</c:when>
 				<c:otherwise>
-						<a href="WishVideoCon2.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
-						<button type="button"><img src="heart0.png" width="20"></button>
-						</a>
+				<img src="${video.video_thumbnail }">
+					<c:choose>
+						<c:when test="${recvideo.contents_cnt == 1 }">
+							<a href="WishVideoCon3.do?num=${video.video_num}&recvideonum=1">
+							<button type="button"><img src="heart1.png" width="20"></button>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<a href="WishVideoCon3.do?num=${video.video_num}&recvideonum=0">
+							<button type="button"><img src="heart0.png" width="20"></button>
+							</a>
+						</c:otherwise>
+					</c:choose>
+						<p>${video.video_title }</p>
+						<p>${video.video_upload }</p>
+						<a href="${video.video_url }">${video.video_url }</a>
+						<p>${video.video_channel }</p>
+						<p>${video.video_hits }</p> 
+						<p>${video.video_time }</p>
 				</c:otherwise>
-			</c:choose>
-		<p>${video.video_title }</p>
-			<p>${video.video_upload }</p>
-			<a href="${video.video_url }">${video.video_url }</a>
-			
-			<p>${video.video_channel }</p>
-			<p>${video.video_hits }</p> 
-			<p>${video.video_time }</p>
+		</c:choose>
 	</c:otherwise>	
 		
 	

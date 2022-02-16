@@ -33,7 +33,7 @@ public class WishCon2 implements iPCommand{
 			}else {
 				recbooknum = 0;
 			}
-			
+			System.out.println(recbooknum);
 			PMemberDTO member =(PMemberDTO) session.getAttribute("member");
 			RecBookDAO recbookDao= new RecBookDAO();		
 			int cnt = recbookDao.recBookWish(member.getMember_nick(),recbooknum, num);
@@ -43,7 +43,7 @@ public class WishCon2 implements iPCommand{
 				
 				ArrayList<RecBookDTO> recbooklist = recbookDao.recBookSelectAll(member);
 				ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) recbookDao.recBookWishSelectAll(member.getMember_nick());
-				RecBookDTO recbook = recbookDao.recBookSelect(num);
+				RecBookDTO recbook = recbookDao.recBookSelect(num,member);
 				
 				session.setAttribute("recbooklist", recbooklist);
 				session.setAttribute("wishlistbook", wishlistbook);

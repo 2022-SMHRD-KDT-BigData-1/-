@@ -50,7 +50,7 @@ public class WishVideoCon2 implements iPCommand {
 			if(cnt > 0) {
 				
 				ArrayList<RecVideoDTO> recvideolist = recvideoDao.recVideoSelectAll(member);
-				RecVideoDTO recvideo = recvideoDao.recVideoSelect(num);
+				RecVideoDTO recvideo = recvideoDao.recVideoSelect(num,member);
 				
 				session.setAttribute("recvideolist", recvideolist);
 				session.setAttribute("recvideo", recvideo);

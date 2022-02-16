@@ -120,7 +120,7 @@ if (member != null) {
 			</c:forEach>
 			<hr>
 			<c:forEach var="video" items="${videolist }">
-				<a href="VideointCon?num="${video.video_num}"> <img
+				<a href="VideointCon?num=${video.video_num}"> <img
 					src="${video.video_thumbnail}" width="80">
 				</a>
 			</c:forEach>
@@ -129,25 +129,35 @@ if (member != null) {
 
 		<c:otherwise>
 			<c:choose>
-
-				<c:when test="${empty member.getUser_type1() }">
-					<c:forEach var="book" items="${booklist }">
-						<a href="BookintCon?num=${book.book_num }"> <img
-							src="${book.book_img}" width="80">
-						</a>
-					</c:forEach>
+				
+					<c:when test="${empty member.getUser_type1() }">
+					<table>
+					<tr>
+						<c:forEach var="book" items="${booklist }">
+							<td>
+								<a href="BookintCon?num=${book.book_num }"> 
+								<img src="${book.book_img}" width="80">
+								</a>
+							</td>
+						</c:forEach>
+					</tr>
+					</table>
 					<hr>
-					<c:forEach var="video" items="${videolist }">
-						<a href="VideointCon?num="${video.video_num}"> <img
-							src="${video.video_thumbnail}" width="80">
-						</a>
-					</c:forEach>
-
-				</c:when>
-
+					<table>
+					<tr>
+						<c:forEach var="video" items="${videolist }">
+						<td>
+							<a href="VideointCon?num=${video.video_num}"> 
+								<img src="${video.video_thumbnail}" width="80">
+							</a>
+						</td>
+						</c:forEach>
+					</tr>
+					</table>
+					</c:when>
+				
 				<c:otherwise>
 					<table>
-
 						<tr>
 							<c:forEach var="recbook" items="${recbooklist }">
 								<td><a
