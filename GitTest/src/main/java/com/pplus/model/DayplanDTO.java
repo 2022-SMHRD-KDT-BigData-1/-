@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class DayplanDTO { 
 	// 일정 번호, 작성날짜, 스케줄 번호, 회원의 닉네임 저장
 	private int dayplan_num;
+	private String dayplan_title;
 	private String dayplan_date;
 	private int schedule_num;
 	private	String member_nick;
@@ -22,8 +23,6 @@ public class DayplanDTO {
 	private int achieve_study_page;
 	private	int schedule_day_page;
 	private int dayplan_check;
-	private	String editor_date;
-	private	String diary_date;
-	private String todo_date;
+
 
 }

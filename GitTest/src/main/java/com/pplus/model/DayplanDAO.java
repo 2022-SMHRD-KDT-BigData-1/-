@@ -51,7 +51,7 @@ public class DayplanDAO {
 	// dayplanSet의 입력 변수는 DayplanDTO dayplan 출력 변수는 cnt(int)
 	public int dayplanSet(DayplanDTO dayplan) {
 		connect();
-		sql = "insert into dayplan values(seq_dayplan_num.nextval,sysdate,?,?,?,?,?,?,?,?,?,?,?,?)";
+		sql = "insert into dayplan values(seq_dayplan_num.nextval,sysdate,?,?,?,?,?,?,?,?,?)";
 
 		cnt = 0;
 		try {
@@ -66,9 +66,7 @@ public class DayplanDAO {
 			psmt.setInt(7, dayplan.getAchieve_study_page());
 			psmt.setInt(8, dayplan.getSchedule_day_page());
 			psmt.setInt(9, dayplan.getDayplan_check());
-			psmt.setString(10, dayplan.getEditor_date());
-			psmt.setString(11, dayplan.getDiary_date());
-			psmt.setString(12, dayplan.getTodo_date());
+
 
 			cnt = psmt.executeUpdate();
 
@@ -80,8 +78,33 @@ public class DayplanDAO {
 		}
 		return cnt;
 	}
+	
+	public int dayplanTodaySet(String nick, String title) {
+		connect();
+		sql = "insert into dayplan(seq_dayplan_num, dayplan_title, member_nick, dayplan_date) values(seq_dayplan_num.nextval,?,?,sysdate)";
+
+		cnt = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, title);
+			psmt.setString(2, nick);
+
+			cnt = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	
+	
 	// dayplan DB에 입력된 책 게목, 책 페이지, (전체)일수, 공부한 일수, (하루)공부 페이지 수를 
-	// 회뤈의 닉네임, 일정 번호를 비교하여 맞는 체이블을 변경한다
+	// 회뤈의 닉네임, 일정 번호를 비교하여 맞는 테이블을 변경한다
 	// dayplanUpdate의 입력 변수는 DayplanDTO dayplan 출력 변수는 cnt(int)
 	public int dayplanUpdate(DayplanDTO dayplan) {
 		connect();
@@ -162,9 +185,9 @@ public class DayplanDAO {
 			psmt.setInt(2, num);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				dayplan = new DayplanDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
-						rs.getInt(11), rs.getString(12),rs.getString(13),rs.getString(14));
+				dayplan = new DayplanDTO(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+						rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11),
+						rs.getInt(12));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -188,9 +211,9 @@ public class DayplanDAO {
 
 			while (rs.next()) {
 
-				dayplanlist.add(new DayplanDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
-						rs.getInt(11), rs.getString(12),rs.getString(13),rs.getString(14)));
+				dayplanlist.add(new DayplanDTO(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+						rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11),
+						rs.getInt(12)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -200,5 +223,27 @@ public class DayplanDAO {
 
 		return dayplanlist;
 	}
+
+	public int dayplanTodayselect(String nick, String title) {
+		int dayplan_num=0;
+		sql = "select seq_dayplan_num from dayplan where member_nick=? and dayplan_title=?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setString(2, title);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				dayplan_num = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return dayplan_num;
+	}
+	
+	
 
 }

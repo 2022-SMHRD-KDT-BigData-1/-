@@ -52,7 +52,6 @@ create sequence seq_achieve_num
 		increment by 1
 		start with 1;
 
-		
 create table member(
 	member_id varchar(20) not null,
 	member_pw varchar(15) not null,
@@ -189,7 +188,7 @@ create table schedule(
 
 create table editor(
 	seq_editor_num number,
-	editor_title varchar2(20),
+	editor_title varchar2(150),
 	editor_content clob,
 	editor_date date,
 	seq_schedule_num number,
@@ -206,7 +205,7 @@ create table editor(
 
 create table diary(
 	seq_diary_num number,
-	diary_title varchar2(20),
+	diary_title varchar2(150),
 	diary_content clob,
 	diary_date date,
 	seq_schedule_num number,
@@ -236,6 +235,29 @@ create table achieve(
 	references schedule(seq_schedule_num)
 	on delete cascade
 )
+
+create table dayplan(
+	seq_dayplan_num number not null,
+	dayplan_title varchar(150) not null,
+	dayplan_date date not null,
+	seq_schedule_num number,
+	member_nick varchar(20) not null,
+	book_title varchar(130),
+	book_page number,
+	schedule_num_day varchar(5),
+	achieve_study_day varchar(5),
+	achieve_study_page number,
+	schedule_day_page number,
+	dayplan_check number,
+	constraint s_d_num_pk primary key(seq_dayplan_num),
+	constraint m_nick_fk foreign key(member_nick)
+	references member(member_nick)
+	on delete cascade
+)
+
+create sequence seq_dayplan_num
+		increment by 1
+		start with 1;
 	
 insert¹®
 
@@ -367,6 +389,7 @@ select NVL(book_part3, '0') from book
 select * from schedule
 select * from editor
 select * from diary
+select * from dayplan
 
 
 
@@ -381,7 +404,7 @@ drop table recommend_video cascade constraints;
 drop table schedule cascade constraints;
 drop table editor cascade constraints;
 drop table diary cascade constraints;
-
+drop table dayplan cascade constraints;
 
 
 delete¹®
@@ -394,4 +417,8 @@ update book set book_part2 = '0' where book_part2 is null
 update book set book_part3 = '0' where book_part3 is null
 update study_video set book_part2 = '0' where book_part2 is null
 update study_video set book_part3 = '0' where book_part3 is null
+
+alter¹®
+
+alter sequence seq_dayplan_num nocache
 

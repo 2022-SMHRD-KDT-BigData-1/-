@@ -96,7 +96,8 @@ if (member != null) {
 					<a href="mywish.jsp">위시리스트</a>
 					<a href="scheduleset.jsp">스케줄등록</a>
 					<a href="scheduleindex.jsp">스케줄목록</a>
-					<a href="dayplanset.jsp">일정등록</a>
+					<a href="dayplantodayset.jsp">일정등록</a>
+					<a href="lookup.jsp">조회</a>
 					<c:choose>
 						<c:when test="${empty member.user_type1}">
 							<script langauge="javascript">
