@@ -51,7 +51,7 @@ public class TodoDAO {
 	// todoSet에 입력 변수는 TodoDTO todo 출력 변수는 cnt(int)
 	public int todoSet(TodoDTO todo) {
 		connect();
-		sql = "insert into todo values(seq_todo_num.nextval,?,?,sysdate,?,?)";
+		sql = "insert into todo values(seq_todo_num.nextval,?,?,sysdate,?,?,?)";
 
 		cnt = 0;
 		try {
@@ -60,9 +60,9 @@ public class TodoDAO {
 			psmt.setString(1, todo.getTodo_title());
 			psmt.setString(2, todo.getTodo_content());
 			psmt.setInt(3, todo.getSchedule_num());
-			psmt.setString(4, todo.getMember_nick());
+			psmt.setInt(4, todo.getDayplan_num());
+			psmt.setString(5, todo.getMember_nick());
 		
-
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -88,7 +88,6 @@ public class TodoDAO {
 			psmt.setString(3, todo.getMember_nick());
 			psmt.setInt(4, todo.getTodo_num());
 			
-
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -137,7 +136,7 @@ public class TodoDAO {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				todo = new TodoDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6));
+						rs.getInt(5), rs.getInt(6), rs.getString(7));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -146,6 +145,31 @@ public class TodoDAO {
 		}
 		return todo;
 	}
+	
+	public ArrayList<TodoDTO> todoDayplanSelectAll(String nick, int num) {
+		ArrayList<TodoDTO> todolist =new ArrayList<TodoDTO>();
+		connect();
+
+		sql = "select * from todo where member_nick=? and seq_dayplan_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				todolist.add(new TodoDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getInt(6), rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return todolist;
+	}
+	
 	public ArrayList<TodoDTO> todoSelectAll(String nick, int num) {
 		ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 		connect();
@@ -160,7 +184,7 @@ public class TodoDAO {
 			while (rs.next()) {
 
 				todolist.add(new TodoDTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5),
-						rs.getInt(6), rs.getString(7)));
+						rs.getInt(6), rs.getInt(6), rs.getString(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

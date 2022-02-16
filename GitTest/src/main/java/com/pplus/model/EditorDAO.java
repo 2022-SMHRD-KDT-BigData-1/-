@@ -50,7 +50,7 @@ public class EditorDAO {
 	// editorSet에 입력 변수는 EditorDTO editor 출력 변수는 cnt(int)
 	public int editorSet(EditorDTO editor) {
 		connect();
-		sql = "insert into editor values(seq_editor_num.nextval,?,?,sysdate,?,?)";
+		sql = "insert into editor values(seq_editor_num.nextval,?,?,sysdate,?,?,?)";
 
 		cnt = 0;
 		try {
@@ -59,7 +59,8 @@ public class EditorDAO {
 			psmt.setString(1, editor.getEditor_title());
 			psmt.setString(2, editor.getEditor_content());
 			psmt.setInt(3, editor.getSchedule_num());
-			psmt.setString(4, editor.getMember_nick());
+			psmt.setInt(4, editor.getDayplan_num());
+			psmt.setString(5, editor.getMember_nick());
 		
 
 			cnt = psmt.executeUpdate();
@@ -136,7 +137,7 @@ public class EditorDAO {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				editor = new EditorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6));
+						rs.getInt(5), rs.getInt(6), rs.getString(7));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -144,6 +145,30 @@ public class EditorDAO {
 			close();
 		}
 		return editor;
+	}
+	
+	public ArrayList<EditorDTO> editorDayplanSelectAll(String nick, int num) {
+		ArrayList<EditorDTO> editorlist =new ArrayList<EditorDTO>();
+		connect();
+
+		sql = "select * from editor where member_nick=? and seq_dayplan_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				editorlist.add(new EditorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getInt(6), rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return editorlist;
 	}
 	
 	// editor DB에 하나의 스케줄에 저장되어 있는 모든 에디터들을 조회하기 위해서 회원의 닉네임, 스케줄번호로 비교하여 찾기
@@ -162,7 +187,7 @@ public class EditorDAO {
 			while (rs.next()) {
 
 				editorlist.add(new EditorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6)));
+						rs.getInt(5), rs.getInt(6), rs.getString(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -187,7 +212,7 @@ public class EditorDAO {
 			while (rs.next()) {
 
 				editorlist.add(new EditorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6)));
+						rs.getInt(5), rs.getInt(6), rs.getString(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

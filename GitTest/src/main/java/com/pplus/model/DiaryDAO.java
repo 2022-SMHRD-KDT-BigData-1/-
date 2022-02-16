@@ -59,10 +59,8 @@ public class DiaryDAO {
 			psmt.setString(1, diary.getDiary_title());
 			psmt.setString(2, diary.getDiary_content());
 			psmt.setInt(3, diary.getSchedule_num());
-			psmt.setString(4, diary.getMember_nick());
-			
-			
-		
+			psmt.setInt(4, diary.getDayplan_num());
+			psmt.setString(5, diary.getMember_nick());
 
 			cnt = psmt.executeUpdate();
 
@@ -88,7 +86,6 @@ public class DiaryDAO {
 			psmt.setString(3, diary.getMember_nick());
 			psmt.setInt(4, diary.getDiary_num());
 			
-
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -137,7 +134,7 @@ public class DiaryDAO {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				diary = new DiaryDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6));
+						rs.getInt(5), rs.getInt(6), rs.getString(7));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -145,6 +142,30 @@ public class DiaryDAO {
 			close();
 		}
 		return diary;
+	}
+	
+	public ArrayList<DiaryDTO> diaryDayplanSelectAll(String nick, int num) {
+		ArrayList<DiaryDTO> diarylist =new ArrayList<DiaryDTO>();
+		connect();
+
+		sql = "select * from diary where member_nick=? and seq_dayplan_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				diarylist.add(new DiaryDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getInt(6), rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return diarylist;
 	}
 	
 	// diary DB에 하나의 스케줄에 저장되어 있는 모든 일기들을 조회하기 위해서 회원의 닉네임, 스케줄번호로 비교하여 찾기
@@ -163,7 +184,7 @@ public class DiaryDAO {
 			while (rs.next()) {
 
 				diarylist.add(new DiaryDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6)));
+						rs.getInt(5), rs.getInt(6), rs.getString(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -188,7 +209,7 @@ public class DiaryDAO {
 			while (rs.next()) {
 
 				diarylist.add(new DiaryDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6)));
+						rs.getInt(5), rs.getInt(6), rs.getString(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -16,45 +16,42 @@ import com.pplus.model.ScheduleDTO;
 import com.pplus.model.TodoDAO;
 import com.pplus.model.TodoDTO;
 
-
 @WebServlet("/TodoCon")
-public class TodoCon implements iPCommand{
-	
+public class TodoCon implements iPCommand {
 
-	
-	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
-		
+
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		
+
 		ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
-		
-		TodoDAO dao = new TodoDAO(); 
-		
-		int cnt = dao.todoSet(new TodoDTO(0, title, content, null, schedule.getSchedule_num(), member.getMember_nick()));
-		
-		if(cnt > 0) {
+
+		TodoDAO dao = new TodoDAO();
+
+		int cnt = dao
+				.todoSet(new TodoDTO(0, title, content, null, 0, schedule.getSchedule_num(), member.getMember_nick()));
+
+		if (cnt > 0) {
 			System.out.println("todo 제목" + title);
 			System.out.println("회원 닉네임" + member.getMember_nick());
-			
+
 			ArrayList<TodoDTO> todolist = dao.todoSelectAll(member.getMember_nick(), schedule.getSchedule_num());
-			
+
 			session.setAttribute("todolist", todolist);
 			response.sendRedirect("schedule.jsp");
-		}else {
+		} else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('todo 등록을 실패하셨습니다.');");
 			out.print("location.href='pmain.jsp';");
 			out.print("</script>");
 		}
-		
+
 	}
 
 }

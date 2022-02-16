@@ -37,7 +37,7 @@ public class DiaryCon implements iPCommand{
 		ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		
-		int cnt = dao.diarySet(new DiaryDTO(0, title, content, null, schedule.getSchedule_num(), member.getMember_nick()));
+		int cnt = dao.diarySet(new DiaryDTO(0, title, content, null,0, schedule.getSchedule_num(), member.getMember_nick()));
 		
 		if(cnt > 0) {
 			System.out.println("일기 제목" + title);

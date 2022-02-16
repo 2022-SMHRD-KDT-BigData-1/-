@@ -15,5 +15,6 @@ public class TodoDTO {
 	private String todo_content;
 	private String todo_date;
 	private int schedule_num;
+	private int dayplan_num;
 	private String member_nick;
 }

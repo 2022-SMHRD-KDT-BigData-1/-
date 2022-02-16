@@ -77,31 +77,7 @@ public class DayplanDAO {
 			close();
 		}
 		return cnt;
-	}
-	
-	public int dayplanTodaySet(String nick, String title) {
-		connect();
-		sql = "insert into dayplan(seq_dayplan_num, dayplan_title, member_nick, dayplan_date) values(seq_dayplan_num.nextval,?,?,sysdate)";
-
-		cnt = 0;
-		try {
-			psmt = conn.prepareStatement(sql);
-			
-			psmt.setString(1, title);
-			psmt.setString(2, nick);
-
-			cnt = psmt.executeUpdate();
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return cnt;
-	}
-	
-	
+	}	
 	
 	// dayplan DB에 입력된 책 게목, 책 페이지, (전체)일수, 공부한 일수, (하루)공부 페이지 수를 
 	// 회뤈의 닉네임, 일정 번호를 비교하여 맞는 테이블을 변경한다
@@ -224,14 +200,14 @@ public class DayplanDAO {
 		return dayplanlist;
 	}
 
-	public int dayplanTodayselect(String nick, String title) {
+	public int dayplanTodayselect(String nick) {
+		connect();
 		int dayplan_num=0;
-		sql = "select seq_dayplan_num from dayplan where member_nick=? and dayplan_title=?";
+		sql = "select seq_dayplan_num from dayplan where member_nick=? and dayplan_date=sysdate and seq_schedule_num=0";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
-			psmt.setString(2, title);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				dayplan_num = rs.getInt(1);
