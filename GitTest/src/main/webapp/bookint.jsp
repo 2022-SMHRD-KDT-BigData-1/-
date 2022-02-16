@@ -29,7 +29,7 @@ BookDTO book = (BookDTO) session.getAttribute("book");
 		</c:when>
 		<c:otherwise>
 			<c:choose>
-				<c:when test="${empty recbook } ">
+				<c:when test="${empty member.getUser_type1()} ">
 					<img src="${book.book_img }">
 					<p>${book.book_title }</p>
 					<p>${book.book_price }</p>
@@ -44,12 +44,12 @@ BookDTO book = (BookDTO) session.getAttribute("book");
 				<img src="${book.book_img }">
 					<c:choose>
 						<c:when test="${recbook.contents_cnt == 1 }">
-							<a href="WishCon3.do?num=${book.book_num}&recbooknum=1">
+							<a href="WishCon2.do?num=${book.book_num}&recbooknum=1">
 							<button type="button"><img src="heart1.png" width="20"></button>
 							</a>
 						</c:when>
 						<c:otherwise>
-							<a href="WishCon3.do?num=${book.book_num}&recbooknum=0">
+							<a href="WishCon2.do?num=${book.book_num}&recbooknum=0">
 							<button type="button"><img src="heart0.png" width="20"></button>
 							</a>
 						</c:otherwise>
@@ -64,7 +64,7 @@ BookDTO book = (BookDTO) session.getAttribute("book");
 					<p>${book.book_pubdate }</p>
 					<p>${book.book_isbn }</p>
 				</c:otherwise>
-		</c:choose>
+			</c:choose>
 		</c:otherwise>
 		
 	</c:choose>

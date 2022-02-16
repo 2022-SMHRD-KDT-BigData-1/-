@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,10 +59,14 @@ public class WishVideoCon2 implements iPCommand {
 				response.sendRedirect("videoint.jsp");
 				
 			}else {
-				out.print("<script>");
-				out.print("alert('wishlist 등록을 실패하셨습니다.');");
-				out.print("location.href='videoint.jsp';");
-				out.print("</script>");
+				request.setAttribute("num", num);
+				request.setAttribute("recvideonum", recvideonum);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WishVideoCon3.do");
+				dispatcher.forward(request, response);
+//				out.print("<script>");
+//				out.print("alert('wishlist 등록을 실패하셨습니다.');");
+//				out.print("location.href='videoint.jsp';");
+//				out.print("</script>");
 			}
 		
 	}
