@@ -32,7 +32,7 @@
 
   <body>
    	
-   	 <header
+   <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
       <a class="navbar-brand" href="#">P+</a>
@@ -124,15 +124,11 @@
       </div>
     </header>
 
-
     <!-- ##### Main Content Wrapper Start ##### -->
     <div class="main-content-wrapper d-flex clearfix">
       <!-- Mobile Nav (max width 767px)-->
       <div class="mobile-nav">
-        <!-- Navbar Brand -->
-        <div class="amado-navbar-brand">
-          <a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-        </div>
+     
         <!-- Navbar Toggler -->
         <div class="amado-navbar-toggler">
           <span></span><span></span><span></span>
@@ -171,7 +167,7 @@
 
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="일정등록4번.jsp">등록</a></li>
+              <li class="active"><a href="#">등록</a></li>
               <hr />
               <li><a href="#">목록</a></li>
               <li><a href="#">전체 일정 목록</a></li>
@@ -184,121 +180,77 @@
       
       
       
-     <div style="width: 60%;  margin-top: 150px; margin-left: 300px;">
-      <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
+     <div class="" style="width: 40%; margin-top:100px; margin-left: 25%;
+     ">
+      <h1>스케줄 등록</h1>
+      <br>
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"
+      ></script>
+  
+      
+    <br>
+    <hr>
+    <br>
+      <div class="container">
+        <form action="#" method="get" role="form">   
+  
+              <h3 style="font-weight: bold;">학습할 책</h3>
+              <!-- <hr /> -->
+              <div class="input-group mb-3">
+              <input
+                  type="text"
+                  class="form-control"
+                  placeholder="책 제목을 입력하세요."
+                  aria-label="bookname"
+                  aria-describedby="button-addon2"
+              />
+              <a href="#" class="btn btn-dark">검색</a>
+              </div>
+  
+              <div class="input-group mb-3">
+              <input
+                  type="text"
+                  class="form-control"
+                  placeholder="위시리스트에서 찾기"
+                  aria-label="wishlist"
+                  aria-describedby="button-addon2"
+              />
+              <a href="#" class="btn btn-dark">위시리스트</a>
+              </div>
+
+              <br>
+              <hr>
+              <br>
+  
+              <h3 style="font-weight: bold;">스케줄 설정</h3>
+              <input
+              type="text"
+              class="form-control"
+              placeholder="스케줄 이름을 입력하세요."
+              />
+              
+              <br>
+              학습 시작일
+              <input type="date" class="form-control" placeholder="date input" />
+              <br>
+              학습 종료일
+              <input type="date" class="form-control" placeholder="date input" />
+              <br>
+              예상 학습일 수
+              <input type="text" class="form-control" placeholder="" />
+              
               <br>
               <div class="text-center">
-                  <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="스케줄등록.jsp"  style="color: rgb(47, 47, 47); ">스케줄 등록</a></h1>
+              <a href="#" class="btn btn-primary">스케줄 등록</a>
               </div>
-              <br>
-           </div>
-        <h1 style="text-align: center;">MY 스케줄
-            <i class="far fa-solid fa-calendar-check"></i>
-          </h1>
-          <br>
-          <div class="container" >
-            <table class="table table-bordered table-hover table-sm text-center "  >
-              
-          
-                <thead class="table-warning ">
-                  <th class="text-center">선택</th>
-                  <th class="text-center">No.</th>
-                  <th class="text-center">스케줄 이름</th>
-                  <th class="text-center">시작 날 - 끝나는 날</th>
-                  <th class="text-center">책 이름</th>
-                  <th class="text-center">하루 학습 분량</th>
-                  <th class="text-center">달성률</th>	  			
-                </tr>
-              </thead>
-      
-              <tbody>
-                <tr> 		 
-                  <td>
-                      <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>1</td>
-                  <td>자바</td>
-                  <td>2022.01.01-2022.01.20</td>
-                  <td>Java</td>
-                  <td>15p</td>
-                  <td>75%</td>
-                </tr>
-      
-                <tr> 		 
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>2</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                  </td>
-                </tr>
-      
-                <tr>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>3</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-      
-                <tr>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>4</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-      
-                <tr>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>5</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-          </table>
-          </div>
-          <br>
-           <div class="text-center">
-       <a href="#" class="btn btn-dark">선택 완료</a>
-     </div>
-     <br>
-     <nav aria-label="Page navigation example">
-        <div class="text-center">
-          <ul class="pagination" style=" justify-content : center;">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-          </ul>
+  
+              </div>
+          </form>
         </div>
-      </nav>
-    </div>
-
     </div>
 
    

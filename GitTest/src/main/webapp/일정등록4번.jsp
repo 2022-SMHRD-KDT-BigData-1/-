@@ -11,7 +11,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>Amado - Furniture Ecommerce Template | Cart</title>
+<title>Amado - Furniture Ecommerce Template | Shop</title>
 
 <!-- Favicon  -->
 <link rel="icon" href="img/core-img/favicon.ico" />
@@ -20,15 +20,10 @@
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
 
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+	crossorigin="anonymous"></script>
 
-
-
-<link rel="stylesheet" href="캐러셀/css/font-awesome.min.css"
-	type="text/css" />
-<link rel="stylesheet" href="캐러셀/css/jquery-ui.min.css" type="text/css" />
-<link rel="stylesheet" href="캐러셀/css/owl.carousel.min.css"
-	type="text/css" />
-<link rel="stylesheet" href="캐러셀/css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -126,198 +121,89 @@
     </header>
 
 
-
-
-
-
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
 		<div class="mobile-nav">
-			<!-- Navbar Brand -->
-			<div class="amado-navbar-brand">
-				<a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-			</div>
+
 			<!-- Navbar Toggler -->
 			<div class="amado-navbar-toggler">
 				<span></span><span></span><span></span>
 			</div>
 		</div>
 
-		
+
 
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
+				<h6 class="widget-title mb-30">학습플래너</h6>
+				<br>
 				<!-- Widget Title -->
-				<h6 class="widget-title mb-30">컨텐츠 추천</h6>
-				<hr>
+				<h6 class="widget-title mb-30">스케줄</h6>
+
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li><a href="#">유형 확인 및 재검사</a></li>
+						<li class="active"><a href="스케줄만_등록.jsp">등록</a></li>
+						<hr />
+						<li><a href="#">목록</a></li>
+						<li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
+						<li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
+						<li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
 					</ul>
 				</div>
 			</div>
 
-		
+			<!-- ##### Single Widget ##### -->
+			<div class="widget category mb-50">
+				<!-- Widget Title -->
+				<h6 class="widget-title mb-30">일정</h6>
 
-		</div>
+				<!-- Widget Title -->
 
-		<div class="container p-5">
-			<div class="row">
-				<div class="col-12 col-lg-12">
-					<div class="cart-title mt-50">
-						<h2>책 추천</h2>
-					</div>
-
-
-					<!-- ======= 컨텐츠 추천  ======= -->
-
-
-
-					<div class="box-shadow-full">
-
-						<!-- Categories Section Begin -->
-						<div class="container">
-							<div class="row">
-								<div class="categories__slider owl-carousel">
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="image/1.jpg">
-
-											<h5>
-												<a href="#"></a>
-											</h5>
-
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="image/2.jpg">
-											<h5>
-												<a href="#"></a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="image/3.jpg">
-											<h5>
-												<a href="#"></a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="image/4.jpg">
-											<h5>
-												<a href="#"></a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg"
-											data-setbg="img/categories/cat-5.jpg">
-											<h5>
-												<a href="#">X</a>
-											</h5>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-
-					</div>
-				</div>
-			</div>
-
-
-			<!-- 영상 추천 -->
-
-
-			<div class="row">
-				<div class="col-12 col-lg-12">
-					<div class="cart-title mt-50">
-						<h2>영상 추천</h2>
-					</div>
-
-					<div class="box-shadow-full">
-
-						<!-- Categories Section Begin -->
-						<div class="container">
-							<div class="row">
-								<div class="categories__slider owl-carousel">
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="video/1.png">
-
-											<h5>
-												<a href="#">영상이름1</a>
-											</h5>
-
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="video/2.png">
-											<h5>
-												<a href="#">영상이름2</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="video/3.png">
-											<h5>
-												<a href="#">영상 이름3</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="video/4.png">
-											<h5>
-												<a href="#">영상 이름4</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg"
-											data-setbg="img/categories/cat-5.jpg">
-											<h5>
-												<a href="#">X</a>
-											</h5>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-						</div>
-					</div>
+				<div class="catagories-menu">
+					<ul>
+						<li class="active"><a href="일정등록4번.jsp">등록</a></li>
+						<hr />
+						<li><a href="#">목록</a></li>
+						<li><a href="#">전체 일정 목록</a></li>
+						<li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
+						<li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
 
 
 
-		<!-- 컨텐츠 추천 끝나는 부분 -->
+		<div class="" style="width: 40%; margin-top: 10%; margin-left: 25%;">
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
 
 
+			<!--책 검색/위시리스트에서 찾기/제목/제목/시작일-종료일/예상 학습일 -->
 
+			<div class="container">
+				<form action="#" method="get" role="form">
+					<h3 style="font-weight: bold;">일정 등록</h3>
+					<br>
+					<hr>
+					<br> 오늘 날짜 선택 <input type="date" class="form-control"
+						placeholder="date input" /> <br> <input type="text"
+						class="form-control" placeholder="일정 이름을 입력하세요." /> <br>
+
+					<br>
+					<div class="text-center">
+						<a href="#" class="btn btn-primary">일정 등록</a>
+					</div>
+			</div>
+
+
+		</div>
 	</div>
-	</div>
-	</div>
-	</div>
-	<!-- ##### Main Content Wrapper End ##### -->
-
-	<!-- ##### Footer Area Start ##### -->
-
-
-	<!-- Js Plugins -->
-	<script src="캐러셀/js/jquery-3.3.1.min.js"></script>
-	<script src="캐러셀/js/bootstrap.min.js"></script>
-	<script src="캐러셀/js/jquery-ui.min.js"></script>
-	<script src="캐러셀/js/jquery.slicknav.js"></script>
-	<script src="캐러셀/js/mixitup.min.js"></script>
-	<script src="캐러셀/js/owl.carousel.min.js"></script>
-	<script src="캐러셀/js/main.js"></script>
 
 
 
@@ -331,6 +217,5 @@
 	<script src="js/plugins.js"></script>
 	<!-- Active js -->
 	<script src="js/active.js"></script>
-	</div>
 </body>
 </html>

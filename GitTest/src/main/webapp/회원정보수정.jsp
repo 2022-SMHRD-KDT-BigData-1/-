@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Login V2</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--===============================================================================================-->
+      <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
     <!--===============================================================================================-->
     <link
@@ -16,13 +18,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+      href="fonts1/font-awesome-4.7.0/css/font-awesome.min.css"
     />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="fonts/iconic/css/material-design-iconic-font.min.css"
+      href="fonts1/iconic/css/material-design-iconic-font.min.css"
     />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
@@ -51,16 +53,110 @@
       href="vendor/daterangepicker/daterangepicker.css"
     />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css1/util.css" />
+    <link rel="stylesheet" type="text/css" href="css1/main.css" />
     <!--===============================================================================================-->
-  </head>
+ 	
+ 	</head>
   <body>
+  
+   	 <header
+      class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
+    >
+      <a class="navbar-brand" href="#">P+</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">ªÁ¿Ã∆Æ º“∞≥</a>
+          </li>
+          <div class="dropdown nav-item active">
+            <a class="nav-link dropdown-toggle" href="ƒ¡≈Ÿ√˜√ﬂ√µ.jsp" >ƒ¡≈Ÿ√˜ √ﬂ√µ</a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="#">¿Ø«¸ »Æ¿Œ π◊ ¿Á∞ÀªÁ</a>
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown nav-item active">
+            <a class="nav-link dropdown-toggle" href="«–Ω¿«√∑°≥ .jsp" >«–Ω¿«√∑°≥ </a>
+            <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-header">Ω∫ƒ…¡Ÿ</li>
+      <hr>
+      <li><a href="Ω∫ƒ…¡Ÿ∏∏_µÓ∑œ.jsp">µÓ∑œ</a></li>
+      <li><a href="¿¸√ºΩ∫ƒ…¡Ÿ∏Ò∑œ.jsp">¿¸√º Ω∫ƒ…¡Ÿ ∏Ò∑œ</a></li>
+              <li><a href="¿¸√ºø°µ≈Õ∏Ò∑œ.jsp">¿¸√º ø°µ≈Õ ∏Ò∑œ</a></li>
+              <li><a href="¿¸√º¿œ±‚∏Ò∑œ.jsp">¿¸√º ¿œ±‚ ∏Ò∑œ</a></li>
+     <br>
+      <li class="divider"></li>
+      <li class="dropdown-header">¿œ¡§</li>
+      <hr>
+      <li><a href="¿œ¡§µÓ∑œ4π¯.jsp">µÓ∑œ</a></li>
+      <li><a href="#">¿¸√º ¿œ¡§ ∏Ò∑œ</a></li>
+      <li><a href="¿¸√ºø°µ≈Õ∏Ò∑œ.jsp">¿¸√º ø°µ≈Õ ∏Ò∑œ</a></li>
+      <li><a href="¿¸√º¿œ±‚∏Ò∑œ.jsp">¿¸√º ¿œ±‚ ∏Ò∑œ</a></li>
+    </ul>
+          </div>
+          
+          <div class="dropdown nav-item active">
+            <a class="nav-link dropdown-toggle" href="#" >∆˜∆Æ∆˙∏Æø¿</a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="∆˜∆˙µÓ∑œ«“Ω∫ƒ…¡Ÿ.jsp">µÓ∑œ</a>
+              </li>
+              
+              <li>
+                <a class="dropdown-item" href="∆˜∆˙∏Ò∑œ.jsp">∏Ò∑œ</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="dropdown nav-item active">
+            <a class="nav-link dropdown-toggle" href="#" >∏∂¿Ã∆‰¿Ã¡ˆ</a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="#">»∏ø¯¡§∫∏ ºˆ¡§/≈ª≈</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">¿¸√º «–Ω¿ªÛ»≤ ¡∂»∏</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">¿ßΩ√∏ÆΩ∫∆Æ</a>
+              </li>
+            </ul>
+          </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">∑Œ±◊æ∆øÙ</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
     <div class="limiter">
       <div class="container-login100">
         <div class="wrap-login100">
             <form class="login100-form validate-form">
-                <span class="login100-form-title p-b-26"> ÌöåÏõêÏ†ïÎ≥¥ ÏàòÏ†ï </span>
+                <span class="login100-form-title p-b-26"> »∏ø¯¡§∫∏ ºˆ¡§ </span>
                 <span class="login100-form-title p-b-48">
                   <!-- <i class="zmdi zmdi-font"></i> -->
                   P+
@@ -73,7 +169,7 @@
                   <input class="input100" type="text" name="id" />
                   <span
                     class="focus-input100"
-                    data-placeholder="ÏïÑÏù¥Îîî"
+                    data-placeholder="æ∆¿Ãµ"
                   ></span>
                 </div>
     
@@ -87,7 +183,7 @@
                   <input class="input100" type="password" name="pass" />
                   <span
                     class="focus-input100"
-                    data-placeholder="ÏÉàÎ°úÏö¥ ÎπÑÎ∞ÄÎ≤àÌò∏Î•º ÏûÖÎ†•ÌïòÏÑ∏Ïöî."
+                    data-placeholder="ªı∑ŒøÓ ∫Òπ–π¯»£∏¶ ¿‘∑¬«œººø‰."
                   ></span>
                 </div>
     
@@ -98,7 +194,7 @@
                   <input class="input100" type="text" name="nick" />
                   <span
                     class="focus-input100"
-                    data-placeholder="ÏÉàÎ°úÏö¥ ÎãâÎÑ§ÏûÑÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî."
+                    data-placeholder="ªı∑ŒøÓ ¥–≥◊¿”¿ª ¿‘∑¬«œººø‰."
                   ></span>
                 </div>
     
@@ -107,7 +203,7 @@
                 <div class="container-login100-form-btn">
                   <div class="wrap-login100-form-btn">
                     <div class="login100-form-bgbtn"></div>
-                    <button class="login100-form-btn" onclick="location.href='#'">ÏàòÏ†ïÏôÑÎ£å</button >
+                    <button class="login100-form-btn" onclick="location.href='#'">ºˆ¡§øœ∑·</button >
                   </div>
                 </div>
     
@@ -135,6 +231,6 @@
     <!--===============================================================================================-->
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <script src="js1/main.js"></script>
   </body>
 </html>

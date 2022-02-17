@@ -32,7 +32,7 @@
 
   <body>
    	
-   	 <header
+   	  <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
       <a class="navbar-brand" href="#">P+</a>
@@ -144,56 +144,28 @@
       <div class="shop_sidebar_area">
         <!-- ##### Single Widget ##### -->
         <div class="widget catagory mb-50">
-         <h6 class="widget-title mb-30">학습플래너</h6>
-         <br>
-          <!-- Widget Title -->
-          <h6 class="widget-title mb-30">스케줄</h6>
+         <h6 class="widget-title mb-30">포트폴리오</h6>
+     	<hr>
 
           <!--  Catagories  -->
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="스케줄만_등록.jsp">등록</a></li>
-              <hr />
-              <li><a href="#">목록</a></li>
-              <li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+              <li><a href="포폴등록할스케줄.jsp">등록</a></li>
+              <li><a href="포폴목록.jsp">목록</a></li>
+              
             </ul>
           </div>
         </div>
 
-        <!-- ##### Single Widget ##### -->
-        <div class="widget category mb-50">
-          <!-- Widget Title -->
-          <h6 class="widget-title mb-30">일정</h6>
-
-          <!-- Widget Title -->
-
-          <div class="catagories-menu">
-            <ul>
-              <li class="active"><a href="일정등록4번.jsp">등록</a></li>
-              <hr />
-              <li><a href="#">목록</a></li>
-              <li><a href="#">전체 일정 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
-            </ul>
-          </div>
-        </div>
+       
       </div>
       
       
       
      <div style="width: 60%;  margin-top: 150px; margin-left: 300px;">
-      <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
-              <br>
-              <div class="text-center">
-                  <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="스케줄등록.jsp"  style="color: rgb(47, 47, 47); ">스케줄 등록</a></h1>
-              </div>
-              <br>
-           </div>
-        <h1 style="text-align: center;">MY 스케줄
-            <i class="far fa-solid fa-calendar-check"></i>
+     
+     <h1 style="text-align: center;">포트폴리오에 등록할 스케줄 선택
+            <i class="far fa-check-square"></i>
           </h1>
           <br>
           <div class="container" >
@@ -203,11 +175,10 @@
                 <thead class="table-warning ">
                   <th class="text-center">선택</th>
                   <th class="text-center">No.</th>
-                  <th class="text-center">스케줄 이름</th>
                   <th class="text-center">시작 날 - 끝나는 날</th>
                   <th class="text-center">책 이름</th>
-                  <th class="text-center">하루 학습 분량</th>
-                  <th class="text-center">달성률</th>	  			
+                  <th class="text-center">커밋 달성률</th>
+                  <th class="text-center">미리보기</th>	  			
                 </tr>
               </thead>
       
@@ -217,11 +188,12 @@
                       <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
                   </td>
                   <td>1</td>
-                  <td>자바</td>
                   <td>2022.01.01-2022.01.20</td>
                   <td>Java</td>
-                  <td>15p</td>
                   <td>75%</td>
+                  <td>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">확인</a>
+                  </td>
                 </tr>
       
                 <tr> 		 
