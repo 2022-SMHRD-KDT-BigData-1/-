@@ -141,7 +141,7 @@ public class RecBookDAO {
 
 	// recbook DB에 저장되어 있는 데이터들을 회원별로 가져오고싶기 때문에 회원에 닉네임을 통하여 찾기
 	// recBookSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecBookDTO> recbooklist
-	public ArrayList<RecBookDTO> recBookSelectAll(PMemberDTO member) {
+	public ArrayList<RecBookDTO> recBookSelectAll( PMemberDTO member) {
 		ArrayList<RecBookDTO> recbooklist = new ArrayList<RecBookDTO>();
 		connect();
 
@@ -169,6 +169,35 @@ public class RecBookDAO {
 		}
 		return recbooklist;
 	}
+	public ArrayList<RecBookDTO> recBookSelectAll2(RecBookDTO recbook, PMemberDTO member) {
+		ArrayList<RecBookDTO> recbooklist = new ArrayList<RecBookDTO>();
+		connect();
+
+		sql = "select * from recommend_book where member_nick=? and user_type1 = ? and user_type2 = ? and user_type3 = ?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, member.getMember_nick());
+			psmt.setString(2, member.getUser_type1());
+			psmt.setString(3, member.getUser_type2());
+			psmt.setString(4, member.getUser_type3());
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				recbooklist.add(new RecBookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13), rs.getInt(14) ,rs.getInt(15)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recbooklist;
+	}
+
 	
 	public int recBookWish(String nick, int recbooknum, int num) {
 		connect();

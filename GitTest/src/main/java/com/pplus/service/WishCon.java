@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.pplus.model.BookDAO;
+import com.pplus.model.BookDTO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.RecBookDAO;
 import com.pplus.model.RecBookDTO;
@@ -35,13 +37,14 @@ public class WishCon implements iPCommand{
 			}
 			
 			PMemberDTO member =(PMemberDTO) session.getAttribute("member");
-			RecBookDAO recbookDao= new RecBookDAO();		
+			RecBookDAO recbookDao= new RecBookDAO();
+			
 			int cnt = recbookDao.recBookWish(member.getMember_nick(),recbooknum, num);
 			
 			 
 			if(cnt > 0) {
 				
-				ArrayList<RecBookDTO> recbooklist = recbookDao.recBookSelectAll(member);
+				ArrayList<RecBookDTO> recbooklist = recbookDao.recBookSelectAll( member);
 				ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) recbookDao.recBookWishSelectAll(member.getMember_nick());
 				
 				session.setAttribute("recbooklist", recbooklist);

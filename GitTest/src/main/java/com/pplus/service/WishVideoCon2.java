@@ -56,7 +56,10 @@ public class WishVideoCon2 implements iPCommand {
 				session.setAttribute("recvideolist", recvideolist);
 				session.setAttribute("recvideo", recvideo);
 				
-				response.sendRedirect("videoint.jsp");
+				request.setAttribute("num", num);
+				request.setAttribute("recvideonum", recvideonum);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("VideointCon");
+				dispatcher.forward(request, response);
 				
 			}else {
 				request.setAttribute("num", num);

@@ -33,8 +33,12 @@ public class BookintCon extends HttpServlet {
 		
 		BookDTO book=bookDao.bookSelect(book_num);
 		if(member != null) {
-			RecBookDTO recbook = recbookDAO.recBookSelect(book_num,member);
+			RecBookDTO recbook = recbookDAO.recBookSelect(book_num, member);
 			session.setAttribute("recbook", recbook);
+			if(recbook == null) {
+				recbook = recbookDAO.recBookSelect2(book, member);
+				session.setAttribute("recbook", recbook);
+			}
 		}
 		
 		

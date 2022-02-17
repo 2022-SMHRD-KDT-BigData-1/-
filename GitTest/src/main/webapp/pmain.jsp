@@ -141,6 +141,26 @@ if (member != null) {
 							</td>
 						</c:forEach>
 					</tr>
+					<tr>
+					<c:forEach var="recbook" items="${recbooklist }">
+						<c:choose>
+							<c:when test="${recbook.contents_cnt == 1}">
+								<td>
+									<a href="WishCon.do?num=${recbook.book_num}&recbooknum=1">
+										<button type="button"><img src="heart1.png" width="20"></button>
+									</a>
+								</td>
+							</c:when>
+							<c:otherwise>
+								<td>
+									<a href="WishCon.do?num=${recbook.book_num}&recbooknum=0">
+										<button type="button"><img src="heart0.png" width="20"></button>
+									</a>
+								</td>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					</tr>
 					</table>
 					<hr>
 					<table>

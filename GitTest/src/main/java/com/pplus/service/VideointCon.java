@@ -36,6 +36,10 @@ public class VideointCon extends HttpServlet {
 		if(member != null) {
 			RecVideoDTO recvideo = recvideoDao.recVideoSelect(video_num,member);
 			session.setAttribute("recvideo", recvideo);
+			if(recvideo == null) {
+				recvideo = recvideoDao.recVideoSelect2(video,member);
+				session.setAttribute("recvideo", recvideo);
+			}
 		}
 		
 		
