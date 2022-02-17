@@ -113,17 +113,19 @@ if (member != null) {
 		<ul class="navbar-nav">
 			<c:choose>
 				<c:when test="${empty member}">
-					<li class="nav-item active">
-					<a class="nav-link" href="#">사이트
+					<li class="nav-item active"><a class="nav-link" href="#">사이트
 							소개</a></li>
-					<li class="nav-item active"><a class="nav-link" href="plogin.jsp">로그인</a></li>
-					<li class="nav-item active"><a class="nav-link" href="pjoin.jsp">회원가입</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						href="plogin.jsp">로그인</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						href="pjoin.jsp">회원가입</a></li>
 				</c:when>
 				<c:otherwise>
 					<c:choose>
 						<c:when test="${member.member_id=='admin'}">
 							<li class="nav-item active"><a class="nav-link" href="#">회원관리</a></li>
-							<li class="nav-item active"><a class="nav-link" href="plogout.jsp">로그아웃</a></li>
+							<li class="nav-item active"><a class="nav-link"
+								href="plogout.jsp">로그아웃</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item active"><a class="nav-link" href="#">사이트
@@ -138,6 +140,13 @@ if (member != null) {
 									<li><a class="dropdown-item" href="dayplantodayset.jsp">일정
 											등록</a></li>
 									<li><a class="dropdown-item" href="lookup.jsp">일정 조회</a></li>
+								</ul>
+							</div>
+							<div class="dropdown nav-item active">
+								<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<li><a class="dropdown-item" href="#">회원정보 수정/탈퇴</a></li>
+									<li><a class="dropdown-item" href="#">전체 학습상황 조회</a></li>
 								</ul>
 							</div>
 							<li class="nav-item active"><a class="nav-link"
@@ -194,8 +203,8 @@ if (member != null) {
 					<li>
 						<div class="btn-group">
 							<a class="dropdown-toggle" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false" href="#">
-								컨텐츠 추천 </a>
+								aria-haspopup="true" aria-expanded="false" href="#"> 컨텐츠 추천
+							</a>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<a class="dropdown-item" href="#">유형 확인 및 재검사</a>
 							</div>
@@ -212,8 +221,7 @@ if (member != null) {
 					<li>
 						<div class="btn-group">
 							<a class="dropdown-toggle" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false" href="#">
-								포트폴리오 </a>
+								aria-haspopup="true" aria-expanded="false" href="#"> 포트폴리오 </a>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<a class="dropdown-item" href="#">등록</a> <a
 									class="dropdown-item" href="#">목록</a>
@@ -224,8 +232,7 @@ if (member != null) {
 					<li>
 						<div class="btn-group">
 							<a class="dropdown-toggle" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false" href="#">
-								위시리스트 </a>
+								aria-haspopup="true" aria-expanded="false" href="#"> 위시리스트 </a>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<a class="dropdown-item" href="#">책</a> <a class="dropdown-item"
 									href="#">영상</a>
@@ -236,8 +243,7 @@ if (member != null) {
 					<li>
 						<div class="btn-group">
 							<a class="dropdown-toggle" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false" href="#">
-								마이페이지 </a>
+								aria-haspopup="true" aria-expanded="false" href="#"> 마이페이지 </a>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenu">
 								<a class="dropdown-item" href="#">회원정보 수정/탈퇴</a> <a
 									class="dropdown-item" href="#">전체 학습상황 조회</a>
@@ -251,8 +257,8 @@ if (member != null) {
 		<div class="cart-fav-search mb-100">
 			<a href="cart.html" class="cart-nav"><img
 				src="img/core-img/cart.png" alt="" /> Cart <span>(0)</span></a> <a
-				href="#" class="fav-nav"><img
-				src="img/core-img/favorites.png" alt="" /> Favourite</a>
+				href="#" class="fav-nav"><img src="img/core-img/favorites.png"
+				alt="" /> Favourite</a>
 
 
 		</div>
@@ -422,8 +428,7 @@ if (member != null) {
 				<div class="single_widget_area">
 					<!-- Logo -->
 					<div class="footer-logo mr-50">
-						<a href="index.html"><img
-							src="img/core-img/logo2.png" alt="" /></a>
+						<a href="index.html"><img src="img/core-img/logo2.png" alt="" /></a>
 					</div>
 					<!-- Copywrite Text -->
 					<p class="copywrite">
@@ -460,8 +465,7 @@ if (member != null) {
 								<li class="nav-item"><a class="nav-link" href="shop.html">Shop</a>
 								</li>
 								<li class="nav-item"><a class="nav-link"
-									href="product-details.html">Product</a>
-								</li>
+									href="product-details.html">Product</a></li>
 								<li class="nav-item"><a class="nav-link" href="cart.html">Cart</a>
 								</li>
 								<li class="nav-item"><a class="nav-link"

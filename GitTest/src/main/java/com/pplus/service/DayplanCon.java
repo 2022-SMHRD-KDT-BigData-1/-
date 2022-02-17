@@ -50,6 +50,7 @@ public class DayplanCon implements iPCommand {
 
 		} else {
 			System.out.println("test2 : "+dayplan_num);
+			// 이 부분에 알러트 넣었어요
 			request.setAttribute("dayplan_num", dayplan_num);
 			dispatcher.forward(request, response);
 		}

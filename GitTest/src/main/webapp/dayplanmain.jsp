@@ -25,6 +25,9 @@ DayplanDAO dayplanDao = new DayplanDAO();
 dayplan = dayplanDao.dayplanSelect(nick, num);
 out.print(dayplan.toString());
 
+//요로케 저장해놔야 아래에서 el로 접근이 가능하다는거~
+pageContext.setAttribute("dayplan", dayplan);
+
 EditorDAO editorDao = new EditorDAO();
 DiaryDAO diaryDao = new DiaryDAO();
 TodoDAO todoDao = new TodoDAO(); 
