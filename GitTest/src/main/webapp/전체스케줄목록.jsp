@@ -19,7 +19,7 @@
     <link rel="icon" href="img/core-img/favicon.ico" />
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css" />
+    <link rel="stylesheet" href="css1/core-style.css" />
     <link rel="stylesheet" href="style.css" />
     
      <!-- Font Awesome icons (free version)-->
@@ -232,14 +232,14 @@
    
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="js1/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="js1/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js1/bootstrap.min.js"></script>
     <!-- Plugins js -->
-    <script src="js/plugins.js"></script>
+    <script src="js1/plugins.js"></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src="js1/active.js"></script>
   </body>
 </html>
