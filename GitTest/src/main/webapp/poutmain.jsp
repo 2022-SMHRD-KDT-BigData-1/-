@@ -1,5 +1,38 @@
+<%@page import="com.pplus.model.VideoDTO"%>
+<%@page import="com.pplus.model.BookDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Random"%>
+<%@page import="com.pplus.model.VideoDAO"%>
+<%@page import="com.pplus.model.BookDAO"%>
+<%@page import="com.pplus.model.PMemberDAO"%>
+<%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+
+PMemberDAO dao = new PMemberDAO();
+BookDAO bookDao = new BookDAO();
+VideoDAO videoDao = new VideoDAO();
+int[] array = new int[12];
+Random rd = new Random();
+for (int a = 0; a <= array.length - 1; a++) {
+	array[a] = rd.nextInt(877);
+	for (int b = 0; b < a; b++) {
+		if (array[b] == array[a]) {
+	a--;
+	break;
+		}
+	}
+}
+ArrayList<BookDTO> booklist = null;
+ArrayList<VideoDTO> videolist = null;
+booklist = bookDao.bookSelectAll(array);
+videolist = videoDao.videoSelectAll(array);
+pageContext.setAttribute("booklist", booklist);
+pageContext.setAttribute("videolist", videolist);
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,11 +94,11 @@
 					<li><a class="nav-link scrollto active" href="#hero"></a></li>
 					<li><a class="nav-link scrollto" href="#"
 						style="text-decoration: none">사이트 소개</a></li>
-					<li><a class="nav-link scrollto" href="로그인&회원가입/로그인.jsp"
+					<li><a class="nav-link scrollto" href="plogin.jsp"
 						style="text-decoration: none">로그인</a></li>
-					<li><a class="nav-link scrollto" href="로그인&회원가입/회원가입.jsp"
+					<li><a class="nav-link scrollto" href="pjoin.jsp"
 						style="text-decoration: none">회원가입</a></li>
-						</ul>
+				</ul>
 			</nav>
 		</div>
 	</header>
@@ -103,44 +136,20 @@
 							<div class="container">
 								<div class="row">
 									<div class="categories__slider owl-carousel">
-										<div class="col-lg-3">
-											<div class="categories__item set-bg" data-setbg="image/1.jpg">
+										<c:forEach var="book" items="${booklist }">
+											<td></td>
+											<div class="col-lg-3">
+												<div class="categories__item set-bg">
 
-												<h5>
-													<a href="#">책이름1</a>
-												</h5>
+													<h5>
+														<a href="BookintCon?num=${book.book_num }"> <img
+															src="${book.book_img}" width="60"> <span>${book.book_title }</span>
+														</a>
+													</h5>
 
+												</div>
 											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="categories__item set-bg" data-setbg="image/2.jpg">
-												<h5>
-													<a href="#">책이름2</a>
-												</h5>
-											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="categories__item set-bg" data-setbg="image/3.jpg">
-												<h5>
-													<a href="#">책이름3</a>
-												</h5>
-											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="categories__item set-bg" data-setbg="image/4.jpg">
-												<h5>
-													<a href="#">책이름4</a>
-												</h5>
-											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="categories__item set-bg"
-												data-setbg="img/categories/cat-5.jpg">
-												<h5>
-													<a href="#">X</a>
-												</h5>
-											</div>
-										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
@@ -158,44 +167,22 @@
 							<div class="container">
 								<div class="row">
 									<div class="categories__slider owl-carousel">
-										<div class="col-lg-3">
-											<div class="categories__item set-bg" data-setbg="video/1.png">
 
-												<h5>
-													<a href="#">영상이름1</a>
-												</h5>
+										<c:forEach var="video" items="${videolist }">
 
+											<div class="col-lg-3">
+												<div class="categories__item set-bg">
+
+													<h5>
+														<a href="VideointCon?num=${video.video_num}"> <img
+															src="${video.video_thumbnail}" width="80"> <span>${video.video_title }</span>
+														</a>
+
+													</h5>
+
+												</div>
 											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="categories__item set-bg" data-setbg="video/2.png">
-												<h5>
-													<a href="#">영상이름2</a>
-												</h5>
-											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="categories__item set-bg" data-setbg="video/3.png">
-												<h5>
-													<a href="#">영상 이름3</a>
-												</h5>
-											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="categories__item set-bg" data-setbg="video/4.png">
-												<h5>
-													<a href="#">영상 이름4</a>
-												</h5>
-											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="categories__item set-bg"
-												data-setbg="img/categories/cat-5.jpg">
-												<h5>
-													<a href="#">X</a>
-												</h5>
-											</div>
-										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>

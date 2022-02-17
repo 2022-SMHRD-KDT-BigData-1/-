@@ -1,5 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="utf-8"%>
+<%@page import="com.pplus.model.RecVideoDTO"%>
+<%@page import="com.pplus.model.VideoDAO"%>
+<%@page import="com.pplus.model.VideoDTO"%>
+<%@page import="com.pplus.model.RecBookDAO"%>
+<%@page import="com.pplus.model.RecBookDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Random"%>
+<%@page import="com.pplus.model.BookDAO"%>
+<%@page import="com.pplus.model.BookDTO"%>
+<%@page import="com.pplus.model.PMemberDAO"%>
+<%@page import="com.pplus.model.PMemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+
+PMemberDAO dao = new PMemberDAO();
+BookDAO bookDao = new BookDAO();
+VideoDAO videoDao = new VideoDAO();
+RecBookDAO recDaobook = new RecBookDAO();
+ArrayList<RecBookDTO> recbooklist = (ArrayList<RecBookDTO>) session.getAttribute("recbooklist");
+ArrayList<RecVideoDTO> recvideolist = (ArrayList<RecVideoDTO>) session.getAttribute("recvideolist");
+
+ArrayList<BookDTO> booklist = null;
+ArrayList<VideoDTO> videolist = null;
+// 로그인 
+if (member != null) {
+	if (member.getUser_type1() == null) {
+		// 유형조사를 안했을 때
+		int[] array = new int[12];
+		Random rd = new Random();
+		for (int a = 0; a <= array.length - 1; a++) {
+	array[a] = rd.nextInt(877);
+	for (int b = 0; b < a; b++) {
+		if (array[b] == array[a]) {
+			a--;
+			break;
+		}
+	}
+		}
+		booklist = bookDao.bookSelectAll(array);
+		videolist = videoDao.videoSelectAll(array);
+		request.setAttribute("booklist", booklist);
+		request.setAttribute("videolist", videolist);
+	} else if (recbooklist != null) {
+		// 로그인 유형조사 했을 때
+
+	}
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +84,7 @@
 
 	<header
 		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
-		<a class="navbar-brand" href="로그인후초기화면.jsp">P+</a>
+		<a class="navbar-brand" href="pmain3.jsp">P+</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -43,20 +92,51 @@
 		</button>
 		<div class="collapse navbar-collapse justify-content-end"
 			id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">사이트
-						소개</a></li>
-				<li class="nav-item active"><a class="nav-link" href="컨텐츠추천.jsp">컨텐츠
-						추천</a></li>
-				<li class="nav-item active"><a class="nav-link" href="학습플래너.jsp">학습플래너</a>
-				</li>
-				<li class="nav-item active"><a class="nav-link" href="#">포트폴리오</a>
-				</li>
-				<li class="nav-item active"><a class="nav-link" href="#">마이페이지</a>
-				</li>
-				<li class="nav-item active"><a class="nav-link" href="#">로그아웃</a>
-				</li>
-			</ul>
+			<c:choose>
+				<c:when test="${empty member}">
+					<li class="nav-item active"><a class="nav-link" href="#">사이트
+							소개</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						href="plogin.jsp">로그인</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						href="pjoin.jsp">회원가입</a></li>
+				</c:when>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${member.member_id=='admin'}">
+							<li class="nav-item active"><a class="nav-link" href="#">회원관리</a></li>
+							<li class="nav-item active"><a class="nav-link"
+								href="plogout.jsp">로그아웃</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item active"><a class="nav-link" href="#">사이트
+									소개</a></li>
+								<li class="nav-item active"><a class="nav-link" href="#">학습플래너</a></li>
+							<div class="dropdown nav-item active">
+								<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<li><a class="dropdown-item" href="#">회원정보 수정/탈퇴</a></li>
+									<li><a class="dropdown-item" href="#">전체 학습상황 조회</a></li>
+								</ul>
+							</div>
+							<li class="nav-item active"><a class="nav-link"
+								href="mywish.jsp">위시리스트</a></li>
+							<li class="nav-item active"><a class="nav-link"
+								href="plogout.jsp">로그아웃</a></li>
+							<c:choose>
+								<c:when test="${empty member.user_type1}">
+									<script>
+										window
+												.open("ptype2.jsp", "ptype",
+														"width=800, height=300, left=100, top=50");
+									</script>
+								</c:when>
+							</c:choose>
+
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</header>
 

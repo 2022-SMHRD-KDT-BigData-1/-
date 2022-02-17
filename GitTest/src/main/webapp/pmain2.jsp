@@ -86,9 +86,6 @@ if (member != null) {
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
 
-
-
-
 <link rel="stylesheet" href="캐러셀/css/font-awesome.min.css"
 	type="text/css" />
 <link rel="stylesheet" href="캐러셀/css/jquery-ui.min.css" type="text/css" />
