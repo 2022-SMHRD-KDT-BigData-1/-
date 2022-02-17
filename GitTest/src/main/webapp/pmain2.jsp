@@ -130,18 +130,7 @@ if (member != null) {
 						<c:otherwise>
 							<li class="nav-item active"><a class="nav-link" href="#">사이트
 									소개</a></li>
-							<div class="dropdown nav-item active">
-								<a class="nav-link dropdown-toggle" class="nav-link" href="#">학습플래너</a>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<li><a class="dropdown-item" href="scheduleset.jsp">스케줄
-											등록</a></li>
-									<li><a class="dropdown-item" href="scheduleindex.jsp">스케줄
-											목록</a></li>
-									<li><a class="dropdown-item" href="dayplantodayset.jsp">일정
-											등록</a></li>
-									<li><a class="dropdown-item" href="lookup.jsp">일정 조회</a></li>
-								</ul>
-							</div>
+								<li class="nav-item active"><a class="nav-link" href="#">학습플래너</a></li>
 							<div class="dropdown nav-item active">
 								<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">

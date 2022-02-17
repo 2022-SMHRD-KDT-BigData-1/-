@@ -67,7 +67,7 @@ public class PLoginCon implements iPCommand {
 			session.setAttribute("wishlistbook", wishlistbook);
 			session.setAttribute("wishlistvideo", wishlistvideo);
 			session.setAttribute("member", member);
-			response.sendRedirect("pmain.jsp");
+			response.sendRedirect("pmain2.jsp");
 			
 		} else {
 			out.print("<script>");
