@@ -57,15 +57,18 @@
 	            //window.opener.location.reload();
 	            //self.close();
 	            window.close();
+	            opener.parent.location.reload();
 	            }
 	        	else {
 	        		alert("실패!");
 	        		window.close();
+	        		opener.parent.location.reload();
 	        	}
 	        },
 	        error:function(){
 	            alert("서버요청실패");
 	            window.close();
+	            opener.parent.location.reload();
 	        }
 	    });
 		

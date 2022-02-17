@@ -169,18 +169,16 @@ public class RecBookDAO {
 		}
 		return recbooklist;
 	}
-	public ArrayList<RecBookDTO> recBookSelectAll2(RecBookDTO recbook, PMemberDTO member) {
+	public ArrayList<RecBookDTO> recBookSelectAll2(PMemberDTO member) {
 		ArrayList<RecBookDTO> recbooklist = new ArrayList<RecBookDTO>();
 		connect();
 
-		sql = "select * from recommend_book where member_nick=? and user_type1 = ? and user_type2 = ? and user_type3 = ?";
+		sql = "select * from recommend_book where member_nick=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, member.getMember_nick());
-			psmt.setString(2, member.getUser_type1());
-			psmt.setString(3, member.getUser_type2());
-			psmt.setString(4, member.getUser_type3());
+			
 
 			rs = psmt.executeQuery();
 

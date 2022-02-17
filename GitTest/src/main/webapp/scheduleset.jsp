@@ -58,7 +58,7 @@ $("input[name='serviceType']:radio").change(function () {
 				 제목 : <input type="text" name="title"> <br>
 				시작일 : <input type="date" name="start" id="Date1" onchange="call()" value="">   ~   
 				종료일 : <input type="date" name="end" id="Date2" onchange="call()" value=""> <p></p>
-			 	일차이 계산 : <input type="text" id="day1" size="6" style="text-align:center;" name="day">
+			 	일차이 계산 : <input type="text" id="day1" size="6" style="text-align:center;" name="day" readonly="readonly">
 				
 				<input type="submit" value="등록" >	
 			</span>
@@ -72,7 +72,7 @@ $("input[name='serviceType']:radio").change(function () {
 				 제목 : <input type="text" name="title"> <br>
 				시작일 : <input type="date" name="start" id="Date3" onchange="call2()" value="">   ~   
 				종료일 : <input type="date" name="end" id="Date4" onchange="call2()" value=""> <p></p>
-			 	일차이 계산 : <input type="text" id="day2" size="6" style="text-align:center;" name="day">
+			 	일차이 계산 : <input type="text" id="day2" size="6" style="text-align:center;" name="day" readonly="readonly">
 				
 					<input type="submit" value="등록" >	
 			</span>
@@ -85,7 +85,7 @@ $("input[name='serviceType']:radio").change(function () {
 				 
 				시작일 : <input type="date" name="start" id="Date5" onchange="call3()" value="">   ~   
 				종료일 : <input type="date" name="end" id="Date6" onchange="call3()" value=""> <p></p>
-			 	일차이 계산 : <input type="text" id="day3" size="6" style="text-align:center;" name="day">
+			 	일차이 계산 : <input type="text" id="day3" size="6" style="text-align:center;" name="day" readonly="readonly">
 			 	
 				<input type="submit" value="등록" >	
 			</span>

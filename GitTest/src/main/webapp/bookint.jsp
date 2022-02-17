@@ -70,7 +70,7 @@ BookDTO book = (BookDTO) session.getAttribute("book");
 	</c:choose>
 		
 
-	<button onclick="goBack()">앞쪽 페이지로</button>
+	<button onclick="goBack()">메인 페이지로</button>
 	<script>
 		function goBack() {
 			location.href='pmain.jsp';
