@@ -35,7 +35,7 @@
 
 	<header
 		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
-		<a class="navbar-brand" href="#">P+</a>
+		<a class="navbar-brand" href="로그인후초기화면.jsp">P+</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
 						소개</a></li>
 				<li class="nav-item active"><a class="nav-link" href="컨텐츠추천.jsp">컨텐츠
 						추천</a></li>
-				<li class="nav-item active"><a class="nav-link" href="#">학습플래너</a>
+				<li class="nav-item active"><a class="nav-link" href="학습플래너.jsp">학습플래너</a>
 				</li>
 				<li class="nav-item active"><a class="nav-link" href="#">포트폴리오</a>
 				</li>

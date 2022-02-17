@@ -64,7 +64,7 @@
     <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
-      <a class="navbar-brand" href="초기화면.jsp">P+</a>
+      <a class="navbar-brand" href="">P+</a>
       <button
         class="navbar-toggler"
         type="button"

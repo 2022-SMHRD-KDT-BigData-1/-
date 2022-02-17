@@ -119,13 +119,7 @@
       
       
      <div style="width: 60%;  margin-top: 150px; margin-left: 300px;">
-      <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
-              <br>
-              <div class="text-center">
-                  <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href =""  style="color: rgb(47, 47, 47); ">스케줄 등록</a></h1>
-              </div>
-              <br>
-           </div>
+     
         <h1 style="text-align: center;">MY 스케줄
             <i class="far fa-solid fa-calendar-check"></i>
           </h1>

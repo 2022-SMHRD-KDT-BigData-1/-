@@ -58,7 +58,7 @@ a {
   outline: 0 solid transparent;
   color: #131212;
   font-weight: 400;
-  font-size: 12px;
+
 }
 a:hover,
 a:focus {
@@ -68,7 +68,7 @@ a:focus {
   outline: 0 solid transparent;
   color: #131212;
   font-weight: 400;
-  font-size: 12px;
+  
 }
 
 ul,
