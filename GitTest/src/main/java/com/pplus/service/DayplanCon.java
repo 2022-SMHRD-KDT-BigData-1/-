@@ -29,6 +29,7 @@ public class DayplanCon implements iPCommand {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("dayplanmain.jsp");
 
 		int dayplan_num = dayplanDao.dayplanTodaySelect(nick);
+		request.setAttribute("dayplan_num", dayplan_num);
 		if (dayplan_num == 0) {
 			String title = request.getParameter("title");
 			DayplanDTO dayplan = new DayplanDTO(0, title, null, 0, nick, null, 0, null, null, 0, 0, 0);
@@ -37,6 +38,7 @@ public class DayplanCon implements iPCommand {
 
 			if (cnt > 0) {
 				dayplan_num = dayplanDao.dayplanTodaySelect(nick);
+				System.out.println("test1 : "+dayplan_num);
 				request.setAttribute("dayplan_num", dayplan_num);
 				dispatcher.forward(request, response);
 			} else {
@@ -47,11 +49,8 @@ public class DayplanCon implements iPCommand {
 			}
 
 		} else {
-			dayplan_num = dayplanDao.dayplanTodaySelect(nick);
+			System.out.println("test2 : "+dayplan_num);
 			request.setAttribute("dayplan_num", dayplan_num);
-			out.print("<script>");
-			out.print("alert('이미 일정을을 등록하셨습니다.');");
-			out.print("</script>");
 			dispatcher.forward(request, response);
 		}
 	}

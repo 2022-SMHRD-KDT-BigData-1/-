@@ -13,11 +13,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+// 멤버
 String nick = member.getMember_nick();
+out.print(nick);
+// 멤버닉
 int num = (Integer) request.getAttribute("dayplan_num");
+out.print(num);
+// 플래너 넘버
 DayplanDTO dayplan = new DayplanDTO();
 DayplanDAO dayplanDao = new DayplanDAO();
 dayplan = dayplanDao.dayplanSelect(nick, num);
+out.print(dayplan.toString());
 
 EditorDAO editorDao = new EditorDAO();
 DiaryDAO diaryDao = new DiaryDAO();
@@ -34,8 +40,8 @@ ArrayList<TodoDTO> todolist = todoDao.todoDayplanSelectAll(nick, num);
 </head>
 <body>
 
-	<p>일정제목 : ${dayplan.dayplan_title }</p>
-	<p>일정날짜 : ${dayplan.dayplan_date }</p>
+	<p>일정제목 : <%=dayplan.getDayplan_title() %></p>
+	<p>일정날짜 : <%=dayplan.getDayplan_date() %></p>
 	<p>닉네임 : ${member.member_nick }</p>
 	<c:choose>
 		<c:when test="${!empty editorlist }">
@@ -52,7 +58,7 @@ ArrayList<TodoDTO> todolist = todoDao.todoDayplanSelectAll(nick, num);
 				</table>
 		</c:when>
 	</c:choose>
-	<a href="editor.jsp">에디터 등록</a>
+	<a href="editorset.jsp">에디터 등록</a>
 	<br>
 	<c:choose>
 		<c:when test="${!empty todolist }">
@@ -69,7 +75,7 @@ ArrayList<TodoDTO> todolist = todoDao.todoDayplanSelectAll(nick, num);
 				</table>
 		</c:when>
 	</c:choose>
-	<a href="todo.jsp">할 일 등록</a>
+	<a href="todoset.jsp">할 일 등록</a>
 	<br>
 	<c:choose>
 		<c:when test="${!empty diarylist }">
@@ -86,9 +92,9 @@ ArrayList<TodoDTO> todolist = todoDao.todoDayplanSelectAll(nick, num);
 				</table>
 		</c:when>
 	</c:choose>
-	<a href="diary.jsp">일기 등록</a>
+	<a href="diaryset.jsp">일기 등록</a>
 	<br>
-
+	
 
 </body>
 </html>

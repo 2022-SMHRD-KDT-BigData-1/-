@@ -422,7 +422,9 @@ select * from editor
 select * from diary
 select * from dayplan
 
-
+select seq_dayplan_num from dayplan where to_char(dayplan_date,'yyyy/mm/dd')=to_char(sysdate, 'yyyy/mm/dd') and member_nick='z'
+select seq_dayplan_num from dayplan where DAYPLAN_DATE LIKE '%22-02-17%'
+select seq_dayplan_num from dayplan where member_nick='z' and to_char(dayplan_date,'yyyy/mm/dd')=to_char(sysdate, 'yyyy/mm/dd') and seq_schedule_num=0
 
 drop¹®
 
