@@ -47,6 +47,10 @@ create sequence seq_diary_num
 		increment by 1
 		start with 1;
 		
+create sequence seq_todo_num
+		increment by 1
+		start with 1;
+		
 		
 create sequence seq_achieve_num
 		increment by 1
@@ -192,6 +196,7 @@ create table editor(
 	editor_content clob,
 	editor_date date,
 	seq_schedule_num number,
+	seq_dayplan_num number,
 	member_nick varchar(20),
 	constraint ed_en_pk primary key(seq_editor_num),
 	constraint ed_en_fk foreign key(member_nick)
@@ -199,8 +204,10 @@ create table editor(
 	on delete cascade,
 	constraint ed_sn_fk foreign key(seq_schedule_num)
 	references schedule(seq_schedule_num)
+	on delete cascade,
+	constraint ed_dn_fk foreign key(seq_dayplan_num)
+	references dayplan(seq_dayplan_num)
 	on delete cascade
-	
 )
 
 create table diary(
@@ -209,6 +216,7 @@ create table diary(
 	diary_content clob,
 	diary_date date,
 	seq_schedule_num number,
+	seq_dayplan_num number,
 	member_nick varchar(20),
 	constraint di_dn_pk primary key(seq_diary_num),
 	constraint di_mi_fk foreign key(member_nick)
@@ -216,6 +224,29 @@ create table diary(
 	on delete cascade,
 	constraint di_sn_fk foreign key(seq_schedule_num)
 	references schedule(seq_schedule_num)
+	on delete cascade,
+	constraint di_dn_fk foreign key(seq_dayplan_num)
+	references dayplan(seq_dayplan_num)
+	on delete cascade
+)
+
+create table todo(
+	seq_todo_num number,
+	todo_title varchar2(150),
+	todo_content clob,
+	todo_date date,
+	seq_schedule_num number,
+	seq_dayplan_num number,
+	member_nick varchar(20),
+	constraint td_dn_pk primary key(seq_todo_num),
+	constraint td_mi_fk foreign key(member_nick)
+	references member(member_nick)
+	on delete cascade,
+	constraint td_sn_fk foreign key(seq_schedule_num)
+	references schedule(seq_schedule_num)
+	on delete cascade,
+	constraint td_dn_fk foreign key(seq_dayplan_num)
+	references dayplan(seq_dayplan_num)
 	on delete cascade
 )
 
@@ -405,6 +436,8 @@ drop table schedule cascade constraints;
 drop table editor cascade constraints;
 drop table diary cascade constraints;
 drop table dayplan cascade constraints;
+drop sequence seq_editor_num;
+drop sequence seq_diary_num;
 
 
 delete¹®
@@ -421,4 +454,7 @@ update study_video set book_part3 = '0' where book_part3 is null
 alter¹®
 
 alter sequence seq_dayplan_num nocache
+alter sequence seq_editor_num nocache
+alter sequence seq_diary_num nocache
+alter sequence seq_todo_num nocache
 

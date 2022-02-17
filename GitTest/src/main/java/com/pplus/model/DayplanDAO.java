@@ -51,21 +51,22 @@ public class DayplanDAO {
 	// dayplanSet의 입력 변수는 DayplanDTO dayplan 출력 변수는 cnt(int)
 	public int dayplanSet(DayplanDTO dayplan) {
 		connect();
-		sql = "insert into dayplan values(seq_dayplan_num.nextval,sysdate,?,?,?,?,?,?,?,?,?)";
+		sql = "insert into dayplan values(seq_dayplan_num.nextval,?,sysdate,?,?,?,?,?,?,?,?,?)";
 
 		cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setInt(1, dayplan.getSchedule_num());
-			psmt.setString(2, dayplan.getMember_nick());
-			psmt.setString(3, dayplan.getBook_title());
-			psmt.setInt(4, dayplan.getBook_page());
-			psmt.setString(5, dayplan.getSchedule_num_day());
-			psmt.setString(6, dayplan.getAchieve_study_day());
-			psmt.setInt(7, dayplan.getAchieve_study_page());
-			psmt.setInt(8, dayplan.getSchedule_day_page());
-			psmt.setInt(9, dayplan.getDayplan_check());
+			psmt.setString(1, dayplan.getDayplan_title());
+			psmt.setInt(2, dayplan.getSchedule_num());
+			psmt.setString(3, dayplan.getMember_nick());
+			psmt.setString(4, dayplan.getBook_title());
+			psmt.setInt(5, dayplan.getBook_page());
+			psmt.setString(6, dayplan.getSchedule_num_day());
+			psmt.setString(7, dayplan.getAchieve_study_day());
+			psmt.setInt(8, dayplan.getAchieve_study_page());
+			psmt.setInt(9, dayplan.getSchedule_day_page());
+			psmt.setInt(10, dayplan.getDayplan_check());
 
 
 			cnt = psmt.executeUpdate();
@@ -152,6 +153,7 @@ public class DayplanDAO {
 	// dayplan DB에 저장되어 있는 내용을 조회하기 위해서 회원의 닉네임, 일정 번호로 비교하여 찾기
 	// dayplanSelect의 입력 변수는 회원에 닉네임(string), 일정 번호(int) 출력 변수눈 DayplanDTO dayplan
 	public DayplanDTO dayplanSelect(String nick, int num) {
+		connect();
 		DayplanDTO dayplan = null;
 
 		sql = "select * from dayplan where member_nick=? and seq_dayplan_num=?";
@@ -200,8 +202,9 @@ public class DayplanDAO {
 		return dayplanlist;
 	}
 
-	public int dayplanTodayselect(String nick) {
+	public int dayplanTodaySelect(String nick) {
 		connect();
+		System.out.println("test dayplanTodayselect");
 		int dayplan_num=0;
 		sql = "select seq_dayplan_num from dayplan where member_nick=? and dayplan_date=sysdate and seq_schedule_num=0";
 		

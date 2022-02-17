@@ -36,7 +36,7 @@ ArrayList<TodoDTO> todolist = todoDao.todoDayplanSelectAll(nick, num);
 
 	<p>일정제목 : ${dayplan.dayplan_title }</p>
 	<p>일정날짜 : ${dayplan.dayplan_date }</p>
-	<p>닉네임 : ${dayplan.member_nick }</p>
+	<p>닉네임 : ${member.member_nick }</p>
 	<c:choose>
 		<c:when test="${!empty editorlist }">
 				<table>
