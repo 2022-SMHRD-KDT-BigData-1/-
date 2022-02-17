@@ -107,11 +107,10 @@
               data-validate="Valid email is: a@b.c"
             >
               <input class="input100" type="text" name="id" id="input_id"/>
-              <span
+               <span
                 class="focus-input100"
                 data-placeholder="아이디를 입력하세요."
-              ></span>
-              <div class="col-12"><font class="justify-content-end" id="checkId" size="2" style="align-content: right"></font></div>
+              ><div style = "padding-left:80%; padding-top:10px"><font id="checkId" size="2"></font></div></span>
               
             </div>
 
