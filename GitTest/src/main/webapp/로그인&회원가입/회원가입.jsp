@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,7 +62,7 @@
     <header
     class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
   >
-    <a class="navbar-brand" href="#">P+</a>
+    <a class="navbar-brand" href="цй╠Бх╜╦И.jsp">P+</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -74,33 +76,16 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Л┌╛Л²╢М┼╦ Л├▄Й╟°</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">М∙≥Л┼╣М■▄К·≤К└┬</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Л°└Л▀°К╕╛Л┼╓М┼╦</a>
-        </li>
-
-        <div class="dropdown nav-item active">
-          <a class="nav-link dropdown-toggle" href="#" >К╖┬Л²╢М▌≤Л²╢Л╖─</a>
-          <ul
-            class="dropdown-menu"
-            aria-labelledby="dropdownMenuLink"
-          >
-            <li>
-              <a class="dropdown-item" href="#">М ▄Л⌡░Л═∙КЁ╢ Л┬≤Л═∙/М┐┬М┤╢</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Л═└Л╡╢ М∙≥Л┼╣Л┐│М≥╘ Л║╟М ▄</a>
-            </li>
-          </ul>
-        </div>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">К║°Й╥╦Л∙└Л⌡┐</a>
-        </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">╩Гюлф╝ ╪р╟Ё</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="╥н╠вюн.jsp">╥н╠вюн</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="х╦©Ь╟║ют.jsp">х╦©Ь╟║ют</a>
+          </li>
+        </ul>
       </ul>
     </div>
   </header>
@@ -122,7 +107,7 @@
               <input class="input100" type="text" name="id" />
               <span
                 class="focus-input100"
-                data-placeholder="Л∙└Л²╢К■■К╔╪ Л·┘К═╔М∙≤Л└╦Л ■."
+                data-placeholder="╬фюл╣П╦╕ ют╥бго╪╪©Д."
               ></span>
             </div>
 
@@ -136,7 +121,7 @@
               <input class="input100" type="password" name="pass" />
               <span
                 class="focus-input100"
-                data-placeholder="К╧└К╟─К╡┬М≤╦К╔╪ Л·┘К═╔М∙≤Л└╦Л ■."
+                data-placeholder="╨Я╧п╧Ьхё╦╕ ют╥бго╪╪©Д."
               ></span>
             </div>
 
@@ -147,7 +132,7 @@
               <input class="input100" type="text" name="nick" />
               <span
                 class="focus-input100"
-                data-placeholder="К▀┴К└╓Л·└Л²└ Л·┘К═╔М∙≤Л└╦Л ■."
+                data-placeholder="╢пЁвюсю╩ ют╥бго╪╪©Д."
               ></span>
             </div>
 
@@ -158,13 +143,13 @@
               <input class="input100" type="text" name="name" />
               <span
                 class="focus-input100"
-                data-placeholder="Л²╢К╕└Л²└ Л·┘К═╔М∙≤Л└╦Л ■."
+                data-placeholder="юл╦╖ю╩ ют╥бго╪╪©Д."
               ></span>
             </div>
             <div class="container-login100-form-btn">
               <div class="wrap-login100-form-btn">
                 <div class="login100-form-bgbtn"></div>
-                <button class="login100-form-btn" onclick="location.href='#'">М ▄Л⌡░Й╟─Л·┘</button >
+                <button class="login100-form-btn" onclick="location.href='#'">х╦©Ь╟║ют</button >
               </div>
             </div>
 
