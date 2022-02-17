@@ -1,5 +1,4 @@
 <%@page import="com.pplus.model.PMemberDTO"%>
-<%@page import="javax.websocket.Session"%>
 <%@page import="com.pplus.model.BookDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

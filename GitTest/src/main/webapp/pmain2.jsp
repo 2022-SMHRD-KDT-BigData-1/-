@@ -8,7 +8,6 @@
 <%@page import="com.pplus.model.BookDAO"%>
 <%@page import="com.pplus.model.BookDTO"%>
 <%@page import="com.pplus.model.PMemberDAO"%>
-<%@page import="org.apache.tomcat.websocket.PerMessageDeflate"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -283,6 +282,7 @@ if (member != null) {
 							<div class="container">
 								<div class="row">
 									<div class="categories__slider owl-carousel">
+									
 										<div class="col-lg-3">
 											<div class="categories__item set-bg" data-setbg="image/1.jpg">
 
@@ -292,6 +292,7 @@ if (member != null) {
 
 											</div>
 										</div>
+										
 										<div class="col-lg-3">
 											<div class="categories__item set-bg" data-setbg="image/2.jpg">
 												<h5>

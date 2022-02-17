@@ -1,4 +1,3 @@
-<%@page import="javax.websocket.Session"%>
 <%@page import="com.pplus.model.VideoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

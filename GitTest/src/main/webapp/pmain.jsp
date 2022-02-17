@@ -8,7 +8,6 @@
 <%@page import="com.pplus.model.BookDAO"%>
 <%@page import="com.pplus.model.BookDTO"%>
 <%@page import="com.pplus.model.PMemberDAO"%>
-<%@page import="org.apache.tomcat.websocket.PerMessageDeflate"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
