@@ -100,7 +100,7 @@ if (member != null) {
 					<a href="lookup.jsp">조회</a>
 					<c:choose>
 						<c:when test="${empty member.user_type1}">
-							<script langauge="javascript">
+							<script>
 								window.open("ptype2.jsp", "ptype",
 												"width=800, height=300, left=100, top=50");
 							</script>

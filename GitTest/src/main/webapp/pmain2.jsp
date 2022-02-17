@@ -24,8 +24,8 @@ ArrayList<RecBookDTO> recbooklist = (ArrayList<RecBookDTO>) session.getAttribute
 ArrayList<RecVideoDTO> recvideolist = (ArrayList<RecVideoDTO>) session.getAttribute("recvideolist");
 
 ArrayList<BookDTO> booklist = null;
-ArrayList<VideoDTO> videolist = null; 
-// 로그인
+ArrayList<VideoDTO> videolist = null;
+// 로그인 
 if (member != null) {
 	if (member.getUser_type1() == null) {
 		// 유형조사를 안했을 때
@@ -68,180 +68,434 @@ if (member != null) {
 }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>메인 페이지</title>
-<script src="jquery-3.6.0.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="description" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- Title  -->
+<title>Amado - Furniture Ecommerce Template | Cart</title>
+
+<!-- Favicon  -->
+<link rel="icon" href="img/core-img/favicon.ico" />
+
+<!-- Core Style CSS -->
+<link rel="stylesheet" href="css/core-style.css" />
+<link rel="stylesheet" href="style.css" />
+
+
+
+
+<link rel="stylesheet" href="캐러셀/css/font-awesome.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="캐러셀/css/jquery-ui.min.css" type="text/css" />
+<link rel="stylesheet" href="캐러셀/css/owl.carousel.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="캐러셀/css/style.css" type="text/css" />
 </head>
+
 <body>
-	<c:choose>
-		<c:when test="${empty member}">
-			<a href="plogin.jsp">로그인</a>
-			<a href="pjoin.jsp">회원가입</a>
 
-		</c:when>
-		<c:otherwise>
+	<header
+		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
+	<a class="navbar-brand" href="pmain2.jsp">P+</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarNav" aria-controls="navbarNav"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse justify-content-end"
+		id="navbarNav">
+		<ul class="navbar-nav">
 			<c:choose>
-				<c:when test="${member.member_id=='admin'}">
-					<a href="#">회원관리</a>
-					<a href="plogout.jsp">로그아웃</a>
-					<p>안녕2</p>
-
+				<c:when test="${empty member}">
+					<li class="nav-item active">
+					<a class="nav-link" href="#">사이트
+							소개</a></li>
+					<li class="nav-item active"><a class="nav-link" href="plogin.jsp">로그인</a></li>
+					<li class="nav-item active"><a class="nav-link" href="pjoin.jsp">회원가입</a></li>
 				</c:when>
 				<c:otherwise>
-					<a href="pmypage.jsp">마이페이지</a>
-					<a href="plogout.jsp">로그아웃</a>
-					<a href="ptype.jsp">유형조사</a>
-					<a href="scheduleset.jsp">스케줄등록</a>
-					<a href="scheduleindex.jsp">스케줄목록</a>
 					<c:choose>
-						<c:when test="${empty member.user_type1}">
-							<script langauge="javascript">
-								window.open("ptype2.jsp", "ptype",
-												"width=800, height=300, left=100, top=50");
-							</script>
+						<c:when test="${member.member_id=='admin'}">
+							<li class="nav-item active"><a class="nav-link" href="#">회원관리</a></li>
+							<li class="nav-item active"><a class="nav-link" href="plogout.jsp">로그아웃</a></li>
 						</c:when>
+						<c:otherwise>
+							<li class="nav-item active"><a class="nav-link" href="#">사이트
+									소개</a></li>
+							<div class="dropdown nav-item active">
+								<a class="nav-link dropdown-toggle" class="nav-link" href="#">학습플래너</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<li><a class="dropdown-item" href="scheduleset.jsp">스케줄
+											등록</a></li>
+									<li><a class="dropdown-item" href="scheduleindex.jsp">스케줄
+											목록</a></li>
+									<li><a class="dropdown-item" href="dayplantodayset.jsp">일정
+											등록</a></li>
+									<li><a class="dropdown-item" href="lookup.jsp">일정 조회</a></li>
+								</ul>
+							</div>
+							<li class="nav-item active"><a class="nav-link"
+								href="mywish.jsp">위시리스트</a></li>
+							<li class="nav-item active"><a class="nav-link"
+								href="plogout.jsp">로그아웃</a></li>
+							<c:choose>
+								<c:when test="${empty member.user_type1}">
+									<script>
+										window
+												.open("ptype2.jsp", "ptype",
+														"width=800, height=300, left=100, top=50");
+									</script>
+								</c:when>
+							</c:choose>
+
+						</c:otherwise>
 					</c:choose>
 				</c:otherwise>
 			</c:choose>
-		</c:otherwise>
-	</c:choose>
-	<hr>
-	<c:choose>
-		<c:when test="${empty member}">
-			<%
-			for (int i = 0; i < booklist.size(); i++) {
-			%>
-			<a href="BookintCon?num=<%=booklist.get(i).getBook_num()%>"> <img
-				src=<%=booklist.get(i).getBook_img()%> width="100">
-			</a>
-			<%
-			}
-			%>
-			<hr>
-			<%
-			for (int i = 0; i < videolist.size(); i++) {
-			%>
-			<a href="VideointCon?num=<%=videolist.get(i).getVideo_num()%>"> <img
-				src=<%=videolist.get(i).getVideo_thumbnail()%> width="100">
-			</a>
-			<%
-			}
-			%>
-		</c:when>
+		</ul>
+	</div>
+	</header>
 
-		<c:otherwise>
-			<c:choose>
 
-				<c:when test="${empty member.getUser_type1() }">
-					<%
-					for (int i = 0; i < booklist.size(); i++) {
-					%>
-					<a href="BookintCon?num=<%=booklist.get(i).getBook_num()%>"> <img
-						src=<%=booklist.get(i).getBook_img()%> width="100">
-					</a>
-					<%
-					}
-					%>
-					<hr>
-					<%
-					for (int i = 0; i < videolist.size(); i++) {
-					%>
-					<a href="VideointCon?num=<%=videolist.get(i).getVideo_num()%>">
-						<img src=<%=videolist.get(i).getVideo_thumbnail()%> width="100">
-					</a>
-					<%
-					}
-					%>
+	<!-- ##### Main Content Wrapper Start ##### -->
+	<div class="main-content-wrapper d-flex clearfix">
+		<!-- Mobile Nav (max width 767px)-->
+		<div class="mobile-nav">
+			<!-- Navbar Brand -->
+			<div class="amado-navbar-brand">
+				<a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
+			</div>
+			<!-- Navbar Toggler -->
+			<div class="amado-navbar-toggler">
+				<span></span><span></span><span></span>
+			</div>
+		</div>
 
-				</c:when>
+		<!-- Header Area Start -->
+		<header class="header-area clearfix"> <!-- Close Icon -->
+		<div class="nav-close">
+			<i class="fa fa-close" aria-hidden="true"></i>
+		</div>
+		<!-- Logo -->
+		<div class="logo">
+			<a href="index.html"></a>
+		</div>
+		<hr>
+		<!-- Amado Nav --> <nav class="amado-nav navbar">
+		<div class="sidebar" data-color="white" data-active-color="danger">
+			<div class="sidebar-wrapper">
+				<ul>
+					<li>
+						<div class="btn-group">
+							<a class="dropdown-toggle" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false" href="#">
+								컨텐츠 추천 </a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="#">유형 확인 및 재검사</a>
+							</div>
+						</div>
+					</li>
 
-				<c:otherwise>
-					<table>
+					<li>
+						<div>
+							<a href="학습플래너.html"> 학습플래너 </a>
 
-						<tr>
-							<%
-							for (int i = 0; i < recbooklist.size(); i++) {
-							%>
-							<td colspan="2"><a
-								href="BookintCon?num=<%=recbooklist.get(i).getBook_num()%>">
-									<img src=<%=recbooklist.get(i).getBook_img()%> width="80">
-							</a></td>
-							<%
-							}
-							%>
-						</tr>
-						<tr>
-							<%
-							for (int i = 0; i < recbooklist.size(); i++) {
-							%>
-							<td><button id="wish" name="wish">위시</button></td>
-							<td id="wishcnt">0</td>
-							<%
-							}
-							%>
-						</tr>
+						</div>
+					</li>
 
-					</table>
-					<hr>
-					<%
-					for (int i = 0; i < recvideolist.size(); i++) {
-					%>
-					<a href="VideointCon?num=<%=recvideolist.get(i).getVideo_num()%>">
-						<img src=<%=recvideolist.get(i).getVideo_thumbnail()%> width="80">
-					</a>
-					<%
-					}
-					%>
+					<li>
+						<div class="btn-group">
+							<a class="dropdown-toggle" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false" href="#">
+								포트폴리오 </a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="#">등록</a> <a
+									class="dropdown-item" href="#">목록</a>
+							</div>
+						</div>
+					</li>
 
-				</c:otherwise>
-			</c:choose>
-		</c:otherwise>
+					<li>
+						<div class="btn-group">
+							<a class="dropdown-toggle" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false" href="#">
+								위시리스트 </a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="#">책</a> <a class="dropdown-item"
+									href="#">영상</a>
+							</div>
+						</div>
+					</li>
 
-	</c:choose>
-	<script src="jquery-3.6.0.min.js"></script>
-	<script>
-	var bSubmit = 0;
-	
-	$("#wish").click( function(){
-		if(bSubmit==0){
-			$("#wish").css("color","red");
-			bSubmit=1;
-			
-			$.ajax({
-				type : "post",
-				url : "WishCon.do"
-				async : true,
-				data : {"bSubmit" : bSubmit},
-				success : function(result) {
-					alert("Wishlist에 등록되었습니다.")
-					$("#wishcnt").html(result)
-				},
-				error : function(){
-					alert("서버요청실패");
-				}
-			});
-		} else {
-			$("#wish").css("color","black");
-			bSubmit =0;
-			
-			$.ajax({
-				type : "post",
-				url : "WishCon.do"
-				async : true,
-				data : {"bSubmit" : bSubmit},
-				success : function(result) {
-					alert("Wishlist에 제거되었습니다.")
-					$("#wishcnt").html(result)
-				},
-				error : function(){
-					alert("서버요청실패");
-				}
-			});
-		}
-	});
-	
-	</script>
+					<li>
+						<div class="btn-group">
+							<a class="dropdown-toggle" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false" href="#">
+								마이페이지 </a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenu">
+								<a class="dropdown-item" href="#">회원정보 수정/탈퇴</a> <a
+									class="dropdown-item" href="#">전체 학습상황 조회</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		</nav> <!-- Cart Menu -->
+		<div class="cart-fav-search mb-100">
+			<a href="cart.html" class="cart-nav"><img
+				src="img/core-img/cart.png" alt="" /> Cart <span>(0)</span></a> <a
+				href="#" class="fav-nav"><img
+				src="img/core-img/favorites.png" alt="" /> Favourite</a>
+
+
+		</div>
+		</header>
+		<!-- Header Area End -->
+
+		<div class="cart-table-area section-padding-100">
+			<div class="row py-5">
+				<div class="container px-4" style="background-color: #656166;">
+					<br />
+					<div class="text-center">
+						<h1 class="display-4 fw-bolder" style="color: white">P+</h1>
+						<p class="lead fw-normal text-white-50 mb-0">Planner에
+							Programming을 더하다</p>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 col-lg-12">
+						<div class="cart-title mt-50">
+							<h2>책 추천</h2>
+						</div>
+
+
+						<!-- ======= 컨텐츠 추천  ======= -->
+
+
+
+						<div class="box-shadow-full">
+
+							<!-- Categories Section Begin -->
+							<div class="container">
+								<div class="row">
+									<div class="categories__slider owl-carousel">
+										<div class="col-lg-3">
+											<div class="categories__item set-bg" data-setbg="image/1.jpg">
+
+												<h5>
+													<a href="#"></a>
+												</h5>
+
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="categories__item set-bg" data-setbg="image/2.jpg">
+												<h5>
+													<a href="#"></a>
+												</h5>
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="categories__item set-bg" data-setbg="image/3.jpg">
+												<h5>
+													<a href="#"></a>
+												</h5>
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="categories__item set-bg" data-setbg="image/4.jpg">
+												<h5>
+													<a href="#"></a>
+												</h5>
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="categories__item set-bg"
+												data-setbg="img/categories/cat-5.jpg">
+												<h5>
+													<a href="#">X</a>
+												</h5>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 영상 추천 -->
+
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 col-lg-12">
+						<div class="cart-title mt-50">
+							<h2>영상 추천</h2>
+						</div>
+
+						<div class="box-shadow-full">
+
+							<!-- Categories Section Begin -->
+							<div class="container">
+								<div class="row">
+									<div class="categories__slider owl-carousel">
+										<div class="col-lg-3">
+											<div class="categories__item set-bg" data-setbg="video/1.png">
+
+												<h5>
+													<a href="#">영상이름1</a>
+												</h5>
+
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="categories__item set-bg" data-setbg="video/2.png">
+												<h5>
+													<a href="#">영상이름2</a>
+												</h5>
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="categories__item set-bg" data-setbg="video/3.png">
+												<h5>
+													<a href="#">영상 이름3</a>
+												</h5>
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="categories__item set-bg" data-setbg="video/4.png">
+												<h5>
+													<a href="#">영상 이름4</a>
+												</h5>
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="categories__item set-bg"
+												data-setbg="img/categories/cat-5.jpg">
+												<h5>
+													<a href="#">X</a>
+												</h5>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- 컨텐츠 추천 끝나는 부분 -->
+
+			<div class="cart-table clearfix"></div>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<!-- ##### Main Content Wrapper End ##### -->
+
+	<!-- ##### Footer Area Start ##### -->
+	<footer class="footer_area clearfix">
+	<div class="container">
+		<div class="row align-items-center">
+			<!-- Single Widget Area -->
+			<div class="col-12 col-lg-4">
+				<div class="single_widget_area">
+					<!-- Logo -->
+					<div class="footer-logo mr-50">
+						<a href="index.html"><img
+							src="img/core-img/logo2.png" alt="" /></a>
+					</div>
+					<!-- Copywrite Text -->
+					<p class="copywrite">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						& Re-distributed by <a href="https://themewagon.com/"
+							target="_blank">Themewagon</a>
+					</p>
+				</div>
+			</div>
+			<!-- Single Widget Area -->
+			<div class="col-12 col-lg-8">
+				<div class="single_widget_area">
+					<!-- Footer Menu -->
+					<div class="footer_menu">
+						<nav class="navbar navbar-expand-lg justify-content-end">
+						<button class="navbar-toggler" type="button"
+							data-toggle="collapse" data-target="#footerNavContent"
+							aria-controls="footerNavContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
+						<div class="collapse navbar-collapse" id="footerNavContent">
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item active"><a class="nav-link"
+									href="index.html">Home</a></li>
+								<li class="nav-item"><a class="nav-link" href="shop.html">Shop</a>
+								</li>
+								<li class="nav-item"><a class="nav-link"
+									href="product-details.html">Product</a>
+								</li>
+								<li class="nav-item"><a class="nav-link" href="cart.html">Cart</a>
+								</li>
+								<li class="nav-item"><a class="nav-link"
+									href="checkout.html">Checkout</a></li>
+							</ul>
+						</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
+	<!-- ##### Footer Area End ##### -->
+
+	<!-- Js Plugins -->
+	<script src="캐러셀/js/jquery-3.3.1.min.js"></script>
+	<script src="캐러셀/js/bootstrap.min.js"></script>
+	<script src="캐러셀/js/jquery-ui.min.js"></script>
+	<script src="캐러셀/js/jquery.slicknav.js"></script>
+	<script src="캐러셀/js/mixitup.min.js"></script>
+	<script src="캐러셀/js/owl.carousel.min.js"></script>
+	<script src="캐러셀/js/main.js"></script>
+
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
+	</div>
 </body>
 </html>
