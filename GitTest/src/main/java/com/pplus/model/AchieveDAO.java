@@ -16,7 +16,7 @@ public class AchieveDAO {
 	private String sql; 
 
 	public void connect() {
-		try { 
+		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_2_0115";
