@@ -136,34 +136,39 @@
         <div class="widget catagory mb-50">
          <h6 class="widget-title mb-30">학습플래너</h6>
          <br>
-          <!-- Widget Title -->
-          <h6 class="widget-title mb-30">스케줄</h6>
-
+          
           <!--  Catagories  -->
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="스케줄만_등록.jsp">등록</a></li>
+              <li class="active"><a href="#">스케줄</a></li>
               <hr />
-              <li><a href="#">목록</a></li>
-              <li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+              <li><a href="스케줄만_등록.jsp">등록</a></li> 
             </ul>
           </div>
         </div>
 
         <!-- ##### Single Widget ##### -->
         <div class="widget category mb-50">
-          <!-- Widget Title -->
-          <h6 class="widget-title mb-30">일정</h6>
 
           <!-- Widget Title -->
 
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="일정등록4번.jsp">등록</a></li>
+              <li class="active"><a href="#">일정</a></li>
               <hr />
-              <li><a href="#">목록</a></li>
+              <li><a href="일정등록4번.jsp">등록</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- ##### Single Widget ##### -->
+        <div class="widget category mb-50">
+
+          <div class="catagories-menu">
+            <ul>
+              <li class="active"><a href="#">조회</a></li>
+              <hr />
+              <li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
               <li><a href="#">전체 일정 목록</a></li>
               <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
               <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
@@ -171,127 +176,42 @@
           </div>
         </div>
       </div>
-      
-      
-      
+               
      <div style="width: 60%;  margin-top: 150px; margin-left: 300px;">
       <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
               <br>
               <div class="text-center">
-                  <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="스케줄등록.jsp"  style="color: rgb(47, 47, 47); ">스케줄 등록</a></h1>
+                  <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="스케줄등록.jsp"  style="color: rgb(47, 47, 47);font-size: xx-large;">스케줄 등록</a></h1>
               </div>
               <br>
            </div>
-        <h1 style="text-align: center;">MY 스케줄
-            <i class="far fa-solid fa-calendar-check"></i>
-          </h1>
+
+           <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
+            <br>
+            <div class="text-center">
+                <h1 class="display-4 fw-bolder"></i><a href ="#"  style="color: rgb(47, 47, 47); font-size: xx-large;">스케줄 목록</a></h1>
+            </div>
+            <br>
+         </div>
+         
+         <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
           <br>
-          <div class="container" >
-            <table class="table table-bordered table-hover table-sm text-center "  >
-              
-          
-                <thead class="table-warning ">
-                  <th class="text-center">선택</th>
-                  <th class="text-center">No.</th>
-                  <th class="text-center">스케줄 이름</th>
-                  <th class="text-center">시작 날 - 끝나는 날</th>
-                  <th class="text-center">책 이름</th>
-                  <th class="text-center">하루 학습 분량</th>
-                  <th class="text-center">달성률</th>	  			
-                </tr>
-              </thead>
-      
-              <tbody>
-                <tr> 		 
-                  <td>
-                      <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>1</td>
-                  <td>자바</td>
-                  <td>2022.01.01-2022.01.20</td>
-                  <td>Java</td>
-                  <td>15p</td>
-                  <td>75%</td>
-                </tr>
-      
-                <tr> 		 
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>2</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                  </td>
-                </tr>
-      
-                <tr>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>3</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-      
-                <tr>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>4</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-      
-                <tr>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-                  </td>
-                  <td>5</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-          </table>
+          <div class="text-center">
+              <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="#"  style="color: rgb(47, 47, 47); font-size: xx-large;">일정 등록</a></h1>
           </div>
           <br>
-           <div class="text-center">
-       <a href="#" class="btn btn-dark">선택 완료</a>
-     </div>
-     <br>
-     <nav aria-label="Page navigation example">
+       </div>
+
+       <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
+        <br>
         <div class="text-center">
-          <ul class="pagination" style=" justify-content : center;">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-          </ul>
+            <h1 class="display-4 fw-bolder"></i><a href ="#"  style="color: rgb(47, 47, 47); font-size: xx-large;">일정 목록</a></h1>
         </div>
-      </nav>
-    </div>
+        <br>
+     </div>
 
     </div>
-
-   
+ 
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
