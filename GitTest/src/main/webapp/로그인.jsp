@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -79,13 +79,13 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">����Ʈ �Ұ�</a>
+            <a class="nav-link" href="#">사이트 소개</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="�α���.jsp">�α���</a>
+            <a class="nav-link" href="로그인.jsp">로그인</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="ȸ������.jsp">ȸ������</a>
+            <a class="nav-link" href="회원가입.jsp">회원가입</a>
           </li>
         </ul>
       </div>
@@ -108,7 +108,7 @@
               <input class="input100" type="text" name="id" />
               <span
                 class="focus-input100"
-                data-placeholder="���̵� �Է��ϼ���."
+                data-placeholder="아이디를 입력하세요."
               ></span>
             </div>
 
@@ -122,7 +122,7 @@
               <input class="input100" type="password" name="pass" />
               <span
                 class="focus-input100"
-                data-placeholder="��й�ȣ�� �Է��ϼ���."
+                data-placeholder="비밀번호를 입력하세요."
               ></span>
             </div>
 
@@ -130,7 +130,7 @@
               <div class="wrap-login100-form-btn">
                 <div class="login100-form-bgbtn"></div>
                 <button class="login100-form-btn" onclick="location.href='#'">
-                  �α���
+                  로그인
                 </button>
               </div>
             </div>

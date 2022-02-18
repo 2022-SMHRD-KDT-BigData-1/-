@@ -40,7 +40,7 @@ public class PJoinCon implements iPCommand {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('회원가입을 실패하셨습니다.');");
-			out.print("location.href='pmain.jsp';");
+			out.print("location.href='poutmain.jsp';");
 			out.print("</script>");
 		}
 	}
