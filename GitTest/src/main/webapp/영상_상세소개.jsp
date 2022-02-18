@@ -13,7 +13,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Amado - Furniture Ecommerce Template | Shop</title>
+    <title>Amado - Furniture Ecommerce Template | Product Details</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico" />
@@ -22,32 +22,22 @@
     <link rel="stylesheet" href="css/core-style.css" />
     <link rel="stylesheet" href="style.css" />
 
-    <title>Hello, world!</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+      rel="stylesheet"
+    />
+    <!--아이콘-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  </head>
 
-    <link href="css/전체조회.css" rel="stylesheet" />
-
-    
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- 차트 링크 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-   
   </head>
 
   <body>
-     <header
+  
+      <!-- Header Area Start -->
+      <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
       <a class="navbar-brand" href="#">P+</a>
@@ -138,7 +128,18 @@
         </ul>
       </div>
     </header>
-     <!-- 회원탈퇴 Modal -->
+
+
+       <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+        </div>
+  
+        <div class="shop_sidebar_area">
+          <!-- ##### Single Widget ##### -->
+          <div class="widget catagory mb-50">
+              <!-- 회원탈퇴 Modal -->
      <div
      class="modal fade"
      id="staticBackdrop"
@@ -152,6 +153,7 @@
        <div class="modal-content">
          <div class="modal-header">
            <h5 class="modal-title" id="staticBackdropLabel">
+             <!-- <i class="bi bi-exclamation-circle"></i> -->
              <i class="bi bi-exclamation-circle-fill"></i>
              회원 탈퇴</h5>
            <button
@@ -181,14 +183,7 @@
    </div>
 
 
-    <!-- ##### Main Content Wrapper Start ##### -->
-    <div class="main-content-wrapper d-flex clearfix">
-      <!-- Mobile Nav (max width 767px)-->
-      <div class="mobile-nav">
-      </div>
-
-      <div class="shop_sidebar_area">
-        <!-- ##### Single Widget ##### -->
+   
         <div class="widget catagory mb-50">
           <!-- Widget Title -->
           <h6 class="widget-title mb-30">마이페이지</h6>
@@ -235,213 +230,116 @@
 
         <!-- ##### Single Widget ##### -->
         <div class="widget category mb-50">
+          <!-- Widget Title -->
+          <!-- <h6 class="widget-title mb-30">일정</h6> -->
+
+          <!-- Widget Title -->
+
           <div class="catagories-menu">
             <ul>
               <li class="active"><a href="#">전체학습상황조회</a></li>
               <hr />
-              <li><a href="#">달력 체크</a></li>
-              <li><a href="#">차트</a></li>
-              <li><a href="#">전체 스케줄 목록</a></li>
+              <li><a href="마페 -달력체크.html">달력 체크</a></li>
+              <li><a href="차트.html">차트</a></li>
+            </ul>
+          </div>
+
+          <br />
+
+          <div class="catagories-menu">
+            <ul>
+              <li class="active"><a href="#">목록</a></li>
+              <hr />
+              <li><a href="마페-스케줄목록.html">전체 스케줄 목록</a></li>
               <li>
-                <a href="#">전체 에디터 목록</a>
+                <a href="마페-에디터목록.html">전체 에디터 목록</a>
               </li>
-              <li><a href="#">전체 일기 목록</a></li>
+              <li><a href="마페-일기목록.html">전체 일기 목록</a></li>
             </ul>
           </div>
         </div>
       </div>
-      
-      
-      <div style="width: 80%; margin-top: 10%; margin-left: 70px;">
-      <!---달성률-->
-      <div style="padding-left: 10%">
-      <div id="goal">
-        <h1 id="goal-chart">[ 달성률 ]</h1>
-        <br />
-        <div class="container" >
-          <div class="row">
-            <div class="col-md-2 col-sm-6 col-xs-12">
-              <div class="demo1 font-weight:bold" data-percent="93"></div>
-              <h3 class="sc-name">자바</h3>
-            </div>
-
-            <div class="col-md-2 col-sm-6 col-xs-12">
-              <div class="demo2" data-percent="65"></div>
-              <h3 class="sc-name">파이썬</h3>
-            </div>
-
-            <div class="col-md-2 col-sm-6 col-xs-12">
-              <div class="demo3" data-percent="58"></div>
-              <h3 class="sc-name">html</h3>
-            </div>
-
-            <div class="col-md-2 col-sm-6 col-xs-12">
-              <div class="demo4" data-percent="45"></div>
-              <h3 class="sc-name">크롤링</h3>
-            </div>
           </div>
-        </div>
-        
-         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-      <script src="js/jquery.circlechart.js"></script>
+  
+      
+  
      
-      <script type="text/javascript">
-        $(".demo1").percentcircle({
-          animate: true,
-          diameter: 100,
-          guage: 2,
-          coverBg: "#fff",
-          bgColor: "#efefef",
-          fillColor: "#B284BE",
-          percentSize: "15px",
-          percentWeight: "normal",
-        });
 
-        $(".demo2").percentcircle({
-          animate: true,
-          diameter: 100,
-          guage: 2,
-          coverBg: "#fff",
-          bgColor: "#efefef",
-          fillColor: "#7C0A02",
-          percentSize: "15px",
-          percentWeight: "normal",
-        });
+      <!-- Product Details Area Start -->
+      <div class="single-product-area section-padding-100 clearfix">
+        <div class="container-fluid" style="padding-top:10%">
+         
 
-        $(".demo3").percentcircle({
-          animate: true,
-          diameter: 100,
-          guage: 2,
-          coverBg: "#fff",
-          bgColor: "#efefef",
-          fillColor: "#4AFF00",
-          percentSize: "15px",
-          percentWeight: "normal",
-        });
-
-        $(".demo4").percentcircle({
-          animate: true,
-          diameter: 100,
-          guage: 2,
-          coverBg: "#fff",
-          bgColor: "#efefef",
-          fillColor: "#1DACD6",
-          percentSize: "15px",
-          percentWeight: "normal",
-        });
-      </script>
-      </div>
-    </div>
-
-<!--------학습일------------>
-      <div>     
-        <div style="padding-top:100px">
-          <h1 id="date" style="padding-left: 20%" >[ 학습일 ]</h1>
-          <canvas id="horizontalBar" width="600vw" height="400vh"></canvas>
-        </div>
-        <script>
-          new Chart(document.getElementById("horizontalBar"), {
-            type: "horizontalBar",
-            data: {
-              labels: ["자바", "파이썬", "html", "크롤링"],
-              datasets: [
-                {
-                  //   label: "My First Dataset",
-                  data: [86, 53, 68, 38],
-                  fill: false,
-                  backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)",
-                    "rgba(153, 102, 255, 0.2)",
-                    "rgba(255, 205, 86, 0.2)",
-                    "rgba(75, 192, 192, 0.2)",
-                  ],
-                  borderColor: [
-                    "rgb(255, 99, 132)",
-                    "rgb(153, 102, 255)",
-                    "rgb(255, 205, 86)",
-                    "rgb(75, 192, 192)",
-                  ],
-                  borderWidth: 2,
-                },
-              ],
-            },
-            options: {
-              responsive: false,
-              scales: {
-                xAxes: [
-                  {
-                    ticks: {
-                      beginAtZero: true,
-                    },
-                  },
-                ],
-              },
-              // 범례 제거
-              legend: {
-                display: false,
-              },
-            },
-          });
-        </script>
-      </div>
-
-
-      <!--에디터,일기-->
-          <div class="container" id="ed">
-              <div class="ed-col-md-6">
-                
-                <h1 id="edi">[ 에디터&일기 현황 ]</h1>
-                <div class="card">
-                  <div class="card-body">
-
-                    <canvas class="myChart"></canvas>
+          <div class="row">
+            <div class="col-12 col-lg-6" style="padding-top: 60px;">
+              <div class="single_product_thumb">
+                <div class="video_thumbnail">
+                    <img class="mv-img" src="video/3.png" alt="" />
                   </div>
-                </div>
               </div>
             </div>
+            <div class="col-12 col-lg-5" style="padding-top:60px">
+              <div class="single_product_desc">
+                <!-- Product Meta Data -->
+                <div class="product-meta-data">
+                  <div class="line"></div>
+                    <h3 style="font-weight: bold;">  [수학없는 인공지능 강의 #1]인공지능 머신러닝 딥러닝-알기 쉬운
+                        개념정리 | KAIST AI STUDIO</h3>
+                  </a>
+                </div>
 
-            <!-- 차트 -->
-            <script>
-              const mydata = [94, 63, 75, 44];
-              const mydataHalf = [73, 42, 53, 18];
-              var ctx = document.getElementsByClassName("myChart");
+                <div class="short_overview my-5">
+                    <div class="product__details__text">
+                    <div class="book_description">
+                      <div>
+                        <ul class="book_info">
+                           
+                                <li>
+                                  <b>채널명</b>
+                                  <span>AI는 내 친구</span>
+                                </li>
+                                <li>
+                                  <b>업로드 날짜</b>
+                                  <span>2020년 10월 2일</span>
+                                </li>
+                                <li>
+                                  <b>영상 길이</b>
+                                  <span>10분 52초</span>
+                                </li>
+                                <li>
+                                  <b>조회수</b>
+                                  <span>7,421회</span>
+                                </li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+            </div>
 
-              var mixedChart = {
-                type: "bar",
-                labels: ["자바", "파이썬", "html", "크롤링"],
-                datasets: [
-                  {
-                    label: "에디터",
-                    data: mydata,
-                    backgroundColor: "rgba(256, 0, 0, 0.1)",
-                  },
-                  {
-                    label: "일기",
-                    data: mydataHalf,
-                    backgroundColor: "transparent",
-                    borderColor: "skyblue",
-                    type: "line",
-                  },
-                ],
-              };
-              var myChart = new Chart(ctx, {
-                type: "bar",
-                data: mixedChart,
-                options: {
-                  tooltips: {
-                    titleFontSize: 10,
-                    bodyFontSize: 10,
-                  },
-                  legend: {
-                    display: true,
-                  },
-                },
-              });
-            </script>
+                <!-- Add to Cart Form -->
+               
+                 <div style="padding-left:40%; padding-top: 30px;">
+                  <button
+                    type="submit"
+                    name="addtocart"
+                    value="5"
+                    class="btn amado-btn"
+                  >
+                  <i class="fas fa-heart"></i> 위시리스트
+                  </button>
+                </div>
+
+              </div>
+            </div>
           </div>
-          </div>
-        
+        </div>
+      </div>
+      <!-- Product Details Area End -->
+    </div>
 
+    <!-- ##### Main Content Wrapper End ##### -->
+
+  
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -455,3 +353,4 @@
     <script src="js/active.js"></script>
   </body>
 </html>
+

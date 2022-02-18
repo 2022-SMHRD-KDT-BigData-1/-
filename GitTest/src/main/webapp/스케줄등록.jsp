@@ -9,7 +9,7 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    /> 
+    />
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
@@ -31,6 +31,53 @@
   </head>
 
   <body>
+      <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              <!-- <i class="bi bi-exclamation-circle"></i> -->
+              <i class="bi bi-exclamation-circle-fill"></i>
+              학습일 안내</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+								d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+            <path fill-rule="evenodd"
+								d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+          </svg></button>
+          </div>
+          <br>
+          <div class="modal-body text-center" style="font-size: 20px;" >
+            예상 학습일 30일 이상 90일 이하일 때 
+            <br>
+            스케줄 등록 가능합니다.
+            <br />
+            다시 설정해 주세요
+        </div>
+          <br>
+
+          <div class=" modal-footer ">
+            <a href="#" class="btn btn-primary ">이전 페이지</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
    	
   <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
@@ -258,8 +305,15 @@
               <input type="text" class="form-control" placeholder="" />
               
               <br>
+              
               <div class="text-center">
-              <a href="#" class="btn btn-primary">스케줄 등록</a>
+                <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >스케줄 등록</button>
+   
               </div>
   
               </div>

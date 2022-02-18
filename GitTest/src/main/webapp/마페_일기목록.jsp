@@ -20,14 +20,27 @@
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
 
-<!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+<title>Hello, world!</title>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+	crossorigin="anonymous">
+
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-
 	<header
 		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
 		<a class="navbar-brand" href="#">P+</a>
@@ -91,41 +104,75 @@
 			</ul>
 		</div>
 	</header>
+	<!-- 회원탈퇴 Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">
+						<!-- <i class="bi bi-exclamation-circle"></i> -->
+						<i class="bi bi-exclamation-circle-fill"></i> 회원 탈퇴
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+								d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+            <path fill-rule="evenodd"
+								d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+          </svg>
+					</button>
+				</div>
+				<br>
+				<div class="modal-body text-center" style="font-size: 20px">
+					회원탈퇴 하시겠습니까?</div>
+				<br>
+
+				<div class=" modal-footer ">
+					<a href="#" class="btn btn-primary ">확인</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
-		<div class="mobile-nav">
-			<!-- Navbar Brand -->
-			<div class="amado-navbar-brand">
-				<a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-			</div>
-			<!-- Navbar Toggler -->
-			<div class="amado-navbar-toggler">
-				<span></span><span></span><span></span>
-			</div>
-		</div>
-
-
+		<div class="mobile-nav"></div>
 
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
-				<h6 class="widget-title mb-30">학습플래너</h6>
-				<br>
 				<!-- Widget Title -->
-				<h6 class="widget-title mb-30">스케줄</h6>
+				<h6 class="widget-title mb-30">마이페이지</h6>
 
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="스케줄만_등록.jsp">등록</a></li>
+						<li class="active"><a href="#">회원 정보</a></li>
 						<hr />
-						<li><a href="#">목록</a></li>
-						<li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
-						<li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-						<li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+						<li><a href="#">회원 정보 수정</a></li>
+						<a><li class="btn" data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">회원 탈퇴</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- ##### Single Widget ##### -->
+			<div class="widget catagory mb-50">
+				<!--  Catagories  -->
+				<div class="catagories-menu">
+					<ul>
+						<li class="active"><a href="#">위시리스트</a></li>
+						<hr />
+						<li><a href="#">책</a></li>
+						<li><a href="#">영상</a></li>
 					</ul>
 				</div>
 			</div>
@@ -133,25 +180,19 @@
 			<!-- ##### Single Widget ##### -->
 			<div class="widget category mb-50">
 				<!-- Widget Title -->
-				<h6 class="widget-title mb-30">일정</h6>
-
-				<!-- Widget Title -->
-
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="일정등록4번.jsp">등록</a></li>
+						<li class="active"><a href="#">전체학습상황조회</a></li>
 						<hr />
-						<li><a href="#">목록</a></li>
-						<li><a href="#">전체 일정 목록</a></li>
-						<li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-						<li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+						<li><a href="#">달력 체크</a></li>
+						<li><a href="#">차트</a></li>
+						<li><a href="#">전체 스케줄 목록</a></li>
+						<li><a href="#">전체 에디터 목록</a></li>
+						<li><a href="#">전체 일기 목록</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-
-
-
 		<div style="width: 60%; margin-top: 150px; margin-left: 300px;">
 
 			<script
@@ -224,7 +265,7 @@
 						<td></td>
 
 					</tr>
-</body>
+
 </table>
 </div>
 
@@ -237,20 +278,24 @@
 <nav aria-label="Page navigation example">
 	<div class="text-center">
 		<ul class="pagination" style="justify-content: center;">
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span
-					class="sr-only">Previous</span>
-			</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#"
+						<li class="page-item"><a class="page-link" href="#"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+						</a></li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#"
 				aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
 					class="sr-only">Next</span>
 			</a></li>
 		</ul>
 	</div>
 </nav>
+
+
+
+
 
 
 
@@ -267,3 +312,4 @@
 <script src="js/active.js"></script>
 </body>
 </html>
+

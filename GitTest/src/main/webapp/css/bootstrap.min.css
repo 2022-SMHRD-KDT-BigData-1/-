@@ -693,8 +693,7 @@ pre code {
 .col-12 {
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
-  max-width: 95%;
-  padding-left: 38px;
+  max-width: 100%;
 }
 .order-first {
   -ms-flex-order: -1;

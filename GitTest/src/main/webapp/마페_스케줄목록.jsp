@@ -193,163 +193,114 @@
 				</div>
 			</div>
 		</div>
-		 <div style="width: 80%; padding-top: 150px; margin-left: 70px;">
+		<div style="width: 60%; margin-top: 180px; margin-left: 300px;">
 
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-        <script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-          crossorigin="anonymous"
-        ></script>
+			<h1 style="text-align: center;">
+				MY 스케줄 <i class="far fa-solid fa-calendar-check"></i>
+			</h1>
+			<br>
+			<div class="container">
+				<table
+					class="table table-bordered table-hover table-sm text-center ">
 
-<!-------내용 들어가는 부분---------------------->
-        <div class="cart-table-area section-padding-100">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-12">
-                <div class="cart-title ">
-                  <h2>[ 위시리스트-책 ]</h2>
-                </div>
-  
-                <div class="cart-table clearfix">
-                  <table class="table table-responsive">
-                    <thead style="text-align: center;">
-                      <tr>
-                        <th style="width: 50%;">NO.</th>
-                        <th>위시리스트</th>
-                        <th>제목</th>
-                        <th>나의 학습유형</th>
-                      </tr>
-                    </thead>
-                    <tbody style="text-align: center;">
-                      <tr >
-                        <td class="wish-num">
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="flexRadioDefault"
-                              id="flexRadioDefault1"
-                            />
-                            <label
-                              class="form-check-label"
-                              for="flexRadioDefault1"
-                            >
-                              <h5 style="padding-left: 20px;">1</h5>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="pic">
-                          <img src="image/4.jpg" style="width: 220px; height: 160px;">  
-                        </td>
-                        <td class="title">
-                          <span>빛의 양자컴퓨터
-                        </span>
-                        </td>
-                        <td class="type">
-                          <div class="type-name">
-                            <span>컴퓨터/IT>컴퓨터공학>
-                          컴퓨터공학/과학개론</span>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="wish-num">
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="flexRadioDefault"
-                              id="flexRadioDefault1"
-                            />
-                            <label
-                              class="form-check-label"
-                              for="flexRadioDefault1"
-                            >
-                              <h5 style="padding-left: 20px;">2</h5>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="pic">
-                          <img src="image/5.jpg"  style="width: 220px; height: 160px;">
-                        </td>
-                        <td class="title">
-                          <span>컴퓨팅 사고와 인공지능</span>
-                        </td>
-                        <td class="type">
-                          <div class="type-name">
-                            <span>컴퓨터/IT>컴퓨터공학>
-                              컴퓨터공학/과학개론</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="wish-num">
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="flexRadioDefault"
-                              id="flexRadioDefault1"
-                            />
-                            <label
-                              class="form-check-label"
-                              for="flexRadioDefault1"
-                            >
-                              <h5 style="padding-left: 20px;">3</h5>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="pic">
-                          <img src="image/3.jpg" style="width: 220px; height: 160px;">
-                        </td>
-                        <td class="title">
-                          <span>컴퓨터 과학 로드맵</span>
-                        </td>
-                        <td class="type">
-                          <div class="type-name">
-                            <span>컴퓨터/IT>컴퓨터공학>
-                        컴퓨터공학/과학개론</span>
-                          </div>
-                        </td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            
-            </div>
-          </div>
-        </div>
-        <div class="text-center">
-          <a href="#" class="btn btn-dark" >위시리스트 삭제</a>
-          <a href="#" class="btn btn-dark">스케줄 등록</a>
-        </div>
-        <br>
-        <nav aria-label="Page navigation example">
-          <div class="text-center">
-            <ul class="pagination" style=" justify-content : center;">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+
+					<thead class="table-warning ">
+						<th class="text-center">선택</th>
+						<th class="text-center">No.</th>
+						<th class="text-center">스케줄 이름</th>
+						<th class="text-center">시작 날 - 끝나는 날</th>
+						<th class="text-center">책 이름</th>
+						<th class="text-center">하루 학습 분량</th>
+						<th class="text-center">달성률</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>1</td>
+							<td>자바</td>
+							<td>2022.01.01-2022.01.20</td>
+							<td>Java</td>
+							<td>15p</td>
+							<td>75%</td>
+						</tr>
+
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>2</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>3</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>4</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>5</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div class="text-center">
+				<a href="#" class="btn btn-dark">선택 완료</a>
+			</div>
+			<br>
+			<nav aria-label="Page navigation example">
+				<div class="text-center">
+					<ul class="pagination" style="justify-content: center;">
+						<li class="page-item"><a class="page-link" href="#"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+						</a></li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+								class="sr-only">Next</span>
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+
 	</div>
-	
+
+
+
+
+
+
+
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->

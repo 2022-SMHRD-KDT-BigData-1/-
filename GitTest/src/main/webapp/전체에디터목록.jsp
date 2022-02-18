@@ -181,117 +181,107 @@
           </div>
         </div>
       </div>
-      
-      
-      
-    <div style="width: 60%;  margin-top: 150px; margin-left: 300px;">
-     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"
-  ></script>
 
-  
-  
-  <br>
-  <h1 style="text-align: center;">
-   MY 에디터
-   <i class="fas fa-laptop-code"></i>
-  </h1>
-  <br>
-  <div class="container" >
-    <table class="table table-bordered table-hover table-sm text-center "  >
-  
-        <thead class="table-warning ">
-          <th></th>
-          <th class="text-center">No.</th>
-          <th class="text-center">작성일</th>
-          <th class="text-center">스케줄명</th>
-          <th class="text-center">에디터 제목</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-        </td> 
-          <td>1</td>
-          <td>2022.01.11</td>
-          <td>자바</td>
-          <td>for문</td>
-        </tr>
-        <tr>
-          <td>
-            <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-        </td> 
-          <td>2</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-        </td> 
-          <td>3</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-        </td> 
-          <td>4</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <input class="form-check-input" type="checkbox" value="sc1" id="flexCheckDefault">
-        </td> 
-          <td>5</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-  </table>
-  </div>
 
-  <br>
-  <div class="text-center">
-    <a href="#" class="btn btn-dark">선택 수정</a>
-    <a href="#" class="btn btn-dark">선택 삭제</a>
-  </div>
-  <br>
-  <nav aria-label="Page navigation example">
-    <div class="text-center">
-      <ul class="pagination" style=" justify-content : center;">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
 
-    </div>
+		<div style="width: 60%; margin-top: 150px; margin-left: 300px;">
+			<!-- Option 1: Bootstrap Bundle with Popper -->
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
 
-    </div>
+
+
+			<br>
+			<h1 style="text-align: center;">
+				MY 에디터 <i class="fas fa-laptop-code"></i>
+			</h1>
+			<br>
+			<div class="container">
+				<table
+					class="table table-bordered table-hover table-sm text-center ">
+
+					<thead class="table-warning ">
+						<th></th>
+						<th class="text-center">No.</th>
+						<th class="text-center">작성일</th>
+						<th class="text-center">스케줄명</th>
+						<th class="text-center">에디터 제목</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>1</td>
+							<td>2022.01.11</td>
+							<td>자바</td>
+							<td>for문</td>
+						</tr>
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>2</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>3</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>4</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><input class="form-check-input" type="checkbox"
+								value="sc1" id="flexCheckDefault"></td>
+							<td>5</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<br>
+			<div class="text-center">
+				<a href="#" class="btn btn-dark">선택 수정</a> <a href="#"
+					class="btn btn-dark">선택 삭제</a>
+			</div>
+			<br>
+			<nav aria-label="Page navigation example">
+				<div class="text-center">
+					<ul class="pagination" style="justify-content: center;">
+						<li class="page-item"><a class="page-link" href="#"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+						</a></li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+								class="sr-only">Next</span>
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+
+		</div>
+
+	</div>
 
    
 
