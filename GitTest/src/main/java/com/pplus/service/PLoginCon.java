@@ -71,7 +71,7 @@ public class PLoginCon implements iPCommand {
 			session.setAttribute("member", member);
 			response.sendRedirect("ploginmain.jsp");
 			
-		} else { 
+		} else {
 			out.print("<script>");
 			out.print("alert('로그인을 실패하셨습니다!');");
 			out.print("location.href='plogin.jsp';");
