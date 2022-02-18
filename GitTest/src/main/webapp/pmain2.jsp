@@ -8,7 +8,6 @@
 <%@page import="com.pplus.model.BookDAO"%>
 <%@page import="com.pplus.model.BookDTO"%>
 <%@page import="com.pplus.model.PMemberDAO"%>
-<%@page import="org.apache.tomcat.websocket.PerMessageDeflate"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -87,9 +86,6 @@ if (member != null) {
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
 
-
-
-
 <link rel="stylesheet" href="캐러셀/css/font-awesome.min.css"
 	type="text/css" />
 <link rel="stylesheet" href="캐러셀/css/jquery-ui.min.css" type="text/css" />
@@ -130,18 +126,7 @@ if (member != null) {
 						<c:otherwise>
 							<li class="nav-item active"><a class="nav-link" href="#">사이트
 									소개</a></li>
-							<div class="dropdown nav-item active">
-								<a class="nav-link dropdown-toggle" class="nav-link" href="#">학습플래너</a>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<li><a class="dropdown-item" href="scheduleset.jsp">스케줄
-											등록</a></li>
-									<li><a class="dropdown-item" href="scheduleindex.jsp">스케줄
-											목록</a></li>
-									<li><a class="dropdown-item" href="dayplantodayset.jsp">일정
-											등록</a></li>
-									<li><a class="dropdown-item" href="lookup.jsp">일정 조회</a></li>
-								</ul>
-							</div>
+								<li class="nav-item active"><a class="nav-link" href="#">학습플래너</a></li>
 							<div class="dropdown nav-item active">
 								<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -294,6 +279,7 @@ if (member != null) {
 							<div class="container">
 								<div class="row">
 									<div class="categories__slider owl-carousel">
+									
 										<div class="col-lg-3">
 											<div class="categories__item set-bg" data-setbg="image/1.jpg">
 
@@ -303,6 +289,7 @@ if (member != null) {
 
 											</div>
 										</div>
+										
 										<div class="col-lg-3">
 											<div class="categories__item set-bg" data-setbg="image/2.jpg">
 												<h5>
