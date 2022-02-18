@@ -62,7 +62,7 @@ public class WishCon4 implements iPCommand{
 					session.setAttribute("recbooklist", recbooklist);
 					session.setAttribute("wishlistbook", wishlistbook);
 					
-					response.sendRedirect("pmain.jsp");
+					response.sendRedirect("ploginmain.jsp");
 		      }else {
 		    	  out.print("<script>");
 		    	  out.print("alert('wishlist 등록을 실패하셨습니다.');");

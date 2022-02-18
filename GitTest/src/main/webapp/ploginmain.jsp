@@ -93,39 +93,39 @@ if (member != null) {
 		<div class="collapse navbar-collapse justify-content-end"
 			id="navbarNav">
 			<ul class="navbar-nav">
-					<c:choose>
-						<c:when test="${member.member_id=='admin'}">
-							<li class="nav-item active"><a class="nav-link" href="#">회원관리</a></li>
-							<li class="nav-item active"><a class="nav-link"
-								href="plogout.jsp">로그아웃</a></li>
-						</c:when>
-						<c:otherwise>
-							<li class="nav-item active"><a class="nav-link" href="#">사이트
-									소개</a></li>
-								<li class="nav-item active"><a class="nav-link" href="#">학습플래너</a></li>
-							<div class="dropdown nav-item active">
-								<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<li><a class="dropdown-item" href="#">회원정보 수정/탈퇴</a></li>
-									<li><a class="dropdown-item" href="#">전체 학습상황 조회</a></li>
-								</ul>
-							</div>
-							<li class="nav-item active"><a class="nav-link"
-								href="mywish.jsp">위시리스트</a></li>
-							<li class="nav-item active"><a class="nav-link"
-								href="plogout.jsp">로그아웃</a></li>
-							<c:choose>
-								<c:when test="${empty member.user_type1}">
-									<script>
-										window
-												.open("ptype2.jsp", "ptype",
-														"width=800, height=300, left=100, top=50");
-									</script>
-								</c:when>
-							</c:choose>
-						</c:otherwise>
-					</c:choose>
-				</ul>
+				<c:choose>
+					<c:when test="${member.member_id=='admin'}">
+						<li class="nav-item active"><a class="nav-link" href="#">회원관리</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							href="plogout.jsp">로그아웃</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="nav-item active"><a class="nav-link" href="#">사이트
+								소개</a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">학습플래너</a></li>
+						<div class="dropdown nav-item active">
+							<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<li><a class="dropdown-item" href="#">회원정보 수정/탈퇴</a></li>
+								<li><a class="dropdown-item" href="#">전체 학습상황 조회</a></li>
+							</ul>
+						</div>
+						<li class="nav-item active"><a class="nav-link"
+							href="mywish.jsp">위시리스트</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							href="plogout.jsp">로그아웃</a></li>
+						<c:choose>
+							<c:when test="${empty member.user_type1}">
+								<script>
+									window
+											.open("ptype.jsp", "ptype",
+													"width=800, height=300, left=100, top=50");
+								</script>
+							</c:when>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>
+			</ul>
 
 		</div>
 	</header>
@@ -158,59 +158,45 @@ if (member != null) {
 					<div class="row mb-2">
 						<h1>책 추천</h1>
 
-
-
-
-
 						<!-- Categories Section Begin -->
 
 						<div class="container">
 							<div class="row">
 								<div class="categories__slider owl-carousel">
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="image/1.jpg">
+									<c:forEach var="recbook" items="${recbooklist }">
+										<div class="col-lg-3">
+											<div class="categories__item set-bg">
 
-											<h5>
-												<a href="#">책이름1</a>
-											</h5>
+												<h5>
+													<a href="BookintCon?num=${recbook.book_num }"> <img
+														src="${recbook.book_img}" width="80"> <span>${recbook.book_title }</span></a>
+													<c:choose>
+														<c:when test="${recbook.contents_cnt==1 }">
 
+															<a
+																href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
+																<button type="button">
+																	<img src="heart1.png" width="2px">
+																</button>
+															</a>
+														</c:when>
+														<c:otherwise>
+															<a
+																href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
+																<button type="button">
+																	<img src="heart0.png" width="2px">
+																</button>
+															</a>
+														</c:otherwise>
+													</c:choose>
+												</h5>
+
+											</div>
 										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="image/2.jpg">
-											<h5>
-												<a href="#">책이름2</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="image/3.jpg">
-											<h5>
-												<a href="#">책이름3</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="image/4.jpg">
-											<h5>
-												<a href="#">책이름4</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg"
-											data-setbg="img/categories/cat-5.jpg">
-											<h5>
-												<a href="#">X</a>
-											</h5>
-										</div>
-									</div>
+									</c:forEach>
 								</div>
 							</div>
 						</div>
-
-
-
 					</div>
 				</div>
 			</div>
@@ -225,44 +211,41 @@ if (member != null) {
 						<div class="container">
 							<div class="row">
 								<div class="categories__slider owl-carousel">
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="video/1.png">
 
-											<h5>
-												<a href="#">영상이름1</a>
-											</h5>
+									<c:forEach var="recvideo" items="${recvideolist }">
 
+										<div class="col-lg-3">
+											<div class="categories__item set-bg">
+
+												<h5>
+													<a href="VideointCon?num=${recvideo.video_num}"> <img
+														src="${recvideo.video_thumbnail}" width="80"> <span>${recvideo.video_title }</span>
+													</a>
+													<c:choose>
+														<c:when test="${recvideo.contents_cnt==1 }">
+
+															<a
+																href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
+																<button type="button">
+																	<img src="heart1.png" width="20">
+																</button>
+															</a>
+														</c:when>
+														<c:otherwise>
+															<a
+																href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
+																<button type="button">
+																	<img src="heart0.png" width="20">
+																</button>
+															</a>
+														</c:otherwise>
+													</c:choose>
+												</h5>
+
+											</div>
 										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="video/2.png">
-											<h5>
-												<a href="#">영상이름2</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="video/3.png">
-											<h5>
-												<a href="#">영상 이름3</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg" data-setbg="video/4.png">
-											<h5>
-												<a href="#">영상 이름4</a>
-											</h5>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<div class="categories__item set-bg"
-											data-setbg="img/categories/cat-5.jpg">
-											<h5>
-												<a href="#">X</a>
-											</h5>
-										</div>
-									</div>
+									</c:forEach>
+
 								</div>
 							</div>
 						</div>
@@ -286,15 +269,15 @@ if (member != null) {
 	<script src="캐러셀/js/main.js"></script>
 
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-	<script src="js1/jquery/jquery-2.2.4.min.js"></script>
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
-	<script src="js1/popper.min.js"></script>
+	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap js -->
-	<script src="js1/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<!-- Plugins js -->
-	<script src="js1/plugins.js"></script>
+	<script src="js/plugins.js"></script>
 	<!-- Active js -->
-	<script src="js1/active.js"></script>
+	<script src="js/active.js"></script>
 	</div>
 </body>
 </html>
