@@ -52,6 +52,7 @@ public class PLoginCon implements iPCommand {
 		ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) recbookDAO.recBookWishSelectAll(member.getMember_nick());
 		ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>) recvideodao.recVideoWishSelectAll(member.getMember_nick());
 		ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member);
+		ArrayList<RecVideoDTO> recvideolist1 = recvideodao.recVideoSelectAll2(member);
 		ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
 		
 		
@@ -64,6 +65,7 @@ public class PLoginCon implements iPCommand {
 			session.setAttribute("recbooklist", recbooklist);
 			session.setAttribute("recbooklist1", recbooklist1);
 			session.setAttribute("recvideolist", recvideolist);
+			session.setAttribute("recvideolist1", recvideolist1);
 			session.setAttribute("wishlistbook", wishlistbook);
 			session.setAttribute("wishlistvideo", wishlistvideo);
 			session.setAttribute("member", member);
