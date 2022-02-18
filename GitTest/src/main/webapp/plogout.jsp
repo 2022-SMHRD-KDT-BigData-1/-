@@ -9,6 +9,6 @@
 </head>
 <body>
 	<c:remove var="member" scope="session"/>
-	<c:redirect url="pmain.jsp"/>
+	<c:redirect url="poutmain.jsp"/>
 </body> 
 </html>

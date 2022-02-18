@@ -103,7 +103,7 @@ if (member != null) {
 					<c:otherwise>
 						<li class="nav-item active"><a class="nav-link" href="#">사이트
 								소개</a></li>
-						<li class="nav-item active"><a class="nav-link" href="#">학습플래너</a></li>
+						<li class="nav-item active"><a class="nav-link" href="plannermain.jsp">학습플래너</a></li>
 						<div class="dropdown nav-item active">
 							<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
 							<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">

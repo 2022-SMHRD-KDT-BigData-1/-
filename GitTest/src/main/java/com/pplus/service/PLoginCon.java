@@ -45,21 +45,23 @@ public class PLoginCon implements iPCommand {
 		
 		PMemberDTO member =dao.pmemberLogin(id, pw);
 		
-		member=dao.pmemberTypeCheck(member);
 		
-		ArrayList<RecBookDTO> recbooklist=recbookDAO.recBookSelectAll(member);
-		ArrayList<RecBookDTO> recbooklist1 = recbookDAO.recBookSelectAll2(member);
-		ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) recbookDAO.recBookWishSelectAll(member.getMember_nick());
-		ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>) recvideodao.recVideoWishSelectAll(member.getMember_nick());
-		ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member);
-		ArrayList<RecVideoDTO> recvideolist1 = recvideodao.recVideoSelectAll2(member);
-		ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
+		
+
 		
 		
 		
 		
 		if(member != null) { 
 			System.out.println(id+"가 로그인");
+			member=dao.pmemberTypeCheck(member);
+			ArrayList<RecBookDTO> recbooklist=recbookDAO.recBookSelectAll(member);
+			ArrayList<RecBookDTO> recbooklist1 = recbookDAO.recBookSelectAll2(member);
+			ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) recbookDAO.recBookWishSelectAll(member.getMember_nick());
+			ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>) recvideodao.recVideoWishSelectAll(member.getMember_nick());
+			ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member);
+			ArrayList<RecVideoDTO> recvideolist1 = recvideodao.recVideoSelectAll2(member);
+			ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
 			
 			session.setAttribute("schedulelist", schedulelist);
 			session.setAttribute("recbooklist", recbooklist);
