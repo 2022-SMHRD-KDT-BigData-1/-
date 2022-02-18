@@ -82,20 +82,19 @@
             <a class="nav-link" href="#">사이트 소개</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="로그인.jsp">로그인</a>
+            <a class="nav-link" href="plogin.jsp">로그인</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="회원가입.jsp">회원가입</a>
+            <a class="nav-link" href="#">회원가입</a>
           </li>
         </ul>
-      </ul>
     </div>
   </header>
 
     <div class="limiter">
       <div class="container-login100">
         <div class="wrap-login100">
-          <form class="login100-form validate-form">
+          <form class="login100-form validate-form" action="PJoinCon.do" method="post">
             <span class="login100-form-title p-b-26"> Welcome </span>
             <span class="login100-form-title p-b-48">
               <!-- <i class="zmdi zmdi-font"></i> -->
@@ -153,7 +152,8 @@
             <div class="container-login100-form-btn">
               <div class="wrap-login100-form-btn">
                 <div class="login100-form-bgbtn"></div>
-                <button class="login100-form-btn" onclick="location.href='PJoinCon.do'">회원가입</button >
+                <input type="submit" class="login100-form-btn" value="회원가입">
+                <!--<button type="submit" class="login100-form-btn" onclick="location.href='PJoinCon.do'">회원가입</button > -->
               </div>
             </div>
 
