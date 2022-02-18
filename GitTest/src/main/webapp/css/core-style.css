@@ -24,6 +24,10 @@
 /* :: 2.0 Import All CSS */
 /* :: 3.0 Base CSS */
 
+.page{
+	    padding-top: 3%;
+}
+
 .product__details__text ul {
   border-top: 1px solid #ebebeb;
   padding-top: 30px;

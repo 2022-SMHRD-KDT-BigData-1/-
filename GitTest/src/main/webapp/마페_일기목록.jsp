@@ -221,49 +221,59 @@
 					</thead>
 					<body>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 						<td>1</td>
 						<td>2022.01.11</td>
 						<td>ÀÚ¹Ù</td>
 						<td>¿À´ÃÀÇ TMI</td>
-
 					</tr>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 						<td>2</td>
 						<td></td>
 						<td></td>
 						<td></td>
-
 					</tr>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 						<td>3</td>
 						<td></td>
 						<td></td>
 						<td></td>
-
 					</tr>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 						<td>4</td>
 						<td></td>
 						<td></td>
 						<td></td>
-
 					</tr>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 						<td>5</td>
 						<td></td>
 						<td></td>
 						<td></td>
-
 					</tr>
 
 </table>

@@ -221,41 +221,110 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input class="form-check-input" type="checkbox"
-								value="sc1" id="flexCheckDefault"></td>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 							<td>1</td>
 							<td>2022.01.11</td>
 							<td>자바</td>
 							<td>for문</td>
 						</tr>
 						<tr>
-							<td><input class="form-check-input" type="checkbox"
-								value="sc1" id="flexCheckDefault"></td>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 							<td>2</td>
 							<td></td>
 							<td></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td><input class="form-check-input" type="checkbox"
-								value="sc1" id="flexCheckDefault"></td>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 							<td>3</td>
 							<td></td>
 							<td></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td><input class="form-check-input" type="checkbox"
-								value="sc1" id="flexCheckDefault"></td>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 							<td>4</td>
 							<td></td>
 							<td></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td><input class="form-check-input" type="checkbox"
-								value="sc1" id="flexCheckDefault"></td>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
 							<td>5</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<tr>
+							<tr>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
+							<td>6</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<tr>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
+							<td>7</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
+							<td>8</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
+							<td>9</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div></td>
+							<td>10</td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -265,7 +334,8 @@
 			</div>
 
 			<br>
-			<div class="text-center">
+			<div class="page">
+				<div class="text-center">
 				<a href="#" class="btn btn-dark">선택 수정</a> <a href="#"
 					class="btn btn-dark">선택 삭제</a>
 			</div>
@@ -287,7 +357,8 @@
 					</ul>
 				</div>
 			</nav>
-
+			
+			</div>
 		</div>
 	</div>
 
