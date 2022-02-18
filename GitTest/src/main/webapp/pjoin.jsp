@@ -121,7 +121,7 @@
               <span class="btn-show-pass">
                 <i class="zmdi zmdi-eye"></i>
               </span>
-              <input class="input100" type="password" name="pass" />
+              <input class="input100" type="password" name="pw" />
               <span
                 class="focus-input100"
                 data-placeholder="비밀번호를 입력하세요."
@@ -136,8 +136,8 @@
               <span
                 class="focus-input100"
                 data-placeholder="닉네임을 입력하세요."
-              ></span>
-              <font id="checkNick" size="2"></font>
+              ><div style = "padding-left:80%; padding-top:10px"><font id="checkNick" size="2"></font></div></span>
+              
             </div>
 
             <div
@@ -153,7 +153,7 @@
             <div class="container-login100-form-btn">
               <div class="wrap-login100-form-btn">
                 <div class="login100-form-bgbtn"></div>
-                <button class="login100-form-btn" onclick="location.href='ploginmain.jsp'">회원가입</button >
+                <button class="login100-form-btn" onclick="location.href='PJoinCon.do'">회원가입</button >
               </div>
             </div>
 
@@ -186,51 +186,51 @@
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
     <script src="jquery-3.6.0.min.js"></script>
-	<script> 
-	$('#input_id').keyup(function(){
-		let memberid=$('#input_id').val();
-		$.ajax({
-			url : "IdCheck.do",
-			type: "post",
-			data : {memberid : memberid},
-			dataType : 'json',
-			success : function(result){
-				if(result==0){
-					$("#checkId").html('사용불가');
-					$("#checkId").attr('color', 'red');
-				} else {
-					$("#checkId").html('사용가능');
-					$("#checkId").attr('color', 'green');
-				}
-			},
-			error : function(){
-				alert("서버요청실패");
-			}
-		})
-	})
-	
-	$('#input_nick').keyup(function(){
-		let membernick=$('#input_nick').val();
-		$.ajax({
-			url : "NickCheck.do",
-			type: "post",
-			data : {membernick : membernick},
-			dataType : 'json',
-			success : function(result){
-				if(result==0){
-					$("#checkNick").html('사용불가');
-					$("#checkNick").attr('color', 'red');
-				} else {
-					$("#checkNick").html('사용가능');
-					$("#checkNick").attr('color', 'green');
-				}
-			},
-			error : function(){
-				alert("서버요청실패");
-			}
-		})
-	})
+   <script> 
+   $('#input_id').keyup(function(){
+      let memberid=$('#input_id').val();
+      $.ajax({
+         url : "IdCheck.do",
+         type: "post",
+         data : {memberid : memberid},
+         dataType : 'json',
+         success : function(result){
+            if(result==0){
+               $("#checkId").html('사용불가');
+               $("#checkId").attr('color', 'red');
+            } else {
+               $("#checkId").html('사용가능');
+               $("#checkId").attr('color', 'green');
+            }
+         },
+         error : function(){
+            alert("서버요청실패");
+         }
+      })
+   })
+   
+   $('#input_nick').keyup(function(){
+      let membernick=$('#input_nick').val();
+      $.ajax({
+         url : "NickCheck.do",
+         type: "post",
+         data : {membernick : membernick},
+         dataType : 'json',
+         success : function(result){
+            if(result==0){
+               $("#checkNick").html('사용불가');
+               $("#checkNick").attr('color', 'red');
+            } else {
+               $("#checkNick").html('사용가능');
+               $("#checkNick").attr('color', 'green');
+            }
+         },
+         error : function(){
+            alert("서버요청실패");
+         }
+      })
+   })
 
-	</script>
+   </script>
   </body>
 </html>

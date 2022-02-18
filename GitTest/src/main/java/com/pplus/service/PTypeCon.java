@@ -78,14 +78,14 @@ public class PTypeCon implements iPCommand {
             session.setAttribute("recbooklist", recbooklist);
             session.setAttribute("recvideolist", recvideolist);
             out.print(cnt+"");
-            response.sendRedirect("pmain.jsp");
+            response.sendRedirect("ploginmain.jsp");
          
          }
          
       } else {
          out.print("<script>");
          out.print("alert('유형 등록을 실패하셨습니다.');");
-         out.print("location.href='pmain.jsp';");
+         out.print("location.href='ploginmain.jsp';");
          out.print("</script>");
       }
       

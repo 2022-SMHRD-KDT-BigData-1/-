@@ -50,7 +50,7 @@ public class WishCon implements iPCommand{
 				session.setAttribute("recbooklist", recbooklist);
 				session.setAttribute("wishlistbook", wishlistbook);
 				
-				response.sendRedirect("pmain.jsp");
+				response.sendRedirect("ploginmain.jsp");
 				
 			}else {
 				request.setAttribute("num", num);
