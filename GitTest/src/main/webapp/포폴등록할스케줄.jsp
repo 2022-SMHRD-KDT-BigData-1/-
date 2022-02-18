@@ -28,7 +28,7 @@
       crossorigin="anonymous"
     ></script>
     
-  </head>
+  </head> 
 
   <body>
    	

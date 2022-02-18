@@ -13,20 +13,18 @@
       rel="stylesheet"
       type="text/css"
       href="vendor/bootstrap/css/bootstrap.min.css"
-     
-    />
-    <!--  -->
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
     />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="fonts/iconic/css/material-design-iconic-font.min.css"
+      href="fonts1/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts1/iconic/css/material-design-iconic-font.min.css"
     />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
@@ -55,10 +53,12 @@
       href="vendor/daterangepicker/daterangepicker.css"
     />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css1/util.css" />
+    <link rel="stylesheet" type="text/css" href="css1/main.css" />
     <!--===============================================================================================-->
-  </head>
+ 	</head>
+ 	
+ 
   <body>
 
     <header
@@ -82,20 +82,19 @@
             <a class="nav-link" href="#">사이트 소개</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="로그인.jsp">로그인</a>
+            <a class="nav-link" href="plogin.jsp">로그인</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="회원가입.jsp">회원가입</a>
+            <a class="nav-link" href="#">회원가입</a>
           </li>
         </ul>
-      </ul>
     </div>
   </header>
 
     <div class="limiter">
       <div class="container-login100">
         <div class="wrap-login100">
-          <form class="login100-form validate-form">
+          <form class="login100-form validate-form" action="PJoinCon.do" method="post">
             <span class="login100-form-title p-b-26"> Welcome </span>
             <span class="login100-form-title p-b-48">
               <!-- <i class="zmdi zmdi-font"></i> -->
@@ -153,7 +152,8 @@
             <div class="container-login100-form-btn">
               <div class="wrap-login100-form-btn">
                 <div class="login100-form-bgbtn"></div>
-                <button class="login100-form-btn" onclick="location.href='PJoinCon.do'">회원가입</button >
+                <input type="submit" class="login100-form-btn" value="회원가입">
+                <!--<button type="submit" class="login100-form-btn" onclick="location.href='PJoinCon.do'">회원가입</button > -->
               </div>
             </div>
 
@@ -184,7 +184,7 @@
     <!--===============================================================================================-->
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <script src="js1/main.js"></script>
     <script src="jquery-3.6.0.min.js"></script>
    <script> 
    $('#input_id').keyup(function(){
