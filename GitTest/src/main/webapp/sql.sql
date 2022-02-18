@@ -187,7 +187,6 @@ create table schedule(
 	on delete cascade,
 	constraint sc_bn_fk foreign key(book_num)
 	references book(book_num)
-
 )
 
 create table editor(
@@ -428,8 +427,6 @@ select seq_dayplan_num from dayplan where member_nick='z' and to_char(dayplan_da
 
 drop¹®
 
-drop table book_part3 cascade constraints;
-drop table STUDY_video cascade constraints;
 drop table member_type cascade constraints;
 drop table member cascade constraints;
 drop table recommend_book cascade constraints;
@@ -437,9 +434,13 @@ drop table recommend_video cascade constraints;
 drop table schedule cascade constraints;
 drop table editor cascade constraints;
 drop table diary cascade constraints;
+drop table todo cascade constraints;
 drop table dayplan cascade constraints;
+drop sequence seq_schedule_num;
 drop sequence seq_editor_num;
 drop sequence seq_diary_num;
+drop sequence seq_todo_num;
+drop sequence seq_dayplan_num;
 
 
 delete¹®
@@ -455,6 +456,7 @@ update study_video set book_part3 = '0' where book_part3 is null
 
 alter¹®
 
+alter sequence seq_schedule_num nocache
 alter sequence seq_dayplan_num nocache
 alter sequence seq_editor_num nocache
 alter sequence seq_diary_num nocache
