@@ -67,12 +67,12 @@ public class PLoginCon implements iPCommand {
 			session.setAttribute("wishlistbook", wishlistbook);
 			session.setAttribute("wishlistvideo", wishlistvideo);
 			session.setAttribute("member", member);
-			response.sendRedirect("pmain2.jsp");
+			response.sendRedirect("ploginmain.jsp");
 			
 		} else {
 			out.print("<script>");
-			out.print("alert('로그인 실패..!');");
-			out.print("location.href='pmain.jsp';");
+			out.print("alert('로그인을 실패하셨습니다!');");
+			out.print("location.href='plogin.jsp';");
 			out.print("</script>");
 		}
 	}

@@ -84,7 +84,7 @@ if (member != null) {
 
 	<header
 		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
-		<a class="navbar-brand" href="pmain3.jsp">P+</a>
+		<a class="navbar-brand" href="ploginmain.jsp">P+</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -92,16 +92,7 @@ if (member != null) {
 		</button>
 		<div class="collapse navbar-collapse justify-content-end"
 			id="navbarNav">
-			<c:choose>
-				<c:when test="${empty member}">
-					<li class="nav-item active"><a class="nav-link" href="#">사이트
-							소개</a></li>
-					<li class="nav-item active"><a class="nav-link"
-						href="plogin.jsp">로그인</a></li>
-					<li class="nav-item active"><a class="nav-link"
-						href="pjoin.jsp">회원가입</a></li>
-				</c:when>
-				<c:otherwise>
+			<ul class="navbar-nav">
 					<c:choose>
 						<c:when test="${member.member_id=='admin'}">
 							<li class="nav-item active"><a class="nav-link" href="#">회원관리</a></li>
@@ -132,11 +123,10 @@ if (member != null) {
 									</script>
 								</c:when>
 							</c:choose>
-
 						</c:otherwise>
 					</c:choose>
-				</c:otherwise>
-			</c:choose>
+				</ul>
+
 		</div>
 	</header>
 
@@ -296,15 +286,15 @@ if (member != null) {
 	<script src="캐러셀/js/main.js"></script>
 
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="js1/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
-	<script src="js/popper.min.js"></script>
+	<script src="js1/popper.min.js"></script>
 	<!-- Bootstrap js -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="js1/bootstrap.min.js"></script>
 	<!-- Plugins js -->
-	<script src="js/plugins.js"></script>
+	<script src="js1/plugins.js"></script>
 	<!-- Active js -->
-	<script src="js/active.js"></script>
+	<script src="js1/active.js"></script>
 	</div>
 </body>
 </html>
