@@ -69,7 +69,7 @@
 			</c:forEach>
 			<tr>
 					<td colspan="8" align="center">
-						<input type="button" name="delete" value="선택삭제">
+						<input type="button" id="delete" value="선택삭제">
 					</td>
 				</tr>
 		</table>
@@ -83,7 +83,7 @@
 				$.ajax({
 					type : "POST",
 					data : {'num':lists},
-					url : "ScheduleDelete.do",
+					url : "ScheduleDeleteCon.do",
 					datatype : "json",
 					success:function(result) {
 						if(result == 0){

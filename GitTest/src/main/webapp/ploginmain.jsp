@@ -12,6 +12,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
@@ -163,37 +164,93 @@ if (member != null) {
 						<div class="container">
 							<div class="row">
 								<div class="categories__slider owl-carousel">
-									<c:forEach var="recbook" items="${recbooklist }">
-										<div class="col-lg-3">
-											<div class="categories__item set-bg">
-
+									<c:choose>
+										<c:when test="${empty member.user_type1 }">
+											<c:choose>
+											<c:when test="${empty recbooklist1}">
+												<c:forEach var="book" items="${booklist }">
+													<h5>
+														<a href="BookintCon?num=${book.book_num }"> 
+															<img src="${book.book_img}" width="80">
+														</a>
+														<a href="WishCon.do?num=${book.book_num}&recbooknum=0">
+															<button type="button"><img src="heart0.png" width="20"></button>
+														</a>
+													</h5>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<c:forEach var="book" items="${booklist }">
+												<c:set var="i" value="0"/>
 												<h5>
-													<a href="BookintCon?num=${recbook.book_num }"> <img
-														src="${recbook.book_img}" width="80"> <span>${recbook.book_title }</span></a>
+												 <c:forEach var="recbook" items="${recbooklist1 }">
 													<c:choose>
-														<c:when test="${recbook.contents_cnt==1 }">
-
-															<a
-																href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
-																<button type="button">
-																	<img src="heart1.png" width="2px">
-																</button>
+														<c:when test="${book.book_num == recbook.book_num }">
+															<a href="BookintCon?num=${book.book_num }"> 
+																<img src="${book.book_img}" width="80">
 															</a>
+															<c:choose>
+																<c:when test="${recbook.contents_cnt == 1 }">
+																	<a href="WishCon.do?num=${recbook.book_num}&recbooknum=1">
+																		<button type="button"><img src="heart1.png" width="20"></button>
+																	</a>
+																<c:otherwise>
+																	<a href="WishCon.do?num=${recbook.book_num}&recbooknum=0">
+																		<button type="button"><img src="heart0.png" width="20"></button>
+																	</a>
+																</c:otherwise>
+																</c:when>
+															</c:choose>
 														</c:when>
 														<c:otherwise>
-															<a
-																href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
-																<button type="button">
-																	<img src="heart0.png" width="2px">
-																</button>
-															</a>
+														<c:set value="${i = i+1 }" var="i"/>
+															<c:choose>
+																<c:when test="${fn:length(recbooklist1) == i}">
+																	<a href="WishCon.do?num=${book.book_num}&recbooknum=0">
+																		<button type="button"><img src="heart0.png" width="20"></button>
+																	</a>
+																</c:when>
+															</c:choose>
 														</c:otherwise>
 													</c:choose>
+												</c:forEach>
 												</h5>
+												</c:forEach>
+											</c:otherwise>
+											</c:choose>
+										</c:when>
+										<c:otherwise>
+											<c:forEach var="recbook" items="${recbooklist }">
+												<div class="col-lg-3">
+													<div class="categories__item set-bg">
+														<h5>
+															<a href="BookintCon?num=${recbook.book_num }"> <img
+																src="${recbook.book_img}" width="80"> <span>${recbook.book_title }</span></a>
+															<c:choose>
+																<c:when test="${recbook.contents_cnt==1 }">
 
-											</div>
-										</div>
-									</c:forEach>
+																	<a
+																		href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
+																		<button type="button">
+																			<img src="heart1.png" width="2px">
+																		</button>
+																	</a>
+																</c:when>
+																<c:otherwise>
+																	<a
+																		href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
+																		<button type="button">
+																			<img src="heart0.png" width="2px">
+																		</button>
+																	</a>
+																</c:otherwise>
+															</c:choose>
+														</h5>
+													</div>
+												</div>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 						</div>
@@ -211,41 +268,96 @@ if (member != null) {
 						<div class="container">
 							<div class="row">
 								<div class="categories__slider owl-carousel">
-
-									<c:forEach var="recvideo" items="${recvideolist }">
-
-										<div class="col-lg-3">
-											<div class="categories__item set-bg">
-
-												<h5>
-													<a href="VideointCon?num=${recvideo.video_num}"> <img
-														src="${recvideo.video_thumbnail}" width="80"> <span>${recvideo.video_title }</span>
-													</a>
-													<c:choose>
-														<c:when test="${recvideo.contents_cnt==1 }">
-
-															<a
-																href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
-																<button type="button">
-																	<img src="heart1.png" width="20">
-																</button>
-															</a>
-														</c:when>
-														<c:otherwise>
-															<a
-																href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
-																<button type="button">
-																	<img src="heart0.png" width="20">
-																</button>
-															</a>
-														</c:otherwise>
-													</c:choose>
+									<c:choose>
+										<c:when test="${empty member.user_type1 }">
+											<c:choose>
+												<c:when test="${empty recvideolist1}">
+												<c:forEach var="video" items="${videolist }">
+													<h5>
+														<a href="VideointCon?num=${video.video_num}"> 
+															<img src="${video.video_thumbnail}" width="80">
+														</a>
+														<a href="WishCon.do?num=${video.video_num}&recvideonum=0">
+															<button type="button"><img src="heart0.png" width="20"></button>
+														</a>
+													</h5>
+												</c:forEach>
+												</c:when>
+												<c:otherwise>
+												 <c:forEach var="video" items="${videolist }">
+												 <c:set var="i" value="0"/>
+												 <h5>
+												 	<c:forEach var="recvideo" items="${recvideolist1 }">
+														<c:choose>
+															<c:when test="${video.video_num == recvideo.video_num }">
+																<c:choose>
+																	<c:when test="${recvideo.contents_cnt == 1 }">
+																		<a href="WishCon.do?num=${recvideo.video_num}&recvideonum=1">
+																			<button type="button"><img src="heart1.png" width="20"></button>
+																		</a>
+																		<c:otherwise>
+																			<a href="WishCon.do?num=${recvideo.video_num}&recvideonum=0">
+																				<button type="button"><img src="heart0.png" width="20"></button>
+																			</a>
+																		</c:otherwise>
+																	</c:when>
+																</c:choose>
+															</c:when>
+															<c:otherwise>
+															<c:set value="${i = i+1 }" var="i"/>
+																<c:choose>
+																	<c:when test="${fn:length(recvideolist1) == i}">
+																		<a href="WishCon.do?num=${video.video_num}&recvideonum=0">
+																			<button type="button"><img src="heart0.png" width="20"></button>
+																		</a>
+																	</c:when>
+																</c:choose>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
 												</h5>
+												</c:forEach>
+												</c:otherwise>
+											</c:choose>
+											</c:when>
+										
+										<c:otherwise>
 
-											</div>
-										</div>
-									</c:forEach>
+											<c:forEach var="recvideo" items="${recvideolist }">
 
+												<div class="col-lg-3">
+													<div class="categories__item set-bg">
+
+														<h5>
+															<a href="VideointCon?num=${recvideo.video_num}"> <img
+																src="${recvideo.video_thumbnail}" width="80"> <span>${recvideo.video_title }</span>
+															</a>
+															<c:choose>
+																<c:when test="${recvideo.contents_cnt==1 }">
+
+																	<a
+																		href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
+																		<button type="button">
+																			<img src="heart1.png" width="20">
+																		</button>
+																	</a>
+																</c:when>
+																<c:otherwise>
+																	<a
+																		href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
+																		<button type="button">
+																			<img src="heart0.png" width="20">
+																		</button>
+																	</a>
+																</c:otherwise>
+															</c:choose>
+														</h5>
+
+													</div>
+												</div>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 						</div>
