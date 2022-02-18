@@ -13,6 +13,9 @@
 		<c:set value="0" var="j" />
 			<tr>
 				<td>
+				
+				</td>
+				<td>
 					NO
 				</td>
 				<td>
@@ -37,6 +40,9 @@
 			<c:forEach var="i" items="${sessionScope.schedulelist }">
 				<tr>
 					<td>
+						<input type="checkbox" value="${i.schedule_num }" name="delete">
+					</td>
+					<td>
 						<input value="${i.schedule_num }" style="display: none;" name="num">
 						<input value="${i.member_nick }" style="display: none;" name="nick">
 						${j = j + 1 }
@@ -58,11 +64,44 @@
 					</td>
 					<td>
 						<a href="ScheduleIndexCon.do?num=${i.schedule_num}&nick=${i.member_nick}"><input type="submit" value="확인"></a>
-						<a href="ScheduleDelete.do?num=${i.schedule_num}&nick=${i.member_nick}"><input type="submit" value="수정/삭제"></a>
 					</td>
 				</tr>
 			</c:forEach>
+			<tr>
+					<td colspan="8" align="center">
+						<input type="button" name="delete" value="선택삭제">
+					</td>
+				</tr>
 		</table>
+		<script type="text/javascript" src="jquery-3.6.0.min">
+			var lists = []
+			$("input[name = 'delete']:checked").each(function(){
+				lists.push($(this).val());
+			});
+			
+			$("#delete").click(function(){
+				$.ajax({
+					type : "POST",
+					data : {'num':lists},
+					url : "ScheduleDelete.do",
+					datatype : "json",
+					success:function(result) {
+						if(result == 0){
+							alert("삭제 실패");
+						}else{
+							alert("삭제 성공");
+						}
+					},
+					error : function(){
+						alert("서버요청실패");
+					}
+				});
+			});
+			
+			
+			
+			
+		</script>
 	
 </body>
 </html>

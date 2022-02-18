@@ -14,7 +14,7 @@
 			<li>회원가입을 축하합니다.</li>
 			<li>P+의 닉네임은 ${requestScope.nick }입니다.</li>
 			<li>P+의 아이디는 ${requestScope.id }입니다.</li>
-			<li><button onclick='location.href="pmain.jsp"'>메인으로</button></li>
+			<li><button onclick='location.href="poutmain.jsp"'>메인으로</button></li>
 		</ul>
 		</nav>
 	</div>

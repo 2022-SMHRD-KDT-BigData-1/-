@@ -58,7 +58,7 @@ public class PLoginCon implements iPCommand {
 		
 		
 		
-		if(member != null) {
+		if(member != null) { 
 			System.out.println(id+"가 로그인");
 			
 			session.setAttribute("schedulelist", schedulelist);
