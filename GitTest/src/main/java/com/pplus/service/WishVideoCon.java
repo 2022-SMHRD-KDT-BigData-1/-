@@ -30,7 +30,7 @@ public class WishVideoCon implements iPCommand {
 		
 			int num = Integer.parseInt(request.getParameter("num"));
 			int recvideonum=Integer.parseInt(request.getParameter("recvideonum"));
-			
+			 
 			if(recvideonum == 0) {
 				recvideonum = 1;
 			}else {

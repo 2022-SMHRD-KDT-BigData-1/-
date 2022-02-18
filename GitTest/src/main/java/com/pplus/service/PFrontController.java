@@ -20,7 +20,7 @@ public class PFrontController extends HttpServlet {
 	
 	@Override
 	public void init() throws ServletException {
-
+ 
 		map = new HashMap<String, iPCommand>();
 		map.put("/PLoginCon.do", new PLoginCon());
 		map.put("/PJoinCon.do", new PJoinCon()); 

@@ -37,7 +37,7 @@ public class PLoginCon implements iPCommand {
 		 
 		String id =request.getParameter("id");
 		String pw = request.getParameter("pw");
-		
+		 
 		PMemberDAO dao =new PMemberDAO();
 		RecBookDAO recbookDAO =new RecBookDAO();
 		RecVideoDAO recvideodao = new RecVideoDAO();
