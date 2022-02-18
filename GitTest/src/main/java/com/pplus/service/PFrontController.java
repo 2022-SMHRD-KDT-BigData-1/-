@@ -34,6 +34,7 @@ public class PFrontController extends HttpServlet {
 		map.put("/WishCon.do",new WishCon());
 		map.put("/WishCon2.do",new WishCon2());
 		map.put("/WishCon3.do",new WishCon3());
+		map.put("/WishCon4.do",new WishCon4());
 		map.put("/EditorCon.do", new EditorCon());
 		map.put("/ScheduleIndexCon.do", new ScheduleIndexCon());
 		map.put("/EditorIndexCon.do", new EditorIndexCon());
@@ -42,6 +43,7 @@ public class PFrontController extends HttpServlet {
 		map.put("/WishVideoCon.do", new WishVideoCon());
 		map.put("/WishVideoCon2.do", new WishVideoCon2());
 		map.put("/WishVideoCon3.do", new WishVideoCon3());
+		map.put("/WishVideoCon4.do", new WishVideoCon4());
 		map.put("/DayplanCon.do", new DayplanCon());
 		map.put("/BookScheduleCon.do", new BookScheduleCon());
 	}

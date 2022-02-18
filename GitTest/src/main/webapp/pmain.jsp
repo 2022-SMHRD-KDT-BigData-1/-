@@ -8,10 +8,12 @@
 <%@page import="com.pplus.model.BookDAO"%>
 <%@page import="com.pplus.model.BookDTO"%>
 <%@page import="com.pplus.model.PMemberDAO"%>
+
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
@@ -99,7 +101,7 @@ if (member != null) {
 					<a href="lookup.jsp">조회</a>
 					<c:choose>
 						<c:when test="${empty member.user_type1}">
-							<script>
+							<script langauge="javascript">
 								window.open("ptype2.jsp", "ptype",
 												"width=800, height=300, left=100, top=50");
 							</script>
@@ -129,7 +131,7 @@ if (member != null) {
 		<c:otherwise>
 			<c:choose>
 				
-					<c:when test="${empty member.getUser_type1() }">
+					<c:when test="${empty member.user_type1 }">
 					<table>
 					<tr>
 						<c:forEach var="book" items="${booklist }">
@@ -141,24 +143,56 @@ if (member != null) {
 						</c:forEach>
 					</tr>
 					<tr>
-					<c:forEach var="recbook" items="${recbooklist }">
-						<c:choose>
-							<c:when test="${recbook.contents_cnt == 1}">
+					<c:choose>
+						<c:when test="${empty recbooklist1}">
+							<c:forEach var="book" items="${booklist}">
 								<td>
-									<a href="WishCon.do?num=${recbook.book_num}&recbooknum=1">
-										<button type="button"><img src="heart1.png" width="20"></button>
-									</a>
-								</td>
-							</c:when>
-							<c:otherwise>
-								<td>
-									<a href="WishCon.do?num=${recbook.book_num}&recbooknum=0">
+									<a href="WishCon.do?num=${book.book_num}&recbooknum=0">
 										<button type="button"><img src="heart0.png" width="20"></button>
 									</a>
 								</td>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+						 <c:forEach var="book" items="${booklist }">
+						 <c:set var="i" value="0"/>
+						 	<c:forEach var="recbook" items="${recbooklist1 }">
+								<c:choose>
+									<c:when test="${book.book_num == recbook.book_num }">
+										<c:choose>
+											<c:when test="${recbook.contents_cnt == 1 }">
+												<td>
+													<a href="WishCon.do?num=${recbook.book_num}&recbooknum=1">
+														<button type="button"><img src="heart1.png" width="20"></button>
+													</a>
+												</td>
+												<c:otherwise>
+													<td>
+														<a href="WishCon.do?num=${recbook.book_num}&recbooknum=0">
+															<button type="button"><img src="heart0.png" width="20"></button>
+														</a>
+													</td>
+												</c:otherwise>
+											</c:when>
+										</c:choose>
+									</c:when>
+									<c:otherwise>
+									<c:set value="${i = i+1 }" var="i"/>
+										<c:choose>
+											<c:when test="${fn:length(recbooklist1) == i}">
+												<td>
+													<a href="WishCon.do?num=${book.book_num}&recbooknum=0">
+														<button type="button"><img src="heart0.png" width="20"></button>
+													</a>
+												</td>
+											</c:when>
+										</c:choose>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</c:forEach>
+						</c:otherwise>
+					</c:choose>
 					</tr>
 					</table>
 					<hr>
@@ -171,6 +205,58 @@ if (member != null) {
 							</a>
 						</td>
 						</c:forEach>
+					</tr>
+					<tr>
+					<c:choose>
+						<c:when test="${empty recvideolist1}">
+							<c:forEach var="video" items="${videolist}">
+								<td>
+									<a href="WishCon.do?num=${video.video_num}&recvideonum=0">
+										<button type="button"><img src="heart0.png" width="20"></button>
+									</a>
+								</td>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+						 <c:forEach var="video" items="${videolist }">
+						 <c:set var="i" value="0"/>
+						 	<c:forEach var="recvideo" items="${recvideolist1 }">
+								<c:choose>
+									<c:when test="${video.video_num == recvideo.video_num }">
+										<c:choose>
+											<c:when test="${recvideo.contents_cnt == 1 }">
+												<td>
+													<a href="WishCon.do?num=${recvideo.video_num}&recvideonum=1">
+														<button type="button"><img src="heart1.png" width="20"></button>
+													</a>
+												</td>
+												<c:otherwise>
+													<td>
+														<a href="WishCon.do?num=${recvideo.video_num}&recvideonum=0">
+															<button type="button"><img src="heart0.png" width="20"></button>
+														</a>
+													</td>
+												</c:otherwise>
+											</c:when>
+										</c:choose>
+									</c:when>
+									<c:otherwise>
+									<c:set value="${i = i+1 }" var="i"/>
+										<c:choose>
+											<c:when test="${fn:length(recvideolist1) == i}">
+												<td>
+													<a href="WishCon.do?num=${video.video_num}&recvideonum=0">
+														<button type="button"><img src="heart0.png" width="20"></button>
+													</a>
+												</td>
+											</c:when>
+										</c:choose>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</c:forEach>
+						</c:otherwise>
+					</c:choose>
 					</tr>
 					</table>
 					</c:when>

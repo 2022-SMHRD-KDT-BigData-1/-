@@ -37,7 +37,7 @@ public class PLoginCon implements iPCommand {
 		 
 		String id =request.getParameter("id");
 		String pw = request.getParameter("pw");
-		
+		 
 		PMemberDAO dao =new PMemberDAO();
 		RecBookDAO recbookDAO =new RecBookDAO();
 		RecVideoDAO recvideodao = new RecVideoDAO();
@@ -52,6 +52,7 @@ public class PLoginCon implements iPCommand {
 		ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) recbookDAO.recBookWishSelectAll(member.getMember_nick());
 		ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>) recvideodao.recVideoWishSelectAll(member.getMember_nick());
 		ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member);
+		ArrayList<RecVideoDTO> recvideolist1 = recvideodao.recVideoSelectAll2(member);
 		ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
 		
 		
@@ -64,15 +65,16 @@ public class PLoginCon implements iPCommand {
 			session.setAttribute("recbooklist", recbooklist);
 			session.setAttribute("recbooklist1", recbooklist1);
 			session.setAttribute("recvideolist", recvideolist);
+			session.setAttribute("recvideolist1", recvideolist1);
 			session.setAttribute("wishlistbook", wishlistbook);
 			session.setAttribute("wishlistvideo", wishlistvideo);
 			session.setAttribute("member", member);
-			response.sendRedirect("pmain2.jsp");
+			response.sendRedirect("ploginmain.jsp");
 			
 		} else {
 			out.print("<script>");
-			out.print("alert('로그인 실패..!');");
-			out.print("location.href='pmain.jsp';");
+			out.print("alert('로그인을 실패하셨습니다!');");
+			out.print("location.href='plogin.jsp';");
 			out.print("</script>");
 		}
 	}
