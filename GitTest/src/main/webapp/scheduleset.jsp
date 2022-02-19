@@ -12,7 +12,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>Amado - Furniture Ecommerce Template | Shop</title>
+<title>P+ - schedule set</title>
 
 <!-- Favicon  -->
 <link rel="icon" href="img/core-img/favicon.ico" />
@@ -22,19 +22,16 @@
 <link rel="stylesheet" href="style.css" />
 
 <!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-	<script src="jquery-3.6.0.min"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
 	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					if ("${serviceType}" == "wish") {
-						$('input:radio[name="serviceType"][value="wish"]')
-								.prop('checked', true);
+		$(document).ready(function() {
+					if ($("input:radio[name='serviceType']").val() == "wish") {
+						$('input:radio[name="serviceType"][value="wish"]').prop('checked', true);
 						$("#viewsearch").hide();
 						$("#viewuser").hide();
 						$("#viewwish").show();
@@ -260,10 +257,9 @@
 			<hr>
 			<br>
 			<div class="container">
-
+				<h3 style="font-weight: bold;">스케줄</h3>
 				<form action="ScheduleCon.do" method="post">
-					<h3 style="font-weight: bold;">스케줄</h3>
-					<span id="viewwish"> 위시리스트에서 도서 선정
+					<div id="viewwish"> 위시리스트에서 도서 선정
 
 						<div class="input-group mb-3">
 							<input type="text" class="form-control" aria-label="bookname"
@@ -300,13 +296,12 @@
 								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 								value="스케줄 등록">
 						</div>
-					</span>
+					</div>
 				</form>
 												
 				
 				<form action="ScheduleCon.do" method="post">
-				<h3 style="font-weight: bold;">스케줄</h3>
-				<span id="viewsearch"> 전체 도서에서 선정
+				<div id="viewsearch"> 전체 도서에서 선정
 					<div class="input-group mb-3">
 						<input type="text" id="book_title" class="form-control" onclick="book()" placeholder="전체 도서 목록" name="book_title" aria-label="bookname">
 						<input type="button" value="도서 검색" onclick="book()"><br>
@@ -334,13 +329,12 @@
 								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 								value="스케줄 등록">
 						</div>
-					</span>
+					</div>
 				</form>
 												<!-- 일단 끝 -->
 
 				<form action="ScheduleCon.do" method="post">
-					<h3 style="font-weight: bold;">스케줄</h3>
-					<span id="viewuser"> 
+					<div id="viewuser"> 
 					<span>보유 도서 정보 입력</span>
 					도서 제목
 					<div class="input-group mb-3">
@@ -373,7 +367,7 @@
 								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 								value="스케줄 등록">
 						</div>
-				</span>
+				</div>
 			</form>
 		</div>
 	</div>

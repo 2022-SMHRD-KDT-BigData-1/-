@@ -30,25 +30,25 @@ public class ScheduleCon implements iPCommand {
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
 		
-		String bookTitle =null;
+		String book_Title =null;
 		int book_num = 0;
 		int book_page = 0;
 		
 		
 		if(request.getParameter("book_title") != null) {
 			
-			bookTitle = request.getParameter("book_title");
+			book_Title = request.getParameter("book_title");
 			book_num = Integer.parseInt(request.getParameter("book_num"));
 			book_page = Integer.parseInt(request.getParameter("book_page"));
 			
 		}else if(request.getParameter("wishbook_title") != null) {
 			
-			bookTitle = request.getParameter("wishbook_title");
+			book_Title = request.getParameter("wishbook_title");
 			book_num = Integer.parseInt(request.getParameter("wishbook_num"));
 			book_page = Integer.parseInt(request.getParameter("wishbook_page"));
 			
 		}else {
-			bookTitle = request.getParameter("searchbook_title");
+			book_Title = request.getParameter("searchbook_title");
 			book_page = Integer.parseInt(request.getParameter("searchbook_page"));
 		}
 		
@@ -59,7 +59,7 @@ public class ScheduleCon implements iPCommand {
 		String end = request.getParameter("end"); 
 		String day = request.getParameter("day");
 		int page = book_page / Integer.parseInt(day);
-		System.out.println(bookTitle);
+		System.out.println(book_Title);
 		System.out.println(book_page);
 		System.out.println(book_num);
 		
@@ -72,7 +72,7 @@ public class ScheduleCon implements iPCommand {
 		
 		
 		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end, page, null, member.getMember_nick(), book_num,
-				bookTitle, book_page));
+				book_Title, book_page));
 	
 		
 		if(cnt > 0) {
@@ -81,13 +81,13 @@ public class ScheduleCon implements iPCommand {
 			
 		 	ArrayList<ScheduleDTO> schedulelist = dao.scheduleSelectAll(member.getMember_nick());
 			session.setAttribute("schedulelist", schedulelist);
-			response.sendRedirect("pmain.jsp");
+			response.sendRedirect("scheduleindex.jsp");
 			// 우선 메인 페이지로 가게 해놓았습니다. 메인페이지가 아니라 다른곳으로 가게 할거면 바꿔냐 합니다
 		}else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('스케줄 등록을 실패하셨습니다.');");
-			out.print("location.href='pmain.jsp';");
+			out.print("location.href='scheduleset.jsp';");
 			out.print("</script>");
 		}
 		

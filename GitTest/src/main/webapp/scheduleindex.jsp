@@ -1,135 +1,382 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<meta charset="" />
+<meta name="description" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- Title  -->
+<title>Amado - Furniture Ecommerce Template | Shop</title>
+
+<!-- Favicon  -->
+<link rel="icon" href="img/core-img/favicon.ico" />
+
+<!-- Core Style CSS -->
+<link rel="stylesheet" href="css/core-style.css" />
+<link rel="stylesheet" href="style.css" />
+
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+	crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-	
-		<table border="1">
-		<c:set value="0" var="j" />
-			<tr>
-				<td>
-				
-				</td>
-				<td>
-					NO
-				</td>
-				<td>
-					Ïä§ÏºÄÏ§Ñ Ïù¥Î¶Ñ
-				</td>
-				<td>
-					ÏãúÏûë ÎÇ† ~ ÎÅùÎÇòÎäî ÎÇ†
-				</td>
-				<td>
-					Ï±Ö Ïù¥Î¶Ñ
-				</td>
-				<td>
-					ÌïòÎ£® ÌïôÏäµ Î∂ÑÎüâ
-				</td>
-				<td>
-					Îã¨ÏÑ±Î£∞
-				</td> 
-				<td>
-					ÏÑ†ÌÉù
-				</td>
-			</tr>
-			<c:forEach var="i" items="${sessionScope.schedulelist }">
-				<tr>
-					<td>
-						<input type="checkbox" value="${i.schedule_num }" class="delete">
-					</td>
-					<td>
-						<input value="${i.schedule_num }" style="display: none;" name="num">
-						<input value="${i.member_nick }" style="display: none;" name="nick">
-						${j = j + 1 }
-					</td>
-					<td>
-						${i.schedule_name }
-					</td>
-					<td>
-						${i.schedule_start } ~  ${i.schedule_end }
-					</td>
-					<td>
-						${i.book_title }
-					</td>
-					<td>
-						${i.schedule_day_page }
-					</td>
-					<td>
-						
-					</td>
-					<td>
-						<a href="ScheduleIndexCon.do?num=${i.schedule_num}&nick=${i.member_nick}"><input type="submit" value="ÌôïÏù∏"></a>
-					</td>
-				</tr>
-			</c:forEach>
-				<tr>
-					<td colspan="8" align="center">
-						<input type="button" id="delete" value="ÏÑ†ÌÉùÏÇ≠Ï†ú">
-					</td>
-				</tr>
-		</table>
+	<header
+		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
+		<a class="navbar-brand" href="#">P+</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end"
+			id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" href="#">ªÁ¿Ã∆Æ
+						º“∞≥</a></li>
+				<div class="dropdown nav-item active">
+					<a class="nav-link dropdown-toggle" href="ƒ¡≈Ÿ√˜√ﬂ√µ.jsp">ƒ¡≈Ÿ√˜ √ﬂ√µ</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="#">¿Ø«¸ »Æ¿Œ π◊ ¿Á∞ÀªÁ</a></li>
+					</ul>
+				</div>
+				<div class="dropdown nav-item active">
+					<a class="nav-link dropdown-toggle" href="«–Ω¿«√∑°≥ .jsp">«–Ω¿«√∑°≥ </a> <span
+						class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">Ω∫ƒ…¡Ÿ</li>
+						<hr>
+						<li><a href="Ω∫ƒ…¡Ÿ∏∏_µÓ∑œ.jsp">µÓ∑œ</a></li>
+						<li><a href="¿¸√ºΩ∫ƒ…¡Ÿ∏Ò∑œ.jsp">¿¸√º Ω∫ƒ…¡Ÿ ∏Ò∑œ</a></li>
+						<li><a href="¿¸√ºø°µ≈Õ∏Ò∑œ.jsp">¿¸√º ø°µ≈Õ ∏Ò∑œ</a></li>
+						<li><a href="¿¸√º¿œ±‚∏Ò∑œ.jsp">¿¸√º ¿œ±‚ ∏Ò∑œ</a></li>
+						<br>
+						<li class="divider"></li>
+						<li class="dropdown-header">¿œ¡§</li>
+						<hr>
+						<li><a href="¿œ¡§µÓ∑œ4π¯.jsp">µÓ∑œ</a></li>
+						<li><a href="#">¿¸√º ¿œ¡§ ∏Ò∑œ</a></li>
+						<li><a href="¿¸√ºø°µ≈Õ∏Ò∑œ.jsp">¿¸√º ø°µ≈Õ ∏Ò∑œ</a></li>
+						<li><a href="¿¸√º¿œ±‚∏Ò∑œ.jsp">¿¸√º ¿œ±‚ ∏Ò∑œ</a></li>
+					</ul>
+				</div>
 
-		<script type="text/javascript" >
-			
-		$(document).ready(function() {
-	 
-			  //set initial state.
-			  $('.delete').val($(this).is(':checked'));
+				<div class="dropdown nav-item active">
+					<a class="nav-link dropdown-toggle" href="#">∆˜∆Æ∆˙∏Æø¿</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="∆˜∆˙µÓ∑œ«“Ω∫ƒ…¡Ÿ.jsp">µÓ∑œ</a></li>
 
-			  $('.delete').change(function() {
-			    $('.delete').val($(this).is(':checked'));
-			    console.log($(this).val());
-			  });
+						<li><a class="dropdown-item" href="∆˜∆˙∏Ò∑œ.jsp">∏Ò∑œ</a></li>
+					</ul>
+				</div>
 
-			  $('.delete').click(function() {
-			    if (!$(this).is(':checked')) {
-			    	console.log($(this).val());
-			    }
-			  });
+				<div class="dropdown nav-item active">
+					<a class="nav-link dropdown-toggle" href="#">∏∂¿Ã∆‰¿Ã¡ˆ</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="#">»∏ø¯¡§∫∏ ºˆ¡§/≈ª≈</a></li>
+						<li><a class="dropdown-item" href="#">¿¸√º «–Ω¿ªÛ»≤ ¡∂»∏</a></li>
+						<li><a class="dropdown-item" href="#">¿ßΩ√∏ÆΩ∫∆Æ</a></li>
+					</ul>
+				</div>
+				<li class="nav-item active"><a class="nav-link" href="#">∑Œ±◊æ∆øÙ</a>
+				</li>
+			</ul>
+		</div>
+	</header>
 
-				$("#delete").click(function(){
-					$.ajax({
-						type : "POST",
-						data : {'num':lists},
-						url : "ScheduleDeleteCon.do",
-						datatype : "json",
-						success:function(result) {
-							if(result == 0){
-								alert("ÏÇ≠Ï†ú Ïã§Ìå®");
-							}else{
-								alert("ÏÇ≠Ï†ú ÏÑ±Í≥µ");
-							}
-						},
-						error : function(){
-							alert("ÏÑúÎ≤ÑÏöîÏ≤≠Ïã§Ìå®");
-						}
-					});
-				}); 
-			})
-			
-		
-		
-			
-			/* var lists = [];
-			$("input[name = delete]:checked").each(function(i){
-				var list = $(this);
-				console.log(list);
-				lists.push(list);
-			}); */
-			
-			
 
-			
-			
-			
-			
-		</script>
-	
+	<!-- ##### Main Content Wrapper Start ##### -->
+	<div class="main-content-wrapper d-flex clearfix">
+		<!-- Mobile Nav (max width 767px)-->
+		<div class="mobile-nav">
+			<!-- Navbar Brand -->
+			<div class="amado-navbar-brand">
+				<a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
+			</div>
+			<!-- Navbar Toggler -->
+			<div class="amado-navbar-toggler">
+				<span></span><span></span><span></span>
+			</div>
+		</div>
+
+
+
+		<div class="shop_sidebar_area">
+			<!-- ##### Single Widget ##### -->
+			<div class="widget catagory mb-50">
+				<h6 class="widget-title mb-30">«–Ω¿«√∑°≥ </h6>
+				<br>
+				<!-- Widget Title -->
+				<h6 class="widget-title mb-30">Ω∫ƒ…¡Ÿ</h6>
+
+				<!--  Catagories  -->
+				<div class="catagories-menu">
+					<ul>
+						<li class="active"><a href="Ω∫ƒ…¡Ÿ∏∏_µÓ∑œ.jsp">µÓ∑œ</a></li>
+						<hr />
+						<li><a href="#">∏Ò∑œ</a></li>
+						<li><a href="¿¸√ºΩ∫ƒ…¡Ÿ∏Ò∑œ.jsp">¿¸√º Ω∫ƒ…¡Ÿ ∏Ò∑œ</a></li>
+						<li><a href="¿¸√ºø°µ≈Õ∏Ò∑œ.jsp">¿¸√º ø°µ≈Õ ∏Ò∑œ</a></li>
+						<li><a href="¿¸√º¿œ±‚∏Ò∑œ.jsp">¿¸√º ¿œ±‚ ∏Ò∑œ</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- ##### Single Widget ##### -->
+			<div class="widget category mb-50">
+				<!-- Widget Title -->
+				<h6 class="widget-title mb-30">¿œ¡§</h6>
+
+				<!-- Widget Title -->
+
+				<div class="catagories-menu">
+					<ul>
+						<li class="active"><a href="¿œ¡§µÓ∑œ4π¯.jsp">µÓ∑œ</a></li>
+						<hr />
+						<li><a href="#">∏Ò∑œ</a></li>
+						<li><a href="#">¿¸√º ¿œ¡§ ∏Ò∑œ</a></li>
+						<li><a href="¿¸√ºø°µ≈Õ∏Ò∑œ.jsp">¿¸√º ø°µ≈Õ ∏Ò∑œ</a></li>
+						<li><a href="¿¸√º¿œ±‚∏Ò∑œ.jsp">¿¸√º ¿œ±‚ ∏Ò∑œ</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div style="width: 60%; margin-top: 180px; margin-left: 300px;">
+
+			<h1 style="text-align: center;">
+				MY Ω∫ƒ…¡Ÿ <i class="far fa-solid fa-calendar-check"></i>
+			</h1>
+			<br>
+			<div class="container">
+				<table
+					class="table table-bordered table-hover table-sm text-center ">
+
+
+					<thead class="table-warning ">
+						<th class="text-center">º±≈√</th>
+						<th class="text-center">No.</th>
+						<th class="text-center">Ω∫ƒ…¡Ÿ ¿Ã∏ß</th>
+						<th class="text-center">Ω√¿€ ≥Ø - ≥°≥™¥¬ ≥Ø</th>
+						<th class="text-center">√• ¿Ã∏ß</th>
+						<th class="text-center">«œ∑Á «–Ω¿ ∫–∑Æ</th>
+						<th class="text-center">¥ﬁº∫∑¸</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>¿⁄πŸ</td>
+							<td>2022.01.01-2022.01.20</td>
+							<td>Java</td>
+							<td>15p</td>
+							<td>75%</td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>2</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>3</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>4</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>5</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>6</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>7</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>8</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>9</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										class="form-check-label" for="flexRadioDefault1"> </label>
+								</div>
+							</td>
+							<td>10</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div class="page">
+				<div class="text-center">
+					<a href="#" class="btn btn-dark">º±≈√ øœ∑·</a>
+				</div>
+				<br>
+				<nav aria-label="Page navigation example">
+					<div class="text-center">
+						<ul class="pagination" style="justify-content: center;">
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+							</a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+									class="sr-only">Next</span>
+							</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+
+
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>
