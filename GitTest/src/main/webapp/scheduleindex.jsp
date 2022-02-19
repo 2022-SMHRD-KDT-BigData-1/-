@@ -41,7 +41,7 @@
 			<c:forEach var="i" items="${sessionScope.schedulelist }">
 				<tr>
 					<td>
-						<input type="checkbox" value="${i.schedule_num }" name="delete">
+						<input type="checkbox" value="${i.schedule_num }" class="delete">
 					</td>
 					<td>
 						<input value="${i.schedule_num }" style="display: none;" name="num">
@@ -77,32 +77,53 @@
 
 		<script type="text/javascript" >
 			
+		$(document).ready(function() {
+	 
+			  //set initial state.
+			  $('.delete').val($(this).is(':checked'));
+
+			  $('.delete').change(function() {
+			    $('.delete').val($(this).is(':checked'));
+			    console.log($(this).val());
+			  });
+
+			  $('.delete').click(function() {
+			    if (!$(this).is(':checked')) {
+			    	console.log($(this).val());
+			    }
+			  });
+
+				$("#delete").click(function(){
+					$.ajax({
+						type : "POST",
+						data : {'num':lists},
+						url : "ScheduleDeleteCon.do",
+						datatype : "json",
+						success:function(result) {
+							if(result == 0){
+								alert("삭제 실패");
+							}else{
+								alert("삭제 성공");
+							}
+						},
+						error : function(){
+							alert("서버요청실패");
+						}
+					});
+				}); 
+			})
 			
-			var lists = [];
+		
+		
+			
+			/* var lists = [];
 			$("input[name = delete]:checked").each(function(i){
 				var list = $(this);
+				console.log(list);
 				lists.push(list);
-			});
+			}); */
 			
-			console.log(lists);
-			$("#delete").click(function(){
-				$.ajax({
-					type : "POST",
-					data : {'num':lists},
-					url : "ScheduleDeleteCon.do",
-					datatype : "json",
-					success:function(result) {
-						if(result == 0){
-							alert("삭제 실패");
-						}else{
-							alert("삭제 성공");
-						}
-					},
-					error : function(){
-						alert("서버요청실패");
-					}
-				});
-			});
+			
 
 			
 			
