@@ -48,17 +48,26 @@ rel="stylesheet"
 href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 rel="stylesheet"
 />
-<!-- MDB -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
-rel="stylesheet"
-/>
+
+
 
 <!-- MDB -->
 <script
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
-></script>
+></script> 
+
+<style>
+	ul{
+		margin : 0;
+		padding : 0;
+	}
+	
+	hr{
+		margin: 0;
+	}
+</style>
+ 
   </head>
 
   <body>
@@ -89,7 +98,6 @@ rel="stylesheet"
       </div>
    </header>
    
-
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
       <div class="container">
@@ -185,14 +193,15 @@ rel="stylesheet"
         </div>
       </div>
       <div
-        style="    width: 80%;
+        style="width: 80%;
         margin: 50px;
         margin-bottom: 10%;
         margin-top: 50px;
         margin-left: 96px;" >
       <br>
 
-      <div class="cart-table-area section-padding-100" style="padding-bottom: 100px;">
+      <div class="cart-table-area section-padding-100" style="padding-bottom: padding-bottom: 94px;
+    margin-left: 250px;">
         <div class="row my-5 py-5">
         <div class="container px-4" style="background-color:#656166; width: 40%;">
           <br />
@@ -225,7 +234,7 @@ rel="stylesheet"
                 <h2 class="font-weight-bold">남은 분량 : <span
                   class="float-center">165P</span></h2>
                   
-                <h2 class="font-weight-bold">남은 페이지 : <span
+                <h2 class="font-weight-bold">전체 페이지 : <span
                   class="float-center">300P</span></h2>
                 
                   
@@ -275,7 +284,7 @@ rel="stylesheet"
                             aria-label="..."
                             checked
                           />
-                          <p class="lead fw-normal mb-0">157p 문제 1번 다시 풀어보기
+                          <p class="lead fw-normal mb-0" style="display: inline-block;">157p 문제 1번 다시 풀어보기
                             <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
                             <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                           </p>
@@ -300,7 +309,7 @@ rel="stylesheet"
                             aria-label="..."
                             checked
                           />
-                          <p class="lead fw-normal mb-0">반복문 관련된 유튜브 강의 2개 보기
+                          <p class="lead fw-normal mb-0" style="display: inline-block;">반복문 관련 유튜브 강의 2개 보기
                             <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
                             <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                           </p>
@@ -325,7 +334,7 @@ rel="stylesheet"
                             aria-label="..."
                             checked
                           />
-                          <p class="lead fw-normal mb-0">짧은글 영타 연습 30분 하기
+                          <p class="lead fw-normal mb-0"style="display: inline-block;">짧은글 영타 연습 30분 하기
                           
                             <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
                             <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
@@ -346,7 +355,6 @@ rel="stylesheet"
 
     </div>
     </div>
-
         <br />
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script
@@ -373,3 +381,4 @@ rel="stylesheet"
     <script src="js/active.js"></script>
   </body>
 </html>
+    
