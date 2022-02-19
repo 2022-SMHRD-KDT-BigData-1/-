@@ -200,7 +200,7 @@
                 <div class="login100-form-bgbtn"></div>
               <!--  <input type="submit" class="login100-form-btn" value="회원가입"> --> 
               
-                 <button id="clickform" type="submit" class="login100-form-btn" onclick="click()">회원가입</button > 
+                 <button id="clickform" type="submit" class="login100-form-btn" >회원가입</button > 
               </div>
             </div>
 
@@ -279,7 +279,7 @@
    })
    
    $('#clickform').click(function(){
-		      window.open("pjoinsuccess.jsp","wj","width=500, height=400, scrollbars=no, resizable=no");
+	   $('div.modal').modal();
 	   
    }
 
