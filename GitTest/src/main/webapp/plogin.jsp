@@ -97,19 +97,20 @@
           <form class="login100-form validate-form" action="PLoginCon.do" method="post">
             <span class="login100-form-title p-b-26"> Welcome </span>
             <span class="login100-form-title p-b-48">
-              <!-- <i class="zmdi zmdi-font"></i> -->
               P+
             </span>
 
-            <div
+             <div
               class="wrap-input100 validate-input"
               data-validate="Valid email is: a@b.c"
             >
-              <input class="input100" type="text" name="id" />
-              <span
-                class="focus-input100"
-                data-placeholder="아이디를 입력하세요."
-              ></span>
+              <input
+                class="input100"
+                type="text"
+                name="id"
+                placeholder="아이디를 입력하세요."
+              />
+              <span class="focus-input100" data-placeholder=""></span>
             </div>
 
             <div
@@ -119,11 +120,13 @@
               <span class="btn-show-pass">
                 <i class="zmdi zmdi-eye"></i>
               </span>
-              <input class="input100" type="password" name="pw" />
-              <span
-                class="focus-input100"
-                data-placeholder="비밀번호를 입력하세요."
-              ></span>
+              <input
+                class="input100"
+                type="password"
+                name="pass"
+                placeholder="비밀번호를 입력하세요."
+              />
+              <span class="focus-input100" data-placeholder=""></span>
             </div>
 
             <div class="container-login100-form-btn">
@@ -134,6 +137,48 @@
                 </button>
               </div>
             </div>
+               <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              회원가입 성공
+              <i class="far fa-smile"></i>            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              data-bs-target="#staticBackdrop"
+            ></button>
+          </div>
+          <br>
+          <div class="modal-body text-center" style="font-size: 20px;" >
+            회원가입을 축하합니다.
+            <br>
+            P+의 닉네임은 q입니다.<br>
+            P+의 아이디는 q입니다.
+
+            <br />
+        </div>
+          <br>
+
+          <div class=" modal-footer ">
+            <a href="#" class="btn btn-primary ">메인으로</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
           </form>
         </div>
       </div>

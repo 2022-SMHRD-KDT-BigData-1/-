@@ -27,7 +27,7 @@ public class ScheduleDeleteCon implements iPCommand {
 		
 		String[] num = request.getParameterValues("num");
 		
-		System.out.println(num[1]);
+		System.out.println(num[1]+11);
 		
 	}
 

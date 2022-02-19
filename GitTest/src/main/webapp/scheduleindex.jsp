@@ -6,9 +6,10 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
 </head>
 <body>
-
+	
 		<table border="1">
 		<c:set value="0" var="j" />
 			<tr>
@@ -67,18 +68,23 @@
 					</td>
 				</tr>
 			</c:forEach>
-			<tr>
+				<tr>
 					<td colspan="8" align="center">
 						<input type="button" id="delete" value="선택삭제">
 					</td>
 				</tr>
 		</table>
-		<script type="text/javascript" src="jquery-3.6.0.min">
-			var lists = []
-			$("input[name = 'delete']:checked").each(function(){
-				lists.push($(this).val());
+
+		<script type="text/javascript" >
+			
+			
+			var lists = [];
+			$("input[name = delete]:checked").each(function(i){
+				var list = $(this).val();
+				lists.push(list);
 			});
 			
+			console.log(lists);
 			$("#delete").click(function(){
 				$.ajax({
 					type : "POST",
@@ -97,6 +103,7 @@
 					}
 				});
 			});
+
 			
 			
 			
