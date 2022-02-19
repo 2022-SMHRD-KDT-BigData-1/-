@@ -241,17 +241,19 @@
 					<label class="form-check-label" for="flexRadioDefault1">
 						위시리스트에서 찾기 </label>
 				</div>
+
 				<div class="form-check">
 					<input class="form-check-input" type="radio" value="search"
 						name="serviceType" id="flexRadioDefault2"> <label
 						class="form-check-label" for="flexRadioDefault2"> 전체 도서 검색
-					</label> <br>
+					</label>
 				</div>
+
 				<div class="form-check">
 					<input class="form-check-input" type="radio" value="user"
 						name="serviceType" id="flexRadioDefault3"> <label
 						class="form-check-label" for="flexRadioDefault3"> 보유 도서 정보
-						입력 </label> <br>
+						입력 </label>
 				</div>
 			</div>
 			<br>
@@ -260,74 +262,194 @@
 			<div class="container">
 
 				<form action="ScheduleCon.do" method="post">
-				<h3 style="font-weight: bold;">학습할 책</h3>
-					<span id="viewwish"> 위시리스트에서 찾기 : 
-					
-					<div class="input-group mb-3">
-					<input type="text" class="form-control" aria-label="bookname" aria-describedby="button-addon2"
-						id="wishbook_title" name="wishbook_title" onclick="mybook()"
-						placeholder="내 위시리스트" class="btn btn-dark">
-					</div>
-						<input type="button"
-						value="내 위시리스트" onclick="mybook()">
-						
-						<br> 
-						<input
-						type="text" id="wishbook_num" style="display: none;"
-						name="wishbook_num"> 
-						<input type="text" id="wishbook_page"
-						style="display: none;" name="wishbook_page"> 제목 : <input
-						type="text" name="title"> <br> 시작일 : <input
-						type="date" name="start" id="Date1" onchange="call()" value="">
-						~ 종료일 : <input type="date" name="end" id="Date2" onchange="call()"
-						value="">
-						<p></p> 일차이 계산 : <input type="text" id="day1" size="6"
-						style="text-align: center;" name="day" readonly="readonly">
+					<h3 style="font-weight: bold;">스케줄</h3>
+					<span id="viewwish"> 위시리스트에서 도서 선정
 
-						<input type="submit" value="등록">
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" aria-label="bookname"
+								aria-describedby="button-addon2" id="wishbook_title"
+								name="wishbook_title" onclick="mybook()" placeholder="위시리스트"
+								class="btn btn-dark"> 
+							<br>
+							<input type="button"
+								value="위시리스트" onclick="mybook()"> 
+							<input type="text"
+								id="wishbook_num" style="display: none;" name="wishbook_num">
+							<input type="text" id="wishbook_page" style="display: none;"
+								name="wishbook_page">
+						</div> 
+						스케줄 이름 : 
+						<input type="text" class="form-control" name="title"
+						placeholder="스케줄 이름을 입력하세요." /> 
+						<br> 
+						학습 시작일 
+						<input
+						type="date" name="start" id="Date1" onchange="call()"
+						class="form-control" placeholder="date input" /> 
+						<br> 
+						학습 종료일
+						<input type="date" name="end" id="Date2" onchange="call()"
+						class="form-control" placeholder="date input" /> 
+						<br> 
+						예상 학습일 수
+						<input type="text" class="form-control" id="day1" size="6"
+						style="text-align: center;" name="day" readonly="readonly" /> 
+						<br>
+						<div class="text-center">
+							<input type="submit" class="btn btn-primary"
+								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+								value="스케줄 등록">
+						</div>
 					</span>
 				</form>
-
-
-
-				<form action="#" method="get" role="form">
-					<h3 style="font-weight: bold;">학습할 책</h3>
-					<!-- <hr /> -->
+												
+				
+				<form action="ScheduleCon.do" method="post">
+				<h3 style="font-weight: bold;">스케줄</h3>
+				<span id="viewsearch"> 전체 도서에서 선정
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="책 제목을 입력하세요."
-							aria-label="bookname" aria-describedby="button-addon2" /> <a
-							href="#" class="btn btn-dark">검색</a>
+						<input type="text" id="book_title" class="form-control" onclick="book()" placeholder="전체 도서 목록" name="book_title" aria-label="bookname">
+						<input type="button" value="도서 검색" onclick="book()"><br>
+						<input type="text" id="book_num" style="display: none; " name="book_num">
+						<input type="text" id="book_page" style="display: none;" name="book_page">
 					</div>
+				스케줄 이름 : <input type="text" class="form-control" name="title"
+						placeholder="스케줄 이름을 입력하세요." /> 
+						<br> 
+						학습 시작일 
+						<input
+						type="date" name="start" id="Date3" onchange="call2()"
+						class="form-control" placeholder="date input" /> 
+						<br> 
+						학습 종료일
+						<input type="date" name="end" id="Date4" onchange="call2()"
+						class="form-control" placeholder="date input" /> 
+						<br> 
+						예상 학습일 수 
+						<input type="text" class="form-control" id="day2" size="6"
+						style="text-align: center;" name="day" readonly="readonly" /> 
+						<br>
+						<div class="text-center">
+							<input type="submit" class="btn btn-primary"
+								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+								value="스케줄 등록">
+						</div>
+					</span>
+				</form>
+												<!-- 일단 끝 -->
 
+				<form action="ScheduleCon.do" method="post">
+					<h3 style="font-weight: bold;">스케줄</h3>
+					<span id="viewuser"> 
+					<span>보유 도서 정보 입력</span>
+					도서 제목
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="위시리스트에서 찾기"
-							aria-label="wishlist" aria-describedby="button-addon2" /> <a
-							href="#" class="btn btn-dark">위시리스트</a>
+						<input type="text" class="form-control" name="searchbook_title" placeholder="도서 제목을 입력하세요."
+							aria-label="bookname">
 					</div>
-
-					<br>
-					<hr>
-					<br>
-
-					<h3 style="font-weight: bold;">스케줄 설정</h3>
-					<input type="text" class="form-control"
-						placeholder="스케줄 이름을 입력하세요." /> <br> 학습 시작일 <input
-						type="date" class="form-control" placeholder="date input" /> <br>
-					학습 종료일 <input type="date" class="form-control"
-						placeholder="date input" /> <br> 예상 학습일 수 <input type="text"
-						class="form-control" placeholder="" /> <br>
-
-					<div class="text-center">
-						<button type="button" class="btn btn-primary"
-							data-bs-toggle="modal" data-bs-target="#staticBackdrop">스케줄
-							등록</button>
-
+					도서 페이지 수
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="searchbook_page" placeholder="도서 페이지를 입력하세요."
+							aria-label="bookname">
 					</div>
-			</div>
+				스케줄 이름 : <input type="text" class="form-control" name="title"
+						placeholder="스케줄 이름을 입력하세요." /> 
+						<br> 
+						학습 시작일 
+						<input
+						type="date" name="start" id="Date5" onchange="call3()"
+						class="form-control" placeholder="date input" /> 
+						<br> 
+						학습 종료일
+						<input type="date" name="end" id="Date6" onchange="call3()"
+						class="form-control" placeholder="date input" /> 
+						<br> 
+						예상 학습일 수 
+						<input type="text" class="form-control" id="day3" size="6"
+						style="text-align: center;" name="day" readonly="readonly" /> 
+						<br>
+						<div class="text-center">
+							<input type="submit" class="btn btn-primary"
+								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+								value="스케줄 등록">
+						</div>
+				</span>
 			</form>
 		</div>
 	</div>
+	
+		<script langauge="javascript">
+	function call() {
+	    var sdd = document.getElementById("Date1").value;
+	    var edd = document.getElementById("Date2").value;
+	    var ar1 = sdd.split('-');
+	    var ar2 = edd.split('-');
+	    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+	    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+	    var dif = da2 - da1;
+	    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+	   
+	 if(sdd && edd){
+	  
+	    document.getElementById('day1').value = parseInt(dif/cDay);
+	 }
+	}
+	function call2() {
+	    var sdd = document.getElementById("Date3").value;
+	    var edd = document.getElementById("Date4").value;
+	    var ar1 = sdd.split('-');
+	    var ar2 = edd.split('-');
+	    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+	    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+	    var dif = da2 - da1;
+	    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+	   
+	 if(sdd && edd){
+	  
+	    document.getElementById('day2').value = parseInt(dif/cDay);
+	 }
+	}
+	function call3() {
+	    var sdd = document.getElementById("Date5").value;
+	    var edd = document.getElementById("Date6").value;
+	    var ar1 = sdd.split('-');
+	    var ar2 = edd.split('-');
+	    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+	    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+	    var dif = da2 - da1;
+	    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+	   
+	 if(sdd && edd){
+	  
+	    document.getElementById('day3').value = parseInt(dif/cDay);
+	 }
+	}
+	
+	function book() {
+		window.open("booksearch.jsp","bk","width=500, height=400, scrollbars=no, resizable=no");
+	}
+	function mybook() {
+		window.open("wishsearch.jsp","ws","width=500, height=400, scrollbars=no, resizable=no");
+		// 위시리스트 페이지 만들면 넣기
+	}
+	function setBookValues(name,num,page){
+		document.getElementById("book_title").value = name;
+		document.getElementById("book_num").value = num;
+		document.getElementById("book_page").value = page;
+		console.log(page);
+		console.log(num);
+	}
+	function setBookValues1(name,num,page){
+		document.getElementById("wishbook_title").value = name;
+		document.getElementById("wishbook_num").value = num;
+		document.getElementById("wishbook_page").value = page;
+		console.log("위시제목",document.getElementById("wishbook_title").value);
+		console.log("위시번호",document.getElementById("wishbook_num").value);
+	}
+	
+	
 
+	</script>
 
 
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
