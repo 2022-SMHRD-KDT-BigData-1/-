@@ -39,70 +39,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Latest compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
-    />
-
-    <link rel="stylesheet" type="text/css" href="style.css" />
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-
-    <!-- include summernote-ko-KR -->
-    <script src="/summernote/lang/summernote-ko-KR.js"></script>
-
-    <!--코드 미러-->
-    <!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css"
-    />
-    <script
-      type="text/javascript"
-      src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"
-    ></script>
-
    
   </head>
 
@@ -194,7 +130,6 @@
                 <a href="#"
                   >목록</a
                 >
-    
               </li>
             </ul>
             </ul>
@@ -230,64 +165,167 @@
         </div>
       </div>
       <div
-        class=""
-        style="width: 40%; margin: 50px; margin-bottom: 10%; margin-left: 15%"
-      >
-        <!-- 에디터 -->
-        <div class="container">
-          <h1 class="text-center" style="
-          padding: 115px 0 0 350px ">[ 에디터 ]</h1>
-          <br>
-          <form action="#" method="get">
-            <span style="font-weight: bold; font-size: 25px">제목 </span>
-            <input
-              type="text"
-              name="title"
-              placeholder="제목을 입력하세요."
-              autofocus
-              style="width: 500; height: 50; font-size: 25px"
-            />
-          </form>
+        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 180px;" >
+      <br>
+        <!-- 일기 목록 -->
+  <div class="container">
+    <h1 style="text-align: center;">
+      MY 일기 
+      <i class="fas fa-book"></i>
+    </h1>
+    <br>
+    <div class="container" >
+      <table class="table table-bordered table-hover table-sm text-center "  >
+    
+        <thead class="table-warning ">
+          <th></th>
+          <th class="text-center">No.</th>
+          <th class="text-center">작성일</th>
+          <th class="text-center">스케줄명</th>
+          <th class="text-center">일기 제목</th>
+          </tr>
+        </thead>
+        <body>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>1</td>
+          <td>2022.01.11</td>
+          <td>자바</td>
+          <td>오늘의 TMI</td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>3</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>4</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>5</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>6</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>7</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>8</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>9</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><div class="form-check">
+              <input class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1"> <label
+                class="form-check-label" for="flexRadioDefault1"> </label>
+            </div></td>
+          <td>10</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
 
-          <hr />
-
-          <form method="post">
-            <textarea id="summernote" name="editordata"></textarea>
-          </form>
-          <script>
-            $("#summernote").summernote({
-              placeholder: "내용을 입력하세요.",
-              // 에디터 한글 설정
-              lang: "ko-KR",
-              tabsize: 2,
-              height: 550,
-              width: 1200,
-              focus: true,
-
-              fontNames: [
-                "Arial",
-                "Arial Black",
-                "Comic Sans MS",
-                "Courier New",
-                "맑은 고딕",
-                "궁서",
-                "굴림체",
-                "굴림",
-                "돋음체",
-                "바탕체",
-              ],
-              codemirror: {
-                // codemirror options
-                theme: "monokai",
-              },
-            });
-          </script>
-          <br />
-          <div class="col text-center" style="padding-left: 400px;">
-            <a class="btn btn-primary" href="#" role="button">작성 완료</a>
-          </div>
+    <br>
+    <div class="page">
+      <div class="text-center">
+        <a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
+          class="btn btn-dark">선택 삭제</a>
+          <a href="#"
+          class="btn btn-dark">선택 보기</a>
+      </div>
+      <br>
+      <nav aria-label="Page navigation example">
+        <div class="text-center">
+          <ul class="pagination" style="justify-content: center;">
+            <li class="page-item"><a class="page-link" href="#"
+              aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#"
+              aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+                class="sr-only">Next</span>
+            </a></li>
+          </ul>
         </div>
-        <div style="width: 80%; margin-top: 10%; margin-left: 70px;">
+      </nav>
+    </div>
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script
@@ -297,6 +335,10 @@
         ></script>
       </div>
     </div>
+
+    <!-- ##### Footer Area Start ##### -->
+  
+    <!-- ##### Footer Area End ##### -->
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>

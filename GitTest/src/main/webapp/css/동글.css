@@ -1,0 +1,30 @@
+.icon {
+  float: left;
+}
+
+.st,
+.ed,
+.di {
+  /* position: absolute; */
+  top: 50px;
+  left: 50%;
+  /* transform: translateX(-50%); */
+  font-size: 24px;
+  background: #0563bb;
+  color: #fff;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  /* text-align: center; */
+  margin: 30px 15px 10px;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-left: 38px;
+  font-weight: bold;
+}
