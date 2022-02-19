@@ -137,48 +137,7 @@
                 </button>
               </div>
             </div>
-               <!-- Modal -->
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              회원가입 성공
-              <i class="far fa-smile"></i>            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-              data-bs-target="#staticBackdrop"
-            ></button>
-          </div>
-          <br>
-          <div class="modal-body text-center" style="font-size: 20px;" >
-            회원가입을 축하합니다.
-            <br>
-            P+의 닉네임은 q입니다.<br>
-            P+의 아이디는 q입니다.
-
-            <br />
-        </div>
-          <br>
-
-          <div class=" modal-footer ">
-            <a href="#" class="btn btn-primary ">메인으로</a>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+   
           </form>
         </div>
       </div>

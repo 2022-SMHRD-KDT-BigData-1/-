@@ -173,8 +173,8 @@ if (member != null) {
                                           <a href="BookintCon?num=${book.book_num }"> 
                                              <img src="${book.book_img}" width="80">
                                           </a>
-                                          <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
-                                             <button type="button"><img src="heart0.png" width="20"></button>
+                                        <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
+                                             <button type="button"><img src="heart0.png" style="width: 40px; justify-content:end;"></button>
                                           </a>
                                        </h5>
                                     </c:forEach>
