@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,11 +31,11 @@
   </head>
 
   <body>
-      
-       <header
+   	
+   	 <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
-      <a class="navbar-brand" href="ploginmain.jsp">P+</a>
+      <a class="navbar-brand" href="#">P+</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -53,7 +53,7 @@
             <a class="nav-link" href="#">사이트 소개</a>
           </li>
           <div class="dropdown nav-item active">
-            <a class="nav-link dropdown-toggle" href="ploginmain.jsp" >컨텐츠 추천</a>
+            <a class="nav-link dropdown-toggle" href="컨텐츠추천.jsp" >컨텐츠 추천</a>
             <ul
               class="dropdown-menu"
               aria-labelledby="dropdownMenuLink"
@@ -118,7 +118,7 @@
             </ul>
           </div>
           <li class="nav-item active">
-            <a class="nav-link" href="plogout.jsp">로그아웃</a>
+            <a class="nav-link" href="#">로그아웃</a>
           </li>
         </ul>
       </div>
@@ -129,65 +129,62 @@
     <div class="main-content-wrapper d-flex clearfix">
       <!-- Mobile Nav (max width 767px)-->
       <div class="mobile-nav">
-        <!-- Navbar Brand -->
-        <div class="amado-navbar-brand">
-          <a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-        </div>
-        <!-- Navbar Toggler -->
-        <div class="amado-navbar-toggler">
-          <span></span><span></span><span></span>
-        </div>
       </div>
-
-     
 
       <div class="shop_sidebar_area">
         <!-- ##### Single Widget ##### -->
         <div class="widget catagory mb-50">
          <h6 class="widget-title mb-30">학습플래너</h6>
          <br>
-          <!-- Widget Title -->
-          <h6 class="widget-title mb-30">스케줄</h6>
-
+          
           <!--  Catagories  -->
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="스케줄만_등록.jsp">등록</a></li>
+              <li class="active">스케줄</li>
               <hr />
-              <li><a href="#">목록</a></li>
-              <li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+             <li><a href="scheduleset.jsp">스케줄 등록</a></li>
+              <li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
             </ul>
           </div>
         </div>
 
         <!-- ##### Single Widget ##### -->
         <div class="widget category mb-50">
-          <!-- Widget Title -->
-          <h6 class="widget-title mb-30">일정</h6>
 
           <!-- Widget Title -->
 
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="일정등록4번.jsp">등록</a></li>
+              <li class="active">일정</li>
               <hr />
-              <li><a href="#">목록</a></li>
-              <li><a href="#">전체 일정 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+              <li><a href="dayplantodayset.jsp">일정 등록</a></li>
+              <li><a href="dayplantodayinsex.jsp">전체 일정 목록</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- ##### Single Widget ##### -->
+        <div class="widget category mb-50">
+
+          <div class="catagories-menu">
+            <ul>
+              <li class="active">조회</a></li>
+              <hr />
+
+				
+              <li><a href="editorindex.jsp">전체 에디터 목록</a></li>
+              <li><a href="diaryindex.jsp">전체 일기 목록</a></li>
+              <li><a href="todoindex.jsp">할 일 목록</a></li>
             </ul>
           </div>
         </div>
       </div>
-      
-      
+               
      <div style="width: 60%;  margin-top: 150px; margin-left: 300px;">
       <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
               <br>
               <div class="text-center">
-                  <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="스케줄등록.jsp"  style="color: rgb(47, 47, 47);font-size: xx-large;">스케줄 등록</a></h1>
+                  <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="scheduleset.jsp"  style="color: rgb(47, 47, 47);font-size: xx-large;">스케줄 등록</a></h1>
               </div>
               <br>
            </div>
@@ -195,7 +192,7 @@
            <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
             <br>
             <div class="text-center">
-                <h1 class="display-4 fw-bolder"></i><a href ="#"  style="color: rgb(47, 47, 47); font-size: xx-large;">스케줄 목록</a></h1>
+                <h1 class="display-4 fw-bolder"></i><a href ="scheduleindex.jsp"  style="color: rgb(47, 47, 47); font-size: xx-large;">스케줄 목록</a></h1>
             </div>
             <br>
          </div>
@@ -203,7 +200,7 @@
          <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
           <br>
           <div class="text-center">
-              <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="#"  style="color: rgb(47, 47, 47); font-size: xx-large;">일정 등록</a></h1>
+              <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="dayplantodayset.jsp"  style="color: rgb(47, 47, 47); font-size: xx-large;">일정 등록</a></h1>
           </div>
           <br>
        </div>
@@ -211,14 +208,13 @@
        <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
         <br>
         <div class="text-center">
-            <h1 class="display-4 fw-bolder"></i><a href ="#"  style="color: rgb(47, 47, 47); font-size: xx-large;">일정 목록</a></h1>
+            <h1 class="display-4 fw-bolder"></i><a href ="dayplantodayindex.jsp"  style="color: rgb(47, 47, 47); font-size: xx-large;">일정 목록</a></h1>
         </div>
         <br>
      </div>
-        
-    </div>
 
-   
+    </div>
+ 
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
