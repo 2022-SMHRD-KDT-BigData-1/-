@@ -180,8 +180,11 @@
 					</thead>
 					<body>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
 						<td>1</td>
 						<td>2022.01.11</td>
 						<td>자바</td>
@@ -189,8 +192,11 @@
 
 					</tr>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
 						<td>2</td>
 						<td></td>
 						<td></td>
@@ -198,8 +204,11 @@
 
 					</tr>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
 						<td>3</td>
 						<td></td>
 						<td></td>
@@ -207,63 +216,125 @@
 
 					</tr>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
 						<td>4</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
+						<td>5</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
+						<td>6</td>
 						<td></td>
 						<td></td>
 						<td></td>
 
 					</tr>
 					<tr>
-						<td><input class="form-check-input" type="checkbox"
-							value="sc1" id="flexCheckDefault"></td>
-						<td>5</td>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
+						<td>7</td>
 						<td></td>
 						<td></td>
 						<td></td>
 
 					</tr>
-</body>
-</table>
-</div>
+					<tr>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
+						<td>8</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
+						<td>9</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><div class="form-check">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault1"> <label
+									class="form-check-label" for="flexRadioDefault1"> </label>
+							</div></td>
+						<td>10</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
 
-<br>
-<div class="text-center">
-	<a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
-		class="btn btn-dark">선택 삭제</a>
-</div>
-<br>
-<nav aria-label="Page navigation example">
-	<div class="text-center">
-		<ul class="pagination" style="justify-content: center;">
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span
-					class="sr-only">Previous</span>
-			</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-					class="sr-only">Next</span>
-			</a></li>
-		</ul>
-	</div>
-</nav>
+			<br>
+			<div class="page">
+				<div class="text-center">
+					<a href="#" class="btn btn-dark">선택 완료</a>
+				</div>
+				<br>
+				<nav aria-label="Page navigation example">
+					<div class="text-center">
+						<ul class="pagination" style="justify-content: center;">
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+							</a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+									class="sr-only">Next</span>
+							</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
 
 
 
 
-<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
-<!-- Popper js -->
-<script src="js/popper.min.js"></script>
-<!-- Bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Plugins js -->
-<script src="js/plugins.js"></script>
-<!-- Active js -->
-<script src="js/active.js"></script>
+			<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+			<script src="js/jquery/jquery-2.2.4.min.js"></script>
+			<!-- Popper js -->
+			<script src="js/popper.min.js"></script>
+			<!-- Bootstrap js -->
+			<script src="js/bootstrap.min.js"></script>
+			<!-- Plugins js -->
+			<script src="js/plugins.js"></script>
+			<!-- Active js -->
+			<script src="js/active.js"></script>
 </body>
 </html>
