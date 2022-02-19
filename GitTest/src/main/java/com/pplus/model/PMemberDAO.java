@@ -75,6 +75,7 @@ public class PMemberDAO {
 	// db에서 pw를 제외한 멤버의 정보를 가져옴
 	public PMemberDTO pmemberLogin(String id, String pw) {
 		connect();
+		System.out.println("컨넥후");
 		PMemberDTO member = null;
 		sql = "select * from member where member_id =? and member_pw =?";
 
@@ -82,10 +83,11 @@ public class PMemberDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
-
+			System.out.println("컨넥후2");
 			rs = psmt.executeQuery();
-
+			System.out.println("컨넥후3");
 			if (rs.next()) {
+				System.out.println("컨넥후4");
 				member = new PMemberDTO(id, null, rs.getString("member_nick"),rs.getString(4),null,null,null);
 			}
 
