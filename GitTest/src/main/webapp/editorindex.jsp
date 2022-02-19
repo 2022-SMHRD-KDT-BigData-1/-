@@ -1,7 +1,38 @@
+<%@page import="com.pplus.model.EditorDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.pplus.model.EditorDAO"%>
+<%@page import="com.pplus.model.ScheduleDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%
+	ScheduleDTO schedule = (ScheduleDTO)session.getAttribute("schedule");
+
+	EditorDAO editorDAO = new EditorDAO();
+	
+	int pageSize = 10;
+	String pageNum = request.getParameter("pagenum");
+
+	
+	if (pageNum == null){ // 클릭한게 없으면 1번 페이지
+		pageNum = "1";
+	}
+	
+	int currentPage = Integer.parseInt(pageNum);
+	
+	// 해당 페이지에서 시작할 레코드 / 마지막 레코드
+	int startRow = (currentPage - 1) * pageSize + 1;
+	int endRow = currentPage * pageSize;
+	
+	int count = 0;
+	count = editorDAO.getCount(schedule.getSchedule_num()); // 데이터베이스에 저장된 총 갯수
+	
+	if(count > 0){
+		ArrayList<EditorDTO> list = editorDAO.
+	}
+
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>

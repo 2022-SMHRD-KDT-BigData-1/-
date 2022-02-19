@@ -222,4 +222,37 @@ public class EditorDAO {
 
 		return editorlist;
 	}
+	public int getCount(int num) {
+		
+		int totalnum = 0;
+		
+		connect();
+		
+		sql = "select count(*) from editor where schedule_num = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, num);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				totalnum = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return totalnum;
+	}
+	public ArrayList<EditorDTO> getList(int start, int end){
+		
+		ArrayList<EditorDTO> list = null;
+		
+		sql = ""
+		
+		return list;
+	}
 }

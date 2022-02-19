@@ -27,7 +27,7 @@
 	crossorigin="anonymous">
 
 
-<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!-- Option 2: Separate Popper and Bootstrap JS --> 
 
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
