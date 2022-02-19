@@ -1,6 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page import="com.pplus.model.ScheduleDAO"%>
+<%@page import="com.pplus.model.PMemberDTO"%>
+<%@page import="com.pplus.model.ScheduleDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%
+	PMemberDTO member=(PMemberDTO)session.getAttribute("member");
+	ArrayList<ScheduleDTO> schedulelist = (ArrayList<ScheduleDTO>)session.getAttribute("schedulelist");
+	ScheduleDAO scheduleDAO = new ScheduleDAO();
+	
+	int total =schedulelist.size();
+	pageContext.setAttribute("total", total);
+	int lastpage = (int)Math.ceil((double)total/10);
+	pageContext.setAttribute("lastpage", lastpage);
+	int rownum=total;
+	pageContext.setAttribute("rownum", rownum);
+	
+	String view_page= request.getParameter("viewpage");
+	if ( view_page==null ){
+			view_page="1";
+	}
+	int viewpage =Integer.parseInt(view_page);
+	int index_no = (viewpage-1);
+	
+	
+	schedulelist=scheduleDAO.scheduleSelectAny(member.getMember_nick(), index_no);
+	pageContext.setAttribute("schedulelist", schedulelist);
+	%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,54 +66,54 @@
 		<div class="collapse navbar-collapse justify-content-end"
 			id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">»çÀÌÆ®
-						¼Ò°³</a></li>
+				<li class="nav-item active"><a class="nav-link" href="#">ì‚¬ì´íŠ¸
+						ì†Œê°œ</a></li>
 				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="ÄÁÅÙÃ÷ÃßÃµ.jsp">ÄÁÅÙÃ÷ ÃßÃµ</a>
+					<a class="nav-link dropdown-toggle" href="ì»¨í…ì¸ ì¶”ì²œ.jsp">ì»¨í…ì¸  ì¶”ì²œ</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">À¯Çü È®ÀÎ ¹× Àç°Ë»ç</a></li>
+						<li><a class="dropdown-item" href="#">ìœ í˜• í™•ì¸ ë° ìž¬ê²€ì‚¬</a></li>
 					</ul>
 				</div>
 				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="ÇÐ½ÀÇÃ·¡³Ê.jsp">ÇÐ½ÀÇÃ·¡³Ê</a> <span
+					<a class="nav-link dropdown-toggle" href="í•™ìŠµí”Œëž˜ë„ˆ.jsp">í•™ìŠµí”Œëž˜ë„ˆ</a> <span
 						class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li class="dropdown-header">½ºÄÉÁÙ</li>
+						<li class="dropdown-header">ìŠ¤ì¼€ì¤„</li>
 						<hr>
-						<li><a href="½ºÄÉÁÙ¸¸_µî·Ï.jsp">µî·Ï</a></li>
-						<li><a href="ÀüÃ¼½ºÄÉÁÙ¸ñ·Ï.jsp">ÀüÃ¼ ½ºÄÉÁÙ ¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼¿¡µðÅÍ¸ñ·Ï.jsp">ÀüÃ¼ ¿¡µðÅÍ ¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼ÀÏ±â¸ñ·Ï.jsp">ÀüÃ¼ ÀÏ±â ¸ñ·Ï</a></li>
+						<li><a href="ìŠ¤ì¼€ì¤„ë§Œ_ë“±ë¡.jsp">ë“±ë¡</a></li>
+						<li><a href="ì „ì²´ìŠ¤ì¼€ì¤„ëª©ë¡.jsp">ì „ì²´ ìŠ¤ì¼€ì¤„ ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ì—ë””í„°ëª©ë¡.jsp">ì „ì²´ ì—ë””í„° ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ì¼ê¸°ëª©ë¡.jsp">ì „ì²´ ì¼ê¸° ëª©ë¡</a></li>
 						<br>
 						<li class="divider"></li>
-						<li class="dropdown-header">ÀÏÁ¤</li>
+						<li class="dropdown-header">ì¼ì •</li>
 						<hr>
-						<li><a href="ÀÏÁ¤µî·Ï4¹ø.jsp">µî·Ï</a></li>
-						<li><a href="#">ÀüÃ¼ ÀÏÁ¤ ¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼¿¡µðÅÍ¸ñ·Ï.jsp">ÀüÃ¼ ¿¡µðÅÍ ¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼ÀÏ±â¸ñ·Ï.jsp">ÀüÃ¼ ÀÏ±â ¸ñ·Ï</a></li>
+						<li><a href="ì¼ì •ë“±ë¡4ë²ˆ.jsp">ë“±ë¡</a></li>
+						<li><a href="#">ì „ì²´ ì¼ì • ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ì—ë””í„°ëª©ë¡.jsp">ì „ì²´ ì—ë””í„° ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ì¼ê¸°ëª©ë¡.jsp">ì „ì²´ ì¼ê¸° ëª©ë¡</a></li>
 					</ul>
 				</div>
 
 				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">Æ÷Æ®Æú¸®¿À</a>
+					<a class="nav-link dropdown-toggle" href="#">í¬íŠ¸í´ë¦¬ì˜¤</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="Æ÷Æúµî·ÏÇÒ½ºÄÉÁÙ.jsp">µî·Ï</a></li>
+						<li><a class="dropdown-item" href="í¬í´ë“±ë¡í• ìŠ¤ì¼€ì¤„.jsp">ë“±ë¡</a></li>
 
-						<li><a class="dropdown-item" href="Æ÷Æú¸ñ·Ï.jsp">¸ñ·Ï</a></li>
+						<li><a class="dropdown-item" href="í¬í´ëª©ë¡.jsp">ëª©ë¡</a></li>
 					</ul>
 				</div>
 
 				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">¸¶ÀÌÆäÀÌÁö</a>
+					<a class="nav-link dropdown-toggle" href="#">ë§ˆì´íŽ˜ì´ì§€</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">È¸¿øÁ¤º¸ ¼öÁ¤/Å»Åð</a></li>
-						<li><a class="dropdown-item" href="#">ÀüÃ¼ ÇÐ½À»óÈ² Á¶È¸</a></li>
-						<li><a class="dropdown-item" href="#">À§½Ã¸®½ºÆ®</a></li>
+						<li><a class="dropdown-item" href="#">íšŒì›ì •ë³´ ìˆ˜ì •/íƒˆí‡´</a></li>
+						<li><a class="dropdown-item" href="#">ì „ì²´ í•™ìŠµìƒí™© ì¡°íšŒ</a></li>
+						<li><a class="dropdown-item" href="#">ìœ„ì‹œë¦¬ìŠ¤íŠ¸</a></li>
 					</ul>
 				</div>
-				<li class="nav-item active"><a class="nav-link" href="#">·Î±×¾Æ¿ô</a>
+				<li class="nav-item active"><a class="nav-link" href="#">ë¡œê·¸ì•„ì›ƒ</a>
 				</li>
 			</ul>
 		</div>
@@ -112,20 +139,20 @@
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
-				<h6 class="widget-title mb-30">ÇÐ½ÀÇÃ·¡³Ê</h6>
+				<h6 class="widget-title mb-30">í•™ìŠµí”Œëž˜ë„ˆ</h6>
 				<br>
 				<!-- Widget Title -->
-				<h6 class="widget-title mb-30">½ºÄÉÁÙ</h6>
+				<h6 class="widget-title mb-30">ìŠ¤ì¼€ì¤„</h6>
 
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="½ºÄÉÁÙ¸¸_µî·Ï.jsp">µî·Ï</a></li>
+						<li class="active"><a href="ìŠ¤ì¼€ì¤„ë§Œ_ë“±ë¡.jsp">ë“±ë¡</a></li>
 						<hr />
-						<li><a href="#">¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼½ºÄÉÁÙ¸ñ·Ï.jsp">ÀüÃ¼ ½ºÄÉÁÙ ¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼¿¡µðÅÍ¸ñ·Ï.jsp">ÀüÃ¼ ¿¡µðÅÍ ¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼ÀÏ±â¸ñ·Ï.jsp">ÀüÃ¼ ÀÏ±â ¸ñ·Ï</a></li>
+						<li><a href="#">ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ìŠ¤ì¼€ì¤„ëª©ë¡.jsp">ì „ì²´ ìŠ¤ì¼€ì¤„ ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ì—ë””í„°ëª©ë¡.jsp">ì „ì²´ ì—ë””í„° ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ì¼ê¸°ëª©ë¡.jsp">ì „ì²´ ì¼ê¸° ëª©ë¡</a></li>
 					</ul>
 				</div>
 			</div>
@@ -133,18 +160,18 @@
 			<!-- ##### Single Widget ##### -->
 			<div class="widget category mb-50">
 				<!-- Widget Title -->
-				<h6 class="widget-title mb-30">ÀÏÁ¤</h6>
+				<h6 class="widget-title mb-30">ì¼ì •</h6>
 
 				<!-- Widget Title -->
 
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="ÀÏÁ¤µî·Ï4¹ø.jsp">µî·Ï</a></li>
+						<li class="active"><a href="ì¼ì •ë“±ë¡4ë²ˆ.jsp">ë“±ë¡</a></li>
 						<hr />
-						<li><a href="#">¸ñ·Ï</a></li>
-						<li><a href="#">ÀüÃ¼ ÀÏÁ¤ ¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼¿¡µðÅÍ¸ñ·Ï.jsp">ÀüÃ¼ ¿¡µðÅÍ ¸ñ·Ï</a></li>
-						<li><a href="ÀüÃ¼ÀÏ±â¸ñ·Ï.jsp">ÀüÃ¼ ÀÏ±â ¸ñ·Ï</a></li>
+						<li><a href="#">ëª©ë¡</a></li>
+						<li><a href="#">ì „ì²´ ì¼ì • ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ì—ë””í„°ëª©ë¡.jsp">ì „ì²´ ì—ë””í„° ëª©ë¡</a></li>
+						<li><a href="ì „ì²´ì¼ê¸°ëª©ë¡.jsp">ì „ì²´ ì¼ê¸° ëª©ë¡</a></li>
 					</ul>
 				</div>
 			</div>
@@ -155,7 +182,7 @@
 		<div style="width: 60%; margin-top: 180px; margin-left: 300px;">
 
 			<h1 style="text-align: center;">
-				MY ½ºÄÉÁÙ <i class="far fa-solid fa-calendar-check"></i>
+				MY ìŠ¤ì¼€ì¤„ <i class="far fa-solid fa-calendar-check"></i>
 			</h1>
 			<br>
 			<div class="container">
@@ -164,17 +191,18 @@
 
 
 					<thead class="table-warning ">
-						<th class="text-center">¼±ÅÃ</th>
+						<th class="text-center">ì„ íƒ</th>
 						<th class="text-center">No.</th>
-						<th class="text-center">½ºÄÉÁÙ ÀÌ¸§</th>
-						<th class="text-center">½ÃÀÛ ³¯ - ³¡³ª´Â ³¯</th>
-						<th class="text-center">Ã¥ ÀÌ¸§</th>
-						<th class="text-center">ÇÏ·ç ÇÐ½À ºÐ·®</th>
-						<th class="text-center">´Þ¼º·ü</th>
+						<th class="text-center">ìŠ¤ì¼€ì¤„ ì´ë¦„</th>
+						<th class="text-center">ì‹œìž‘ ë‚  - ëë‚˜ëŠ” ë‚ </th>
+						<th class="text-center">ì±… ì´ë¦„</th>
+						<th class="text-center">í•˜ë£¨ í•™ìŠµ ë¶„ëŸ‰</th>
+						<th class="text-center">ë‹¬ì„±ë¥ </th>
 						</tr>
 					</thead>
 
 					<tbody>
+					<c:forEach var="schedule" items="schedulelist">
 						<tr>
 							<td>
 								<div class="form-check">
@@ -183,14 +211,14 @@
 										class="form-check-label" for="flexRadioDefault1"> </label>
 								</div>
 							</td>
-							<td>1</td>
-							<td>ÀÚ¹Ù</td>
-							<td>2022.01.01-2022.01.20</td>
-							<td>Java</td>
-							<td>15p</td>
-							<td>75%</td>
+							<td></td>
+							<td>${1 }</td>
+							<td>${schedule.schedule_start } ~ ${schedule.schedule_end }</td>
+							<td>${schedule.book_title }</td>
+							<td>${schedule.schedule_day_page }</td>
+							<td></td>
 						</tr>
-
+					</c:forEach>
 						<tr>
 							<td>
 								<div class="form-check">
@@ -338,7 +366,7 @@
 			<br>
 			<div class="page">
 				<div class="text-center">
-					<a href="#" class="btn btn-dark">¼±ÅÃ ¿Ï·á</a>
+					<a href="#" class="btn btn-dark">ì„ íƒ ì™„ë£Œ</a>
 				</div>
 				<br>
 				<nav aria-label="Page navigation example">

@@ -201,4 +201,32 @@ public class ScheduleDAO {
 		return schedulelist;
 	}
 
+
+
+public ArrayList<ScheduleDTO> scheduleSelectAny(String nick, int num) {
+	ArrayList<ScheduleDTO> schedulelist = new ArrayList<ScheduleDTO>();
+	connect();
+
+	sql = "select * from schedule where member_nick=? order by schedule_num desc limit ?,10";
+	try {
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, nick);
+		psmt.setInt(2, num);
+		rs = psmt.executeQuery();
+
+		while (rs.next()) {
+
+			schedulelist.add(new ScheduleDTO(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10),
+					rs.getInt(11)));
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		close();
+	}
+
+	return schedulelist;
+}
+
 }
