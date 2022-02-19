@@ -123,7 +123,7 @@
               <input
                 class="input100"
                 type="password"
-                name="pass"
+                name="pw"
                 placeholder="비밀번호를 입력하세요."
               />
               <span class="focus-input100" data-placeholder=""></span>

@@ -203,6 +203,7 @@
 					class="table table-bordered table-hover table-sm text-center ">
 
 					<thead class="table-warning ">
+						<tr>
 						<th></th>
 						<th class="text-center">No.</th>
 						<th class="text-center">¿€º∫¿œ</th>

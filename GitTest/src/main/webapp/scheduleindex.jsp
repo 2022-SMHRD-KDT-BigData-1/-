@@ -80,7 +80,7 @@
 			
 			var lists = [];
 			$("input[name = delete]:checked").each(function(i){
-				var list = $(this).val();
+				var list = $(this);
 				lists.push(list);
 			});
 			
