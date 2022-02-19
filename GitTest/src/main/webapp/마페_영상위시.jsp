@@ -26,7 +26,7 @@
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous">
 
-
+ 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 
 <script
