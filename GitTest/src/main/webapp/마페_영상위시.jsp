@@ -88,7 +88,7 @@
 						<li><a class="dropdown-item" href="포폴등록할스케줄.jsp">등록</a></li>
 
 						<li><a class="dropdown-item" href="포폴목록.jsp">목록</a></li>
-					</ul>	
+					</ul>
 				</div>
 
 				<div class="dropdown nav-item active">
