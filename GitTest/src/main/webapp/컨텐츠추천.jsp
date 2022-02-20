@@ -124,11 +124,7 @@
         </ul>
       </div>
     </header>
-
-
-
-
-
+    
 
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
@@ -155,16 +151,26 @@
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li><a href="#">유형 확인 및 재검사</a></li>
+						<li><a href="#">유형확인 및 재검사</a></li>
 					</ul>
 				</div>
 			</div>
 
-		
-
 		</div>
 
 		<div class="container p-5">
+			<div class="cart-table-area section-padding-100">
+      <div class="row py-5">
+         <div class="container px-4" style="background-color: #656166;">
+            <br />
+            <div class="text-center">
+               <h2 class="display-4 fw-bolder" style="color: white; font-size:40px; padding-bottom: 12px;">컴퓨터/IT > 컴퓨터공학 > 컴퓨터공학/과학개론</h2>
+              <!--  <p class="lead fw-normal text-white-50 mb-0">Planner에
+                  Programming을 더하다</p> -->
+            </div>
+         </div>
+      </div>
+   </div>
 			<div class="row">
 				<div class="col-12 col-lg-12">
 					<div class="cart-title mt-50">
