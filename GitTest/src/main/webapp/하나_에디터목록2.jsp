@@ -19,7 +19,7 @@
     <link rel="icon" href="img/core-img/favicon.ico" />
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css" />
+    <link rel="stylesheet" href="css/core-style_copy.css" />
     <link rel="stylesheet" href="style.css" />
 
     <title>Hello, world!</title>
@@ -159,13 +159,13 @@
               <li class="active"><a href="#">학습진행상황</a></li>
               <hr />
             </ul>
-            <br><br><br><br><br><br>
-            <br><br><br><br>
+            <!-- <br><br><br><br><br><br>
+            <br><br><br><br> -->
           </div>
         </div>
       </div>
       <div
-        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 180px;" >
+        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 20px;" >
       <br>
         <!-- <h1>스케줄 등록</h1> -->
         <!-- 에디터 목록 -->
