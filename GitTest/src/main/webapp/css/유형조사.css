@@ -13,14 +13,14 @@ li.nav-item {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 38px;
   margin-bottom: 14px;
   font-weight: bold;
 }
 
 .userTitle {
   margin-left: 195px;
-  margin-top: -4px;
+  margin-top: -45px;
 }
 
 .study {
@@ -48,6 +48,8 @@ h1 {
   text-align: center;
   margin-left: 30px;
   margin-top: -28px;
+  margin-top: -28px;
+  border: solid #fbb710;
 }
 
 .btn.btn-primary {
@@ -56,4 +58,5 @@ h1 {
   background-image: none;
   background-color: #2d3842;
   font-size: 18px;
+  margin-left: 260px;
 }
