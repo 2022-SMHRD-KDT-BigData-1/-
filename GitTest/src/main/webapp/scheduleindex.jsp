@@ -28,6 +28,7 @@
    
    
    schedulelist = scheduleDAO.scheduleSelectAny(member.getMember_nick(), viewpage);
+   
    pageContext.setAttribute("schedulelist", schedulelist);
    %>
 <!DOCTYPE html>
@@ -205,7 +206,7 @@
                </thead>
 
                <tbody>
-               <c:forEach var="schedule" items="${sessionScope.schedulelist }">
+               <c:forEach var="schedule" items="${schedulelist }">
                   <tr>
                      <td>
                         <div class="form-check">

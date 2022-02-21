@@ -457,3 +457,5 @@ alter sequence seq_editor_num nocache
 alter sequence seq_diary_num nocache
 alter sequence seq_todo_num nocache
 
+select * from (select rownum rn, v_schedule.* from (select * from schedule where member_nick='f' order by seq_schedule_num desc) v_schedule) where rn between 1 and 5
+
