@@ -249,9 +249,9 @@ public class EditorDAO {
 		
 		return totalnum;
 	}
-	public ArrayList<EditorDTO2> getList(int start, int end, PMemberDTO member, ScheduleDTO schedule){
+	public ArrayList<EditorDTO> getList(int start, int end, PMemberDTO member, ScheduleDTO schedule){
 		
-		ArrayList<EditorDTO2> list = null;
+		ArrayList<EditorDTO> list = null;
 		
 		sql = "secect * from (select rownum as rn, seq_editor_num, editor_title, editor_content, "
 				+ "editor_date, schedule_num, dayplan_num, member_nick from "
@@ -266,16 +266,16 @@ public class EditorDAO {
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				EditorDTO2 editor = new EditorDTO2();
+				EditorDTO editor = new EditorDTO();
 				
-				editor.setRownum(rs.getInt(1));
-				editor.setEditor_num(rs.getInt(2));
-				editor.setEditor_title(rs.getString(3));
-				editor.setEditor_content(rs.getString(4));
-				editor.setEditor_date(rs.getString(5));
-				editor.setSchedule_num(rs.getInt(6));
-				editor.setDayplan_num(rs.getInt(7));
-				editor.setMember_nick(rs.getString(8));
+				
+				editor.setEditor_num(rs.getInt(1));
+				editor.setEditor_title(rs.getString(2));
+				editor.setEditor_content(rs.getString(3));
+				editor.setEditor_date(rs.getString(4));
+				editor.setSchedule_num(rs.getInt(5));
+				editor.setDayplan_num(rs.getInt(6));
+				editor.setMember_nick(rs.getString(7));
 				
 				list.add(editor);
 				
