@@ -284,7 +284,7 @@ if (member != null) {
                               <c:otherwise>
                                  <c:forEach var="recbook" items="${recbooklist }">
                                     <div class="col-lg-3">
-                                       <div class="categories__item set-bg">
+                                       <div class="categories__item set-bg" style= "height:350px">
                                           <h5>
                                              <a href="BookintCon?num=${recbook.book_num }"> <img
                                                 src="${recbook.book_img}" width="80"> <span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${recbook.book_title }</span></a>

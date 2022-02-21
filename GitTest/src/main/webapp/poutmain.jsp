@@ -171,7 +171,7 @@ pageContext.setAttribute("videolist", videolist);
 										<c:forEach var="video" items="${videolist }">
 
 											<div class="col-lg-3">
-												<div class="categories__item set-bg" style="heigh:200px">
+												<div class="categories__item1 set-bg" style="height:170px">
 
 													<h5>
 														<a href="VideointCon?num=${video.video_num}"> <img
