@@ -27,7 +27,7 @@
 
 </head>
 
-<body>
+<body style="bg-color:#f5f7fa">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript">
 		$(document).ready(
@@ -417,6 +417,7 @@
 			function book() {
 				window.open("booksearch.jsp", "bk",
 						"width=700, height=400, scrollbars=no, resizable=no");
+				
 
 			}
 			function mybook() {
