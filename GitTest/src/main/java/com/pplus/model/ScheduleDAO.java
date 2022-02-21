@@ -174,6 +174,28 @@ public class ScheduleDAO {
 		}
 		return schedule;
 	}
+	public ScheduleDTO scheduleSelect2(String nick) {
+		ScheduleDTO schedule = null;
+		connect();
+
+		sql = "select * from schedule where member_nick = ? order by seq_schedule_num desc";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+		
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				schedule = new ScheduleDTO(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10),
+						rs.getInt(11));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return schedule;
+	}
 	// 스케줄 전체 선택은 회원의 닉네임과 일치하는 모든 스케줄을 가져온다
 	// 스케줄 전체 선택의 입력 변수는 회원의 닉네임 출력 변수는 ArrayList의 ScheduleDTO schdulelist
 	public ArrayList<ScheduleDTO> scheduleSelectAll(String nick) {

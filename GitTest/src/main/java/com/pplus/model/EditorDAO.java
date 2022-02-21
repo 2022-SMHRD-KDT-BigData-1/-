@@ -249,6 +249,33 @@ public class EditorDAO {
 		
 		return totalnum;
 	}
+public int getCount2(int num) {
+		
+		int count = 0;
+		
+		connect();
+		
+		sql = "select count(*) from editor where seq_schedule_num = ? and editor_date > to_char(sysdate, 'yyyymmdd')";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, num);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+		return count;
+	}
 	public ArrayList<EditorDTO> getList(int start, int end, PMemberDTO member, ScheduleDTO schedule){
 		
 		ArrayList<EditorDTO> list = new ArrayList<EditorDTO>();
