@@ -1,5 +1,4 @@
 <%@page import="com.pplus.model.PMemberDTO"%>
-<%@page import="com.pplus.model.EditorDTO2"%>
 <%@page import="com.pplus.model.EditorDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pplus.model.EditorDAO"%>
@@ -13,9 +12,10 @@
 	PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
 	EditorDAO editorDAO = new EditorDAO();
+	ArrayList<EditorDTO> editorlist = new ArrayList<EditorDTO>();
 	
 	int pageSize = 10;
-	String pageNum = request.getParameter("pagenum");
+	String pageNum = request.getParameter("pageNum");
 
 	
 	if (pageNum == null){ // 클릭한게 없으면 1번 페이지
@@ -31,10 +31,13 @@
 	int count = 0;
 	count = editorDAO.getCount(schedule.getSchedule_num()); // 데이터베이스에 저장된 총 갯수
 	
+	
 	if(count > 0){
-		ArrayList<EditorDTO2> list = editorDAO.getList(startRow, endRow, member, schedule);
-		session.setAttribute("editorpase", list);
+		editorlist = editorDAO.getList(startRow, endRow, member, schedule);
+		pageContext.setAttribute("editorlist", editorlist);
+		
 	}
+	
 
 %>
 <!DOCTYPE html>
@@ -250,7 +253,7 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="i" items="${sessionScope.editorpase }">
+					<c:forEach var="i" items="${editorlist }">
 						<tr>
 							<td><div class="form-check">
 									<input class="form-check-input" type="radio"
@@ -263,7 +266,7 @@
 								${j = j + 1}
 							</td>
 							<td>${i.editor_date}</td>
-							<td>${schedule.schedule_name }</td>
+							<td>${sessionScope.schedule.schedule_name }</td>
 							<td>${i.editor_title }</td>
 						</tr>
 					</c:forEach>
@@ -281,52 +284,51 @@
 					<div class="text-center">
 						<ul class="pagination" style="justify-content: center;">
 							
-							<c:choose>
-								<c:when test="${count > 0}">
-								<c:set value="${count / pageSize + (count%pageSize == 0 ? 0 : 1)}" var="pageCount" />
-								<c:set value="10" var="pageBlock" />
-									<li class="page-item">
-										<a class="page-link" href="#">${i}</a>
-									</li>
-								<c:set value="${((currentPage-1)/pageBlock)*pageBlock+1 }" var="startPage"/>
-								<c:set value="${startPage + pageBlock - 1 }" var="endPage"/>
-								<c:choose>
-									<c:when test="${endPage > pageCount}">
-										<c:set value="${endPage = pageCount }" var="endPage"/>
-									</c:when>
-								</c:choose>
-								<c:choose>
-									<c:when test="${startPage > pageBlock}">
+							<%
+								if(count > 0){
+									// 총 페이지의 수
+									int pageCount = count / pageSize + (count%pageSize == 0 ? 0 : 1);
+									
+									// 한 페이지에 보여줄 페이지 블럭(링크) 수
+									int pageBlock = 10;
+									// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
+									int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
+									int endPage = startPage + pageBlock - 1;
+									
+									// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
+									if(endPage > pageCount){
+										endPage = pageCount;
+									}
+									
+									if(startPage > pageBlock){ // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
+								}
+							
+							%>
 										<li class="page-item">
-											<a class="page-link" href="editorindex.jsp?pageNum=${startPage - 10 }" aria-label="Previous">
+											<a class="page-link" href="editorindex.jsp?pageNum=<%= startPage - 10 %>" aria-label="Previous">
 											<span aria-hidden="true">&laquo;</span>
 											<span class="sr-only">Previous</span>
 											</a>
 										</li>
-									</c:when>
-								</c:choose>
-								<c:forEach var="i" begin="${startPage}" end="${endPage + 1 }">
-									<c:choose>
-										<c:when test="${i == currentPage}">
-											${i}
-										</c:when>
-										<c:otherwise>
-											<a href="editorindex.jsp?pageNum=${i }">${i}</a>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<c:choose>
-									<c:when test="${endPage < pageCount }">
+									
+							<%
+										for(int i=startPage; i <= endPage; i++){ // 페이지 블록 번호
+											if(i == currentPage){ // 현재 페이지에는 링크를 설정하지 않음
+							
+							%>
+											<li class="page-item">
+												<a class="page-link" href="editorindex.jsp?pageNum=<%=i%>"><%=i %></a>
+											</li>
+								<%									
+											}else{ // 현재 페이지가 아닌 경우 링크 설정
+								%>	
+								
 										<li class="page-item">
 											<a class="page-link" href="editorindex.jsp?pageNum=${startPage + 10 }" aria-label="Next"> 
 												<span aria-hidden="true">&raquo;</span> 
 												<span class="sr-only">Next</span>
 											</a>
 										</li>
-									</c:when>
-								</c:choose>
-								</c:when>
-							</c:choose>
 							
 						</ul>
 					</div>
