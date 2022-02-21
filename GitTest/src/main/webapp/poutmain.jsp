@@ -127,7 +127,7 @@ pageContext.setAttribute("videolist", videolist);
 		<section id="about" class="about-mf sect-pt4 route">
 			<div class="container">
 				<div class="my-5 container">
-					<div class="box-shadow-full">
+					<div class="box-shadow-full" style="padding:5rem">
 						<div class="row mb-2">
 							<h1>책 추천</h1>
 
@@ -139,11 +139,11 @@ pageContext.setAttribute("videolist", videolist);
 										<c:forEach var="book" items="${booklist }">
 											<td></td>
 											<div class="col-lg-3">
-												<div class="categories__item set-bg">
+												<div class="categories__item1 set-bg" style="heigh:350px">
 
 													<h5>
 														<a href="BookintCon?num=${book.book_num }"> <img
-															src="${book.book_img}" width="60"> <span>${book.book_title }</span>
+															src="${book.book_img}" width="60"> <span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${book.book_title }</span>
 														</a>
 													</h5>
 
@@ -161,21 +161,21 @@ pageContext.setAttribute("videolist", videolist);
 			<!-- 영상 추천 -->
 			<div class="container">
 				<div class="my-5 container">
-					<div class="box-shadow-full">
+					<div class="box-shadow-full" style="padding:5rem">
 						<div class="row mb-2">
 							<h1>영상 추천</h1>
-							<div class="container">
+							<div class="container" >
 								<div class="row">
 									<div class="categories__slider owl-carousel">
 
 										<c:forEach var="video" items="${videolist }">
 
 											<div class="col-lg-3">
-												<div class="categories__item set-bg">
+												<div class="categories__item set-bg" style="heigh:200px">
 
 													<h5>
 														<a href="VideointCon?num=${video.video_num}"> <img
-															src="${video.video_thumbnail}" width="80"> <span>${video.video_title }</span>
+															src="${video.video_thumbnail}" width="80"> <span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${video.video_title }</span>
 														</a>
 
 													</h5>
@@ -188,6 +188,7 @@ pageContext.setAttribute("videolist", videolist);
 							</div>
 						</div>
 					</div>
+				</div>
 				</div>
 		</section>
 		<!-- 컨텐츠 추천 끝나는 부분 -->
