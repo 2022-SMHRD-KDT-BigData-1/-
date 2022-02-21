@@ -205,7 +205,7 @@ public class DayplanDAO {
 	public int dayplanTodaySelect(String nick) {
 		connect();
 		int dayplan_num=0;
-		sql = "select seq_dayplan_num from dayplan where member_nick=? and to_char(dayplan_date,'yyyy/mm/dd')=to_char(sysdate, 'yyyy/mm/dd') and seq_schedule_num=0";
+		sql = "select seq_dayplan_num from dayplan where member_nick=? and to_char(dayplan_date,'yyyy-mm-dd')=to_char(sysdate, 'yyyy-mm-dd') and seq_schedule_num=0";
 		
 		try {
 			psmt = conn.prepareStatement(sql);

@@ -115,7 +115,7 @@
 				start : "2020-02-01",
 				end : "2020-02-27",
 			}, {
-				title : $(schedule),
+				title : "project",
 				start : "2020-02-01",
 				end : "2020-02-27",
 			}

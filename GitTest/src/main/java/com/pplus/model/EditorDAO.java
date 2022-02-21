@@ -228,7 +228,7 @@ public class EditorDAO {
 		
 		connect();
 		
-		sql = "select count(*) from editor where schedule_num = ?";
+		sql = "select count(*) from editor where seq_schedule_num = ?";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -251,11 +251,13 @@ public class EditorDAO {
 	}
 	public ArrayList<EditorDTO> getList(int start, int end, PMemberDTO member, ScheduleDTO schedule){
 		
-		ArrayList<EditorDTO> list = null;
+		ArrayList<EditorDTO> list = new ArrayList<EditorDTO>();
 		
-		sql = "secect * from (select rownum as rn, seq_editor_num, editor_title, editor_content, "
-				+ "editor_date, schedule_num, dayplan_num, member_nick from "
-				+ "(select * from editor where member_nick = ? and weq_schedule_num = ? order by seq_editor_num desc )) where rn between ? and ?";
+		connect();
+		
+		sql = "select * from (select rownum as rn, seq_editor_num, editor_title, editor_content, "
+				+ "editor_date, seq_schedule_num, seq_dayplan_num, member_nick from "
+				+ "(select * from editor where member_nick = ? and seq_schedule_num = ? order by seq_editor_num desc )) where rn between ? and ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			
@@ -266,18 +268,9 @@ public class EditorDAO {
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				EditorDTO editor = new EditorDTO();
 				
-				
-				editor.setEditor_num(rs.getInt(1));
-				editor.setEditor_title(rs.getString(2));
-				editor.setEditor_content(rs.getString(3));
-				editor.setEditor_date(rs.getString(4));
-				editor.setSchedule_num(rs.getInt(5));
-				editor.setDayplan_num(rs.getInt(6));
-				editor.setMember_nick(rs.getString(7));
-				
-				list.add(editor);
+				list.add(new EditorDTO(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), 
+						rs.getInt(6), rs.getInt(7), rs.getString(8)));
 				
 			}
 			

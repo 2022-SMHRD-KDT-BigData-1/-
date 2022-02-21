@@ -457,5 +457,14 @@ alter sequence seq_editor_num nocache
 alter sequence seq_diary_num nocache
 alter sequence seq_todo_num nocache
 
-select * from (select rownum rn, v_schedule.* from (select * from schedule where member_nick='f' order by seq_schedule_num desc) v_schedule) where rn between 1 and 5
+select * from (select rownum as rn, v_editor.* from 
+(select * from editor where member_nick = 'f' and seq_schedule_num = 2 order by seq_editor_num desc ) v_editor) where rn between 1 and 5
 
+
+select * from (select rownum rn, v_schedule.* from (select * from schedule where member_nick=? order by seq_schedule_num desc) v_schedule) where rn between ? and ?
+
+select * from (select rownum as rn, seq_editor_num, editor_title, editor_content, 
+editor_date, seq_schedule_num, seq_dayplan_num, member_nick from 
+(select * from editor where member_nick = 'f' and seq_schedule_num = 2 order by seq_editor_num desc )) where rn between 1 and 5
+
+select count(*) from editor where seq_schedule_num = 2

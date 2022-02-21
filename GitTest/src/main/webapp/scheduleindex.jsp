@@ -202,6 +202,7 @@
                      <th class="text-center">책 이름</th>
                      <th class="text-center">하루 학습 분량</th>
                      <th class="text-center">달성률</th>
+                     <th class="text-center">스케줄로 이동</th>
                   </tr>
                </thead>
 
@@ -221,6 +222,7 @@
                      <td>${schedule.book_title }</td>
                      <td>${schedule.schedule_day_page }</td>
                      <td></td>
+                     <td><a href="schedule.jsp?num=${schedule.schedule_num }"><button>이동</button></a></td>
                   </tr>
                </c:forEach>
                </tbody>
