@@ -239,7 +239,7 @@
 			</h1>
 			<br>
 			<div class="container">
-			<c:set value="0" var="j" />
+			<c:set value="<%= (currentPage-1)*10%>" var="j" />
 				<table
 					class="table table-bordered table-hover table-sm text-center ">
 
@@ -301,7 +301,7 @@
 									}
 									
 									if(startPage > pageBlock){ // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
-								}
+								
 							
 							%>
 										<li class="page-item">
@@ -312,23 +312,34 @@
 										</li>
 									
 							<%
+								}
 										for(int i=startPage; i <= endPage; i++){ // 페이지 블록 번호
 											if(i == currentPage){ // 현재 페이지에는 링크를 설정하지 않음
 							
-							%>
-											<li class="page-item">
-												<a class="page-link" href="editorindex.jsp?pageNum=<%=i%>"><%=i %></a>
-											</li>
+							%>				
+											<%=i %>
+											
 								<%									
 											}else{ // 현재 페이지가 아닌 경우 링크 설정
 								%>	
-								
+											<li class="page-item">
+												<a class="page-link" href="editorindex.jsp?pageNum=<%=i%>"><%=i %></a>
+											</li>
+											<%	
+								}
+							} // for end
+							
+							if(endPage < pageCount){ // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
+					%>
 										<li class="page-item">
 											<a class="page-link" href="editorindex.jsp?pageNum=${startPage + 10 }" aria-label="Next"> 
 												<span aria-hidden="true">&raquo;</span> 
 												<span class="sr-only">Next</span>
 											</a>
 										</li>
+										<%}
+							}
+							%>
 							
 						</ul>
 					</div>

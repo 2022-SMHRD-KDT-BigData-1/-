@@ -12,24 +12,28 @@
    
 
 
+	int pageSize = 10;
+	
+  	int total =schedulelist.size();
    
-   int total =schedulelist.size();
-   pageContext.setAttribute("total", total);
-   int lastpage = (int)Math.ceil((double)total/10);
-   pageContext.setAttribute("lastpage", lastpage);
-   int rownum=total;
-   pageContext.setAttribute("rownum", rownum);
+  	pageContext.setAttribute("total", total);
    
-   String view_page= request.getParameter("viewpage");
-   if ( view_page==null ){
-         view_page="1";
-   }
-   int viewpage = Integer.parseInt(view_page);
+   	int lastpage = (int)Math.ceil((double)total/10);
+   	pageContext.setAttribute("lastpage", lastpage);
+   
+   	int rownum=total;
+   	pageContext.setAttribute("rownum", rownum);
+   
+   	String view_page= request.getParameter("viewpage");// 현재 페이지
+   	if ( view_page==null ){
+     	    view_page="1";
+   	}
+   	int viewpage = Integer.parseInt(view_page);
    
    
-   schedulelist = scheduleDAO.scheduleSelectAny(member.getMember_nick(), viewpage);
+   	schedulelist = scheduleDAO.scheduleSelectAny(member.getMember_nick(), viewpage);
    
-   pageContext.setAttribute("schedulelist", schedulelist);
+   	pageContext.setAttribute("schedulelist", schedulelist);
    %>
 <!DOCTYPE html>
 <html lang="en">
@@ -189,6 +193,7 @@
          </h1>
          <br>
          <div class="container">
+         <c:set value="<%= (viewpage-1)*10%>" var="j" />
             <table
                class="table table-bordered table-hover table-sm text-center ">
 
@@ -216,7 +221,7 @@
                               class="form-check-label" for="flexRadioDefault1"> </label>
                         </div>
                      </td>
-                     <td>1</td>
+                     <td>${j = j + 1}</td>
                      <td>${schedule.schedule_name }</td>
                      <td>${schedule.schedule_start } ~ ${schedule.schedule_end }</td>
                      <td>${schedule.book_title }</td>
@@ -237,17 +242,65 @@
             <nav aria-label="Page navigation example">
                <div class="text-center">
                   <ul class="pagination" style="justify-content: center;">
-                     <li class="page-item"><a class="page-link" href="#"
-                        aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-                           <span class="sr-only">Previous</span>
-                     </a></li>
-                     <li class="page-item"><a class="page-link" href="#">1</a></li>
-                     <li class="page-item"><a class="page-link" href="#">2</a></li>
-                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                     <li class="page-item"><a class="page-link" href="#"
-                        aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-                           class="sr-only">Next</span>
-                     </a></li>
+                  
+                    <%
+								if(viewpage > 0){
+									// 총 페이지의 수
+									int pageCount = lastpage;
+									
+									// 한 페이지에 보여줄 페이지 블럭(링크) 수
+									int pageBlock = 10;
+									// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
+									int startPage = ((viewpage-1)/pageBlock)*pageBlock+1;
+									int endPage = startPage + pageBlock - 1;
+									
+									// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
+									if(endPage > pageCount){
+										endPage = pageCount;
+									}
+									
+									if(startPage > pageBlock){ // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
+								
+							
+							%>
+										<li class="page-item">
+											<a class="page-link" href="scheduleindex.jsp?viewpage=<%= startPage - 10 %>" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+											<span class="sr-only">Previous</span>
+											</a>
+										</li>
+									
+							<%
+								}
+										for(int i=startPage; i <= endPage; i++){ // 페이지 블록 번호
+											if(i == viewpage){ // 현재 페이지에는 링크를 설정하지 않음
+							
+							%>				
+											<%=i %>
+											
+								<%									
+											}else{ // 현재 페이지가 아닌 경우 링크 설정
+								%>	
+											<li class="page-item">
+												<a class="page-link" href="scheduleindex.jsp?viewpage=<%=i%>"><%=i %></a>
+											</li>
+											<%	
+								}
+							} // for end
+							
+							if(endPage < pageCount){ // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
+					%>
+										<li class="page-item">
+											<a class="page-link" href="scheduleindex.jsp?viewpage=${startPage + 10 }" aria-label="Next"> 
+												<span aria-hidden="true">&raquo;</span> 
+												<span class="sr-only">Next</span>
+											</a>
+										</li>
+										<%}
+							}
+							%>
+                     
+                     
                   </ul>
                </div>
             </nav>
