@@ -236,7 +236,7 @@ if (member != null) {
                                              <img src="${book.book_img}" width="80">
                                           </a>
                                           <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
-                                             <button type="button"><img src="heart0.png" width="20"></button>
+                                             <button type="button"><img src="heart0.png" style="width:40px"></button>
                                           </a>
                                        </h5>
                                     </c:forEach>
@@ -254,11 +254,11 @@ if (member != null) {
                                              <c:choose>
                                                 <c:when test="${recbook.contents_cnt == 1 }">
                                                    <a href="WishCon.do?num=${recbook.book_num}&recbooknum=1">
-                                                      <button type="button"><img src="heart1.png" width="20"></button>
+                                                      <button type="button"><img src="heart1.png" style="width:40px"></button>
                                                    </a>
                                                 <c:otherwise>
                                                    <a href="WishCon.do?num=${recbook.book_num}&recbooknum=0">
-                                                      <button type="button"><img src="heart0.png" width="20"></button>
+                                                      <button type="button"><img src="heart0.png" style="width:40px"></button>
                                                    </a>
                                                 </c:otherwise>
                                                 </c:when>
@@ -269,7 +269,7 @@ if (member != null) {
                                              <c:choose>
                                                 <c:when test="${fn:length(recbooklist1) == i}">
                                                    <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
-                                                      <button type="button"><img src="heart0.png" width="20"></button>
+                                                      <button type="button"><img src="heart0.png" style="width:40px"></button>
                                                    </a>
                                                 </c:when>
                                              </c:choose>
@@ -287,14 +287,14 @@ if (member != null) {
                                        <div class="categories__item set-bg">
                                           <h5>
                                              <a href="BookintCon?num=${recbook.book_num }"> <img
-                                                src="${recbook.book_img}" width="80"> <span>${recbook.book_title }</span></a>
+                                                src="${recbook.book_img}" width="80"> <span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${recbook.book_title }</span></a>
                                              <c:choose>
                                                 <c:when test="${recbook.contents_cnt==1 }">
 
                                                    <a
                                                       href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
                                                       <button type="button">
-                                                         <img src="heart1.png" width="2px">
+                                                         <img src="heart1.png" style="width:40px">
                                                       </button>
                                                    </a>
                                                 </c:when>
@@ -302,7 +302,7 @@ if (member != null) {
                                                    <a
                                                       href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
                                                       <button type="button">
-                                                         <img src="heart0.png" width="2px">
+                                                         <img src="heart0.png" style="width:40px">
                                                       </button>
                                                    </a>
                                                 </c:otherwise>
@@ -327,7 +327,7 @@ if (member != null) {
             <div class="box-shadow-full">
                <div class="row mb-2">
                   <h1>영상 추천</h1>
-                  <div class="container">
+                  <div class="container" style="padding-top:50px">
                      <div class="row">
                         <div class="categories__slider owl-carousel">
                            <c:choose>
@@ -340,7 +340,7 @@ if (member != null) {
                                              <img src="${video.video_thumbnail}" width="80">
                                           </a>
                                           <a href="WishCon.do?num=${video.video_num}&recvideonum=0">
-                                             <button type="button"><img src="heart0.png" width="20"></button>
+                                             <button type="button"><img src="heart0.png" style="width:40px"></button>
                                           </a>
                                        </h5>
                                     </c:forEach>
@@ -355,11 +355,11 @@ if (member != null) {
                                                 <c:choose>
                                                    <c:when test="${recvideo.contents_cnt == 1 }">
                                                       <a href="WishCon.do?num=${recvideo.video_num}&recvideonum=1">
-                                                         <button type="button"><img src="heart1.png" width="20"></button>
+                                                         <button type="button"><img src="heart1.png" style="width:40px"></button>
                                                       </a>
                                                       <c:otherwise>
                                                          <a href="WishCon.do?num=${recvideo.video_num}&recvideonum=0">
-                                                            <button type="button"><img src="heart0.png" width="20"></button>
+                                                            <button type="button"><img src="heart0.png" style="width:40px"></button>
                                                          </a>
                                                       </c:otherwise>
                                                    </c:when>
@@ -370,7 +370,7 @@ if (member != null) {
                                                 <c:choose>
                                                    <c:when test="${fn:length(recvideolist1) == i}">
                                                       <a href="WishCon.do?num=${video.video_num}&recvideonum=0">
-                                                         <button type="button"><img src="heart0.png" width="20"></button>
+                                                         <button type="button"><img src="heart0.png" style="width:40px"></button>
                                                       </a>
                                                    </c:when>
                                                 </c:choose>
@@ -388,11 +388,11 @@ if (member != null) {
                                  <c:forEach var="recvideo" items="${recvideolist }">
 
                                     <div class="col-lg-3">
-                                       <div class="categories__item set-bg">
+                                       <div class="categories__item set-bg" style="height:180px">
 
                                           <h5>
                                              <a href="VideointCon?num=${recvideo.video_num}"> <img
-                                                src="${recvideo.video_thumbnail}" width="80"> <span>${recvideo.video_title }</span>
+                                                src="${recvideo.video_thumbnail}" width="80"> <span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${recvideo.video_title }</span>
                                              </a>
                                              <c:choose>
                                                 <c:when test="${recvideo.contents_cnt==1 }">
@@ -400,7 +400,7 @@ if (member != null) {
                                                    <a
                                                       href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
                                                       <button type="button">
-                                                         <img src="heart1.png" width="20">
+                                                         <img src="heart1.png" style="width:40px">
                                                       </button>
                                                    </a>
                                                 </c:when>
@@ -408,7 +408,7 @@ if (member != null) {
                                                    <a
                                                       href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
                                                       <button type="button">
-                                                         <img src="heart0.png" width="20">
+                                                         <img src="heart0.png" style="width:40px">
                                                       </button>
                                                    </a>
                                                 </c:otherwise>
