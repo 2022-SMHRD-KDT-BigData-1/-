@@ -9,6 +9,7 @@ drop table web_member cascade constraints;
 select * from web_member
 
 
+
 create table web_message(
 	m_num number,
 	m_sendname varchar(50) not null,

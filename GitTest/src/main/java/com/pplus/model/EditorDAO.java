@@ -242,16 +242,52 @@ public class EditorDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		
 		
 		return totalnum;
 	}
-	public ArrayList<EditorDTO> getList(int start, int end){
+	public ArrayList<EditorDTO2> getList(int start, int end, PMemberDTO member, ScheduleDTO schedule){
 		
-		ArrayList<EditorDTO> list = null;
+		ArrayList<EditorDTO2> list = null;
 		
-		sql = ""
+		sql = "secect * from (select rownum as rn, seq_editor_num, editor_title, editor_content, "
+				+ "editor_date, schedule_num, dayplan_num, member_nick from "
+				+ "(select * from editor where member_nick = ? and weq_schedule_num = ? order by seq_editor_num desc )) where rn between ? and ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, member.getMember_nick());
+			psmt.setInt(2, schedule.getSchedule_num());
+			psmt.setInt(3, start);
+			psmt.setInt(4, end);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				EditorDTO2 editor = new EditorDTO2();
+				
+				editor.setRownum(rs.getInt(1));
+				editor.setEditor_num(rs.getInt(2));
+				editor.setEditor_title(rs.getString(3));
+				editor.setEditor_content(rs.getString(4));
+				editor.setEditor_date(rs.getString(5));
+				editor.setSchedule_num(rs.getInt(6));
+				editor.setDayplan_num(rs.getInt(7));
+				editor.setMember_nick(rs.getString(8));
+				
+				list.add(editor);
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
 		
 		return list;
 	}
