@@ -178,23 +178,30 @@
             </ul>
           </div>
           <div class="dropdown nav-item active">
-            <a class="nav-link dropdown-toggle" href="학습플래너.jsp" >학습플래너</a>
+            <a class="nav-link dropdown-toggle" href="plannermain.jsp" >학습플래너</a>
             <span class="caret"></span></button>
     <ul class="dropdown-menu">
       <li class="dropdown-header">스케줄</li>
       <hr>
-      <li><a href="스케줄만_등록.jsp">등록</a></li>
-      <li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+      <li><a href="scheduleset.jsp">등록</a></li>
+      <li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+             
      <br>
       <li class="divider"></li>
       <li class="dropdown-header">일정</li>
       <hr>
-      <li><a href="일정등록4번.jsp">등록</a></li>
-      <li><a href="#">전체 일정 목록</a></li>
-      <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-      <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+      <li><a href="dayplantodayset.jsp">등록</a></li>
+      <li><a href="dayplantodayinsex.jsp">전체 일정 목록</a></li>
+      
+      <br>
+      <li class="divider"></li>
+      <li class="dropdown-header">조회</li>
+      <hr>
+      <li><a href="editorindex.jsp">전체 에디터 목록</a></li>
+      <li><a href="diaryindex.jsp">전체 일기 목록</a></li>
+      <li><a href="todoindex.jsp">전체 할 일 목록</a></li>
+      
+      
     </ul>
           </div>
           
