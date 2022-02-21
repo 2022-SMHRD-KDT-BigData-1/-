@@ -161,7 +161,7 @@
                   <!-- <i class="zmdi zmdi-font"></i> -->
                   P+
                 </span>
-    
+     
                 <div
                   class="wrap-input100 validate-input"
                   data-validate="Valid email is: a@b.c"
