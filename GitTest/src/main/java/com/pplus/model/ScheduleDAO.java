@@ -207,11 +207,13 @@ public ArrayList<ScheduleDTO> scheduleSelectAny(String nick, int num) {
 	ArrayList<ScheduleDTO> schedulelist = new ArrayList<ScheduleDTO>();
 	connect();
 
-	sql = "select * from schedule where member_nick=? order by schedule_num desc limit ?,10";
+	sql = "select * from (select rownum rn, v_schedule.* from (select * from schedule where member_nick=? order by seq_schedule_num desc) v_schedule) where rn between ? and ?";
 	try {
 		psmt = conn.prepareStatement(sql);
 		psmt.setString(1, nick);
-		psmt.setInt(2, num);
+		psmt.setInt(2, (num*10)-9);
+		psmt.setInt(3, (num*10));
+		
 		rs = psmt.executeQuery();
 
 		while (rs.next()) {
