@@ -59,6 +59,7 @@
 <script src="calendar/packages copy/core/main.js"></script>
 <script src="calendar/packages copy/interaction/main.js"></script>
 <script src="calendar/packages copy/daygrid/main.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
 		var calendarEl = document.getElementById("calendar");
