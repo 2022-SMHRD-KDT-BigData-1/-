@@ -34,7 +34,7 @@ public class EditorCon implements iPCommand {
 		EditorDAO dao = new EditorDAO();
 
 		int cnt = dao.editorSet(
-				new EditorDTO(0, title, content, null, 0, schedule.getSchedule_num(), member.getMember_nick()));
+				new EditorDTO(0, title, content, null, schedule.getSchedule_num(), 0, member.getMember_nick()));
 
 		if (cnt > 0) {
 			System.out.println("에디터 제목" + title);

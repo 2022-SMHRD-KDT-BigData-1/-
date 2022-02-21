@@ -204,10 +204,8 @@ create table editor(
 	on delete cascade,
 	constraint ed_sn_fk foreign key(seq_schedule_num)
 	references schedule(seq_schedule_num)
-	on delete cascade,
-	constraint ed_dn_fk foreign key(seq_dayplan_num)
-	references dayplan(seq_dayplan_num)
 	on delete cascade
+
 )
 
 create table diary(
@@ -224,10 +222,8 @@ create table diary(
 	on delete cascade,
 	constraint di_sn_fk foreign key(seq_schedule_num)
 	references schedule(seq_schedule_num)
-	on delete cascade,
-	constraint di_dn_fk foreign key(seq_dayplan_num)
-	references dayplan(seq_dayplan_num)
 	on delete cascade
+
 )
 
 create table todo(
@@ -244,10 +240,8 @@ create table todo(
 	on delete cascade,
 	constraint td_sn_fk foreign key(seq_schedule_num)
 	references schedule(seq_schedule_num)
-	on delete cascade,
-	constraint td_dn_fk foreign key(seq_dayplan_num)
-	references dayplan(seq_dayplan_num)
 	on delete cascade
+
 )
 
 create table achieve(
