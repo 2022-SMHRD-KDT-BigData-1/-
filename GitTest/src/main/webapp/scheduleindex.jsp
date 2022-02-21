@@ -213,6 +213,7 @@
 							</td>
 							<td></td>
 							<td>${1 }</td>
+							<td>${schedule.schedule_name }</td>
 							<td>${schedule.schedule_start } ~ ${schedule.schedule_end }</td>
 							<td>${schedule.book_title }</td>
 							<td>${schedule.schedule_day_page }</td>
