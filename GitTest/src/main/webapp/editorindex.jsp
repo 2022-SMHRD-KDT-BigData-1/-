@@ -1,3 +1,5 @@
+<%@page import="com.pplus.model.PMemberDTO"%>
+<%@page import="com.pplus.model.EditorDTO2"%>
 <%@page import="com.pplus.model.EditorDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pplus.model.EditorDAO"%>
@@ -8,6 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%
 	ScheduleDTO schedule = (ScheduleDTO)session.getAttribute("schedule");
+	PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
 	EditorDAO editorDAO = new EditorDAO();
 	
@@ -29,7 +32,8 @@
 	count = editorDAO.getCount(schedule.getSchedule_num()); // 데이터베이스에 저장된 총 갯수
 	
 	if(count > 0){
-		ArrayList<EditorDTO> list = editorDAO.
+		ArrayList<EditorDTO2> list = editorDAO.getList(startRow, endRow, member, schedule);
+		session.setAttribute("editorpase", list);
 	}
 
 %>
@@ -246,7 +250,7 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="i" items="${sessionScope.editorlist }">
+					<c:forEach var="i" items="${sessionScope.editorpase }">
 						<tr>
 							<td><div class="form-check">
 									<input class="form-check-input" type="radio"
@@ -276,32 +280,54 @@
 				<nav aria-label="Page navigation example">
 					<div class="text-center">
 						<ul class="pagination" style="justify-content: center;">
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-								</a>
-							</li>
+							
 							<c:choose>
-								<c:when test="${fn:length(editorlist) <= 10 }">
-								<c:set value="1" var="i" />
+								<c:when test="${count > 0}">
+								<c:set value="${count / pageSize + (count%pageSize == 0 ? 0 : 1)}" var="pageCount" />
+								<c:set value="10" var="pageBlock" />
 									<li class="page-item">
 										<a class="page-link" href="#">${i}</a>
 									</li>
+								<c:set value="${((currentPage-1)/pageBlock)*pageBlock+1 }" var="startPage"/>
+								<c:set value="${startPage + pageBlock - 1 }" var="endPage"/>
+								<c:choose>
+									<c:when test="${endPage > pageCount}">
+										<c:set value="${endPage = pageCount }" var="endPage"/>
+									</c:when>
+								</c:choose>
+								<c:choose>
+									<c:when test="${startPage > pageBlock}">
+										<li class="page-item">
+											<a class="page-link" href="editorindex.jsp?pageNum=${startPage - 10 }" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+											<span class="sr-only">Previous</span>
+											</a>
+										</li>
+									</c:when>
+								</c:choose>
+								<c:forEach var="i" begin="${startPage}" end="${endPage + 1 }">
+									<c:choose>
+										<c:when test="${i == currentPage}">
+											${i}
+										</c:when>
+										<c:otherwise>
+											<a href="editorindex.jsp?pageNum=${i }">${i}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${endPage < pageCount }">
+										<li class="page-item">
+											<a class="page-link" href="editorindex.jsp?pageNum=${startPage + 10 }" aria-label="Next"> 
+												<span aria-hidden="true">&raquo;</span> 
+												<span class="sr-only">Next</span>
+											</a>
+										</li>
+									</c:when>
+								</c:choose>
 								</c:when>
-								<c:otherwise>
-								<c:set value="${i = i + 1 }" var="i" />
-									<li class="page-item">
-										<a class="page-link" href="#">${i}</a>
-									</li>
-								</c:otherwise>
 							</c:choose>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next"> 
-									<span aria-hidden="true">&raquo;</span> 
-									<span class="sr-only">Next</span>
-								</a>
-							</li>
+							
 						</ul>
 					</div>
 				</nav>
