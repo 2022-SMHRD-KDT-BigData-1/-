@@ -19,7 +19,7 @@
     <link rel="icon" href="img/core-img/favicon.ico" />
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style_copy.css" />
+    <link rel="stylesheet" href="css/core-style.css" />
     <link rel="stylesheet" href="style.css" />
 
     <title>Hello, world!</title>
