@@ -219,5 +219,32 @@ public class DiaryDAO {
 
 		return diarylist;
 	}
+	public int getCount(int num) {
+		
+		int totalnum = 0;
+		
+		connect();
+		
+		sql = "select count(*) from diary where seq_schedule_num = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, num);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				totalnum = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+		return totalnum;
+	}
 	
 }

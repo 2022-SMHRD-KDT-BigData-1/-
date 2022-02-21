@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pplus.model.AchieveDAO;
+import com.pplus.model.AchieveDTO;
 import com.pplus.model.DiaryDAO;
 import com.pplus.model.DiaryDTO;
 import com.pplus.model.EditorDAO;
@@ -34,6 +36,7 @@ public class ScheduleIndexCon implements iPCommand {
 		ScheduleDAO dao = new ScheduleDAO();
 		EditorDAO editorDAO = new EditorDAO();
 		DiaryDAO diaryDAO = new DiaryDAO();
+		AchieveDAO achieveDAO = new AchieveDAO();
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String nick = request.getParameter("nick"); 
@@ -41,6 +44,7 @@ public class ScheduleIndexCon implements iPCommand {
 		ScheduleDTO schedule = dao.scheduleSelect(nick, num);
 		ArrayList<EditorDTO> editorlist = editorDAO.editorSelectAll(nick, num);
 		ArrayList<DiaryDTO> diarylist = diaryDAO.diarySelectAll(nick, num);
+		AchieveDTO achieve = achieveDAO.achieveSelect(nick, num);
 		
 		
 		
@@ -52,6 +56,7 @@ public class ScheduleIndexCon implements iPCommand {
 			out.print("</script>");
 		}else {
 			System.out.println("스케줄 번호" + num);
+			session.setAttribute("achieve", achieve);
 			session.setAttribute("schedule", schedule);
 			session.setAttribute("editorlist", editorlist);
 			session.setAttribute("diarylist", diarylist);

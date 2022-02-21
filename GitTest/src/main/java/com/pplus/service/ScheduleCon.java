@@ -67,22 +67,37 @@ public class ScheduleCon implements iPCommand {
 		//book안에 데이터들을 session형태로 받기
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		ScheduleDAO dao = new ScheduleDAO();
+		AchieveDAO achievedao = new AchieveDAO();
 		System.out.println(member.getMember_nick());
 		
 		
 		
 		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end, page, null, member.getMember_nick(), book_num,
 				book_Title, book_page));
+		
+		
 	
 		
 		if(cnt > 0) {
 			System.out.println("스케줄 제목" + title);
 			System.out.println("책 제목");
 			
-		 	ArrayList<ScheduleDTO> schedulelist = dao.scheduleSelectAll(member.getMember_nick());
-			session.setAttribute("schedulelist", schedulelist);
-			response.sendRedirect("scheduleindex.jsp");
-			// 우선 메인 페이지로 가게 해놓았습니다. 메인페이지가 아니라 다른곳으로 가게 할거면 바꿔냐 합니다
+			ScheduleDTO schedule = dao.scheduleSelect2(member.getMember_nick());
+			
+			int cnt1 = achievedao.achieveSet(new AchieveDTO(0, "0", 0, schedule.getSchedule_num(), member.getMember_nick(), book_page, day));
+			if(cnt1 > 0) {
+				
+				ArrayList<ScheduleDTO> schedulelist = dao.scheduleSelectAll(member.getMember_nick());
+				ArrayList<AchieveDTO> achievelist  = achievedao.achieveSelectAll(member.getMember_nick());
+				
+				session.setAttribute("achieveelist", achievelist);
+				session.setAttribute("schedulelist", schedulelist);
+				response.sendRedirect("scheduleindex.jsp");
+				// 우선 메인 페이지로 가게 해놓았습니다. 메인페이지가 아니라 다른곳으로 가게 할거면 바꿔냐 합니다
+				
+			}
+			
+		 	
 		}else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");

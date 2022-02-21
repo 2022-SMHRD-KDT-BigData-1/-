@@ -1,21 +1,29 @@
+<%@page import="com.pplus.model.TodoDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.pplus.model.TodoDAO"%>
 <%@page import="com.pplus.model.ScheduleDTO"%>
 <%@page import="com.pplus.model.ScheduleDAO"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%
-	PMemberDTO member=(PMemberDTO)session.getAttribute("member");
-	ScheduleDAO scheduleDao=new ScheduleDAO();
-	
-	String nick = member.getMember_nick();
-	
-	String num=request.getParameter("num");
-	
-	int schedule_num=Integer.parseInt(num);
-	
-	ScheduleDTO schedule=scheduleDao.scheduleSelect(nick, schedule_num);
-	pageContext.setAttribute("schedule", schedule);
-	%>
+<%
+PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+ScheduleDAO scheduleDao = new ScheduleDAO();
+
+String nick = member.getMember_nick();
+
+String num = request.getParameter("num");
+
+int schedule_num = Integer.parseInt(num);
+
+ScheduleDTO schedule = scheduleDao.scheduleSelect(nick, schedule_num);
+pageContext.setAttribute("schedule", schedule);
+
+TodoDAO todoDAO = new TodoDAO();
+ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
+todolist = todoDAO.todoSelectAll(nick, schedule_num);
+pageContext.setAttribute("todolist", todolist);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,24 +78,50 @@
 <script src="calendar/packages copy/core/main.js"></script>
 <script src="calendar/packages copy/interaction/main.js"></script>
 <script src="calendar/packages copy/daygrid/main.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
 <script>
-	document.addEventListener("DOMContentLoaded", function() {
-		var calendarEl = document.getElementById("calendar");
+   $(document).ready(function() {
+       var calendarEl = document.getElementById("calendar");
 
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			plugins : [ "interaction", "dayGrid" ],
-			defaultDate : "2022-02-01",
-			editable : true,
-			eventLimit : true, // allow "more" link when too many events
-			events : [ {
-				title : '${schedule.schedule_name}',
-				start : '${schedule.schedule_start}',
-				end : '${schedule.schedule_end}',
-			},
+       var calendar = new FullCalendar.Calendar(calendarEl, {
+    	  initialView : "dayGridMonth",
+         plugins: ["interaction", "dayGrid"],
+         locale : 'ko',
+         editable: true,
+         eventLimit: true, // allow "more" link when too many events
+         events: [
+           	{
+               title: "${schedule.schedule_name}",
+               start: "${schedule.schedule_start}",
+               end: "${schedule.schedule_end}",
+            },
+            
+            {
+                title: "공부하는 책 : ${schedule.book_title}",
+                start: "${schedule.schedule_start}",
+                end: "${schedule.schedule_end}",
+             },
+             {
+                 title: "공부할 페이지 : ${schedule.schedule_day_page}",
+                 start: "${schedule.schedule_start}",
+                 end: "${schedule.schedule_end}",
+             },
+             {
+              for(const ${todo} in ${todolist}){
+            	  {
+                      title: "오늘 할 일 : ${todo.todo_title}",
+                      start: "${schedule.schedule_start}",
+                      end: "${schedule.schedule_end}",
+                  },
+             }
+             }
+         ],
+         
+       });
 
-		calendar.render();
-	});
-</script>
+       calendar.render();
+     });
+   </script>
 <style>
 body {
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
@@ -173,7 +207,7 @@ body {
 					<!--  Catagories  -->
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="#">달력</a></li>
+							<li class="active"><a href="schedule.jsp">달력</a></li>
 							<hr />
 						</ul>
 					</div>
@@ -188,11 +222,11 @@ body {
 					<div class="catagories-menu">
 						<ul>
 							<li class="active"><a href="#">에디터</a></li>
-							<hr />
-							<li><a href="#">작성</a></li>
-							<li><a href="#">목록</a></li>
+							<hr>
+							<li><a href="editorset.jsp">작성</a></li>
+							<li><a href="editorindex.jsp">목록</a></li>
 						</ul>
-						</ul>
+						
 					</div>
 				</div>
 
@@ -204,11 +238,23 @@ body {
 					<div class="catagories-menu">
 						<ul>
 							<li class="active"><a href="#">일기</a></li>
-							<hr />
-							<li><a href="#">작성</a></li>
-							<li><a href="#">일기</a></li>
+							<hr>
+							<li><a href="diaryset.jsp">작성</a></li>
+							<li><a href="diaryindex.jsp">일기</a></li>
 						</ul>
 					</div>
+					
+					<div class="widget catagory mb-50">
+						<div class="catagories-menu">
+						<ul>
+							<li class="active"><a href="#">오늘 할 일</a></li>
+							<hr>
+							<li><a href="todoset.jsp">작성</a></li>
+							<li><a href="todoindex.jsp">목록</a></li>
+						</ul>
+						
+					</div>
+				</div>
 
 					<br />
 
