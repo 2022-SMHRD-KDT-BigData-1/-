@@ -13,14 +13,17 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Amado - Furniture Ecommerce Template | Shop</title>
+    <title>P+(Programming에 Planner를 더하다)</title>
+
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico" />
-
+<link rel="icon" href="img/core-img/favicon.ico" />
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/버튼.css">
+
+    
     
      <!-- Font Awesome icons (free version)-->
     <script
@@ -28,7 +31,7 @@
       crossorigin="anonymous"
     ></script>
     
-  </head>
+  </head> 
 
   <body>
    	
@@ -195,39 +198,36 @@
          </div>
       </div>
                
-     <div style="width: 60%;  margin-top: 150px; margin-left: 300px;">
-      <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
-              <br>
-              <div class="text-center">
-                  <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="scheduleset.jsp"  style="color: rgb(47, 47, 47);font-size: xx-large;">스케줄 등록</a></h1>
-              </div>
-              <br>
-           </div>
+     <div style="width: 60%;  margin-top: 75px; margin-left: 300px;">
+      <div class="container px-4 px-lg-5 my-5" >
+        <br>
+      <div class="col-sm-3">
+        <a href="#" class="btn btn-lg black"><i class="fas fa-plus-square"></i> 스케줄 등록</a>
+    </div>
+    </div>
 
-           <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
+           <div class="container px-4 px-lg-5 my-5" >
             <br>
-            <div class="text-center">
-                <h1 class="display-4 fw-bolder"></i><a href ="scheduleindex.jsp"  style="color: rgb(47, 47, 47); font-size: xx-large;">스케줄 목록</a></h1>
-            </div>
-            <br>
+            <div class="col-sm-3">
+              <a href="#" class="btn btn-lg yellow">
+ 스케줄 목록</a>
+          </div>
          </div>
          
-         <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
+         <div class="container px-4 px-lg-5 my-5" >
           <br>
-          <div class="text-center">
-              <h1 class="display-4 fw-bolder"><i class="far fa-plus-square "></i><a href ="dayplantodayset.jsp"  style="color: rgb(47, 47, 47); font-size: xx-large;">일정 등록</a></h1>
-          </div>
-          <br>
+          <div class="col-sm-3">
+            <a href="#" class="btn btn-lg black"><i class="fas fa-plus-square"></i> 일정 등록</a>
+        </div>
        </div>
 
-       <div class="container px-4 px-lg-5 my-5" style="background-color: #9999">
+       <div class="container px-4 px-lg-5 my-5" >
         <br>
-        <div class="text-center">
-            <h1 class="display-4 fw-bolder"></i><a href ="dayplantodayindex.jsp"  style="color: rgb(47, 47, 47); font-size: xx-large;">일정 목록</a></h1>
-        </div>
-        <br>
+        <div class="col-sm-3">
+          <a href="#" class="btn btn-lg yellow">일정 목록</a>
+      </div>
      </div>
- 
+
     </div>
  
 
