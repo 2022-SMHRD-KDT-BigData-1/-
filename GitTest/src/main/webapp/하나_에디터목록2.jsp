@@ -15,6 +15,7 @@
     <!-- Title  -->
     <title>Amado - Furniture Ecommerce Template | Shop</title>
 
+ 
     <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico" />
 
