@@ -42,9 +42,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css" />
+     <link rel="stylesheet" href="css/core-style.css" />
     <link rel="stylesheet" href="style.css" />
-    
         <link rel="stylesheet" href="css/유형조사.css" />
     
 <!--     <link href="css/유형조사.css" rel="stylesheet" />

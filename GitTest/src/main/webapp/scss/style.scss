@@ -275,7 +275,7 @@ img {
 
 .mfp-image-holder .mfp-close,
 .mfp-iframe-holder .mfp-close {
-  color: #fff;
+  color: #fffde7;
   right: 0;
   padding-right: 0;
   width: 30px;
@@ -645,7 +645,7 @@ img {
     @include flex(0 0 230px);
     width: 230px;
     max-width: 230px;
-    background-color: #f5f7fa;
+    background-color: #424242;
     padding: 100px 40px;
     @media #{$breakpoint-md} {
       @include flex(0 0 180px);

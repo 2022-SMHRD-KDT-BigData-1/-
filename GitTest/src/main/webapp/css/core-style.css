@@ -24,8 +24,8 @@
 /* :: 2.0 Import All CSS */
 /* :: 3.0 Base CSS */
 
-.page{
-	    padding-top: 3%;
+.page {
+  padding-top: 3%;
 }
 
 .product__details__text ul {
@@ -207,6 +207,7 @@
 
 body {
   font-size: 16px;
+  background-color: #fffde7;
 }
 
 h1,
@@ -841,7 +842,7 @@ img {
   flex: 0 0 230px;
   width: 230px;
   max-width: 230px;
-  background-color: #f5f7fa;
+  background-color: #424242;
   padding: 100px 40px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -912,7 +913,7 @@ img {
   -webkit-box-flex: 0;
   /* -ms-flex: 0 0 calc(95% - 320px); */
   flex: 0 0 calc(95% - 320px);
- /*  width: calc(95% - 320px);
+  /*  width: calc(95% - 320px);
   max-width: calc(95% - 320px); */
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
