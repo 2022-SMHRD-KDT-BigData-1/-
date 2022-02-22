@@ -201,11 +201,7 @@ create table editor(
 	constraint ed_en_pk primary key(seq_editor_num),
 	constraint ed_en_fk foreign key(member_nick)
 	references member(member_nick)
-	on delete cascade,
-	constraint ed_sn_fk foreign key(seq_schedule_num)
-	references schedule(seq_schedule_num)
 	on delete cascade
-
 )
 
 create table diary(
@@ -219,30 +215,25 @@ create table diary(
 	constraint di_dn_pk primary key(seq_diary_num),
 	constraint di_mi_fk foreign key(member_nick)
 	references member(member_nick)
-	on delete cascade,
-	constraint di_sn_fk foreign key(seq_schedule_num)
-	references schedule(seq_schedule_num)
 	on delete cascade
-
 )
 
 create table todo(
 	seq_todo_num number,
 	todo_title varchar2(150),
-	todo_content clob,
 	todo_date date,
 	seq_schedule_num number,
 	seq_dayplan_num number,
 	member_nick varchar(20),
+	todo_check number default 0,
 	constraint td_dn_pk primary key(seq_todo_num),
 	constraint td_mi_fk foreign key(member_nick)
 	references member(member_nick)
-	on delete cascade,
-	constraint td_sn_fk foreign key(seq_schedule_num)
-	references schedule(seq_schedule_num)
 	on delete cascade
-
 )
+select * from schedule
+insert into todo values(seq_todo_num.nextval, 'test', sysdate,23,null,'asdf', default )
+insert into todo values(seq_todo_num.nextval, 'test2', sysdate,23,null,'asdf', default )
 
 create table achieve(
 	seq_achieve_num number,
@@ -414,7 +405,9 @@ select NVL(book_part3, '0') from book
 select * from schedule
 select * from editor
 select * from diary
+select * from todo
 select * from dayplan
+select * from achieve
 
 select seq_dayplan_num from dayplan where to_char(dayplan_date,'yyyy/mm/dd')=to_char(sysdate, 'yyyy/mm/dd') and member_nick='z'
 select seq_dayplan_num from dayplan where DAYPLAN_DATE LIKE '%22-02-17%'

@@ -6,6 +6,7 @@
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
@@ -22,6 +23,17 @@ TodoDAO todoDAO = new TodoDAO();
 ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 todolist = todoDAO.todoSelectAll(nick, schedule_num);
 pageContext.setAttribute("todolist", todolist);
+// check->1 -> o check->0 ->x
+String todostring="";
+for(int i=0; i<todolist.size(); i++){
+	if(i != todolist.size()-1){
+		todostring +=todolist.get(i).getTodo_title()+", ";
+	} else{
+		todostring +=todolist.get(i).getTodo_title();
+	}
+}
+pageContext.setAttribute("todostring", todostring);
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,49 +90,7 @@ pageContext.setAttribute("todolist", todolist);
 <script src="calendar/packages copy/interaction/main.js"></script>
 <script src="calendar/packages copy/daygrid/main.js"></script>
 <script src="jquery-3.6.0.min.js"></script>
-<script>
-   $(document).ready(function() {
-       var calendarEl = document.getElementById("calendar");
 
-       var calendar = new FullCalendar.Calendar(calendarEl, {
-    	  initialView : "dayGridMonth",
-         plugins: ["interaction", "dayGrid"],
-         locale : 'ko',
-         editable: true,
-         eventLimit: true, // allow "more" link when too many events
-         events: [
-           	{
-               title: "${schedule.schedule_name}",
-               start: "${schedule.schedule_start}",
-               end: "${schedule.schedule_end}",
-            },
-            
-            {
-                title: "공부하는 책 : ${schedule.book_title}",
-                start: "${schedule.schedule_start}",
-                end: "${schedule.schedule_end}",
-             },
-             {
-                 title: "공부할 페이지 : ${schedule.schedule_day_page}",
-                 start: "${schedule.schedule_start}",
-                 end: "${schedule.schedule_end}",
-             },
-             {
-              for(const ${todo} in ${todolist}){
-            	  {
-                      title: "오늘 할 일 : ${todo.todo_title}",
-                      start: "${schedule.schedule_start}",
-                      end: "${schedule.schedule_end}",
-                  },
-             }
-             }
-         ],
-         
-       });
-
-       calendar.render();
-     });
-   </script>
 <style>
 body {
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
@@ -288,9 +258,50 @@ body {
 			</div>
 		</div>
 	</div>
-
-	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<script>
+	var todostring = '<%=(String)pageContext.getAttribute("todostring") %>';
+	console.log(todostring);
+
+   $(document).ready(function() {
+       var calendarEl = document.getElementById("calendar");
+	// 어딘가에 점또는 세미콜론 안찍혀있는 오류가 떴어요
+       var calendar = new FullCalendar.Calendar(calendarEl, {
+    	  initialView : "dayGridMonth",
+         plugins: ["interaction", "dayGrid"],
+         locale : 'ko',
+         editable: true,
+         eventLimit: true, // allow "more" link when too many events
+         events: [
+           	{
+               title: "${schedule.schedule_name}",
+               start: "${schedule.schedule_start}",
+               end: "${schedule.schedule_end}",
+            },
+            
+            {
+                title: "공부하는 책 : ${schedule.book_title}",
+                start: "${schedule.schedule_start}",
+                end: "${schedule.schedule_end}",
+             },
+             {
+                 title: "공부할 페이지 : ${schedule.schedule_day_page}",
+                 start: "${schedule.schedule_start}",
+                 end: "${schedule.schedule_end}",
+             },        
+             {
+            	 title : "오늘 할 일 : "+ todostring,
+            	 start : "${schedule.schedule_start}",
+            	 end: "${schedule.schedule_end}",
+             },   
+         ],
+       });
+    	  calendar.render(); 
+     });
+   </script>
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	
 	<!-- Popper js -->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap js -->

@@ -26,7 +26,6 @@ public class TodoCon implements iPCommand {
 		HttpSession session = request.getSession();
 
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
 
 		ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
@@ -34,7 +33,7 @@ public class TodoCon implements iPCommand {
 		TodoDAO dao = new TodoDAO();
 
 		int cnt = dao
-				.todoSet(new TodoDTO(0, title, content, null, 0, schedule.getSchedule_num(), member.getMember_nick()));
+				.todoSet(new TodoDTO(0, title, null, 0, schedule.getSchedule_num(), member.getMember_nick(),0));
 
 		if (cnt > 0) {
 			System.out.println("todo Á¦¸ñ" + title);
