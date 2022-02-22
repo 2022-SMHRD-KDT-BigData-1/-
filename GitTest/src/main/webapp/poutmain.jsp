@@ -24,7 +24,7 @@ for (int a = 0; a <= array.length - 1; a++) {
 	a--;
 	break;
 		}
-	} 
+	}
 }
 ArrayList<BookDTO> booklist = null;
 ArrayList<VideoDTO> videolist = null;

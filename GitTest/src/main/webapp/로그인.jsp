@@ -130,7 +130,7 @@
               <div class="wrap-login100-form-btn">
                 <div class="login100-form-bgbtn"></div>
                 <button class="login100-form-btn" onclick="location.href='#'">
-                  로그인
+                  로그인1
                 </button>
               </div>
             </div>
