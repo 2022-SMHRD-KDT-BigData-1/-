@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login V2</title>
+<title>P+(Programming에 Planner를 더하다.)</title>
+<link rel="icon" href="image/p+만.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
       <!--===============================================================================================-->

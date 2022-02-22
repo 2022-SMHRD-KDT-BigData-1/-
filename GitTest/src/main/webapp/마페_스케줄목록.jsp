@@ -11,11 +11,9 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>Amado - Furniture Ecommerce Template | Shop</title>
-
+<title>P+(Programming에 Planner를 더하다.)</title>
 <!-- Favicon  -->
-<link rel="icon" href="img/core-img/favicon.ico" />
-
+ <link rel="icon" href="image/p+만.png" />
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />

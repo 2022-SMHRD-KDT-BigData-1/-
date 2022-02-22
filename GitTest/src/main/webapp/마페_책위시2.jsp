@@ -11,12 +11,15 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>P+(Programming에 Planner를 더하다.)</title>
+<title>Amado - Furniture Ecommerce Template | Shop</title>
+
 <!-- Favicon  -->
-<link rel="icon" href="image/p+만.png" />
+<link rel="icon" href="img/core-img/favicon.ico" />
 
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
+    <link rel="stylesheet" href="css/core-style_footer.css" />
+
 <link rel="stylesheet" href="style.css" />
 
 <title>Hello, world!</title>
@@ -26,7 +29,7 @@
 	crossorigin="anonymous">
 
 
-<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!-- Option 2: Separate Popper and Bootstrap JS --> 
 
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -138,50 +141,6 @@
         </ul>
       </div>
     </header>
-	<div class="main-content-wrapper d-flex clearfix">
-      <!-- Mobile Nav (max width 767px)-->
-      <div class="mobile-nav">
-        <!-- Navbar Brand -->
-        <div class="amado-navbar-brand">
-          <a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-        </div>
-        <!-- Navbar Toggler -->
-        <div class="amado-navbar-toggler">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-
-      <!-- Header Area Start -->
-      <header class="header-area clearfix">
-        <!-- Close Icon -->
-        <div class="nav-close">
-          <i class="fa fa-close" aria-hidden="true"></i>
-        </div>
-        <!-- Logo -->
-        <div class="logo">
-          <a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-        </div>
-        <!-- Amado Nav -->
-        <nav class="amado-nav navbar">
-          <div class="sidebar" data-color="white" data-active-color="danger">
-            <div class="sidebar-wrapper">
-              <ul>
-               
-                <li>
-                  <div class="btn-group">
-                    <a
-                      class="dropdown-toggle"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      href="학습플래너.html"
-                    >
-                      학습플래너
-                    </a>
-                  </div>
-                </li>
-
-               
-      </header>
 	<!-- 회원탈퇴 Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
@@ -219,6 +178,10 @@
 
 
 	<!-- ##### Main Content Wrapper Start ##### -->
+	<div class="main-content-wrapper d-flex clearfix">
+		<!-- Mobile Nav (max width 767px)-->
+		<div class="mobile-nav"></div>
+
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
@@ -267,203 +230,188 @@
 				</div>
 			</div>
 		</div>
-		<div style="width: 60%; margin-top: 150px; margin-left: 300px;">
-			<!-- Option 1: Bootstrap Bundle with Popper -->
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-				crossorigin="anonymous"></script>
+		 <div style="width: 80%; padding-top: 150px; margin-left: 70px;">
 
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+          crossorigin="anonymous"
+        ></script>
 
-
-			<br>
-			<h1 style="text-align: center;">
-				MY 에디터 <i class="fas fa-laptop-code"></i>
-			</h1>
-			<br>
-			<div class="container">
-				<table
-					class="table table-bordered table-hover table-sm text-center ">
-
-					<thead class="table-warning ">
-						<th></th>
-						<th class="text-center">No.</th>
-						<th class="text-center">작성일</th>
-						<th class="text-center">스케줄명</th>
-						<th class="text-center">에디터 제목</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>1</td>
-							<td>2022.01.11</td>
-							<td>자바</td>
-							<td>for문</td>
-						</tr>
-						<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>2</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>3</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>4</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>5</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<tr>
-							<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>6</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>7</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>8</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>9</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
-										class="form-check-label" for="flexRadioDefault1"> </label>
-								</div></td>
-							<td>10</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-			<br>
-			<div class="page">
-				<div class="text-center">
-				<a href="#" class="btn btn-dark">선택 수정</a> <a href="#"
-					class="btn btn-dark">선택 삭제</a>
-			</div>
-			<br>
-			<nav aria-label="Page navigation example">
-				<div class="text-center">
-					<ul class="pagination" style="justify-content: center;">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-						</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-								class="sr-only">Next</span>
-						</a></li>
-					</ul>
-				</div>
-			</nav>
-			
-			</div>
-		</div>
+<!-------내용 들어가는 부분---------------------->
+        <div class="cart-table-area section-padding-100">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="cart-title ">
+                  <h2>[ 위시리스트-책 ]</h2>
+                </div>
+  
+                <div class="cart-table clearfix">
+                  <table class="table table-responsive">
+                    <thead style="text-align: center;">
+                      <tr>
+                        <th style="width: 50%;">NO.</th>
+                        <th>위시리스트</th>
+                        <th>제목</th>
+                        <th>나의 학습유형</th>
+                      </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                      <tr >
+                        <td class="wish-num">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              <h5 style="padding-left: 20px;">1</h5>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="pic">
+                          <img src="image/4.jpg" style="width: 220px; height: 160px;">  
+                        </td>
+                        <td class="title">
+                          <span>빛의 양자컴퓨터
+                        </span>
+                        </td>
+                        <td class="type">
+                          <div class="type-name">
+                            <span>컴퓨터/IT>컴퓨터공학>
+                          컴퓨터공학/과학개론</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="wish-num">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              <h5 style="padding-left: 20px;">2</h5>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="pic">
+                          <img src="image/5.jpg"  style="width: 220px; height: 160px;">
+                        </td>
+                        <td class="title">
+                          <span>컴퓨팅 사고와 인공지능</span>
+                        </td>
+                        <td class="type">
+                          <div class="type-name">
+                            <span>컴퓨터/IT>컴퓨터공학>
+                              컴퓨터공학/과학개론</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="wish-num">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              <h5 style="padding-left: 20px;">3</h5>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="pic">
+                          <img src="image/3.jpg" style="width: 220px; height: 160px;">
+                        </td>
+                        <td class="title">
+                          <span>컴퓨터 과학 로드맵</span>
+                        </td>
+                        <td class="type">
+                          <div class="type-name">
+                            <span>컴퓨터/IT>컴퓨터공학>
+                        컴퓨터공학/과학개론</span>
+                          </div>
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="#" class="btn btn-dark" >위시리스트 삭제</a>
+          <a href="#" class="btn btn-dark">스케줄 등록</a>
+        </div>
+        <br>
+        <nav aria-label="Page navigation example">
+          <div class="text-center">
+            <ul class="pagination" style=" justify-content : center;">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
 	</div>
-	</div>
-
- <!-- ##### Footer Area Start ##### -->
+	
+	  <!-- ##### Footer Area Start ##### -->
     <footer class="footer_area clearfix">
       <div class="container">
         <div class="row align-items-center">
           <!-- Single Widget Area -->
-          <div class="col-12 col-lg-4">
-            <div class="single_widget_area">
+          <div class="col-12 col-lg-4" style="
+              padding-left: 76px;">
+            <div class="single_widget_area" style="width: 101%;">
               <!-- Logo -->
               <div class="footer-logo mr-50">
-                <a href="index.html"
+                <h1 style="color: white; font-weight: bold; font-size: 55px;" >P+</h1>
+                <!-- <a href="index.html"
                   ><img src="img/core-img/logo2.png" alt=""
-                /></a>
+                /></a> -->
               </div>
               <!-- Copywrite Text -->
               <p class="copywrite">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>
+                <!-- Copyright &copy; -->
+                <!-- <script>
                   document.write(new Date().getFullYear());
-                </script>
-                All rights reserved | This template is made with
-                <i class="fa fa-heart-o" aria-hidden="true"></i> by
-                <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->&
-                Re-distributed by
-                <a href="https://themewagon.com/" target="_blank">Themewagon</a>
+                </script> -->
+                Planner에 Programming을 더하다.                
               </p>
+              <p class="copywrite">스마트인재개발원 ㅣ 빅데이터 분석서비스 개발자과정</p>
             </div>
           </div>
           <!-- Single Widget Area -->
@@ -483,26 +431,32 @@
                   >
                     <i class="fa fa-bars"></i>
                   </button>
-                  <div class="collapse navbar-collapse" id="footerNavContent">
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="shop.html">Shop</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="product-details.html"
-                          >Product</a
-                        >
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="cart.html">Cart</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="checkout.html">Checkout</a>
-                      </li>
-                    </ul>
+                  <div class="container-fluid" id="cont">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div class="middle">
+                                  <a class="btn2" href="#">
+                                      <i class="fab fa-facebook-f"></i>
+                                  </a>
+                  
+                                  <a class="btn2" href="#">
+                                      <i class="fab fa-twitter"></i>
+                                  </a>
+                  
+                                  <a class="btn2" href="#">
+                                      <i class="fab fa-instagram"></i>
+                                  </a>
+                  
+                                  <a class="btn2" href="#">
+                                      <i class="fab fa-google"></i>
+                                  </a>
+                  
+                                  <a class="btn2" href="#">
+                                      <i class="fab fa-youtube"></i>
+                                  </a>
+                              </div>
+                      </div>
+                    </div>
                   </div>
                 </nav>
               </div>
@@ -512,12 +466,7 @@
       </div>
     </footer>
     <!-- ##### Footer Area End ##### -->
-
-
-
-
-
-
+	
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
