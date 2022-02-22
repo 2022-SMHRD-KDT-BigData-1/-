@@ -17,6 +17,7 @@ import com.pplus.model.DiaryDAO;
 import com.pplus.model.DiaryDTO;
 import com.pplus.model.EditorDAO;
 import com.pplus.model.EditorDTO;
+import com.pplus.model.PMemberDTO;
 import com.pplus.model.ScheduleDAO;
 import com.pplus.model.ScheduleDTO;
 
@@ -32,6 +33,7 @@ public class ScheduleIndexCon implements iPCommand {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
+		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		
 		ScheduleDAO dao = new ScheduleDAO();
 		EditorDAO editorDAO = new EditorDAO();
@@ -39,7 +41,7 @@ public class ScheduleIndexCon implements iPCommand {
 		AchieveDAO achieveDAO = new AchieveDAO();
 		
 		int num = Integer.parseInt(request.getParameter("num"));
-		String nick = request.getParameter("nick"); 
+		String nick = member.getMember_nick();
 		
 		ScheduleDTO schedule = dao.scheduleSelect(nick, num);
 		ArrayList<EditorDTO> editorlist = editorDAO.editorSelectAll(nick, num);

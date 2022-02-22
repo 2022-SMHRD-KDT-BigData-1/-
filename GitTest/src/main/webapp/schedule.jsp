@@ -8,15 +8,14 @@
 	pageEncoding="UTF-8"%>
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 ScheduleDAO scheduleDao = new ScheduleDAO();
 
 String nick = member.getMember_nick();
 
 String num = request.getParameter("num");
 
-int schedule_num = Integer.parseInt(num);
-
-ScheduleDTO schedule = scheduleDao.scheduleSelect(nick, schedule_num);
+int schedule_num =	schedule.getSchedule_num();
 pageContext.setAttribute("schedule", schedule);
 
 TodoDAO todoDAO = new TodoDAO();

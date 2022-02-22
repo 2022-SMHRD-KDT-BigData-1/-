@@ -227,7 +227,7 @@
                      <td>${schedule.book_title }</td>
                      <td>${schedule.schedule_day_page }</td>
                      <td></td>
-                     <td><a href="schedule.jsp?num=${schedule.schedule_num }"><button>이동</button></a></td>
+                     <td><a href="ScheduleIndexCon.do?num=${schedule.schedule_num }"><button>이동</button></a></td>
                   </tr>
                </c:forEach>
                </tbody>
