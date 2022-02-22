@@ -342,7 +342,7 @@ if (member != null) {
                                           <a href="VideointCon?num=${video.video_num}"> 
                                              <img src="${video.video_thumbnail}" width="80">
                                           </a>
-                                          <a href="WishCon.do?num=${video.video_num}&recvideonum=0">
+                                          <a href="WishVideoCon.do?num=${video.video_num}&recvideonum=0">
                                              <button type="button"><img src="heart0.png" style="width:40px"></button>
                                           </a>
                                        </h5>
@@ -357,11 +357,11 @@ if (member != null) {
                                              <c:when test="${video.video_num == recvideo.video_num }">
                                                 <c:choose>
                                                    <c:when test="${recvideo.contents_cnt == 1 }">
-                                                      <a href="WishCon.do?num=${recvideo.video_num}&recvideonum=1">
+                                                      <a href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=1">
                                                          <button type="button"><img src="heart1.png" style="width:40px"></button>
                                                       </a>
                                                       <c:otherwise>
-                                                         <a href="WishCon.do?num=${recvideo.video_num}&recvideonum=0">
+                                                         <a href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=0">
                                                             <button type="button"><img src="heart0.png" style="width:40px"></button>
                                                          </a>
                                                       </c:otherwise>
@@ -372,7 +372,10 @@ if (member != null) {
                                              <c:set value="${i = i+1 }" var="i"/>
                                                 <c:choose>
                                                    <c:when test="${fn:length(recvideolist1) == i}">
-                                                      <a href="WishCon.do?num=${video.video_num}&recvideonum=0">
+                                                   	<a href="VideointCon?num=${video.video_num}"> 
+		                                             	<img src="${video.video_thumbnail}" width="80">
+		                                          	</a>
+                                                      <a href="WishVideoCon.do?num=${video.video_num}&recvideonum=0">
                                                          <button type="button"><img src="heart0.png" style="width:40px"></button>
                                                       </a>
                                                    </c:when>

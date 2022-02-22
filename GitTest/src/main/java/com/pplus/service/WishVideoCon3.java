@@ -65,7 +65,7 @@ public class WishVideoCon3 implements iPCommand {
 				session.setAttribute("wishlistvideo", wishlistvideo);
 				session.setAttribute("recvideo", recvideo);
 				
-				response.sendRedirect("videoint.jsp");
+				response.sendRedirect("ploginmain.jsp");
 	      }else {
 	    	  out.print("<script>");
 	    	  out.print("alert('wishlist 등록을 실패하셨습니다.');");
