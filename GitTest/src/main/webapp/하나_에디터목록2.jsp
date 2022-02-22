@@ -126,7 +126,7 @@
                 <a class="dropdown-item" href="포폴목록.jsp">목록</a>
               </li>
             </ul>
-          </div>
+          </div> 
 
           <div class="dropdown nav-item active">
             <a class="nav-link dropdown-toggle" href="#" >마이페이지</a>
