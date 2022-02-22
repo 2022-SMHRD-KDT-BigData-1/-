@@ -296,7 +296,7 @@
     " >
 
       <!-- 학습진행상황 -->
-      <h1 class="name">스케줄명 : Java</h1>
+      <h1 class="name">스케줄명 : ${sessionScope.schedule.schedule_name }</h1>
       <br>
           <div class="row">
             <div class="col-md-6">

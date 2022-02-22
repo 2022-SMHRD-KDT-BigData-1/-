@@ -1,3 +1,6 @@
+<%@page import="com.pplus.model.DiaryDAO"%>
+<%@page import="com.pplus.model.EditorDAO"%>
+<%@page import="java.util.Random"%>
 <%@page import="com.pplus.model.ScheduleDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pplus.model.AchieveDTO"%>
@@ -5,6 +8,13 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%
+	ArrayList<AchieveDTO> achievelist = (ArrayList<AchieveDTO>)session.getAttribute("achievelist");
+	ArrayList<ScheduleDTO> schedulelist = (ArrayList<ScheduleDTO>)session.getAttribute("schedulelist");
+	
+	EditorDAO editorDAO = new EditorDAO();
+	DiaryDAO diaryDAO = new DiaryDAO();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -274,39 +284,6 @@
 							percentSize : "15px",
 							percentWeight : "normal",
 						});
-
-						$(".demo2").percentcircle({
-							animate : true,
-							diameter : 100,
-							guage : 2,
-							coverBg : "#fff",
-							bgColor : "#efefef",
-							fillColor : "#7C0A02",
-							percentSize : "15px",
-							percentWeight : "normal",
-						});
-
-						$(".demo3").percentcircle({
-							animate : true,
-							diameter : 100,
-							guage : 2,
-							coverBg : "#fff",
-							bgColor : "#efefef",
-							fillColor : "#4AFF00",
-							percentSize : "15px",
-							percentWeight : "normal",
-						});
-
-						$(".demo4").percentcircle({
-							animate : true,
-							diameter : 100,
-							guage : 2,
-							coverBg : "#fff",
-							bgColor : "#efefef",
-							fillColor : "#1DACD6",
-							percentSize : "15px",
-							percentWeight : "normal",
-						});
 					</script>
 				</div>
 			</div>
@@ -320,14 +297,22 @@
 				<script>
 				var title = [];
 				var data = [];
-			 "<% ArrayList<AchieveDTO> achievelist = (ArrayList<AchieveDTO>)session.getAttribute("achievelist");
-			 	ArrayList<ScheduleDTO> schedulelist = (ArrayList<ScheduleDTO>)session.getAttribute("schedulelist");
+				var color = [];
+			 "<% 
 			 	for ( int i = 0; i < achievelist.size(); i++){ %>"
 			 		title.push("<%= schedulelist.get(i).getSchedule_name() %>");
-			 		data.push("<%=(Integer.parseInt(achievelist.get(i).getAchieve_study_day()) / Integer.parseInt(schedulelist.get(i).getSchedule_num_day())) *100 %>");
-			 		console.log("<%=(Integer.parseInt(achievelist.get(i).getAchieve_study_day()) / Integer.parseInt(schedulelist.get(i).getSchedule_num_day())) *100 %>");
-				
-			 		
+			 		 var studyDay = "<%=achievelist.get(i).getAchieve_study_day() %>";
+	                 var numDay = "<%= achievelist.get(i).getSchedule_num_day() %>";
+	                 var head = studyDay / numDay * 100;
+	                 head = head.toFixed(1);
+			 		data.push(head);
+			 		var RGB_1 = Math.floor(Math.random() * (255 + 1));
+			 		var RGB_2 = Math.floor(Math.random() * (255 + 1)); 
+			 		var RGB_3 = Math.floor(Math.random() * (255 + 1));
+			 		var strRGBA = 'rgba(' + RGB_1 + ',' + RGB_2 + ',' + RGB_3 + ',0.3)';
+			 		color.push(strRGBA);
+			 		console.log(<%=Integer.parseInt(achievelist.get(i).getSchedule_num_day()) %>);
+
 			 	"<% }	%>"
 			 	console.log(title);
 			 	console.log(data);
@@ -341,15 +326,8 @@
 										//   label: "My First Dataset",
 										data : data,
 										fill : false,
-										backgroundColor : [
-												"rgba(255, 99, 132, 0.2)",
-												"rgba(153, 102, 255, 0.2)",
-												"rgba(255, 205, 86, 0.2)",
-												"rgba(75, 192, 192, 0.2)", ],
-										borderColor : [ "rgb(255, 99, 132)",
-												"rgb(153, 102, 255)",
-												"rgb(255, 205, 86)",
-												"rgb(75, 192, 192)", ],
+										backgroundColor : color,
+										borderColor : color,
 										borderWidth : 2,
 									}, ],
 						},
@@ -389,13 +367,20 @@
 
 			<!-- 차트 -->
 			<script>
-				const mydata = [ 94, 63, 75, 44 ];
-				const mydataHalf = [ 73, 42, 53, 18 ];
+			var editorCount = [];
+			var diaryCount = [];
+			"<% for(int i = 0; i < schedulelist.size(); i++){ %>"
+				editorCount.push("<%=editorDAO.getCount(schedulelist.get(i).getSchedule_num())%>");
+				diaryCount.push("<%=diaryDAO.getCount(schedulelist.get(i).getSchedule_num())%>");
+				
+				 "<% }%>"
+				const mydata = editorCount;
+				const mydataHalf = diaryCount;
 				var ctx = document.getElementsByClassName("myChart");
 
 				var mixedChart = {
 					type : "bar",
-					labels : [ "자바", "파이썬", "html", "크롤링" ],
+					labels : title,
 					datasets : [ {
 						label : "에디터",
 						data : mydata,
