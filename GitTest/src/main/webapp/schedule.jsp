@@ -27,9 +27,20 @@ pageContext.setAttribute("todolist", todolist);
 String todostring="";
 for(int i=0; i<todolist.size(); i++){
 	if(i != todolist.size()-1){
-		todostring +=todolist.get(i).getTodo_title()+", ";
+		todostring +=todolist.get(i).getTodo_title();
+		if(todolist.get(i).getTodo_check()==1){
+			todostring += " o";
+		} else {
+			todostring += " x";
+		}
+		todostring +=", ";
 	} else{
 		todostring +=todolist.get(i).getTodo_title();
+		if(todolist.get(i).getTodo_check()==1){
+			todostring += " o";
+		} else {
+			todostring += " x";
+		}
 	}
 }
 pageContext.setAttribute("todostring", todostring);
@@ -192,8 +203,8 @@ body {
 						<ul>
 							<li class="active"><a href="#">에디터</a></li>
 							<hr>
-							<li><a href="editorset.jsp">작성</a></li>
-							<li><a href="editorindex.jsp">목록</a></li>
+							<li><a href="editorset.jsp">에디터 작성</a></li>
+							<li><a href="editorindex.jsp">에디터 목록</a></li>
 						</ul>
 						
 					</div>
@@ -209,7 +220,7 @@ body {
 							<li class="active"><a href="#">일기</a></li>
 							<hr>
 							<li><a href="diaryset.jsp">작성</a></li>
-							<li><a href="diaryindex.jsp">일기</a></li>
+							<li><a href="diaryindex.jsp">일기 목록</a></li>
 						</ul>
 					</div>
 					
@@ -219,7 +230,7 @@ body {
 							<li class="active"><a href="#">오늘 할 일</a></li>
 							<hr>
 							<li><a href="todoset.jsp">작성</a></li>
-							<li><a href="todoindex.jsp">목록</a></li>
+							<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
 						</ul>
 						
 					</div>
