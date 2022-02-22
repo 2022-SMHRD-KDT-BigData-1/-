@@ -50,7 +50,7 @@ public class DiaryDAO {
 	// diarySet에 입력 변수는 DiaryDTO diary 출력 변수는 cnt(int)
 	public int diarySet(DiaryDTO diary) {
 		connect();
-		sql = "insert into diary values(seq_diary_num.nextval,?,?,sysdate,?,?)";
+		sql = "insert into diary values(seq_diary_num.nextval,?,?,sysdate,?,?,?)";
 
 		cnt = 0;
 		try {
@@ -200,7 +200,7 @@ public class DiaryDAO {
 		ArrayList<DiaryDTO> diarylist = new ArrayList<DiaryDTO>();
 		connect();
 
-		sql = "select * from diary where member_nick=?";
+		sql = "select * from diary where member_nick=? order by diary_date desc";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
@@ -245,6 +245,68 @@ public class DiaryDAO {
 		
 		
 		return totalnum;
+	}
+	public int getCount2(String nick) {
+		
+		int totalnum = 0;
+		
+		connect();
+		
+		sql = "select count(*) from diary where member_nick = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				totalnum = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+		return totalnum;
+	}
+public ArrayList<DiaryDTO> getList(int start, int end, PMemberDTO member, ScheduleDTO schedule){
+		
+		ArrayList<DiaryDTO> list = new ArrayList<DiaryDTO>();
+		
+		connect();
+		
+		sql = "select * from (select rownum as rn, seq_diary_num, diary_title, diary_content, "
+				+ "diary_date, seq_schedule_num, seq_dayplan_num, member_nick from "
+				+ "(select * from diary where member_nick = ? and seq_schedule_num = ? order by seq_diary_num desc )) where rn between ? and ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, member.getMember_nick());
+			psmt.setInt(2, schedule.getSchedule_num());
+			psmt.setInt(3, start);
+			psmt.setInt(4, end);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				list.add(new DiaryDTO(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), 
+						rs.getInt(6), rs.getInt(7), rs.getString(8)));
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return list;
 	}
 	
 }

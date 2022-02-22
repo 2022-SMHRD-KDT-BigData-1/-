@@ -134,8 +134,8 @@ if (member != null) {
       <li class="divider"></li>
       <li class="dropdown-header">조회</li>
       <hr>
-      <li><a href="editorindex.jsp">전체 에디터 목록</a></li>
-      <li><a href="diaryindex.jsp">전체 일기 목록</a></li>
+      <li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
+      <li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
       <li><a href="todoindex.jsp">전체 할 일 목록</a></li>
       
       
@@ -167,7 +167,7 @@ if (member != null) {
                 <a class="dropdown-item" href="#">회원정보 수정/탈퇴</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">전체 학습상황 조회</a>
+                <a class="dropdown-item" href="achieveall.jsp">전체 학습상황 조회</a>
               </li>
               <li>
                 <a class="dropdown-item" href="#">위시리스트</a>
@@ -268,6 +268,9 @@ if (member != null) {
                                           <c:set value="${i = i+1 }" var="i"/>
                                              <c:choose>
                                                 <c:when test="${fn:length(recbooklist1) == i}">
+                                                 	<a href="BookintCon?num=${book.book_num }"> 
+                                                		<img src="${book.book_img}" width="80">
+                                             		</a>
                                                    <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
                                                       <button type="button"><img src="heart0.png" style="width:40px"></button>
                                                    </a>

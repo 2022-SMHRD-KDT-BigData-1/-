@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import com.pplus.model.AchieveDAO;
 import com.pplus.model.AchieveDTO;
+import com.pplus.model.DiaryDAO;
+import com.pplus.model.DiaryDTO;
 import com.pplus.model.EditorDAO;
 import com.pplus.model.EditorDTO;
 import com.pplus.model.PMemberDAO;
@@ -45,6 +47,8 @@ public class PLoginCon implements iPCommand {
 		RecVideoDAO recvideodao = new RecVideoDAO();
 		ScheduleDAO scheduleDAO = new ScheduleDAO();
 		AchieveDAO achieveDAO = new AchieveDAO();
+		EditorDAO editorDAO = new EditorDAO();
+		DiaryDAO diaryDAO = new DiaryDAO();
 		
 		PMemberDTO member =dao.pmemberLogin(id, pw);
 		
@@ -66,6 +70,8 @@ public class PLoginCon implements iPCommand {
 			ArrayList<RecVideoDTO> recvideolist1 = recvideodao.recVideoSelectAll2(member);
 			ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
 			ArrayList<AchieveDTO> achievelist = achieveDAO.achieveSelectAll(member.getMember_nick());
+			ArrayList<EditorDTO> editoralllist = editorDAO.memberEditorSelectAll(member.getMember_nick());
+			ArrayList<DiaryDTO> diaryalllist = diaryDAO.memberDiarySelectAll(member.getMember_nick());
 			
 			session.setAttribute("achievelist", achievelist);
 			session.setAttribute("schedulelist", schedulelist);
@@ -75,6 +81,8 @@ public class PLoginCon implements iPCommand {
 			session.setAttribute("recvideolist1", recvideolist1);
 			session.setAttribute("wishlistbook", wishlistbook);
 			session.setAttribute("wishlistvideo", wishlistvideo);
+			session.setAttribute("editoralllist", editoralllist);
+			session.setAttribute("diaryalllist", diaryalllist);
 			session.setAttribute("member", member);
 			response.sendRedirect("ploginmain.jsp");
 			

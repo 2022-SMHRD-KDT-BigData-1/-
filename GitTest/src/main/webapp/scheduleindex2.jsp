@@ -38,7 +38,7 @@
 			<c:forEach var="i" items="${sessionScope.schedulelist }">
 				<tr>
 					<td>
-						<input type="checkbox" value="${i.schedule_num }" class="delete">
+						<input type="checkbox" value="${i.schedule_num }" name="delete">
 					</td>
 					<td>
 						<input value="${i.schedule_num }" style="display: none;" name="num">
@@ -75,9 +75,12 @@
 		<script type="text/javascript" >
 			
 		$(document).ready(function() {
+			
+			var list = [];
 	 
-			  //set initial state.
-			  $('.delete').val($(this).is(':checked'));
+			 //set initial state.
+			 list.push($('.delete').val($(this).is(':checked')));
+			 console.log(list);
 
 			  $('.delete').change(function() {
 			    $('.delete').val($(this).is(':checked'));
@@ -108,7 +111,8 @@
 						}
 					});
 				}); 
-			})
+		};
+			
 			
 		
 		

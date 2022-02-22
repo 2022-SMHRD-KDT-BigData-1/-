@@ -203,7 +203,7 @@ public class EditorDAO {
 		ArrayList<EditorDTO> editorlist = new ArrayList<EditorDTO>();
 		connect();
 
-		sql = "select * from diary where member_nick=?";
+		sql = "select * from editor where member_nick=? order by editor_date desc";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
@@ -276,6 +276,33 @@ public int getCount2(int num) {
 		
 		return count;
 	}
+public int getCount3( String nick) {
+	
+	int totalnum = 0;
+	
+	connect();
+	
+	sql = "select count(*) from editor where member_nick = ?";
+	
+	try {
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, nick);
+		
+		rs = psmt.executeQuery();
+		
+		if(rs.next()) {
+			totalnum = rs.getInt(1);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		close();
+	}
+	
+	
+	return totalnum;
+}
 	public ArrayList<EditorDTO> getList(int start, int end, PMemberDTO member, ScheduleDTO schedule){
 		
 		ArrayList<EditorDTO> list = new ArrayList<EditorDTO>();

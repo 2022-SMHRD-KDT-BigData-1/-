@@ -37,7 +37,7 @@ public class DiaryCon implements iPCommand{
 		ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		
-		int cnt = dao.diarySet(new DiaryDTO(0, title, content, null,0, schedule.getSchedule_num(), member.getMember_nick()));
+		int cnt = dao.diarySet(new DiaryDTO(0, title, content, null, schedule.getSchedule_num(), 0, member.getMember_nick()));
 		
 		if(cnt > 0) {
 			System.out.println("일기 제목" + title);
@@ -51,7 +51,7 @@ public class DiaryCon implements iPCommand{
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('일기 등록을 실패하셨습니다.');");
-			out.print("location.href='pmain.jsp';");
+			out.print("location.href='schedule.jsp';");
 			out.print("</script>");
 		}
 		
