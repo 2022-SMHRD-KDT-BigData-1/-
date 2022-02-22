@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pplus.model.AchieveDAO;
+import com.pplus.model.AchieveDTO;
 import com.pplus.model.EditorDAO;
 import com.pplus.model.EditorDTO;
 import com.pplus.model.PMemberDAO;
@@ -42,6 +44,7 @@ public class PLoginCon implements iPCommand {
 		RecBookDAO recbookDAO =new RecBookDAO();
 		RecVideoDAO recvideodao = new RecVideoDAO();
 		ScheduleDAO scheduleDAO = new ScheduleDAO();
+		AchieveDAO achieveDAO = new AchieveDAO();
 		
 		PMemberDTO member =dao.pmemberLogin(id, pw);
 		
@@ -62,7 +65,9 @@ public class PLoginCon implements iPCommand {
 			ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member);
 			ArrayList<RecVideoDTO> recvideolist1 = recvideodao.recVideoSelectAll2(member);
 			ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
+			ArrayList<AchieveDTO> achievelist = achieveDAO.achieveSelectAll(member.getMember_nick());
 			
+			session.setAttribute("achievelist", achievelist);
 			session.setAttribute("schedulelist", schedulelist);
 			session.setAttribute("recbooklist", recbooklist);
 			session.setAttribute("recbooklist1", recbooklist1);

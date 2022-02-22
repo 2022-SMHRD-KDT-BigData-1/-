@@ -1,3 +1,4 @@
+<%@page import="com.pplus.model.AchieveDTO"%>
 <%@page import="com.pplus.model.DiaryDAO"%>
 <%@page import="com.pplus.model.ScheduleDTO"%>
 <%@page import="com.pplus.model.EditorDAO"%>
@@ -8,10 +9,13 @@
 	DiaryDAO diaryDAO = new DiaryDAO();
 	
 	ScheduleDTO schedule = (ScheduleDTO)session.getAttribute("schedule");
+	AchieveDTO achievve = (AchieveDTO)session.getAttribute("achieve");
 	
 	
 	int editorCount = editorDAO.getCount(schedule.getSchedule_num());
 	int diaryCount = diaryDAO.getCount(schedule.getSchedule_num());
+	
+	
 	
 %>
 <!DOCTYPE html>
@@ -176,12 +180,12 @@
                 <a class="dropdown-item" href="#">전체 학습상황 조회</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">위시리스트</a>
+                <a class="dropdown-item" href="mywhish.jsp">위시리스트</a>
               </li>
             </ul>
           </div>
           <li class="nav-item active">
-            <a class="nav-link" href="#">로그아웃</a>
+            <a class="nav-link" href="plogout.jsp">로그아웃</a>
           </li>
         </ul>
       </div>
@@ -223,7 +227,7 @@
           <!--  Catagories  -->
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="#">달력</a></li>
+              <li class="active"><a href="schedule.jsp">달력</a></li>
               <hr />
             </ul>
           </div>
@@ -240,12 +244,12 @@
               <li class="active"><a href="#">에디터</a></li>
               <hr />
               <li>
-                <a href="#"
+                <a href="editorset.jsp"
                   >작성</a
                 >
               </li>
               <li>
-                <a href="#"
+                <a href="editorindex.jsp"
                   >목록</a
                 >
     
@@ -266,8 +270,8 @@
             <ul>
               <li class="active"><a href="#">일기</a></li>
               <hr />
-              <li><a href="#">작성</a></li>
-              <li><a href="#">목록</a></li>
+              <li><a href="diaryset.jsp">작성</a></li>
+              <li><a href="diaryindex.jsp">목록</a></li>
             </ul>
           </div>
 
@@ -308,11 +312,16 @@
                 <div class="col-sm-6 col-md-7">
                   <div id="donut-chart"></div>
                     <script>
+                    var studyDay = "${sessionScope.achieve.achieve_study_day}";
+                    var numDay = "${sessionScope.achieve.schedule_num_day}";
+                    var head = studyDay / numDay * 100;
+                    head = head.toFixed(1);
+                    console.log(head);
                       var chart = bb.generate({
                         data: {
                           columns: [
-                            ["진행 분량", "${achieve.achieve_study_day / achieve.achieve_num_day * 100}"],
-                            ["남은 분량", "${100 - achieve.achieve_study_day / achieve.achieve_num_day * 100}"],
+                            ["진행 분량", head],
+                            ["남은 분량", 100-head],
                           ],
                           type: "donut",
                           onclick: function (d, i) {
@@ -326,7 +335,7 @@
                           },
                         },
                         donut: {
-                          title: "75%",
+                          title: head+"%",
                         },
                         Options: {
                           responsive: false,
@@ -354,7 +363,7 @@
 
                 <div class="container" style="padding-left: 80px">
                   <div class="icon">
-                    <span class="st">${sessionScope.achieve.achieve_study_day}/${sessionScope.schedule.schedule_num_day } 9/20</span>
+                    <span class="st">${sessionScope.achieve.achieve_study_day}/${sessionScope.schedule.schedule_num_day }</span>
                     <p>학습일</p>
                   </div>
 
@@ -373,25 +382,25 @@
                 padding: 4rem!important; font-size: 18px;">
                 
                   <span>남은기간</span>
-                  <span class="pull-right">>${sessionScope.achieve.achieve_study_day}/${sessionScope.schedule.schedule_num_day }9 / 20</span>
+                  <span class="pull-right">${sessionScope.achieve.achieve_study_day}/${sessionScope.schedule.schedule_num_day }</span>
                   <div class="progress">
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      style="width: 9%"
-                      aria-valuenow="9"
+                      style="width: ${sessionScope.achieve.achieve_study_day / sessionScope.schedule.schedule_num_day * 100 }%"
+                      aria-valuenow="${sessionScope.achieve.achieve_study_day / sessionScope.schedule.schedule_num_day * 100 }"
                       aria-valuemin="0"
                       aria-valuemax="100"
                     ></div>
                   </div>
                   <span>남은분량</span>
-                  <span class="pull-right">${sessionScope.achieve.achieve_study_day}/${sessionScope.schedule.book_page }135 / 300</span>
+                  <span class="pull-right">${sessionScope.achieve.achieve_study_page}/${sessionScope.schedule.book_page }</span>
                   <div class="progress">
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      style="width: 45%"
-                      aria-valuenow="135"
+                      style="width: ${sessionScope.achieve.achieve_study_page / sessionScope.schedule.book_page * 100 }%"
+                      aria-valuenow="${sessionScope.achieve.achieve_study_page / sessionScope.schedule.book_page * 100 }"
                       aria-valuemin="0"
                       aria-valuemax="100"
                     ></div>

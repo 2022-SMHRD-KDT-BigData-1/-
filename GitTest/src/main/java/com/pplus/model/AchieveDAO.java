@@ -79,7 +79,7 @@ public class AchieveDAO {
 	public int achieveUpdate(AchieveDTO achieve) {
 		connect();
 
-		sql = "update achieve set achieve_study_day=?, achieve_study_page=? where achieve_num=?";
+		sql = "update achieve set achieve_study_day=?, achieve_study_page=? where seq_achieve_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);

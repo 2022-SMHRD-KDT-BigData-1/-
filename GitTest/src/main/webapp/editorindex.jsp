@@ -53,25 +53,46 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>P+ - editor</title>
+    <title>Amado - Furniture Ecommerce Template | Shop</title> 
 
+ 
     <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico" />
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css" />
+    <link rel="stylesheet" href="css/core-style_footer.css" />
     <link rel="stylesheet" href="style.css" />
+
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
     
-     <!-- Font Awesome icons (free version)-->
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+
     <script
-      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
       crossorigin="anonymous"
     ></script>
-    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+<!-- Include the above in your HEAD tag -->
+
+
+   
   </head>
 
   <body>
-   	
     <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
@@ -104,23 +125,30 @@
             </ul>
           </div>
           <div class="dropdown nav-item active">
-            <a class="nav-link dropdown-toggle" href="학습플래너.jsp" >학습플래너</a>
+            <a class="nav-link dropdown-toggle" href="plannermain.jsp" >학습플래너</a>
             <span class="caret"></span></button>
     <ul class="dropdown-menu">
       <li class="dropdown-header">스케줄</li>
       <hr>
-      <li><a href="스케줄만_등록.jsp">등록</a></li>
-      <li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+      <li><a href="scheduleset.jsp">등록</a></li>
+      <li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+             
      <br>
       <li class="divider"></li>
       <li class="dropdown-header">일정</li>
       <hr>
-      <li><a href="일정등록4번.jsp">등록</a></li>
-      <li><a href="#">전체 일정 목록</a></li>
-      <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-      <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+      <li><a href="dayplantodayset.jsp">등록</a></li>
+      <li><a href="dayplantodayinsex.jsp">전체 일정 목록</a></li>
+      
+      <br>
+      <li class="divider"></li>
+      <li class="dropdown-header">조회</li>
+      <hr>
+      <li><a href="editorindex.jsp">전체 에디터 목록</a></li>
+      <li><a href="diaryindex.jsp">전체 일기 목록</a></li>
+      <li><a href="todoindex.jsp">전체 할 일 목록</a></li>
+      
+      
     </ul>
           </div>
           
@@ -138,7 +166,7 @@
                 <a class="dropdown-item" href="포폴목록.jsp">목록</a>
               </li>
             </ul>
-          </div>
+          </div> 
 
           <div class="dropdown nav-item active">
             <a class="nav-link dropdown-toggle" href="#" >마이페이지</a>
@@ -164,6 +192,17 @@
       </div>
     </header>
 
+    <!-- Search Wrapper Area Start -->
+    <div class="search-wrapper section-padding-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="search-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search Wrapper Area End -->
 
     <!-- ##### Main Content Wrapper Start ##### -->
     <div class="main-content-wrapper d-flex clearfix">
@@ -179,25 +218,42 @@
         </div>
       </div>
 
-     
-
       <div class="shop_sidebar_area">
         <!-- ##### Single Widget ##### -->
         <div class="widget catagory mb-50">
-         <h6 class="widget-title mb-30">학습플래너</h6>
-         <br>
           <!-- Widget Title -->
           <h6 class="widget-title mb-30">스케줄</h6>
 
           <!--  Catagories  -->
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="스케줄만_등록.jsp">등록</a></li>
+              <li class="active"><a href="schedule.jsp">달력</a></li>
               <hr />
-              <li><a href="#">목록</a></li>
-              <li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ##### Single Widget ##### -->
+        <div class="widget catagory mb-50">
+          <!-- Widget Title -->
+          <!-- <h6 class="widget-title mb-30">스케줄</h6> -->
+
+          <!--  Catagories  -->
+          <div class="catagories-menu">
+            <ul>
+              <li class="active"><a href="#">에디터</a></li>
+              <hr />
+              <li>
+                <a href="editorset.jsp"
+                  >작성</a
+                >
+              </li>
+              <li>
+                <a href="editorindex.jsp"
+                  >목록</a
+                >
+              </li>
+            </ul>
             </ul>
           </div>
         </div>
@@ -205,39 +261,42 @@
         <!-- ##### Single Widget ##### -->
         <div class="widget category mb-50">
           <!-- Widget Title -->
-          <h6 class="widget-title mb-30">일정</h6>
+          <!-- <h6 class="widget-title mb-30">일정</h6> -->
 
           <!-- Widget Title -->
 
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="일정등록4번.jsp">등록</a></li>
+              <li class="active"><a href="#">일기</a></li>
               <hr />
-              <li><a href="#">목록</a></li>
-              <li><a href="#">전체 일정 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
+              <li><a href="diaryset.jsp">작성</a></li>
+              <li><a href="diaryindex.jsp">목록</a></li>
             </ul>
+          </div>
+
+          <br />
+
+          <div class="catagories-menu">
+            <ul>
+              <li class="active"><a href="achieve.jsp">학습진행상황</a></li>
+              <hr />
+            </ul>
+            <!-- <br><br><br><br><br><br>
+            <br><br><br><br> -->
           </div>
         </div>
       </div>
-
-
-
-		<div style="width: 60%; margin-top: 150px; margin-left: 300px;">
-			<!-- Option 1: Bootstrap Bundle with Popper -->
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-				crossorigin="anonymous"></script>
-
-
-
-			<br>
-			<h1 style="text-align: center;">
-				MY 에디터 <i class="fas fa-laptop-code"></i>
-			</h1>
-			<br>
+      <div
+        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 90px;" >
+      <br>
+        <!-- <h1>스케줄 등록</h1> -->
+        <!-- 에디터 목록 -->
+  <div class="container">
+    <h1 style="text-align: center;">
+     MY 에디터
+     <i class="fas fa-laptop-code"></i>
+    </h1>
+    <br>
 			<div class="container">
 			<c:set value="<%= (currentPage-1)*10%>" var="j" />
 				<table
@@ -345,6 +404,7 @@
 					</div>
 				</nav>
 			</div>
+	</div>
 	</div>
 
    

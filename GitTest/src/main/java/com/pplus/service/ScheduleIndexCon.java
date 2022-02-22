@@ -58,6 +58,7 @@ public class ScheduleIndexCon implements iPCommand {
 			out.print("</script>");
 		}else {
 			System.out.println("스케줄 번호" + num);
+			System.out.println(achieve.getAchieve_num());
 			session.setAttribute("achieve", achieve);
 			session.setAttribute("schedule", schedule);
 			session.setAttribute("editorlist", editorlist);

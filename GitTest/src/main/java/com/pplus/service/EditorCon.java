@@ -45,7 +45,7 @@ public class EditorCon implements iPCommand {
 			
 			int count = dao.getCount2(schedule.getSchedule_num());
 			
-			if(count > 0) {
+			if(count >= 2) {
 				
 				ArrayList<EditorDTO> editorlist = dao.editorSelectAll(member.getMember_nick(), schedule.getSchedule_num());
 				session.setAttribute("editorlist", editorlist);
@@ -55,11 +55,14 @@ public class EditorCon implements iPCommand {
 				AchieveDTO achieve = (AchieveDTO)session.getAttribute("achieve");
 				
 				int achieve_study_day = Integer.parseInt(achieve.getAchieve_study_day());
-				achieve_study_day += achieve_study_day;
+				achieve_study_day += 1;
 				String achieve_study_day1 = Integer.toString(achieve_study_day);
+				System.out.println(achieve_study_day);
+				
 				
 				int achieve_study_page = achieve.getAchieve_study_page();
-				achieve_study_page += achieve_study_page;
+				achieve_study_page += schedule.getSchedule_day_page();
+				System.out.println(achieve_study_page);
 				
 				int cnt1 = achieveDAO.achieveUpdate(new AchieveDTO(achieve.getAchieve_num(), achieve_study_day1, achieve_study_page,
 						schedule.getSchedule_num(), member.getMember_nick(), 0, null));
