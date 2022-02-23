@@ -24,9 +24,7 @@
 /* :: 2.0 Import All CSS */
 /* :: 3.0 Base CSS */
 
-.abc{
-	
-}
+
 
 .page {
   padding-top: 3%;
@@ -216,7 +214,7 @@
 body {
 
   font-size: 16px;
-  background-color: #FFF3E0;
+  background-color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -878,7 +876,7 @@ img {
   flex: 0 0 230px;
   width: 230px;
   max-width: 230px;
-  background-color: #343434;
+  background-color: #30467C;
   padding: 100px 40px;
 }
 
