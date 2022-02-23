@@ -7,50 +7,47 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>)session.getAttribute("wishlistbook");
-	PMemberDTO member = (PMemberDTO) session.getAttribute("member");
-	
-	BookDAO bookDAO = new BookDAO();
-	RecBookDAO recbookDAO = new RecBookDAO();
-	ArrayList<RecBookDTO> wishlist = new ArrayList<RecBookDTO>();
-	
-	ArrayList<String> book_part1 = new ArrayList<String>();
-	for(int i = 0; i <wishlistbook.size(); i++){
-		String book_part = bookDAO.bookPart1(wishlistbook.get(i).getUser_type1());
-		book_part1.add(book_part);
-	}
-	ArrayList<String> book_part2 = new ArrayList<String>();
-	for(int i = 0; i <wishlistbook.size(); i++){
-		String book_part = bookDAO.bookPart2(wishlistbook.get(i).getUser_type2());
-		book_part2.add(book_part);
-	}
-	ArrayList<String> book_part3 = new ArrayList<String>();
-	for(int i = 0; i <wishlistbook.size(); i++){
-		String book_part = bookDAO.bookPart3(wishlistbook.get(i).getUser_type3());
-		book_part3.add(book_part);
-	}
-	pageContext.setAttribute("book_part1", book_part1);
-	pageContext.setAttribute("book_part2", book_part2);
-	pageContext.setAttribute("book_part3", book_part3);
-	
-	int pageSize = 10;
-	String pageNum = request.getParameter("pageNum");
+ArrayList<RecBookDTO> wishlistbook = (ArrayList<RecBookDTO>) session.getAttribute("wishlistbook");
+PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
-	
-	if (pageNum == null){ // 클릭한게 없으면 1번 페이지
-		pageNum = "1";
-	}
-	
-	int currentPage = Integer.parseInt(pageNum);
-	
-	// 해당 페이지에서 시작할 레코드 / 마지막 레코드
-	int startRow = (currentPage - 1) * pageSize + 1;
-	int endRow = currentPage * pageSize;
-	
-	int count = 0;
-	count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 저장된 총 갯수
-	
-	
+BookDAO bookDAO = new BookDAO();
+RecBookDAO recbookDAO = new RecBookDAO();
+ArrayList<RecBookDTO> wishlist = new ArrayList<RecBookDTO>();
+
+ArrayList<String> book_part1 = new ArrayList<String>();
+for (int i = 0; i < wishlistbook.size(); i++) {
+	String book_part = bookDAO.bookPart1(wishlistbook.get(i).getUser_type1());
+	book_part1.add(book_part);
+}
+ArrayList<String> book_part2 = new ArrayList<String>();
+for (int i = 0; i < wishlistbook.size(); i++) {
+	String book_part = bookDAO.bookPart2(wishlistbook.get(i).getUser_type2());
+	book_part2.add(book_part);
+}
+ArrayList<String> book_part3 = new ArrayList<String>();
+for (int i = 0; i < wishlistbook.size(); i++) {
+	String book_part = bookDAO.bookPart3(wishlistbook.get(i).getUser_type3());
+	book_part3.add(book_part);
+}
+pageContext.setAttribute("book_part1", book_part1);
+pageContext.setAttribute("book_part2", book_part2);
+pageContext.setAttribute("book_part3", book_part3);
+
+int pageSize = 10;
+String pageNum = request.getParameter("pageNum");
+
+if (pageNum == null) { // 클릭한게 없으면 1번 페이지
+	pageNum = "1";
+}
+
+int currentPage = Integer.parseInt(pageNum);
+
+// 해당 페이지에서 시작할 레코드 / 마지막 레코드
+int startRow = (currentPage - 1) * pageSize + 1;
+int endRow = currentPage * pageSize;
+
+int count = 0;
+count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 저장된 총 갯수
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -276,31 +273,33 @@
 											</tr>
 										</thead>
 										<tbody style="text-align: center;">
-											<c:set value="0" var="j"/>
-										<c:forEach var="wish" items="${sessionScope.wishlistbook }" varStatus="status">
-											<tr>
-											<td class="wish-num">
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="flexRadioDefault" id="flexRadioDefault1" /> <label
-														class="form-check-label" for="flexRadioDefault1">
-														<h5 style="padding-left: 20px">${j = j + 1 }</h5>
-													</label>
-												</div>
-											</td>
-											<td class="pic">
-												<a href="VideointCon?num=${wish.book_num }">
-													<img src="${wish.book_img}" style="width: 80%">
-												</a>
-											</td>
-											<td class="title"><span>${wish.book_title }</span></td>
-											<td class="type">
-												<div class="type-name">
-													<span>${book_part1[status.index]} > ${book_part2[status.index]}  > ${book_part3[status.index]}</span>
-												</div>
-											</td>
-											</tr>
-									</c:forEach>
+											<c:set value="0" var="j" />
+											<c:forEach var="wish" items="${sessionScope.wishlistbook }"
+												varStatus="status">
+												<tr>
+													<td class="wish-num">
+														<div class="form-check">
+															<input class="form-check-input" type="radio"
+																name="flexRadioDefault" id="flexRadioDefault1" /> <label
+																class="form-check-label" for="flexRadioDefault1">
+																<h5 style="padding-left: 20px">${j = j + 1 }</h5>
+															</label>
+														</div>
+													</td>
+													<td class="pic"><a
+														href="VideointCon?num=${wish.book_num }"> <img
+															src="${wish.book_img}" style="width: 80%">
+													</a></td>
+													<td class="title"><span>${wish.book_title }</span></td>
+													<td class="type">
+														<div class="type-name">
+															<span>${book_part1[status.index]} >
+																${book_part2[status.index]} >
+																${book_part3[status.index]}</span>
+														</div>
+													</td>
+												</tr>
+											</c:forEach>
 
 										</tbody>
 									</table>
@@ -318,60 +317,55 @@
 				<nav aria-label="Page navigation example">
 					<div class="text-center">
 						<ul class="pagination" style="justify-content: center;">
-				<%
-								if(count > 0){
-									// 총 페이지의 수
-									int pageCount = count / pageSize + (count%pageSize == 0 ? 0 : 1);
-									
-									// 한 페이지에 보여줄 페이지 블럭(링크) 수
-									int pageBlock = 10;
-									// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
-									int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
-									int endPage = startPage + pageBlock - 1;
-									
-									// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
-									if(endPage > pageCount){
-										endPage = pageCount;
-									}
-									
-									if(startPage > pageBlock){ // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
-								
-							
-							%>
-										<li class="page-item">
-											<a class="page-link" href="myvideowish.jsp?pageNum=<%= startPage - 10 %>" aria-label="Previous">
-											<span aria-hidden="true">&laquo;</span>
-											<span class="sr-only">Previous</span>
-											</a>
-										</li>
-									
 							<%
+							if (count > 0) {
+								// 총 페이지의 수
+								int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+								// 한 페이지에 보여줄 페이지 블럭(링크) 수
+								int pageBlock = 10;
+								// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
+								int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+								int endPage = startPage + pageBlock - 1;
+
+								// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
+								if (endPage > pageCount) {
+									endPage = pageCount;
 								}
-										for(int i=startPage; i <= endPage; i++){ // 페이지 블록 번호
-											if(i == currentPage){ // 현재 페이지에는 링크를 설정하지 않음
-							
-							%>				
-											<%=i %>
-											
-								<%									
-											}else{ // 현재 페이지가 아닌 경우 링크 설정
-								%>	
-											<li class="page-item">
-												<a class="page-link" href="myvideowish.jsp?pageNum=<%=i%>"><%=i %></a>
-											</li>
-											<%	
-								}
+
+								if (startPage > pageBlock) { // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
+							%>
+							<li class="page-item"><a class="page-link"
+								href="myvideowish.jsp?pageNum=<%=startPage - 10%>"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+							</a></li>
+
+							<%
+							}
+							for (int i = startPage; i <= endPage; i++) { // 페이지 블록 번호
+							if (i == currentPage) { // 현재 페이지에는 링크를 설정하지 않음
+							%>
+							<%=i%>
+
+							<%
+							} else { // 현재 페이지가 아닌 경우 링크 설정
+							%>
+							<li class="page-item"><a class="page-link"
+								href="myvideowish.jsp?pageNum=<%=i%>"><%=i%></a></li>
+							<%
+							}
 							} // for end
-							
-							if(endPage < pageCount){ // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
-					%>
-										<li class="page-item">
-											<a class="page-link" href="myvideowish.jsp?pageNum=${startPage + 10 }" aria-label="Next"> 
-												<span aria-hidden="true">&raquo;</span> 
-												<span class="sr-only">Next</span>
-											</a>
-										</li>
-										<%}
+
+							if (endPage < pageCount) { // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
+							%>
+							<li class="page-item"><a class="page-link"
+								href="myvideowish.jsp?pageNum=${startPage + 10 }"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+									class="sr-only">Next</span>
+							</a></li>
+							<%
+							}
 							}
 							%>
 						</ul>
@@ -379,17 +373,19 @@
 				</nav>
 			</div>
 		</div>
+	</div>
 
-		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-		<script src="js/jquery/jquery-2.2.4.min.js"></script>
-		<!-- Popper js -->
-		<script src="js/popper.min.js"></script>
-		<!-- Bootstrap js -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Plugins js -->
-		<script src="js/plugins.js"></script>
-		<!-- Active js -->
-		<script src="js/active.js"></script>
+
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>
 
