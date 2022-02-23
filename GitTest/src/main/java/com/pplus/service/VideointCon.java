@@ -45,12 +45,12 @@ public class VideointCon extends HttpServlet {
 				session.setAttribute("video", video);
 				response.sendRedirect("videoint.jsp");
 			}
-		}
+		}else {
 		
 		
 		session.setAttribute("video", video);
 		response.sendRedirect("videointlogout.jsp");
-	
+		}
 	} 
 
 }

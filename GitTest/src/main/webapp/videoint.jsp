@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -236,14 +237,33 @@
                 <!-- Add to Cart Form -->
                
                  <div style="padding-left:40%; padding-top: 30px;">
-                  <button
-                    type="submit"
-                    name="addtocart"
-                    value="5"
-                    class="btn amado-btn"
-                  >
-                  <i class="fas fa-heart"></i> 위시리스트
-                  </button>
+                 <c:choose>
+                 	<c:when test="${recvideo.contents_cnt == 1 }">
+                 		<a href="WishVideoCon2.do?num=${video.video_num}&recvideonum=1">
+		                  <button
+		                    type="submit"
+		                    name="addtocart"
+		                    value="5"
+		                    class="btn amado-btn"
+		                  >
+		                  <i class="fas fa-heart"></i> 위시리스트
+		                  </button>
+		                  </a>
+                 	</c:when>
+                 	<c:otherwise>
+                 		<a href="WishVideoCon2.do?num=${video.video_num}&recvideonum=0">
+		                  <button
+		                    type="submit"
+		                    name="addtocart"
+		                    value="5"
+		                    class="btn amado-btn"
+		                  >
+		                  <i class="fas fa-heart"></i> 위시리스트
+		                  </button>
+		                  </a>
+                 	</c:otherwise>
+                 </c:choose>
+                 
                 </div>
 
               </div>

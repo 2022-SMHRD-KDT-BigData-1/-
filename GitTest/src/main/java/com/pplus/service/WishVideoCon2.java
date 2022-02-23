@@ -42,7 +42,7 @@ public class WishVideoCon2 implements iPCommand {
 			}else {
 				recvideonum = 0;
 			}
-			
+			System.out.println(recvideonum);
 			PMemberDTO member =(PMemberDTO) session.getAttribute("member");
 			RecVideoDAO recvideoDao = new RecVideoDAO();	
 			int cnt = recvideoDao.recVideoWish(member.getMember_nick(),recvideonum, num);
@@ -52,7 +52,9 @@ public class WishVideoCon2 implements iPCommand {
 				
 				ArrayList<RecVideoDTO> recvideolist = recvideoDao.recVideoSelectAll(member);
 				RecVideoDTO recvideo = recvideoDao.recVideoSelect(num,member);
+				ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>) recvideoDao.recVideoWishSelectAll(member.getMember_nick());
 				
+				session.setAttribute("wishlistvideo", wishlistvideo);
 				session.setAttribute("recvideolist", recvideolist);
 				session.setAttribute("recvideo", recvideo);
 				

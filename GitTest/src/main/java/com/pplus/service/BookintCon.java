@@ -44,11 +44,12 @@ public class BookintCon extends HttpServlet {
 				session.setAttribute("book", book);
 				response.sendRedirect("bookint.jsp");
 			}
-		}
+		}else {
 		
 		
 		
 		session.setAttribute("book", book);
 		response.sendRedirect("bookintlogout.jsp");
+		}
 	}
 }

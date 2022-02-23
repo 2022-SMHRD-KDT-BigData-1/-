@@ -55,6 +55,9 @@ public class WishVideoCon4 implements iPCommand{
 	      
 	      if(cnt > 0) {
 	    	  	ArrayList<RecVideoDTO> recvideolist = recvideoDao.recVideoSelectAll(member);
+	    	  	ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>) recvideoDao.recVideoWishSelectAll(member.getMember_nick());
+				
+				session.setAttribute("wishlistvideo", wishlistvideo);
 				session.setAttribute("recvideolist", recvideolist);
 				
 				response.sendRedirect("pmain.jsp");
