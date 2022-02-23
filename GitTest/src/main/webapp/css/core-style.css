@@ -210,7 +210,12 @@
 }
 
 body {
+<<<<<<< HEAD
 	font-size: 16px;
+=======
+  font-size: 16px;
+  background-color: #fffde7;
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/Pplus.git
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -864,6 +869,7 @@ img {
 }
 
 .main-content-wrapper .shop_sidebar_area {
+<<<<<<< HEAD
 	position: relative;
 	z-index: 1;
 	-webkit-box-flex: 0;
@@ -873,6 +879,17 @@ img {
 	max-width: 230px;
 	background-color: #f5f7fa;
 	padding: 100px 40px;
+=======
+  position: relative;
+  z-index: 1;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 230px;
+  flex: 0 0 230px;
+  width: 230px;
+  max-width: 230px;
+  background-color: #424242;
+  padding: 100px 40px;
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/Pplus.git
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -947,12 +964,21 @@ img {
 }
 
 .main-content-wrapper .cart-table-area {
+<<<<<<< HEAD
 	position: relative;
 	z-index: 1;
 	-webkit-box-flex: 0;
 	/* -ms-flex: 0 0 calc(95% - 320px); */
 	flex: 0 0 calc(95% - 320px);
 	/*  width: calc(95% - 320px);
+=======
+  position: relative;
+  z-index: 1;
+  -webkit-box-flex: 0;
+  /* -ms-flex: 0 0 calc(95% - 320px); */
+  flex: 0 0 calc(95% - 320px);
+  /*  width: calc(95% - 320px);
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/Pplus.git
   max-width: calc(95% - 320px); */
 }
 

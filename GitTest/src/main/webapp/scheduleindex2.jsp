@@ -10,7 +10,7 @@
 </head>
 <body>
 	
-		<table border="1">
+		<table border="1" >
 		<c:set value="0" var="j" />
 			<tr>
 				<td>
@@ -67,24 +67,38 @@
 			</c:forEach>
 				<tr>
 					<td colspan="8" align="center">
-						<input type="button" id="delete" value="선택삭제">
+						<a href="scheduleindex2.jsp"><input type="submit" id="delete" value="선택삭제" onsubmit="return ck()"></a>
 					</td>
 				</tr>
 		</table>
+	
 
 		<script type="text/javascript" >
 			
 		$(document).ready(function() {
-			
 			var list = [];
-	 
-			 //set initial state.
-			 list.push($('.delete').val($(this).is(':checked')));
-			 console.log(list);
+			function ck() {
+				
+				 
+				 //set initial state.
+				  $('.delete').val($(this).is(':checked'));
+				 
+				  
+				  
+				  var val = document.getElementsByName("delete");
+				  var size = val.length;
+				    for(var i = 0; i < size; i++){
+				        if(val[i].checked == true){
+				        	list.push(val[i.value]);
+				        }
+				    }
+			}
+			
 
-			  $('.delete').change(function() {
+		/* 	  $('.delete').change(function() {
 			    $('.delete').val($(this).is(':checked'));
 			    console.log($(this).val());
+			    
 			  });
 
 			  $('.delete').click(function() {
@@ -96,7 +110,7 @@
 				$("#delete").click(function(){
 					$.ajax({
 						type : "POST",
-						data : {'num':lists},
+						data : {'num':list},
 						url : "ScheduleDeleteCon.do",
 						datatype : "json",
 						success:function(result) {
@@ -110,27 +124,14 @@
 							alert("서버요청실패");
 						}
 					});
-				}); 
-		};
-			
-			
-		
-		
-			
+				}); */
+		}); 
 			/* var lists = [];
 			$("input[name = delete]:checked").each(function(i){
 				var list = $(this);
 				console.log(list);
 				lists.push(list);
 			}); */
-			
-			
-
-			
-			
-			
-			
 		</script>
-	
 </body>
 </html>

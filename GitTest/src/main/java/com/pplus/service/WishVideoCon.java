@@ -49,7 +49,7 @@ public class WishVideoCon implements iPCommand {
 				ArrayList<RecVideoDTO> recvideolist = recvideo.recVideoSelectAll(member);
 				session.setAttribute("recvideolist", recvideolist);
 				
-				response.sendRedirect("pmain.jsp");
+				response.sendRedirect("ploginmain.jsp");
 				
 			}else {
 				request.setAttribute("num", num);

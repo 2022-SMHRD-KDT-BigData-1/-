@@ -14,11 +14,10 @@
 
     <!-- Title  -->
 <title>P+(Programming에 Planner를 더하다.)</title>
- 
     <!-- Favicon  -->
 <link rel="icon" href="image/p+만.png" />
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style_footer.css" />
+    <link rel="stylesheet" href="css/core-style.css" />
     <link rel="stylesheet" href="style.css" />
 
     <title>Hello, world!</title>
@@ -38,20 +37,11 @@
       crossorigin="anonymous"
     ></script>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
-<!-- Include the above in your HEAD tag -->
-
-
    
   </head>
 
   <body>
-    <header
+   <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
       <a class="navbar-brand" href="#">P+</a>
@@ -124,7 +114,7 @@
                 <a class="dropdown-item" href="포폴목록.jsp">목록</a>
               </li>
             </ul>
-          </div> 
+          </div>
 
           <div class="dropdown nav-item active">
             <a class="nav-link dropdown-toggle" href="#" >마이페이지</a>
@@ -239,13 +229,13 @@
               <li class="active"><a href="#">학습진행상황</a></li>
               <hr />
             </ul>
-            <!-- <br><br><br><br><br><br>
-            <br><br><br><br> -->
+            <br><br><br><br><br><br>
+            <br><br><br><br>
           </div>
         </div>
       </div>
       <div
-        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 90px;" >
+        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 180px;" >
       <br>
         <!-- <h1>스케줄 등록</h1> -->
         <!-- 에디터 목록 -->
@@ -421,83 +411,7 @@
     </div>
 
     <!-- ##### Footer Area Start ##### -->
-    <footer class="footer_area clearfix">
-      <div class="container">
-        <div class="row align-items-center">
-          <!-- Single Widget Area -->
-          <div class="col-12 col-lg-4" style="
-              padding-left: 76px;">
-            <div class="single_widget_area" style="width: 101%;">
-              <!-- Logo -->
-              <div class="footer-logo mr-50">
-                <h1 style="color: white; font-weight: bold; font-size: 55px;" >P+</h1>
-                <!-- <a href="index.html"
-                  ><img src="img/core-img/logo2.png" alt=""
-                /></a> -->
-              </div>
-              <!-- Copywrite Text -->
-              <p class="copywrite">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                <!-- Copyright &copy; -->
-                <!-- <script>
-                  document.write(new Date().getFullYear());
-                </script> -->
-                Planner에 Programming을 더하다.                
-              </p>
-              <p class="copywrite">스마트인재개발원 ㅣ 빅데이터 분석서비스 개발자과정</p>
-            </div>
-          </div>
-          <!-- Single Widget Area -->
-          <div class="col-12 col-lg-8">
-            <div class="single_widget_area">
-              <!-- Footer Menu -->
-              <div class="footer_menu">
-                <nav class="navbar navbar-expand-lg justify-content-end">
-                  <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#footerNavContent"
-                    aria-controls="footerNavContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                  >
-                    <i class="fa fa-bars"></i>
-                  </button>
-                  <div class="container-fluid" id="cont">
-                    <div class="row">
-                      <div class="col-sm-12">
-                          <div class="middle">
-                                  <a class="btn2" href="#">
-                                      <i class="fab fa-facebook-f"></i>
-                                  </a>
-                  
-                                  <a class="btn2" href="#">
-                                      <i class="fab fa-twitter"></i>
-                                  </a>
-                  
-                                  <a class="btn2" href="#">
-                                      <i class="fab fa-instagram"></i>
-                                  </a>
-                  
-                                  <a class="btn2" href="#">
-                                      <i class="fab fa-google"></i>
-                                  </a>
-                  
-                                  <a class="btn2" href="#">
-                                      <i class="fab fa-youtube"></i>
-                                  </a>
-                              </div>
-                      </div>
-                    </div>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+  
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
