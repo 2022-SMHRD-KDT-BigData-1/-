@@ -1,10 +1,20 @@
+<%@page import="com.pplus.model.BookDAO"%>
 <%@page import="com.pplus.model.BookDTO"%>
 <%@page import="com.pplus.model.RecBookDTO"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	BookDTO book = (BookDTO)session.getAttribute("book");
+	BookDAO bookDAO = new BookDAO();
+	
+	String book_part1 = bookDAO.bookPart1(book.getUser_type1());
+	String book_part2 = bookDAO.bookPart2(book.getUser_type2());
+	String book_part3 = bookDAO.bookPart3(book.getUser_type3());
+	pageContext.setAttribute("book_part1", book_part1);
+	pageContext.setAttribute("book_part2", book_part2);
+	pageContext.setAttribute("book_part3", book_part3);
 	
 %>
 <!DOCTYPE html>
@@ -233,9 +243,9 @@
 							<ol class="breadcrumb mt-50">
 
 								<li class="breadcrumb-item">컴퓨터/IT</li>
-								<li class="breadcrumb-item">${book.user_type1}</li>
-								<li class="breadcrumb-item">${book.user_type2}</li>
-								<li class="breadcrumb-item active" aria-current="page">${book.user_type3}</li>
+								<li class="breadcrumb-item">${book_part1}</li>
+								<li class="breadcrumb-item">${book_part2}</li>
+								<li class="breadcrumb-item active" aria-current="page">${book_part3}</li>
 							</ol>
 						</nav>
 					</div>
@@ -283,10 +293,32 @@
 							<!-- Add to Cart Form -->
 
 							<div style="padding-left: 40%; padding-top: 30px;">
-								<button type="submit" name="addtocart" value="5"
-									class="btn amado-btn">
-									<i class="fas fa-heart"></i> 위시리스트
-								</button>
+								<c:choose>
+				                 	<c:when test="${recbook.contents_cnt == 1 }">
+				                 		<a href="WishCon2.do?num=${book.book_num}&recbooknum=1">
+						                  <button
+						                    type="submit"
+						                    name="addtocart"
+						                    value="5"
+						                    class="btn amado-btn"
+						                  >
+						                  <i class="fas fa-heart"></i> 위시리스트
+						                  </button>
+						                  </a>
+				                 	</c:when>
+				                 	<c:otherwise>
+				                 		<a href="WishCon2.do?num=${book.book_num}&recbooknum=0">
+						                  <button
+						                    type="submit"
+						                    name="addtocart"
+						                    value="5"
+						                    class="btn amado-btn"
+						                  >
+						                  <i class="fas fa-heart"></i> 위시리스트
+						                  </button>
+						                  </a>
+				                 	</c:otherwise>
+                			 </c:choose>
 							</div>
 
 						</div>
