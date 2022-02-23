@@ -222,32 +222,31 @@ public class TodoDAO {
 
 		return totalnum;
 	}
-	
-public int getCount2(String nick) {
-		
+
+	public int getCount2(String nick) {
+
 		int totalnum = 0;
-		
+
 		connect();
-		
+
 		sql = "select count(*) from todo where member_nick = ?";
-		
+
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
-			
+
 			rs = psmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				totalnum = rs.getInt(1);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
-		
-		
+
 		return totalnum;
 	}
 
@@ -273,7 +272,6 @@ public int getCount2(String nick) {
 
 				list.add(new TodoDTO(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6),
 						rs.getString(7), rs.getInt(8)));
-
 			}
 
 		} catch (SQLException e) {
@@ -284,8 +282,8 @@ public int getCount2(String nick) {
 
 		return list;
 	}
-	
-	public ArrayList<TodoDTO> memberDiarySelectAll(String nick) {
+
+	public ArrayList<TodoDTO> membertodoSelectAll(String nick) {
 		ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 		connect();
 
@@ -297,8 +295,8 @@ public int getCount2(String nick) {
 
 			while (rs.next()) {
 
-				todolist.add(new TodoDTO(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6),
-						rs.getString(7), rs.getInt(8)));
+				todolist.add(new TodoDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getInt(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -307,6 +305,27 @@ public int getCount2(String nick) {
 		}
 
 		return todolist;
+	}
+	
+	public int todoCheckUpdate(int seq_todo_num, int todo_check) {
+		connect();
+
+		sql = "update todo set todo_check=? where seq_todo_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, todo_check);
+			psmt.setInt(2, seq_todo_num);
+
+			cnt = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
 	}
 
 }

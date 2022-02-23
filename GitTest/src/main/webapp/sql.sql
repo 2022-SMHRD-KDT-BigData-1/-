@@ -412,6 +412,7 @@ select * from achieve
 select seq_dayplan_num from dayplan where to_char(dayplan_date,'yyyy/mm/dd')=to_char(sysdate, 'yyyy/mm/dd') and member_nick='z'
 select seq_dayplan_num from dayplan where DAYPLAN_DATE LIKE '%22-02-17%'
 select seq_dayplan_num from dayplan where member_nick='z' and to_char(dayplan_date,'yyyy/mm/dd')=to_char(sysdate, 'yyyy/mm/dd') and seq_schedule_num=0
+select * from (select rownum as rn, seq_todo_num, todo_title,todo_date, seq_schedule_num, seq_dayplan_num, member_nick, todo_check from (select * from todo where member_nick = 'asdf' and seq_schedule_num = 23 order by seq_todo_num desc )) where rn between 1 and 5
 
 drop¹®
 

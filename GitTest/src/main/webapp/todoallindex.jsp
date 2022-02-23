@@ -30,7 +30,7 @@ int count = 0;
 count = todoDAO.getCount2(member.getMember_nick());
 
 if (count > 0) {
-	todolist = todoDAO.memberDiarySelectAll(member.getMember_nick());
+	todolist = todoDAO.membertodoSelectAll(member.getMember_nick());
 	pageContext.setAttribute("todolist", todolist);
 
 }
@@ -237,40 +237,42 @@ if (count > 0) {
 			</h1>
 			<br>
 			<div class="container">
+			<c:set value="<%= (currentPage-1)*10%>" var="j" />
 				<table
 					class="table table-bordered table-hover table-sm text-center ">
 
 
 					<thead class="table-warning ">
-						<tr>
-							<th class="text-center">선택</th>
-							<th class="text-center">No.</th>
-							<th class="text-center">스케줄명</th>
-							<th class="text-center">할 일 제목</th>
-							<th class="text-center">할 일 체크</th>
+
+						<th class="text-center">선택</th>
+						<th class="text-center">No.</th>
+						<th class="text-center">스케줄명</th>
+						<th class="text-center">할 일 날짜</th>
+						<th class="text-center">할 일 제목</th>
+						<th class="text-center">할 일 체크</th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<c:forEach var="i" items="${sessionScope.todolist }">
+						<c:forEach var="i" items="${todolist }">
 							<tr>
 								<td><div class="form-check">
-										<input class="form-check-input" type="radio"
+										<input class="form-check-input" type="check"
 											name="flexRadioDefault" id="flexRadioDefault1"> <label
 											class="form-check-label" for="flexRadioDefault1"> </label>
 									</div></td>
 								<td><input value="${i.todo_num }" style="display: none;"
 									name="num"> <input value="${i.member_nick }"
-									style="display: none;" name="nick"> ${j += 1}</td>
-								<td>${i.todo_date }</td>
-								<td>${sessionScope.schedule.schedule_name }</td>
+									style="display: none;" name="nick"> ${j =j+ 1}</td>
+								<td>${schedule.schedule_name }</td>
+								<td>${i.todo_date }</td>								
 								<td>${i.todo_title }</td>
 								<c:choose>
 									<c:when test="${i.todo_check ==1}">
-										<td><input type="checkbox" id="checkbox" name="checkbox" value="0" checked></td>
+										<td><input class="myCheck" type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}" checked></td>
 									</c:when>
 									<c:otherwise>
-										<td><input type="checkbox" id="checkbox" name="checkbox" value="1"></td>
+										<td><input class="myCheck"  type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}"></td>
 									</c:otherwise>
 								</c:choose>
 								
@@ -297,10 +299,41 @@ if (count > 0) {
 	</div>
 
 
-	<!-- ##### Footer Area Start ##### -->
-
-	<!-- ##### Footer Area End ##### -->
-
+	<script src="jquery-3.6.0.min.js"></script>
+	<script> 
+		$('.myCheck').change(function() {
+			if(this.checked) {
+				console.log("체크확인" + this.value);
+				
+				$.ajax({
+					url : "CheckInputValue.do",
+					type : "post",
+					dataType : "json",
+					data : {"todo_num" : this.value, "value" : "1"},
+					success : function(data){
+						console.log("통신성공");
+					},
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}else{
+				console.log("체크풀림");
+				$.ajax({
+					url : "CheckInputValue.do",
+					type : "post",
+					dataType : "json",
+					data : {"todo_num" : this.value, "value" : "0"},
+					success : function(data){
+						console.log("통신성공");
+					},
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
+		});	
+	</script>
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
@@ -311,7 +344,6 @@ if (count > 0) {
 	<script src="js/plugins.js"></script>
 	<!-- Active js -->
 	<script src="js/active.js"></script>
-	<script> </script>
-	
+
 </body>
 </html>
