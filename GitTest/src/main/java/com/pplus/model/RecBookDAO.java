@@ -301,6 +301,33 @@ public class RecBookDAO {
 		}
 		return recbook;
 	}
+public int getCount( String nick) {
+		
+		int totalnum = 0;
+		
+		connect();
+		
+		sql = "select count(*) from recommend_book where member_nick = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				totalnum = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+		return totalnum;
+	}
 	
 	
 }
