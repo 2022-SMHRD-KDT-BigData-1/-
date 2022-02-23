@@ -106,7 +106,7 @@
    
   </head>
 
-  <body style="background-color: #FFFDE7;">
+  <body style="background-color: #FFF3E0;">
       <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
