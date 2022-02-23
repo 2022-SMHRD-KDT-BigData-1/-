@@ -276,7 +276,7 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 											<c:set value="0" var="j" />
 											<c:forEach var="wish" items="${sessionScope.wishlistbook }"
 												varStatus="status">
-												<tr>
+												<tr >
 													<td class="wish-num">
 														<div class="form-check">
 															<input class="form-check-input" type="radio"

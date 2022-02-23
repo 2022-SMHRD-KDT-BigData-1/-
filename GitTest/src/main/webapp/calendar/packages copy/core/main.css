@@ -114,6 +114,7 @@ hr.fc-divider {
 
 .fc th {
   text-align: center;
+      background-color: #ffe38e;
 }
 
 .fc th,
@@ -470,10 +471,12 @@ tr:first-child > td > .fc-day-grid-event {
   /* except for mirror skeleton */
 }
 
+/*달력 내용 글씨색*/
 .fc-day-grid-event .fc-content {
   /* force events to be one-line tall */
   white-space: nowrap;
   overflow: hidden;
+  color: white;
 }
 
 .fc-day-grid-event .fc-time {
@@ -563,7 +566,7 @@ TODO: more distinction between this file and common.css
 .fc-unthemed .fc-popover,
 .fc-unthemed .fc-list-view,
 .fc-unthemed .fc-list-heading td {
-  border-color: #ddd;
+  border-color: black;
 }
 
 .fc-unthemed .fc-popover {
@@ -788,11 +791,15 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 .fc-button-group > .fc-button:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  background-color: #fbb710;
+  border-color: #fbb710;
 }
 
 .fc-button-group > .fc-button:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+   background-color: #fbb710;
+    border-color: #fbb710;
 }
 
 /* Popover
