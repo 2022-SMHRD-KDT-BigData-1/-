@@ -38,13 +38,17 @@ public class BookintCon extends HttpServlet {
 			if(recbook == null) {
 				recbook = recbookDAO.recBookSelect2(book, member);
 				session.setAttribute("recbook", recbook);
+				session.setAttribute("book", book);
+				response.sendRedirect("bookint.jsp");
+			}else {
+				session.setAttribute("book", book);
+				response.sendRedirect("bookint.jsp");
 			}
 		}
 		
 		
 		
 		session.setAttribute("book", book);
-		
-		response.sendRedirect("bookint.jsp");
+		response.sendRedirect("bookintlogout.jsp");
 	}
 }
