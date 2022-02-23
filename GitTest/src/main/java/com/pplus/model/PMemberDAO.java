@@ -102,16 +102,17 @@ public class PMemberDAO {
 	
 	// 회원가입 입력 변수 PMemberDTO, pw 출력 변수 cnt
 	// 
-	public int pmemberUpdate(PMemberDTO member) {
+	public int pmemberUpdate(String id, String nick, String old_pw, String new_pw) {
 		connect();
 
-		sql = "update member set member_pw=?, member_nick=? where member_id=?";
+		sql = "update member set member_pw=?, member_nick=? where member_id=? and member_pw=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, member.getMember_pw());
-			psmt.setString(2, member.getMember_nick());
-			psmt.setString(3, member.getMember_id());
+			psmt.setString(1, new_pw);
+			psmt.setString(2, nick);
+			psmt.setString(3, id);
+			psmt.setString(4, old_pw);
 
 			cnt = psmt.executeUpdate();
 
@@ -289,5 +290,6 @@ public class PMemberDAO {
 		
 		return cnt;
 	}
+
 
 }
