@@ -14,7 +14,7 @@
 
     <!-- Title  -->
 <title>P+(Programming에 Planner를 더하다.)</title>
-    <!-- Favicon  -->
+    <!-- Favicon  --> 
  <link rel="icon" href="image/p+만.png" />
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css" />
