@@ -224,7 +224,7 @@ public class BookDAO {
 			String book_part = null;
 			connect();
 
-			sql = "select * from book where book_part1 =?";
+			sql = "select * from book_part1 where book_part1 =?";
 
 			try {
 				psmt = conn.prepareStatement(sql);
@@ -247,7 +247,7 @@ public class BookDAO {
 			String book_part = null;
 			connect();
 
-			sql = "select * from book where book_part2 =?";
+			sql = "select * from book_part2 where book_part2 =?";
 
 			try {
 				psmt = conn.prepareStatement(sql);
@@ -270,7 +270,7 @@ public class BookDAO {
 			String book_part = null;
 			connect();
 
-			sql = "select * from book where book_part3 =?";
+			sql = "select * from book_part3 where book_part3 =?";
 
 			try {
 				psmt = conn.prepareStatement(sql);

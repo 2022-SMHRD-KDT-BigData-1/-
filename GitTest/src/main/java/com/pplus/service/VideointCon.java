@@ -39,13 +39,17 @@ public class VideointCon extends HttpServlet {
 			if(recvideo == null) {
 				recvideo = recvideoDao.recVideoSelect2(video,member);
 				session.setAttribute("recvideo", recvideo);
+				session.setAttribute("video", video);
+				response.sendRedirect("videoint.jsp");
+			}else {
+				session.setAttribute("video", video);
+				response.sendRedirect("videoint.jsp");
 			}
 		}
 		
 		
 		session.setAttribute("video", video);
-		
-		response.sendRedirect("videoint.jsp");
+		response.sendRedirect("videointlogout.jsp");
 	
 	} 
 
