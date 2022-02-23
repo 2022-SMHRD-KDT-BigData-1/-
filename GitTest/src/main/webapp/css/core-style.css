@@ -879,7 +879,8 @@ img {
 }
 
 .main-content-wrapper .shop_sidebar_area hr{
-	
+     background-color: white;
+}
 	
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -909,7 +910,7 @@ img {
 	}
 }
 
-.main-content-wrapper .amado_product_area {
+/* .main-content-wrapper .amado_product_area {
 	position: relative;
 	z-index: 1;
 	-webkit-box-flex: 0;
@@ -917,7 +918,7 @@ img {
 	flex: 0 0 calc(95% - 550px);
 	width: calc(95% - 550px);
 	max-width: calc(95% - 550px);
-}
+} */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.main-content-wrapper .amado_product_area {
@@ -958,7 +959,7 @@ img {
 	z-index: 1;
 	-webkit-box-flex: 0;
 	/* -ms-flex: 0 0 calc(95% - 320px); */
-	flex: 0 0 calc(95% - 320px);
+	flex: 0 0 calc(95% - 320px);}
 	/*  width: calc(95% - 320px);
 =======
   position: relative;
