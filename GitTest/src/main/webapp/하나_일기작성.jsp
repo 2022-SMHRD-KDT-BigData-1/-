@@ -284,7 +284,7 @@
 
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="#">< 일기 ></a></li>
+              <li class="active"><a href="#">일기</a></li>
               <hr />
               <li><a href="#">작성</a></li>
               <li><a href="#">목록</a></li>
@@ -295,7 +295,7 @@
 
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="#">< 학습진행상황 ></a></li>
+              <li class="active"><a href="#">학습진행상황</a></li>
               <hr />
             </ul>
             <br><br><br><br><br><br>
