@@ -17,7 +17,7 @@
 <!-- Favicon  -->
 <link rel="icon" href="img/core-img/favicon.ico" />
 <!-- Core Style CSS -->
-<link rel="stylesheet" href="css/core-style.css" />
+<link rel="stylesheet" href="css/core-style2.css" />
 <link rel="stylesheet" href="style.css" />
 <link rel="stylesheet" href="css/버튼.css">
 
@@ -48,6 +48,7 @@
 					<a class="nav-link dropdown-toggle" href="컨텐츠추천.jsp">컨텐츠 추천</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 						<li><a class="dropdown-item" href="#">유형 확인 및 재검사</a></li>
+						<li><a class="dropdown-item" href="#">책 소개</a></li>
 					</ul>
 				</div>
 				<div class="dropdown nav-item active">
@@ -165,29 +166,29 @@
 			</div>
 		</div>
 
-		<div style="width: 60%; margin-top: 75px; margin-left: 300px;">
+		<div class="container abc" style="padding-top: 90px">
+
 			<div class="container px-4 px-lg-5 my-5">
 				<br>
 				<div class="col-sm-3">
-					<a href="scheduleset.jsp" class="btn btn-lg black" style="display: inline-block
-					"><i
-						class="fas fa-plus-square"></i> 스케줄 등록</a>
+					<a href="scheduleset.jsp" class="btn btn-lg black"
+						style="display: inline-block"><i class="fas fa-plus-square"></i>
+						스케줄 등록</a>
 				</div>
 			</div>
 
 			<div class="container px-4 px-lg-5 my-5">
 				<br>
 				<div class="col-sm-3">
-					<a href="scheduleindex.jsp" class="btn btn-lg yellow" style="display: inline-block
-					"> 스케줄 목록</a>
+					<a href="scheduleindex.jsp" class="btn btn-lg yellow"
+						style="display: inline-block"> 스케줄 목록</a>
 				</div>
 			</div>
 
 			<div class="container px-4 px-lg-5 my-5">
 				<br>
 				<div class="col-sm-3">
-					<a href="" class="btn btn-lg black" style="display: inline-block
-					"><i
+					<a href="" class="btn btn-lg black" style="display: inline-block"><i
 						class="fas fa-plus-square"></i> 일정 등록</a>
 				</div>
 			</div>
@@ -195,8 +196,8 @@
 			<div class="container px-4 px-lg-5 my-5">
 				<br>
 				<div class="col-sm-3">
-					<a href="dayplantodayindex.jsp" class="btn btn-lg yellow" style="display: inline-block
-					">일정 목록</a>
+					<a href="dayplantodayindex.jsp" class="btn btn-lg yellow"
+						style="display: inline-block">일정 목록</a>
 				</div>
 			</div>
 
