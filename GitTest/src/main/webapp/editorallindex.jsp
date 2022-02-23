@@ -232,7 +232,7 @@ if (count > 0) {
 
 				<br>
 				<h1 style="text-align: center;">
-					MY 에디터 <i class="fas fa-laptop-code"></i>
+				 에디터 <i class="fas fa-laptop-code"></i>
 				</h1>
 				<br>
 				<div class="container">

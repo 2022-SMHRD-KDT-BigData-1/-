@@ -1002,6 +1002,12 @@ img {
 	}
 }
 
+/*테이블 설정*/
+.table-bordered td, .table-bordered th {
+    border: 1px solid black;
+}
+
+
 .main-content-wrapper .cart-table-area .cart-title h2 {
 	font-size: 30px;
 	margin-bottom: 30px;

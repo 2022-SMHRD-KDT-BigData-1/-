@@ -17,7 +17,7 @@
 <!-- Favicon  -->
 <link rel="icon" href="img/core-img/favicon.ico" />
 <!-- Core Style CSS -->
-<link rel="stylesheet" href="css/core-style2.css" />
+<link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
 <link rel="stylesheet" href="css/버튼.css">
 

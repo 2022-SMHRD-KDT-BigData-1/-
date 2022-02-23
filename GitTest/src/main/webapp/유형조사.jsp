@@ -378,16 +378,16 @@
 
         // 260
         var sel3_7 = {
-          p321: "컴퓨터그래픽스 운용기능사",
-          p322: "GTQ/웹디자인 기능사",
+          p323: "컴퓨터그래픽스 운용기능사",
+          p324: "GTQ/웹디자인 기능사",
         };
 
         // 261
         var sel3_8 = {
-          p323: "전자상거래 관리사",
-          p324: "e-test",
-          p325: "코딩",
-          p326: "컴퓨터자격증 일반",
+          p325: "전자상거래 관리사",
+          p326: "e-test",
+          p327: "코딩",
+          p328: "컴퓨터자격증 일반",
         };
 
         //sel1에 서버에서 받아온 값을 넣기위해..
@@ -497,24 +497,32 @@
         retOption(sel2, "sel2");
       });
     </script>
-    <div class="d-flex justify-content-center" style="padding-left: 255px;  ">
-      <!--대분류-->
-      <select name="sel1" id="sel1" style="border: solid #fbb710;
-      ">
-        선택
-      </select>
-      <!--중분류-->
-      <select name="sel2" id="sel2" style="display: none; border: solid #fbb710; "></select>
-      <!--소분류-->
-      <select name="sel3" id="sel3" style="display: none; border: solid #fbb710;"></select>
+    <form action="">
+   		<div class="d-flex justify-content-center" style="padding-left: 255px;  ">
+	      <!--대분류-->
+	      <select name="sel1" id="sel1" style="border: solid #fbb710;
+	      ">
+	        선택
+	      </select>
+	      <!--중분류-->
+	      <select name="sel2" id="sel2" style="display: none; border: solid #fbb710; "></select>
+	      <!--소분류-->
+	      <select name="sel3" id="sel3" style="display: none; border: solid #fbb710;"></select>
+	    </div>
+	
+	    <div class="d-flex justify-content-center">
+	      <button class="btn btn-primary" role="button" style="  margin-left: 260px;
+	      ">결과 확인</button>
+	    </div>
+    </form>
     </div>
+    </div>
+    <script type="text/javascript">
+    console.log($("#sel1 option:selected").val());
 
-    <div class="d-flex justify-content-center">
-      <a class="btn btn-primary" href="#" role="button" style="  margin-left: 260px;
-      ">결과 확인</a>
-    </div>
-    </div>
-    </div>
+
+    	
+    </script>
    
    
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->

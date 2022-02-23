@@ -287,7 +287,7 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 														</div>
 													</td>
 													<td class="pic"><a
-														href="VideointCon?num=${wish.book_num }"> <img
+														href="BookintCon?num=${wish.book_num }"> <img
 															src="${wish.book_img}" style="width: 80%">
 													</a></td>
 													<td class="title"><span>${wish.book_title }</span></td>
