@@ -497,7 +497,7 @@
         retOption(sel2, "sel2");
       });
     </script>
-    <form action="">
+    <form action="PTypeCon.do" method="get">
    		<div class="d-flex justify-content-center" style="padding-left: 255px;  ">
 	      <!--대분류-->
 	      <select name="sel1" id="sel1" style="border: solid #fbb710;
@@ -505,26 +505,19 @@
 	        선택
 	      </select>
 	      <!--중분류-->
-	      <select name="sel2" id="sel2" style="display: none; border: solid #fbb710; "></select>
+	      <select name="sel2" id="sel2" style="display: none; border: solid #fbb710;"></select>
 	      <!--소분류-->
 	      <select name="sel3" id="sel3" style="display: none; border: solid #fbb710;"></select>
 	    </div>
 	
 	    <div class="d-flex justify-content-center">
-	      <button class="btn btn-primary" role="button" style="  margin-left: 260px;
-	      ">결과 확인</button>
+	      <button class="btn btn-primary" role="button" style="  margin-left: 260px;" >결과 확인</button>
 	    </div>
     </form>
     </div>
     </div>
-    <script type="text/javascript">
-    console.log($("#sel1 option:selected").val());
-
-
-    	
-    </script>
-   
-   
+<script src="jquery-3.6.0.min.js"></script>
+	
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->

@@ -187,7 +187,7 @@ body {
 						<i class="fa fa-search"></i> <input type="text"
 							class="form-control form-input" placeholder="도서명을 입력하세요." name="searchWord" id="searchWord">
 						<div class="text-center"><span class="left-pan">
-					<a href="#" class="btn" onclick="ck();">검색</a>
+					<a class="btn" id="q">검색</a>
 				</span></div>
 				</form>
 					</div>
@@ -200,11 +200,11 @@ body {
 	<script src="jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
 	 $(document).ready(function() {
-		 function ck() {
-				var searchWord = $(#searchWord).val();
+		 $("#q").click(function () {
+			 var searchWord = $("#searchWord").val();
+			 location.href='Search.do?keyWord=book_title&searchWord='+searchWord;
 				console.log(searchWord);
-				
-			}
+		}) 
 	});
 	
 	

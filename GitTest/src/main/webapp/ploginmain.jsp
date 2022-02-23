@@ -181,7 +181,7 @@ if (member != null) {
                      <c:when test="${empty member.user_type1}">
                         <script>
                            window
-                                 .open("ptype.jsp", "ptype",
+                                 .open("ptype2.jsp", "ptype",
                                        "width=800, height=300, left=100, top=50");
                         </script>
                      </c:when>

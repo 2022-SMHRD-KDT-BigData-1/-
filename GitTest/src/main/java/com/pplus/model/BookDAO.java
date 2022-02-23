@@ -188,19 +188,16 @@ public class BookDAO {
 		return recbooklist;
 	}
 	// Ã¥ °Ë»ö
-		public ArrayList<BookDTO> getBookSearch(int pageNum, int pageList, String keyWord, String searchWord) {
+		public ArrayList<BookDTO> getBookSearch(String keyWord, String searchWord) {
 			ArrayList<BookDTO> booklist = new ArrayList<BookDTO>();
 			
 			connect();
 			
 			sql = "select * from book where "+keyWord+" like ?";
-			//sql += " order by 'book_num' desc, step asc limit ?,?";
-			//System.out.println(keyWord+"/"+searchWord);
+			
 			try {
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, "%"+searchWord+"%");
-				//psmt.setInt(2, pageList*(pageNum - 1));
-				//psmt.setInt(3, pageList);
 				
 				rs = psmt.executeQuery();
 				

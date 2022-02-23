@@ -10,15 +10,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.pplus.model.BookDAO;
 import com.pplus.model.BookDTO;
 
 
-@WebServlet("/SearchedBook")
-public class SearchedBook implements iPCommand {
-	
+@WebServlet("/Search")
+public class Search implements iPCommand{
+
 
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response)
@@ -36,12 +35,6 @@ public class SearchedBook implements iPCommand {
 		//글 목록 전체 가져오기
 		//BookDAO dao = BookDAO.getInstance(); // Dao 정보 가져오기
 		ArrayList<BookDTO> books = dao.getBookSearch(keyWord, searchWord);
-
-		//검색 전체  list count
-		//int count = dao.getCount(keyWord, searchWord);
-
-		//page count
-		//int pageCount = (int)Math.ceil((double)count / pageList); //ceil은 올림함수
 		
 		if(books.isEmpty()) {
 			PrintWriter out = response.getWriter();
@@ -53,11 +46,9 @@ public class SearchedBook implements iPCommand {
 			request.setAttribute("books", books);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("booksearch.jsp");
 			dispatcher.forward(request, response);
+		
+		
 		}
-		
-		
-		
-		
 	}
 
 }

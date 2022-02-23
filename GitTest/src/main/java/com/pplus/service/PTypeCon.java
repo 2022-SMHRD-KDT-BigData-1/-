@@ -32,19 +32,20 @@ public class PTypeCon implements iPCommand {
       HttpSession session = request.getSession();
       PrintWriter out =response.getWriter();
 
-      String type1 = request.getParameter("type1");
-      String type2 = request.getParameter("type2");
-      String type3 = request.getParameter("type3");
+      
+      String sel1 = request.getParameter("sel1");
+      String sel2 = request.getParameter("sel2");
+      String sel3 = request.getParameter("sel3");
 
-      System.out.println("test1"+type1);
-      System.out.println("test2"+type2); 
-      System.out.println("test3"+type3);
+      System.out.println("test1"+sel1);
+      System.out.println("test2"+sel2); 
+      System.out.println("test3"+sel3);
       
       PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
       PMemberDAO dao = new PMemberDAO();
 
-      member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), member.getMember_name(), type1, type2, type3);
+      member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), member.getMember_name(), sel1, sel2, sel3);
       
       int cnt = dao.pmemberTypeSet(member);
       System.out.println(member.toString());
@@ -71,7 +72,7 @@ public class PTypeCon implements iPCommand {
       System.out.println(cnt3);
       if (cnt > 0) {
          System.out.println(member.getMember_nick() + "님의 프로그래밍 유형은 다음과 같습니다.");
-         System.out.println(type1 + ", " + type2 + ", " + type3);
+         System.out.println(sel1 + ", " + sel2 + ", " + sel3);
          System.out.println(member.toString());
          session.setAttribute("member", member);
          if (cnt2>0) {
