@@ -40,11 +40,12 @@ public class Search implements iPCommand{
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('책 검색을 실패하셨습니다.');");
-			out.print("location.href='booksearch.jsp';");
+			out.print("location.href='search.jsp';");
 			out.print("</script>");
 		}else {
 			request.setAttribute("books", books);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("booksearch.jsp");
+			request.setAttribute("searchWord", searchWord);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("search1.jsp");
 			dispatcher.forward(request, response);
 		
 		
