@@ -33,7 +33,7 @@ delete from web_message where m_receiveEmail='a@a.a'
 
 '==================================절취선======================================================='
 
-create문
+create문!!
 
 create sequence seq_schedule_num
 		increment by 1
