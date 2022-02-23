@@ -219,4 +219,74 @@ public class BookDAO {
 			
 			return booklist;
 		}
+		
+		public String bookPart1(String book_part1) {
+			String book_part = null;
+			connect();
+
+			sql = "select * from book where book_part1 =?";
+
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, book_part1);
+
+				rs = psmt.executeQuery();
+
+				if (rs.next()) {
+
+					book_part = rs.getString(2);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return book_part;
+		}
+		public String bookPart2(String book_part2) {
+			String book_part = null;
+			connect();
+
+			sql = "select * from book where book_part2 =?";
+
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, book_part2);
+
+				rs = psmt.executeQuery();
+
+				if (rs.next()) {
+
+					book_part = rs.getString(2);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return book_part;
+		}
+		public String bookPart3(String book_part3) {
+			String book_part = null;
+			connect();
+
+			sql = "select * from book where book_part3 =?";
+
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, book_part3);
+
+				rs = psmt.executeQuery();
+
+				if (rs.next()) {
+
+					book_part = rs.getString(2);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return book_part;
+		}
 }

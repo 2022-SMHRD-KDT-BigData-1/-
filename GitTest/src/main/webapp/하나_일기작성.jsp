@@ -107,7 +107,7 @@
    
   </head>
 
-  <body>
+  <body style="background-color: #FFFDE7;">
     <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
@@ -243,7 +243,7 @@
           <!--  Catagories  -->
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="#">달력</a></li>
+              <li class="active"><a href="#"> 달력 </a></li>
               <hr />
             </ul>
           </div>
@@ -257,7 +257,7 @@
           <!--  Catagories  -->
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="#">에디터</a></li>
+              <li class="active"><a href="#"> 에디터 </a></li>
               <hr />
               <li>
                 <a href="#"
@@ -284,7 +284,7 @@
 
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="#">일기</a></li>
+              <li class="active"><a href="#">< 일기 ></a></li>
               <hr />
               <li><a href="#">작성</a></li>
               <li><a href="#">목록</a></li>
@@ -295,7 +295,7 @@
 
           <div class="catagories-menu">
             <ul>
-              <li class="active"><a href="#">학습진행상황</a></li>
+              <li class="active"><a href="#">< 학습진행상황 ></a></li>
               <hr />
             </ul>
             <br><br><br><br><br><br>
@@ -310,7 +310,7 @@
         <!-- 에디터 -->
         <div class="container">
           <h1 class="text-center" style="
-          padding: 115px 0 0 350px ">[ 일기 ]</h1>
+          padding: 50px 0 0 350px ">[ 일기 ]</h1>
           <br>
           <form action="#" method="get">
             <span style="font-weight: bold; font-size: 25px">제목 </span>

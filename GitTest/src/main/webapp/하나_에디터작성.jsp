@@ -18,8 +18,7 @@
  <link rel="icon" href="image/p+만.png" />
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css" />
-    <link rel="stylesheet" href="style.css" />
-
+<link rel="stylesheet" href="style.css" />
     <title>Hello, world!</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
@@ -107,7 +106,7 @@
    
   </head>
 
-  <body>
+  <body style="background-color: #FFFDE7;">
       <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
@@ -208,7 +207,7 @@
     </header>
 
     <!-- Search Wrapper Area Start -->
-    <div class="search-wrapper section-padding-100">
+    <!-- <div class="search-wrapper section-padding-100">
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -216,7 +215,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Search Wrapper Area End -->
 
     <!-- ##### Main Content Wrapper Start ##### -->
@@ -309,7 +308,7 @@
         <!-- 에디터 -->
         <div class="container">
           <h1 class="text-center" style="
-          padding: 115px 0 0 350px ">[ 에디터 ]</h1>
+          padding: 50px 0 0 350px ">[ 에디터 ]</h1>
           <br>
           <form action="#" method="get">
             <span style="font-weight: bold; font-size: 25px">제목 </span>
