@@ -121,8 +121,7 @@ pageContext.setAttribute("videolist", videolist);
 		</div>
 	</div>
 
-	<main id="main">
-
+	
 		<!-- ======= ÄÁÅÙÃ÷ ÃßÃµ  ======= -->
 		<section id="about" class="about-mf sect-pt4 route">
 			<div class="container">

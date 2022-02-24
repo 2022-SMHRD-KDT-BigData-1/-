@@ -677,9 +677,12 @@ img {
 		padding: 50px;
 	}
 }
-
+ /* @media only screen and (max-width: 767px) {
+		  {
+	display: none;}
+} */
 @media only screen and (max-width: 767px) {
-	.main-content-wrapper .header-area {
+ .main-content-wrapper.header-area {
 		-webkit-transition-duration: 500ms;
 		transition-duration: 500ms;
 		-webkit-box-flex: 0;
@@ -2358,6 +2361,19 @@ img {
 	border-radius: 0;
 	background-color: #f5f7fa;
 }
+
+@media screen and (max-witdh:800px){
+	.abc{
+		display: none;
+	}
+} 
+@media screen and(min-witdh:800px){
+	.abc{
+		display: none;
+	}
+}
+ 
+
 
 /* ##### The End ##### */
 
