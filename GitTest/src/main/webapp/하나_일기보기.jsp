@@ -246,10 +246,10 @@
               </div>
               <div class="col">
                 <div class="card h-100 border-dark " style="width: 136%;
-                margin-top: 18%;">
+                margin-top: 13%;">
                 <br>
                           <h3 class="card-title text-center">일기 제목</h3>
-                          <hr style="border:solid 1px">
+                          <hr style="border:solid 1px; color: #dee2e6;">
                           <ul class="ed" style="font-size: larger; padding-left: 5%;" >
                             <br>
                             <li>

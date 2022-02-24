@@ -287,7 +287,7 @@
         </div>
       </div>
       <div
-        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 90px;" >
+        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 100px;" >
       <br>
         <!-- <h1>스케줄 등록</h1> -->
         <!-- 에디터 목록 -->

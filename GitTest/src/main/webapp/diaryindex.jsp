@@ -274,7 +274,7 @@
         </div>
       </div>
       <div
-        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 180px;" >
+        style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 100px;" >
       <br>
         <!-- 일기 목록 -->
   <div class="container">

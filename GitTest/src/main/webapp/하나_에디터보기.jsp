@@ -246,10 +246,10 @@
               </div>
               <div class="col">
                   <div class="card h-100 border-dark " style="width: 136%;
-                  margin-top: 18%;">
+                  margin-top: 13%;">
                       <div class="card-body">
                           <h3 class="card-title text-center">에디터 제목</h3>
-                          <hr style="border:solid 1px">
+                          <hr style="border:solid 1px; color: #dee2e6;">
                           <ul class="ed" style="font-size: larger;">
                             <br>
                             <li>

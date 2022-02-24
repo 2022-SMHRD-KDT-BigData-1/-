@@ -32,7 +32,7 @@
 					하루 학습 분량
 				</td>
 				<td>
-					달성룰
+					달성률
 				</td> 
 			</tr>
 			<c:forEach var="i" items="${sessionScope.schedulelist }">

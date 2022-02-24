@@ -272,7 +272,7 @@ rel="stylesheet"
       <br>
 
       <div class="cart-table-area section-padding-100" style="padding-bottom: padding-bottom: 94px;
-    margin-left: 250px;">
+    margin-left: 20px; margin-top: -65px;">
         <div class="row my-5 py-5">
         <div class="container px-4" style="background-color:#656166; width: 40%;">
           <br />

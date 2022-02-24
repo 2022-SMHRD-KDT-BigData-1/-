@@ -222,7 +222,6 @@ body {
 							class="form-control form-input" value="${param.searchWord}" name="searchWord" id="searchWord" style="height: 55px;
     text-indent: 33px;
     border-radius: 10px;
-    padding-top: 54px;
     margin-top: 90px;">
 						<div class="text-center"><span class="left-pan">
 					<a class="btn" id="q">검색</a>
