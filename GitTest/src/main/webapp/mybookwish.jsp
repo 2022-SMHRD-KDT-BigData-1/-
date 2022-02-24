@@ -211,9 +211,10 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">회원 정보</a></li>
+						<li class="active"><a>회원 정보</a></li>
 						<hr />
-						<li><a href="#">회원 정보 수정</a></li>
+						<li><a href="pupdate.jsp">회원 정보
+								수정</a></li>
 						<a><li class="btn" data-bs-toggle="modal"
 							data-bs-target="#staticBackdrop">회원 탈퇴</a>
 						</li>
@@ -226,7 +227,7 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">위시리스트</a></li>
+						<li class="active"><a>위시리스트</a></li>
 						<hr />
 						<li><a href="mybookwish.jsp">책</a></li>
 						<li><a href="myvideowish.jsp">영상</a></li>
@@ -236,16 +237,15 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 
 			<!-- ##### Single Widget ##### -->
 			<div class="widget category mb-50">
-				<!-- Widget Title -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">전체학습상황조회</a></li>
+						<li class="active"><a>전체학습상황조회</a></li>
 						<hr />
 						<li><a href="#">달력 체크</a></li>
 						<li><a href="#">차트</a></li>
-						<li><a href="#">전체 스케줄 목록</a></li>
-						<li><a href="#">전체 에디터 목록</a></li>
-						<li><a href="#">전체 일기 목록</a></li>
+						<li><a href="mypg_scheduleindex.jsp">전체 스케줄 목록</a></li>
+						<li><a href="mypg_editorallindex.jsp">전체 에디터 목록</a></li>
+						<li><a href="mypg_diaryallindex.jsp">전체 일기 목록</a></li>
 					</ul>
 				</div>
 			</div>

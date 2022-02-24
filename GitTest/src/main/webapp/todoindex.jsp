@@ -205,7 +205,8 @@ body {
 					<!--  Catagories  -->
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="schedule.jsp">달력</a></li>
+							<li class="active"><a></a></li>
+							<li><a href="schedule.jsp">달력</a></li>
 							<hr />
 						</ul>
 					</div>
@@ -219,12 +220,12 @@ body {
 					<!--  Catagories  -->
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="#">에디터</a></li>
+							<li class="active"><a>에디터</a></li>
 							<hr>
 							<li><a href="editorset.jsp">에디터 작성</a></li>
 							<li><a href="editorindex.jsp">에디터 목록</a></li>
 						</ul>
-						
+
 					</div>
 				</div>
 
@@ -235,34 +236,32 @@ body {
 
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="#">일기</a></li>
+							<li class="active"><a>일기</a></li>
 							<hr>
 							<li><a href="diaryset.jsp">작성</a></li>
 							<li><a href="diaryindex.jsp">일기 목록</a></li>
 						</ul>
 					</div>
-					
+
 					<div class="widget catagory mb-50">
 						<div class="catagories-menu">
-						<ul>
-							<li class="active"><a href="#">오늘 할 일</a></li>
-							<hr>
-							<li><a href="todoset.jsp">작성</a></li>
-							<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
-						</ul>
-						
+							<ul>
+								<li class="active"><a>오늘 할 일</a></li>
+								<hr>
+								<li><a href="todoset.jsp">작성</a></li>
+								<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
+							</ul>
+						</div>
 					</div>
-				</div>
 
-					<br />
 
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="#">학습진행상황</a></li>
+							<li class="active"><a></a></li>
+							<li><a href="achieve.jsp">학습진행상황</a></li>
 							<hr />
 						</ul>
-						<br> <br> <br> <br> <br> <br> <br>
-						<br> <br> <br>
+					
 					</div>
 
 				</div>

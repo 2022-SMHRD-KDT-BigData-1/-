@@ -182,75 +182,83 @@
         </div>
       </div>
 
-      <div class="shop_sidebar_area">
-        <!-- ##### Single Widget ##### -->
-        <div class="widget catagory mb-50">
-          <!-- Widget Title -->
-          <h6 class="widget-title mb-30">스케줄</h6>
+     <div class="shop_sidebar_area">
+			<!-- ##### Single Widget ##### -->
+			<div class="widget catagory mb-50">
+				<!-- Widget Title -->
 
-          <!--  Catagories  -->
-          <div class="catagories-menu">
-            <ul>
-              <li class="active"><a href="schedule.jsp">달력</a></li>
-              <hr />
-            </ul>
-          </div>
-        </div>
 
-        <!-- ##### Single Widget ##### -->
-        <div class="widget catagory mb-50">
-          <!-- Widget Title -->
-          <!-- <h6 class="widget-title mb-30">스케줄</h6> -->
+				<!-- ##### Single Widget ##### -->
+				<div class="widget catagory mb-50">
+					<!-- Widget Title -->
 
-          <!--  Catagories  -->
-          <div class="catagories-menu">
-            <ul>
-              <li class="active"><a href="#">에디터</a></li>
-              <hr />
-              <li>
-                <a href="editorset.jsp"
-                  >작성</a
-                >
-              </li>
-              <li>
-                <a href="editorindex.jsp"
-                  >목록</a
-                >
-    
-              </li>
-            </ul>
-            </ul>
-          </div>
-        </div>
+					<h6 class="widget-title mb-30">스케줄</h6>
 
-        <!-- ##### Single Widget ##### -->
-        <div class="widget category mb-50">
-          <!-- Widget Title -->
-          <!-- <h6 class="widget-title mb-30">일정</h6> -->
+					<!--  Catagories  -->
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a></a></li>
+							<li><a href="schedule.jsp">달력</a></li>
+							<hr />
+						</ul>
+					</div>
+				</div>
 
-          <!-- Widget Title -->
+				<!-- ##### Single Widget ##### -->
+				<div class="widget catagory mb-50">
+					<!-- Widget Title -->
+					<!-- <h6 class="widget-title mb-30">스케줄</h6> -->
 
-          <div class="catagories-menu">
-            <ul>
-              <li class="active"><a href="#">일기</a></li>
-              <hr />
-              <li><a href="diaryset.jsp">작성</a></li>
-              <li><a href="diaryindex.jsp">목록</a></li>
-            </ul>
-          </div>
+					<!--  Catagories  -->
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a>에디터</a></li>
+							<hr>
+							<li><a href="editorset.jsp">에디터 작성</a></li>
+							<li><a href="editorindex.jsp">에디터 목록</a></li>
+						</ul>
 
-          <br />
+					</div>
+				</div>
 
-          <div class="catagories-menu">
-            <ul>
-              <li class="active"><a href="#">학습진행상황</a></li>
-              <hr />
-            </ul>
-            <br><br><br><br><br><br>
-            <br><br><br><br>
-          </div>
-        </div>
-      </div>
+				<!-- ##### Single Widget ##### -->
+				<div class="widget category mb-50">
+
+					<!-- Widget Title -->
+
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a>일기</a></li>
+							<hr>
+							<li><a href="diaryset.jsp">작성</a></li>
+							<li><a href="diaryindex.jsp">일기 목록</a></li>
+						</ul>
+					</div>
+
+					<div class="widget catagory mb-50">
+						<div class="catagories-menu">
+							<ul>
+								<li class="active"><a>오늘 할 일</a></li>
+								<hr>
+								<li><a href="todoset.jsp">작성</a></li>
+								<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a></a></li>
+							<li><a href="achieve.jsp">학습진행상황</a></li>
+							<hr />
+						</ul>
+					
+					</div>
+
+				</div>
+			</div>
+		</div>
       <div
         style="width: 63%;
         margin: 50px;

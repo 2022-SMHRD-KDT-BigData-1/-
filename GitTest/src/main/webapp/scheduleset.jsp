@@ -28,7 +28,7 @@
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body style="bg-color:#f5f7fa">
+<body style="bg-color: #f5f7fa">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript">
 		$(document).ready(
@@ -99,8 +99,8 @@
 
 	<header id="header" class="fixed-top header-scrolled">
 		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img
+				style="width: 40px" src="image/p+만.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>
@@ -173,15 +173,8 @@
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
-		<div class="mobile-nav">
-
-			
-		</div>
-
-
-
-
-	<div class="shop_sidebar_area">
+		<div class="mobile-nav"></div>
+		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<h6 class="widget-title mb-30">학습플래너</h6>
@@ -238,8 +231,6 @@
 			</div>
 		</div>
 
-
-
 		<div class="" style="width: 40%; margin-top: 100px; margin-left: 25%;">
 			<h1>스케줄 등록</h1>
 			<br>
@@ -249,7 +240,7 @@
 				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 				crossorigin="anonymous"></script>
 
-			<div class="check">
+			<div class="check" style="line-height: 2">
 				<div class="form-check">
 					<input class="form-check-input " type="radio" value="wish"
 						name="serviceType" checked="checked" id="flexRadioDefault1">
@@ -365,93 +356,93 @@
 				</form>
 			</div>
 		</div>
+	</div>
 
-		<script langauge="javascript">
-			function call() {
-				var sdd = document.getElementById("Date1").value;
-				var edd = document.getElementById("Date2").value;
-				var ar1 = sdd.split('-');
-				var ar2 = edd.split('-');
-				var da1 = new Date(ar1[0], ar1[1], ar1[2]);
-				var da2 = new Date(ar2[0], ar2[1], ar2[2]);
-				var dif = da2 - da1;
-				var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+	<script langauge="javascript">
+		function call() {
+			var sdd = document.getElementById("Date1").value;
+			var edd = document.getElementById("Date2").value;
+			var ar1 = sdd.split('-');
+			var ar2 = edd.split('-');
+			var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+			var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+			var dif = da2 - da1;
+			var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
 
-				if (sdd && edd) {
+			if (sdd && edd) {
 
-					document.getElementById('day1').value = parseInt(dif / cDay);
-				}
+				document.getElementById('day1').value = parseInt(dif / cDay);
 			}
-			function call2() {
-				var sdd = document.getElementById("Date3").value;
-				var edd = document.getElementById("Date4").value;
-				var ar1 = sdd.split('-');
-				var ar2 = edd.split('-');
-				var da1 = new Date(ar1[0], ar1[1], ar1[2]);
-				var da2 = new Date(ar2[0], ar2[1], ar2[2]);
-				var dif = da2 - da1;
-				var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+		}
+		function call2() {
+			var sdd = document.getElementById("Date3").value;
+			var edd = document.getElementById("Date4").value;
+			var ar1 = sdd.split('-');
+			var ar2 = edd.split('-');
+			var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+			var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+			var dif = da2 - da1;
+			var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
 
-				if (sdd && edd) {
+			if (sdd && edd) {
 
-					document.getElementById('day2').value = parseInt(dif / cDay);
-				}
+				document.getElementById('day2').value = parseInt(dif / cDay);
 			}
-			function call3() {
-				var sdd = document.getElementById("Date5").value;
-				var edd = document.getElementById("Date6").value;
-				var ar1 = sdd.split('-');
-				var ar2 = edd.split('-');
-				var da1 = new Date(ar1[0], ar1[1], ar1[2]);
-				var da2 = new Date(ar2[0], ar2[1], ar2[2]);
-				var dif = da2 - da1;
-				var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+		}
+		function call3() {
+			var sdd = document.getElementById("Date5").value;
+			var edd = document.getElementById("Date6").value;
+			var ar1 = sdd.split('-');
+			var ar2 = edd.split('-');
+			var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+			var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+			var dif = da2 - da1;
+			var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
 
-				if (sdd && edd) {
+			if (sdd && edd) {
 
-					document.getElementById('day3').value = parseInt(dif / cDay);
-				}
+				document.getElementById('day3').value = parseInt(dif / cDay);
 			}
+		}
 
-			function book() {
-				window.open("booksearch.jsp", "bk",
-						"width=700, height=400, scrollbars=no, resizable=no");
-				
+		function book() {
+			window.open("booksearch.jsp", "bk",
+					"width=700, height=400, scrollbars=no, resizable=no");
 
-			}
-			function mybook() {
-				window.open("wishsearch.jsp", "ws",
-						"width=700, height=400, scrollbars=no, resizable=no");
-				// 위시리스트 페이지 만들면 넣기
-			}
-			function setBookValues(name, num, page) {
-				document.getElementById("book_title").value = name;
-				document.getElementById("book_num").value = num;
-				document.getElementById("book_page").value = page;
-				console.log(page);
-				console.log(num);
-			}
-			function setBookValues1(name, num, page) {
-				document.getElementById("wishbook_title").value = name;
-				document.getElementById("wishbook_num").value = num;
-				document.getElementById("wishbook_page").value = page;
-				console.log("위시제목",
-						document.getElementById("wishbook_title").value);
-				console.log("위시번호",
-						document.getElementById("wishbook_num").value);
-			}
-		</script>
+		}
+		function mybook() {
+			window.open("wishsearch.jsp", "ws",
+					"width=700, height=400, scrollbars=no, resizable=no");
+			// 위시리스트 페이지 만들면 넣기
+		}
+		function setBookValues(name, num, page) {
+			document.getElementById("book_title").value = name;
+			document.getElementById("book_num").value = num;
+			document.getElementById("book_page").value = page;
+			console.log(page);
+			console.log(num);
+		}
+		function setBookValues1(name, num, page) {
+			document.getElementById("wishbook_title").value = name;
+			document.getElementById("wishbook_num").value = num;
+			document.getElementById("wishbook_page").value = page;
+			console
+					.log("위시제목",
+							document.getElementById("wishbook_title").value);
+			console.log("위시번호", document.getElementById("wishbook_num").value);
+		}
+	</script>
 
 
-		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-		<script src="js/jquery/jquery-2.2.4.min.js"></script>
-		<!-- Popper js -->
-		<script src="js/popper.min.js"></script>
-		<!-- Bootstrap js -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Plugins js -->
-		<script src="js/plugins.js"></script>
-		<!-- Active js -->
-		<script src="js/active.js"></script>
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>

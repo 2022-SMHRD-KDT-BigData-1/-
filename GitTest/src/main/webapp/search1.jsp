@@ -205,8 +205,8 @@ body {
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li><a href="#">유형확인 및 재검사</a></li>
-						<li><a href="search.jsp">책 검색</a></li>
+						<li><a href="ptype.jsp">유형확인 및 재검사</a></li>
+						<li><a href="search1.jsp">책 검색</a></li>
 					</ul>
 				</div>
 			</div>

@@ -159,76 +159,47 @@ if (count > 0) {
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<!-- Widget Title -->
+				<h6 class="widget-title mb-30">마이페이지</h6>
 
-
-				<!-- ##### Single Widget ##### -->
-				<div class="widget catagory mb-50">
-					<!-- Widget Title -->
-
-					<h6 class="widget-title mb-30">스케줄</h6>
-
-					<!--  Catagories  -->
-					<div class="catagories-menu">
-						<ul>
-							<li class="active"><a></a></li>
-							<li><a href="schedule.jsp">달력</a></li>
-							<hr />
-						</ul>
-					</div>
+				<!--  Catagories  -->
+				<div class="catagories-menu">
+					<ul>
+						<li class="active"><a>회원 정보</a></li>
+						<hr />
+						<li><a href="pupdate.jsp">회원 정보
+								수정</a></li>
+						<a><li class="btn" data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">회원 탈퇴</a>
+						</li>
+					</ul>
 				</div>
+			</div>
 
-				<!-- ##### Single Widget ##### -->
-				<div class="widget catagory mb-50">
-					<!-- Widget Title -->
-					<!-- <h6 class="widget-title mb-30">스케줄</h6> -->
-
-					<!--  Catagories  -->
-					<div class="catagories-menu">
-						<ul>
-							<li class="active"><a>에디터</a></li>
-							<hr>
-							<li><a href="editorset.jsp">에디터 작성</a></li>
-							<li><a href="editorindex.jsp">에디터 목록</a></li>
-						</ul>
-
-					</div>
+			<!-- ##### Single Widget ##### -->
+			<div class="widget catagory mb-50">
+				<!--  Catagories  -->
+				<div class="catagories-menu">
+					<ul>
+						<li class="active"><a>위시리스트</a></li>
+						<hr />
+						<li><a href="mybookwish.jsp">책</a></li>
+						<li><a href="myvideowish.jsp">영상</a></li>
+					</ul>
 				</div>
+			</div>
 
-				<!-- ##### Single Widget ##### -->
-				<div class="widget category mb-50">
-
-					<!-- Widget Title -->
-
-					<div class="catagories-menu">
-						<ul>
-							<li class="active"><a>일기</a></li>
-							<hr>
-							<li><a href="diaryset.jsp">작성</a></li>
-							<li><a href="diaryindex.jsp">일기 목록</a></li>
-						</ul>
-					</div>
-
-					<div class="widget catagory mb-50">
-						<div class="catagories-menu">
-							<ul>
-								<li class="active"><a>오늘 할 일</a></li>
-								<hr>
-								<li><a href="todoset.jsp">작성</a></li>
-								<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
-							</ul>
-						</div>
-					</div>
-
-
-					<div class="catagories-menu">
-						<ul>
-							<li class="active"><a></a></li>
-							<li><a href="achieve.jsp">학습진행상황</a></li>
-							<hr />
-						</ul>
-
-					</div>
-
+			<!-- ##### Single Widget ##### -->
+			<div class="widget category mb-50">
+				<div class="catagories-menu">
+					<ul>
+						<li class="active"><a>전체학습상황조회</a></li>
+						<hr />
+						<li><a href="#">달력 체크</a></li>
+						<li><a href="#">차트</a></li>
+						<li><a href="mypg_scheduleindex.jsp">전체 스케줄 목록</a></li>
+						<li><a href="mypg_editorallindex.jsp">전체 에디터 목록</a></li>
+						<li><a href="mypg_diaryallindex.jsp">전체 일기 목록</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>

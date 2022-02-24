@@ -16,7 +16,7 @@ String nick = member.getMember_nick();
 
 String num = request.getParameter("num");
 
-int schedule_num =	schedule.getSchedule_num();
+int schedule_num = schedule.getSchedule_num();
 pageContext.setAttribute("schedule", schedule);
 
 TodoDAO todoDAO = new TodoDAO();
@@ -24,27 +24,26 @@ ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 todolist = todoDAO.todoSelectAll(nick, schedule_num);
 pageContext.setAttribute("todolist", todolist);
 // check->1 -> o check->0 ->x
-String todostring="";
-for(int i=0; i<todolist.size(); i++){
-	if(i != todolist.size()-1){
-		todostring +=todolist.get(i).getTodo_title();
-		if(todolist.get(i).getTodo_check()==1){
-			todostring += " o";
+String todostring = "";
+for (int i = 0; i < todolist.size(); i++) {
+	if (i != todolist.size() - 1) {
+		todostring += todolist.get(i).getTodo_title();
+		if (todolist.get(i).getTodo_check() == 1) {
+	todostring += " o";
 		} else {
-			todostring += " x";
+	todostring += " x";
 		}
-		todostring +=", ";
-	} else{
-		todostring +=todolist.get(i).getTodo_title();
-		if(todolist.get(i).getTodo_check()==1){
-			todostring += " o";
+		todostring += ", ";
+	} else {
+		todostring += todolist.get(i).getTodo_title();
+		if (todolist.get(i).getTodo_check() == 1) {
+	todostring += " o";
 		} else {
-			todostring += " x";
+	todostring += " x";
 		}
 	}
 }
 pageContext.setAttribute("todostring", todostring);
-
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,8 +120,8 @@ body {
 <body>
 	<header id="header" class="fixed-top header-scrolled">
 		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img
+				style="width: 40px" src="image/p+만.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>
@@ -191,7 +190,7 @@ body {
 		</nav>
 	</header>
 
-	
+
 
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
@@ -223,7 +222,8 @@ body {
 					<!--  Catagories  -->
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="schedule.jsp">달력</a></li>
+							<li class="active"><a></a></li>
+							<li><a href="schedule.jsp">달력</a></li>
 							<hr />
 						</ul>
 					</div>
@@ -237,12 +237,12 @@ body {
 					<!--  Catagories  -->
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="#">에디터</a></li>
+							<li class="active"><a>에디터</a></li>
 							<hr>
 							<li><a href="editorset.jsp">에디터 작성</a></li>
 							<li><a href="editorindex.jsp">에디터 목록</a></li>
 						</ul>
-						
+
 					</div>
 				</div>
 
@@ -253,34 +253,32 @@ body {
 
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="#">일기</a></li>
+							<li class="active"><a>일기</a></li>
 							<hr>
 							<li><a href="diaryset.jsp">작성</a></li>
 							<li><a href="diaryindex.jsp">일기 목록</a></li>
 						</ul>
 					</div>
-					
+
 					<div class="widget catagory mb-50">
 						<div class="catagories-menu">
-						<ul>
-							<li class="active"><a href="#">오늘 할 일</a></li>
-							<hr>
-							<li><a href="todoset.jsp">작성</a></li>
-							<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
-						</ul>
-						
+							<ul>
+								<li class="active"><a>오늘 할 일</a></li>
+								<hr>
+								<li><a href="todoset.jsp">작성</a></li>
+								<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
+							</ul>
+						</div>
 					</div>
-				</div>
 
-					<br />
 
 					<div class="catagories-menu">
 						<ul>
-							<li class="active"><a href="#">학습진행상황</a></li>
+							<li class="active"><a></a></li>
+							<li><a href="achieve.jsp">학습진행상황</a></li>
 							<hr />
 						</ul>
-						<br> <br> <br> <br> <br> <br> <br>
-						<br> <br> <br>
+					
 					</div>
 
 				</div>
@@ -305,50 +303,47 @@ body {
 			</div>
 		</div>
 	</div>
-	
+
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<script>
-	var todostring = '<%=(String)pageContext.getAttribute("todostring") %>';
-	console.log(todostring);
+	var todostring = '<%=(String) pageContext.getAttribute("todostring")%>
+		';
+		console.log(todostring);
 
-   $(document).ready(function() {
-       var calendarEl = document.getElementById("calendar");
-	// 어딘가에 점또는 세미콜론 안찍혀있는 오류가 떴어요
-       var calendar = new FullCalendar.Calendar(calendarEl, {
-    	  initialView : "dayGridMonth",
-         plugins: ["interaction", "dayGrid"],
-         locale : 'ko',
-         editable: true,
-         eventLimit: true, // allow "more" link when too many events
-         events: [
-           	{
-               title: "${schedule.schedule_name}",
-               start: "${schedule.schedule_start}",
-               end: "${schedule.schedule_end}",
-            },
-            
-            {
-                title: "공부하는 책 : ${schedule.book_title}",
-                start: "${schedule.schedule_start}",
-                end: "${schedule.schedule_end}",
-             },
-             {
-                 title: "공부할 페이지 : ${schedule.schedule_day_page}",
-                 start: "${schedule.schedule_start}",
-                 end: "${schedule.schedule_end}",
-             },        
-             {
-            	 title : "오늘 할 일 : "+ todostring,
-            	 start : "${schedule.schedule_start}",
-            	 end: "${schedule.schedule_end}",
-             },   
-         ],
-       });
-    	  calendar.render(); 
-     });
-   </script>
+		$(document).ready(function() {
+			var calendarEl = document.getElementById("calendar");
+			// 어딘가에 점또는 세미콜론 안찍혀있는 오류가 떴어요
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				initialView : "dayGridMonth",
+				plugins : [ "interaction", "dayGrid" ],
+				locale : 'ko',
+				editable : true,
+				eventLimit : true, // allow "more" link when too many events
+				events : [ {
+					title : "${schedule.schedule_name}",
+					start : "${schedule.schedule_start}",
+					end : "${schedule.schedule_end}",
+				},
+
+				{
+					title : "공부하는 책 : ${schedule.book_title}",
+					start : "${schedule.schedule_start}",
+					end : "${schedule.schedule_end}",
+				}, {
+					title : "공부할 페이지 : ${schedule.schedule_day_page}",
+					start : "${schedule.schedule_start}",
+					end : "${schedule.schedule_end}",
+				}, {
+					title : "오늘 할 일 : " + todostring,
+					start : "${schedule.schedule_start}",
+					end : "${schedule.schedule_end}",
+				}, ],
+			});
+			calendar.render();
+		});
+	</script>
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-	
+
 	<!-- Popper js -->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap js -->

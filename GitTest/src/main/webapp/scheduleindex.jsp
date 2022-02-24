@@ -140,8 +140,6 @@ pageContext.setAttribute("schedulelist", schedulelist);
 			
 		</div>
 
-
-
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
@@ -153,10 +151,11 @@ pageContext.setAttribute("schedulelist", schedulelist);
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active" style="color: #fbb710"><a>스케줄</a></li>
+						<li class="active"><a>스케줄</a></li>
 						<hr />
 						<li><a href="scheduleset.jsp">등록</a></li>
 						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+
 
 					</ul>
 				</div>
@@ -171,7 +170,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 
 				<div class="catagories-menu">
 					<ul>
-						<li class="active" style="color: #fbb710"><a>일정</a></li>
+						<li class="active"><a>일정</a></li>
 						<hr />
 						<li><a href="dayplantodayset.jsp">등록</a></li>
 						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>

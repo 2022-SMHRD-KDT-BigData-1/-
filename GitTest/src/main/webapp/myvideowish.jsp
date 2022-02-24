@@ -10,50 +10,47 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>)session.getAttribute("wishlistvideo");
-	PMemberDTO member = (PMemberDTO) session.getAttribute("member");
-	
-	BookDAO bookDAO = new BookDAO();
-	RecVideoDAO recvideoDAO = new RecVideoDAO();
-	ArrayList<RecVideoDTO> wishlist = new ArrayList<RecVideoDTO>();
-	
-	ArrayList<String> book_part1 = new ArrayList<String>();
-	for(int i = 0; i <wishlistvideo.size(); i++){
-		String book_part = bookDAO.bookPart1(wishlistvideo.get(i).getUser_type1());
-		book_part1.add(book_part);
-	}
-	ArrayList<String> book_part2 = new ArrayList<String>();
-	for(int i = 0; i <wishlistvideo.size(); i++){
-		String book_part = bookDAO.bookPart2(wishlistvideo.get(i).getUser_type2());
-		book_part2.add(book_part);
-	}
-	ArrayList<String> book_part3 = new ArrayList<String>();
-	for(int i = 0; i <wishlistvideo.size(); i++){
-		String book_part = bookDAO.bookPart3(wishlistvideo.get(i).getUser_type3());
-		book_part3.add(book_part);
-	}
-	pageContext.setAttribute("book_part1", book_part1);
-	pageContext.setAttribute("book_part2", book_part2);
-	pageContext.setAttribute("book_part3", book_part3);
-	
-	int pageSize = 10;
-	String pageNum = request.getParameter("pageNum");
+ArrayList<RecVideoDTO> wishlistvideo = (ArrayList<RecVideoDTO>) session.getAttribute("wishlistvideo");
+PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
-	
-	if (pageNum == null){ // 클릭한게 없으면 1번 페이지
-		pageNum = "1";
-	}
-	
-	int currentPage = Integer.parseInt(pageNum);
-	
-	// 해당 페이지에서 시작할 레코드 / 마지막 레코드
-	int startRow = (currentPage - 1) * pageSize + 1;
-	int endRow = currentPage * pageSize;
-	
-	int count = 0;
-	count = recvideoDAO.getCount(member.getMember_nick()); // 데이터베이스에 저장된 총 갯수
-	
-	
+BookDAO bookDAO = new BookDAO();
+RecVideoDAO recvideoDAO = new RecVideoDAO();
+ArrayList<RecVideoDTO> wishlist = new ArrayList<RecVideoDTO>();
+
+ArrayList<String> book_part1 = new ArrayList<String>();
+for (int i = 0; i < wishlistvideo.size(); i++) {
+	String book_part = bookDAO.bookPart1(wishlistvideo.get(i).getUser_type1());
+	book_part1.add(book_part);
+}
+ArrayList<String> book_part2 = new ArrayList<String>();
+for (int i = 0; i < wishlistvideo.size(); i++) {
+	String book_part = bookDAO.bookPart2(wishlistvideo.get(i).getUser_type2());
+	book_part2.add(book_part);
+}
+ArrayList<String> book_part3 = new ArrayList<String>();
+for (int i = 0; i < wishlistvideo.size(); i++) {
+	String book_part = bookDAO.bookPart3(wishlistvideo.get(i).getUser_type3());
+	book_part3.add(book_part);
+}
+pageContext.setAttribute("book_part1", book_part1);
+pageContext.setAttribute("book_part2", book_part2);
+pageContext.setAttribute("book_part3", book_part3);
+
+int pageSize = 10;
+String pageNum = request.getParameter("pageNum");
+
+if (pageNum == null) { // 클릭한게 없으면 1번 페이지
+	pageNum = "1";
+}
+
+int currentPage = Integer.parseInt(pageNum);
+
+// 해당 페이지에서 시작할 레코드 / 마지막 레코드
+int startRow = (currentPage - 1) * pageSize + 1;
+int endRow = currentPage * pageSize;
+
+int count = 0;
+count = recvideoDAO.getCount(member.getMember_nick()); // 데이터베이스에 저장된 총 갯수
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +63,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
- <title>P+(Programming에 Planner를 더하다.)</title>
+<title>P+(Programming에 Planner를 더하다.)</title>
 <!-- Favicon  -->
 <link rel="icon" href="image/p+만.png" />
 <!-- Core Style CSS -->
@@ -79,7 +76,7 @@
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous">
 
- 
+
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 
 <script
@@ -99,8 +96,8 @@
 <body>
 	<header id="header" class="fixed-top header-scrolled">
 		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img
+				style="width: 40px" src="image/p+만.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>
@@ -218,9 +215,9 @@
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">회원 정보</a></li>
+						<li class="active"><a>회원 정보</a></li>
 						<hr />
-						<li><a href="#">회원 정보 수정</a></li>
+						<li><a href="pupdate.jsp">회원 정보 수정</a></li>
 						<a><li class="btn" data-bs-toggle="modal"
 							data-bs-target="#staticBackdrop">회원 탈퇴</a>
 						</li>
@@ -233,7 +230,7 @@
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">위시리스트</a></li>
+						<li class="active"><a>위시리스트</a></li>
 						<hr />
 						<li><a href="mybookwish.jsp">책</a></li>
 						<li><a href="myvideowish.jsp">영상</a></li>
@@ -243,23 +240,21 @@
 
 			<!-- ##### Single Widget ##### -->
 			<div class="widget category mb-50">
-				<!-- Widget Title -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">전체학습상황조회</a></li>
+						<li class="active"><a>전체학습상황조회</a></li>
 						<hr />
 						<li><a href="#">달력 체크</a></li>
-						<li><a href="achieveall.jsp">차트</a></li>
-						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
-						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+						<li><a href="#">차트</a></li>
+						<li><a href="mypg_scheduleindex.jsp">전체 스케줄 목록</a></li>
+						<li><a href="mypg_editorallindex.jsp">전체 에디터 목록</a></li>
+						<li><a href="mypg_diaryallindex.jsp">전체 일기 목록</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-				<div class="container" style="padding-top: 90px">
-			<div class="cart-table-area section-padding-100"
-				>
+		<div class="container" style="padding-top: 90px">
+			<div class="cart-table-area section-padding-100">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-12">
@@ -278,31 +273,32 @@
 										</tr>
 									</thead>
 									<tbody style="text-align: center">
-									<c:set value="0" var="j"/>
-										<c:forEach var="wish" items="${sessionScope.wishlistvideo }" varStatus="status">
+										<c:set value="0" var="j" />
+										<c:forEach var="wish" items="${sessionScope.wishlistvideo }"
+											varStatus="status">
 											<tr>
-											<td class="wish-num">
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="flexRadioDefault" id="flexRadioDefault1" /> <label
-														class="form-check-label" for="flexRadioDefault1">
-														<h5 style="padding-left: 20px">${j = j + 1 }</h5>
-													</label>
-												</div>
-											</td>
-											<td class="pic">
-												<a href="VideointCon?num=${wish.video_num }">
-													<img src="${wish.video_thumbnail}" style="width: 80%">
-												</a>
-											</td>
-											<td class="title"><span>${wish.video_title }</span></td>
-											<td class="type">
-												<div class="type-name">
-													<span>${book_part1[status.index]} > ${book_part2[status.index]}  > ${book_part3[status.index]}</span>
-												</div>
-											</td>
+												<td class="wish-num">
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="flexRadioDefault" id="flexRadioDefault1" /> <label
+															class="form-check-label" for="flexRadioDefault1">
+															<h5 style="padding-left: 20px">${j = j + 1 }</h5>
+														</label>
+													</div>
+												</td>
+												<td class="pic"><a
+													href="VideointCon?num=${wish.video_num }"> <img
+														src="${wish.video_thumbnail}" style="width: 80%">
+												</a></td>
+												<td class="title"><span>${wish.video_title }</span></td>
+												<td class="type">
+													<div class="type-name">
+														<span>${book_part1[status.index]} >
+															${book_part2[status.index]} > ${book_part3[status.index]}</span>
+													</div>
+												</td>
 											</tr>
-									</c:forEach>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -320,61 +316,56 @@
 				<div class="text-center">
 					<ul class="pagination" style="justify-content: center;">
 						<%
-								if(count > 0){
-									// 총 페이지의 수
-									int pageCount = count / pageSize + (count%pageSize == 0 ? 0 : 1);
-									
-									// 한 페이지에 보여줄 페이지 블럭(링크) 수
-									int pageBlock = 10;
-									// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
-									int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
-									int endPage = startPage + pageBlock - 1;
-									
-									// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
-									if(endPage > pageCount){
-										endPage = pageCount;
-									}
-									
-									if(startPage > pageBlock){ // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
-								
-							
-							%>
-										<li class="page-item">
-											<a class="page-link" href="myvideowish.jsp?pageNum=<%= startPage - 10 %>" aria-label="Previous">
-											<span aria-hidden="true">&laquo;</span>
-											<span class="sr-only">Previous</span>
-											</a>
-										</li>
-									
-							<%
-								}
-										for(int i=startPage; i <= endPage; i++){ // 페이지 블록 번호
-											if(i == currentPage){ // 현재 페이지에는 링크를 설정하지 않음
-							
-							%>				
-											<%=i %>
-											
-								<%									
-											}else{ // 현재 페이지가 아닌 경우 링크 설정
-								%>	
-											<li class="page-item">
-												<a class="page-link" href="myvideowish.jsp?pageNum=<%=i%>"><%=i %></a>
-											</li>
-											<%	
-								}
-							} // for end
-							
-							if(endPage < pageCount){ // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
-					%>
-										<li class="page-item">
-											<a class="page-link" href="myvideowish.jsp?pageNum=${startPage + 10 }" aria-label="Next"> 
-												<span aria-hidden="true">&raquo;</span> 
-												<span class="sr-only">Next</span>
-											</a>
-										</li>
-										<%}
+						if (count > 0) {
+							// 총 페이지의 수
+							int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+							// 한 페이지에 보여줄 페이지 블럭(링크) 수
+							int pageBlock = 10;
+							// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
+							int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+							int endPage = startPage + pageBlock - 1;
+
+							// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
+							if (endPage > pageCount) {
+								endPage = pageCount;
 							}
-							%>
+
+							if (startPage > pageBlock) { // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
+						%>
+						<li class="page-item"><a class="page-link"
+							href="myvideowish.jsp?pageNum=<%=startPage - 10%>"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+						</a></li>
+
+						<%
+						}
+						for (int i = startPage; i <= endPage; i++) { // 페이지 블록 번호
+						if (i == currentPage) { // 현재 페이지에는 링크를 설정하지 않음
+						%>
+						<%=i%>
+
+						<%
+						} else { // 현재 페이지가 아닌 경우 링크 설정
+						%>
+						<li class="page-item"><a class="page-link"
+							href="myvideowish.jsp?pageNum=<%=i%>"><%=i%></a></li>
+						<%
+						}
+						} // for end
+
+						if (endPage < pageCount) { // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
+						%>
+						<li class="page-item"><a class="page-link"
+							href="myvideowish.jsp?pageNum=${startPage + 10 }"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+								class="sr-only">Next</span>
+						</a></li>
+						<%
+						}
+						}
+						%>
 					</ul>
 				</div>
 			</nav>
