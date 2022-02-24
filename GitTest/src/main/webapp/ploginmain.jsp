@@ -238,7 +238,7 @@ if (member != null) {
                                              <img src="${book.book_img}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${book.book_title }</span>
                                           </a>
                                           <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
-                                             <button type="button"><img src="heart0.png" style="width:40px"></button>
+                                            <img src="heart0.png" style="width:40px">
                                           </a>
                                        </h5>
                                        </div>
@@ -260,11 +260,11 @@ if (member != null) {
                                              <c:choose>
                                                 <c:when test="${recbook.contents_cnt == 1 }">
                                                    <a href="WishCon.do?num=${recbook.book_num}&recbooknum=1">
-                                                      <button type="button"><img src="heart1.png" style="width:40px"></button>
+                                                     <img src="heart1.png" style="width:40px">
                                                    </a>
                                                 <c:otherwise>
                                                    <a href="WishCon.do?num=${recbook.book_num}&recbooknum=0">
-                                                      <button type="button"><img src="heart0.png" style="width:40px"></button>
+                                                      <img src="heart0.png" style="width:40px">
                                                    </a>
                                                 </c:otherwise>
                                                 </c:when>
@@ -278,7 +278,7 @@ if (member != null) {
                                                 		<img src="${book.book_img}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${book.book_title }</span>
                                              		</a>
                                                    <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
-                                                      <button type="button"><img src="heart0.png" style="width:40px"></button>
+                                                     <img src="heart0.png" style="width:40px">
                                                    </a>
                                                 </c:when>
                                              </c:choose>
@@ -304,17 +304,17 @@ if (member != null) {
 
                                                    <a
                                                       href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
-                                                      <button type="button">
+                                                     
                                                          <img src="heart1.png" style="width:40px">
-                                                      </button>
+                                                      
                                                    </a>
                                                 </c:when>
                                                 <c:otherwise>
                                                    <a
                                                       href="WishCon.do?num=${recbook.book_num}&recbooknum=${recbook.contents_cnt}">
-                                                      <button type="button">
+                                                    
                                                          <img src="heart0.png" style="width:40px">
-                                                      </button>
+                                                      
                                                    </a>
                                                 </c:otherwise>
                                              </c:choose>
@@ -353,7 +353,7 @@ if (member != null) {
                                              <img src="${video.video_thumbnail}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${video.video_title }</span>
                                           </a>
                                           <a href="WishVideoCon.do?num=${video.video_num}&recvideonum=0">
-                                             <button type="button"><img src="heart0.png" style="width:40px"></button>
+                                            <img src="heart0.png" style="width:40px">
                                           </a>
                                        </h5>
                                        </div>
@@ -372,11 +372,11 @@ if (member != null) {
                                                 <c:choose>
                                                    <c:when test="${recvideo.contents_cnt == 1 }">
                                                       <a href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=1">
-                                                         <button type="button"><img src="heart1.png" style="width:40px"></button>
+                                                       <img src="heart1.png" style="width:40px">
                                                       </a>
                                                       <c:otherwise>
                                                          <a href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=0">
-                                                            <button type="button"><img src="heart0.png" style="width:40px"></button>
+                                                          <img src="heart0.png" style="width:40px">
                                                          </a>
                                                       </c:otherwise>
                                                    </c:when>
@@ -390,7 +390,7 @@ if (member != null) {
 		                                             	<img src="${video.video_thumbnail}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${video.video_title }</span>
 		                                          	</a>
                                                       <a href="WishVideoCon.do?num=${video.video_num}&recvideonum=0">
-                                                         <button type="button"><img src="heart0.png" style="width:40px"></button>
+                                                        <img src="heart0.png" style="width:40px">
                                                       </a>
                                                    </c:when>
                                                 </c:choose>
@@ -421,17 +421,17 @@ if (member != null) {
 
                                                    <a
                                                       href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
-                                                      <button type="button">
+                                                     
                                                          <img src="heart1.png" style="width:40px">
-                                                      </button>
+                                                     
                                                    </a>
                                                 </c:when>
                                                 <c:otherwise>
                                                    <a
                                                       href="WishVideoCon.do?num=${recvideo.video_num}&recvideonum=${recvideo.contents_cnt}">
-                                                      <button type="button">
+                                                     
                                                          <img src="heart0.png" style="width:40px">
-                                                      </button>
+                                                      
                                                    </a>
                                                 </c:otherwise>
                                              </c:choose>
@@ -474,6 +474,5 @@ if (member != null) {
    <script src="js/plugins.js"></script>
    <!-- Active js -->
    <script src="js/active.js"></script>
-   </div>
 </body>
 </html>

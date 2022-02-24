@@ -220,7 +220,8 @@ pageContext.setAttribute("schedulelist", schedulelist);
 
 						<thead class="table-warning ">
 							<tr>
-								<th class="text-center">선택</th>
+								<th class="text-center"><input type="checkbox"
+									id="allCheck" name="allCheck"></th>
 								<th class="text-center">No.</th>
 								<th class="text-center">스케줄 이름</th>
 								<th class="text-center">시작 날 - 끝나는 날</th>
@@ -236,9 +237,10 @@ pageContext.setAttribute("schedulelist", schedulelist);
 								<tr>
 									<td>
 										<div class="form-check">
-											<input class="form-check-input" type="radio"
-												name="flexRadioDefault" id="flexRadioDefault1"> <label
-												class="form-check-label" for="flexRadioDefault1"> </label>
+											<input class="form-check-input" type="checkbox"
+												name="DeleteCheck" id="flexRadioDefault1"> <label
+												class="form-check-label" for="flexRadioDefault1"
+												value="${schedule.schedule_num }"> </label>
 										</div>
 									</td>
 									<td>${j = j + 1}</td>
@@ -248,7 +250,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 									<td>${schedule.schedule_day_page }</td>
 									<td></td>
 									<td><a
-										href="ScheduleIndexCon.do?num=${schedule.schedule_num }"><button>이동</button></a></td>
+										href="ScheduleIndexCon.do?num=${schedule.schedule_num }" style="font-size: 16px;"><i class="far fa-hand-point-up"></i> 이동</button></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -258,6 +260,10 @@ pageContext.setAttribute("schedulelist", schedulelist);
 				<div class="page">
 					<div class="text-center">
 						<a href="#" class="btn btn-dark">선택 완료</a>
+					</div>
+					<div class="text-center">
+						<input type="button" value="선택삭제" onclick="deleteValue();">
+						<a href="#" class="btn btn-dark">선택 삭제</a>
 					</div>
 					<br>
 					<nav aria-label="Page navigation example">
@@ -327,8 +333,64 @@ pageContext.setAttribute("schedulelist", schedulelist);
 
 
 		</div>
+		<script>
+			$(function(){
+				var check= document.getElementsByName("DeleteCheck");
+				var DeleteCnt = check.length;
+				
+				$("input[name='allCheck']").click(function(){
+					var check_list = $("input[name='DeleteCheck']");
+					console.log(2);
+					for(var i=0; i<check_list.length; i++){
+						check_list[i].checked=this.checked;
+						
+					}
+				};
+				
+				$("input[name='DeleteCheck']").click(function(){
+					if($("input[name='DeleteCheck']:checked").length==DeleteCnt){
+						$("input[name='allCheck']")[0].checked=true;
+					} else {
+						$("input[name='allCheck']")[0].checked=false;
+					}
+				};		
+			};
+			
+			function deleteValue(){
+				var url="ScheduleDeleteCon.do";
+				var valuelist =new Array();
+				var schedulelist = $("input[name='DeleteCheck']");
+				
+				for(var i =0; i<list.length; i++) {
+					if(list[i].checked){
+						valuelist.push(schedulelist[i].value);
+					}
+				}
+				
+				if(valuelist.length==0){
+					alert("선택한 스케줄이 없습니다.");
+				} else {
+					var chk= confrim("정말 삭제하시겠습니까?");
+					$.ajax({
+						url : url,
+						type : "POST",
+						traditional : true,
+						data : {
+							valuelist : valuelist
+							},
+						success: function(jdata){
+							if(jdata == 1){
+								alert("삭제 성공");
+								location.replace("scheduleindex.jsp")
+							} else {
+								alert("삭제 실패")
+							}
+						}
+					});
+				}
+			}
 
-
+		</script>
 		<script src="jquery-3.6.0.min.js"></script>
 		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 		<script src="js/jquery/jquery-2.2.4.min.js"></script>

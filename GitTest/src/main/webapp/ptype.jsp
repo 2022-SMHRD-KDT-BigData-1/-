@@ -500,14 +500,14 @@
     <form action="PTypeCon.do" method="get">
    		<div class="d-flex justify-content-center" style="padding-left: 255px;  ">
 	      <!--대분류-->
-	      <select name="sel1" id="sel1" style="border: solid #fbb710;
+	      <select name="sel1" id="sel1" style="border: solid #30467C;
 	      ">
 	        선택
 	      </select>
 	      <!--중분류-->
-	      <select name="sel2" id="sel2" style="display: none; border: solid #fbb710;"></select>
+	      <select name="sel2" id="sel2" style="display: none; border: solid #30467C;"></select>
 	      <!--소분류-->
-	      <select name="sel3" id="sel3" style="display: none; border: solid #fbb710;"></select>
+	      <select name="sel3" id="sel3" style="display: none; border: solid #30467C;"></select>
 	    </div>
 	
 	    <div class="d-flex justify-content-center">
