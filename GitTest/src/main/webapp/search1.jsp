@@ -201,29 +201,24 @@ body {
 
 									<tr>
 										<th></th>
-										<th>제목</th>
-										<th>저자</th>
+										<th class="text-center">제목</th>
+										<th class="text-center">저자</th>
 									</tr>
 
 									<c:forEach var="i" items="${requestScope.books }">
 										<tbody style="text-align: center;">
-										<tr>
-											<td><a ><img src="${i.book_img }"></a></td>
-											<td class="wish-num"><a
-												href="javascript:sendBookValues('${i.book_title}', '${i.book_num}', '${i.book_page}' )">
-													${i.book_title } </a></td>
-											<td>${i.book_author }</td>
-										</tr>
+											<tr>
+
+												<td><a href="#"><img src="${i.book_img}"></a></td>
+												<td class="wish-num" >
+														${i.book_title }</td>
+												<td><div style="font-size:20px">${i.book_author }</div></td>
+
+											</tr>
 										</tbody>
 									</c:forEach>
 								</table>
-								<script type="text/javascript">
-									function sendBookValues(name, num, page) {
-										console.log(name);
-										opener.setBookValues(name, num, page);
-										window.close();
-									}
-								</script>
+								
 							</div>
 						</div>
 					</div>
