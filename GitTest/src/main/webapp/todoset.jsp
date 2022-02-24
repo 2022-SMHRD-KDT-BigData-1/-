@@ -16,7 +16,7 @@
 </head>
 <body>
 	<h1>todo</h1>
-	<form action="Todo.do" method="post">
+	<form action="TodoCon.do" method="post">
 		<table border="1" width="400px">
 			<tr>
 				<td align="center"> 

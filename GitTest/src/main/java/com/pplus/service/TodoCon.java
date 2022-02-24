@@ -33,7 +33,7 @@ public class TodoCon implements iPCommand {
 		TodoDAO dao = new TodoDAO();
 
 		int cnt = dao
-				.todoSet(new TodoDTO(0, title, null, 0, schedule.getSchedule_num(), member.getMember_nick(),0));
+				.todoSet(new TodoDTO(0, title, null, schedule.getSchedule_num(), 0, member.getMember_nick(),0));
 
 		if (cnt > 0) {
 			System.out.println("todo Á¦¸ñ" + title);

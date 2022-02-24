@@ -251,19 +251,25 @@ if (count > 0) {
 						</thead>
 						<tbody>
 							<c:forEach var="i" items="${editoralllist }" varStatus="status">
-								<tr>
-									<td><div class="form-check">
-											<input class="form-check-input" type="checkbox"
-												name="flexRadioDefault" id="flexRadioDefault1" value="${i.editor_num }"> <label
-												class="form-check-label" for="flexRadioDefault1"> </label>
-										</div></td>
-									<td><input value="${i.editor_num }" style="display: none;"
-										name="num"> <input value="${i.member_nick }"
-										style="display: none;" name="nick"> ${j = j + 1}</td>
-									<td>${i.editor_date}</td>
-									<td>${sessionScope.schedulelist[status.index].schedule_name }</td>
-									<td>${i.editor_title }</td>
-								</tr>
+							<c:forEach var="s" items="${schedulelist }">
+							<c:choose>
+								<c:when test="${i.schedule_num == s.schedule_num }">
+									<tr>
+										<td><div class="form-check">
+												<input class="form-check-input" type="checkbox"
+													name="flexRadioDefault" id="flexRadioDefault1" value="${i.editor_num }"> <label
+													class="form-check-label" for="flexRadioDefault1"> </label>
+											</div></td>
+										<td><input value="${i.editor_num }" style="display: none;"
+											name="num"> <input value="${i.member_nick }"
+											style="display: none;" name="nick"> ${j = j + 1}</td>
+										<td>${i.editor_date}</td>
+										<td>${s.schedule_name }</td>
+										<td>${i.editor_title }</td>
+									</tr>
+								</c:when>
+							</c:choose>
+							</c:forEach>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -352,7 +358,7 @@ $(document).ready(function() {
 		        	console.log("체크체크");
 		        }
 		    }
-		    location.href='EditorDeleteCon.do?list='+list;
+		    location.href='EditorAllDeleteCon.do?list='+list;
 		    console.log(list);
 	});
 	 

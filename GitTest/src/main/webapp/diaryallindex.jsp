@@ -242,20 +242,26 @@ if (count > 0) {
 							</tr>
 						</thead>
 						<body>
-							<c:forEach var="i" items="${sessionScope.diaryalllist }">
+							<c:forEach var="i" items="${diaryalllist }">
+							<c:forEach var="s" items="${schedulelist }">
+							<c:choose>
+								<c:when test="${i.schedule_num == s.schedule_num }">
 								<tr>
 									<td><div class="form-check">
-											<input class="form-check-input" type="radio"
-												name="flexRadioDefault" id="flexRadioDefault1"> <label
+											<input class="form-check-input" type="checkbox"
+												name="flexRadioDefault" id="flexRadioDefault1" value="${i.diary_num }"> <label
 												class="form-check-label" for="flexRadioDefault1"> </label>
 										</div></td>
 									<td><input value="${i.diary_num }" style="display: none;"
 										name="num"> <input value="${i.member_nick }"
-										style="display: none;" name="nick"> ${j += 1}</td>
+										style="display: none;" name="nick"> ${j = j + 1}</td>
 									<td>${i.diary_date }</td>
-									<td>${sessionScope.schedule.schedule_name }</td>
+									<td>${s.schedule_name }</td>
 									<td>${i.diary_title }</td>
 								</tr>
+								</c:when>
+							</c:choose>
+							</c:forEach>
 							</c:forEach>
 					</table>
 				</div>
@@ -264,7 +270,7 @@ if (count > 0) {
 				<div class="page">
 					<div class="text-center">
 						<a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
-							class="btn btn-dark">선택 삭제</a>
+							class="btn btn-dark" id="delete">선택 삭제</a>
 					</div>
 					<br>
 					<nav aria-label="Page navigation example">
@@ -328,7 +334,28 @@ if (count > 0) {
 			</div>
 		</div>
 	</div>
+	    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	
+	$("#delete").click(function () {
+		var list = [];
+		 var val = document.getElementsByName("flexRadioDefault");
+		  var size = val.length;
+		    for(var i = 0; i < size; i++){
+		        if(val[i].checked == true){
+		        	list.push(val[i].value);
+		        	console.log("체크체크");
+		        }
+		    }
+		    location.href='DiaryAllDeleteCon.do?list='+list;
+		    console.log(list);
+	});
+	 
+}); 
 
+</script>
 
 
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->

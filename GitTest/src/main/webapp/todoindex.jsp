@@ -35,6 +35,7 @@ if (count > 0) {
 
 }
 %>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -46,90 +47,176 @@ if (count > 0) {
 
 <!-- Title  -->
 <title>P+(Programming에 Planner를 더하다.)</title>
+
 <!-- Favicon  -->
-<link rel="icon" href="image/p+만.png" />
+<link rel="icon" href="img/core-img/favicon.ico" />
+
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
 
-<!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+<title>Hello, world!</title>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+	crossorigin="anonymous">
+
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
 	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+	crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link
+	href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
+	rel="stylesheet" type="text/css" />
+
+<!-- Google Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+	rel="stylesheet" />
+<link href="calendar/packages copy/core/main.css" rel="stylesheet" />
+<link href="calendar/packages copy/daygrid/main.css" rel="stylesheet" />
+<script src="calendar/packages copy/core/main.js"></script>
+<script src="calendar/packages copy/interaction/main.js"></script>
+<script src="calendar/packages copy/daygrid/main.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
+
+<style>
+body {
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#calendar {
+	max-width: 900px;
+	margin: 0 auto;
+}
+</style>
+
 
 </head>
 
 <body>
 	<header
-		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
-		<a class="navbar-brand" href="#">P+</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end"
-			id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">사이트
-						소개</a></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="컨텐츠추천.jsp">컨텐츠 추천</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">유형 확인 및 재검사</a></li>
-					</ul>
+      class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
+    >
+      <a class="navbar-brand" href="#">P+</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">사이트 소개</a>
+          </li>
+          <div class="dropdown nav-item active">
+            <a class="nav-link dropdown-toggle" href="컨텐츠추천.jsp" >컨텐츠 추천</a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="#">유형 확인 및 재검사</a>
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown nav-item active">
+            <a class="nav-link dropdown-toggle" href="plannermain.jsp" >학습플래너</a>
+            <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-header">스케줄</li>
+      <hr>
+      <li><a href="scheduleset.jsp">등록</a></li>
+      <li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+             
+     <br>
+      <li class="divider"></li>
+      <li class="dropdown-header">일정</li>
+      <hr>
+      <li><a href="dayplantodayset.jsp">등록</a></li>
+      <li><a href="dayplantodayinsex.jsp">전체 일정 목록</a></li>
+      
+      <br>
+      <li class="divider"></li>
+      <li class="dropdown-header">조회</li>
+      <hr>
+      <li><a href="editorindex.jsp">전체 에디터 목록</a></li>
+      <li><a href="diaryindex.jsp">전체 일기 목록</a></li>
+      <li><a href="todoindex.jsp">전체 할 일 목록</a></li>
+      
+      
+    </ul>
+          </div>
+          
+          <div class="dropdown nav-item active">
+            <a class="nav-link dropdown-toggle" href="#" >포트폴리오</a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="포폴등록할스케줄.jsp">등록</a>
+              </li>
+              
+              <li>
+                <a class="dropdown-item" href="포폴목록.jsp">목록</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="dropdown nav-item active">
+            <a class="nav-link dropdown-toggle" href="#" >마이페이지</a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="#">회원정보 수정/탈퇴</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">전체 학습상황 조회</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">위시리스트</a>
+              </li>
+            </ul>
+          </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">로그아웃</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+	<!-- Search Wrapper Area Start -->
+	<div class="search-wrapper section-padding-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="search-content"></div>
 				</div>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
-					<span class="caret"></span>
-
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">스케줄</li>
-						<hr>
-						<li><a href="scheduleset.jsp">등록</a></li>
-						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">일정</li>
-						<hr>
-						<li><a href="dayplantodayset.jsp">등록</a></li>
-						<li><a href="dayplantodayinsex.jsp">전체 일정 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">조회</li>
-						<hr>
-						<li><a href="editorindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryindex.jsp">전체 일기 목록</a></li>
-						<li><a href="todoindex.jsp">전체 할 일 목록</a></li>
-
-
-					</ul>
-				</div>
-
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="포폴등록할스케줄.jsp">등록</a></li>
-
-						<li><a class="dropdown-item" href="포폴목록.jsp">목록</a></li>
-					</ul>
-				</div>
-
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">회원정보 수정/탈퇴</a></li>
-						<li><a class="dropdown-item" href="#">전체 학습상황 조회</a></li>
-						<li><a class="dropdown-item" href="#">위시리스트</a></li>
-					</ul>
-				</div>
-				<li class="nav-item active"><a class="nav-link" href="#">로그아웃</a>
-				</li>
-			</ul>
+			</div>
 		</div>
-	</header>
-
+	</div>
+	<!-- Search Wrapper Area End -->
 
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
@@ -146,60 +233,81 @@ if (count > 0) {
 		</div>
 
 
-
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
-				<h6 class="widget-title mb-30">학습플래너</h6>
-				<br>
 				<!-- Widget Title -->
-				<!--<h6 class="widget-title mb-30">스케줄</h6>
- -->
-				<!--  Catagories  -->
-				<div class="catagories-menu">
-					<ul>
-						<li class="active" style="color: #fbb710"><a>스케줄</a></li>
-						<hr>
-						<li><a href="스케줄만_등록.jsp">등록</a></li>
-						<li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
 
-					</ul>
+
+				<!-- ##### Single Widget ##### -->
+				<div class="widget catagory mb-50">
+					<!-- Widget Title -->
+
+					<h6 class="widget-title mb-30">스케줄</h6>
+
+					<!--  Catagories  -->
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a href="schedule.jsp">달력</a></li>
+							<hr />
+						</ul>
+					</div>
 				</div>
-			</div>
 
-			<!-- ##### Single Widget ##### -->
-			<div class="widget category mb-50">
-				<!-- Widget Title -->
-				<!--<h6 class="widget-title mb-30">일정</h6>
- -->
-				<!-- Widget Title -->
+				<!-- ##### Single Widget ##### -->
+				<div class="widget catagory mb-50">
+					<!-- Widget Title -->
+					<!-- <h6 class="widget-title mb-30">스케줄</h6> -->
 
-				<div class="catagories-menu">
-					<ul>
-						<li class="active" style="color: #fbb710"><a>일정</a></li>
-						<hr>
-						<li><a href="일정등록4번.jsp">등록</a></li>
-						<li><a href="#">전체 일정 목록</a></li>
-					</ul>
+					<!--  Catagories  -->
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a href="#">에디터</a></li>
+							<hr>
+							<li><a href="editorset.jsp">에디터 작성</a></li>
+							<li><a href="editorindex.jsp">에디터 목록</a></li>
+						</ul>
+						
+					</div>
 				</div>
-			</div>
 
-			<!-- ##### Single Widget ##### -->
-			<div class="widget category mb-50">
-				<!-- Widget Title -->
-				<!-- <h6 class="widget-title mb-30">일정</h6>
- -->
-				<!-- Widget Title -->
+				<!-- ##### Single Widget ##### -->
+				<div class="widget category mb-50">
 
-				<div class="catagories-menu">
-					<ul>
-						<li class="active" style="color: #fbb710"><a>조회</a></li>
-						<hr>
-						<li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-						<li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
-						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
+					<!-- Widget Title -->
 
-					</ul>
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a href="#">일기</a></li>
+							<hr>
+							<li><a href="diaryset.jsp">작성</a></li>
+							<li><a href="diaryindex.jsp">일기 목록</a></li>
+						</ul>
+					</div>
+					
+					<div class="widget catagory mb-50">
+						<div class="catagories-menu">
+						<ul>
+							<li class="active"><a href="#">오늘 할 일</a></li>
+							<hr>
+							<li><a href="todoset.jsp">작성</a></li>
+							<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
+						</ul>
+						
+					</div>
+				</div>
+
+					<br />
+
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a href="#">학습진행상황</a></li>
+							<hr />
+						</ul>
+						<br> <br> <br> <br> <br> <br> <br>
+						<br> <br> <br>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -217,13 +325,13 @@ if (count > 0) {
 
 
 					<thead class="table-warning ">
-
-						<th class="text-center">선택</th>
-						<th class="text-center">No.</th>
-						<th class="text-center">스케줄명</th>
-						<th class="text-center">할 일 날짜</th>
-						<th class="text-center">할 일 제목</th>
-						<th class="text-center">할 일 체크</th>
+						<tr>
+							<th class="text-center">선택</th>
+							<th class="text-center">No.</th>
+							<th class="text-center">스케줄명</th>
+							<th class="text-center">할 일 날짜</th>
+							<th class="text-center">할 일 제목</th>
+							<th class="text-center">할 일 체크</th>
 						</tr>
 					</thead>
 
@@ -231,8 +339,8 @@ if (count > 0) {
 						<c:forEach var="i" items="${todolist }">
 							<tr>
 								<td><div class="form-check">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault1"> <label
+										<input class="form-check-input" type="checkbox"
+											name="flexRadioDefault" id="flexRadioDefault1" value="${i.todo_num }"> <label
 											class="form-check-label" for="flexRadioDefault1"> </label>
 									</div></td>
 								<td><input value="${i.todo_num }" style="display: none;"
@@ -259,7 +367,7 @@ if (count > 0) {
 			<div class="page">
 				<div class="text-center">
 					<a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
-						class="btn btn-dark">선택 삭제</a> <a href="#" class="btn btn-dark">선택
+						class="btn btn-dark" id="delete">선택 삭제</a> <a href="#" class="btn btn-dark">선택
 						보기</a>
 				</div>
 				<br>
@@ -357,6 +465,25 @@ if (count > 0) {
 				}
 			});
 		}
+	});
+	
+	$(document).ready(function() {
+		
+		
+		$("#delete").click(function () {
+			var list = [];
+			 var val = document.getElementsByName("flexRadioDefault");
+			  var size = val.length;
+			    for(var i = 0; i < size; i++){
+			        if(val[i].checked == true){
+			        	list.push(val[i].value);
+			        	console.log("체크체크");
+			        }
+			    }
+			    location.href='TodoDeleteCon.do?list='+list;
+			    console.log(list);
+		});
+		 
 	});
 	</script>
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->

@@ -243,7 +243,7 @@ if (count > 0) {
 
 
 					<thead class="table-warning ">
-
+						<tr>
 						<th class="text-center">선택</th>
 						<th class="text-center">No.</th>
 						<th class="text-center">스케줄명</th>
@@ -255,28 +255,34 @@ if (count > 0) {
 
 					<tbody>
 						<c:forEach var="i" items="${todolist }">
-							<tr>
-								<td><div class="form-check">
-										<input class="form-check-input" type="check"
-											name="flexRadioDefault" id="flexRadioDefault1"> <label
-											class="form-check-label" for="flexRadioDefault1"> </label>
-									</div></td>
-								<td><input value="${i.todo_num }" style="display: none;"
-									name="num"> <input value="${i.member_nick }"
-									style="display: none;" name="nick"> ${j =j+ 1}</td>
-								<td>${schedule.schedule_name }</td>
-								<td>${i.todo_date }</td>								
-								<td>${i.todo_title }</td>
-								<c:choose>
-									<c:when test="${i.todo_check ==1}">
-										<td><input class="myCheck" type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}" checked></td>
-									</c:when>
-									<c:otherwise>
-										<td><input class="myCheck"  type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}"></td>
-									</c:otherwise>
-								</c:choose>
-								
-							</tr>
+						<c:forEach var="s" items="${schedulelist }">
+						<c:choose>
+							<c:when test="${i.schedule_num == s.schedule_num }">
+								<tr>
+									<td><div class="form-check">
+											<input class="form-check-input" type="checkbox"
+												name="flexRadioDefault" id="flexRadioDefault1" value="${i.todo_num }"> <label
+												class="form-check-label" for="flexRadioDefault1"> </label>
+										</div></td>
+									<td><input value="${i.todo_num }" style="display: none;"
+										name="num"> <input value="${i.member_nick }"
+										style="display: none;" name="nick"> ${j =j+ 1}</td>
+									<td>${s.schedule_name }</td>
+									<td>${i.todo_date }</td>								
+									<td>${i.todo_title }</td>
+									<c:choose>
+										<c:when test="${i.todo_check ==1}">
+											<td><input class="myCheck" type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}" checked></td>
+										</c:when>
+										<c:otherwise>
+											<td><input class="myCheck"  type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}"></td>
+										</c:otherwise>
+									</c:choose>
+									
+								</tr>
+							</c:when>
+						</c:choose>
+						</c:forEach>
 						</c:forEach>
 					</tbody>
 				</table>
@@ -284,6 +290,7 @@ if (count > 0) {
 			<br>
 			<div class="text-center" style="padding-left: 36%">
 				<a href="#" class="btn btn-primary">목록 보기</a>
+				<a href="#" class="btn btn-primary" id="delete">선택 삭제</a>
 			</div>
 		</div>
 	</div>
@@ -333,6 +340,25 @@ if (count > 0) {
 				});
 			}
 		});	
+
+		$(document).ready(function() {
+			
+			
+			$("#delete").click(function () {
+				var list = [];
+				 var val = document.getElementsByName("flexRadioDefault");
+				  var size = val.length;
+				    for(var i = 0; i < size; i++){
+				        if(val[i].checked == true){
+				        	list.push(val[i].value);
+				        	console.log("체크체크");
+				        }
+				    }
+				    location.href='TodoAllDeleteCon.do?list='+list;
+				    console.log(list);
+			});
+			 
+		});
 	</script>
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>

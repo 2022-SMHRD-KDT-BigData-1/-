@@ -344,7 +344,7 @@
 	function j() {
 		
 		
-		
+		var allData;
 		
 		var select1 = document.getElementById("sel1");
 		select1 = select1.options[select1.selectedIndex].value;
@@ -358,14 +358,25 @@
 		var select3 = document.getElementById("sel3");
 		console.log(select3.length);
 		
-		var allData;
-		if(select3.length > 0){
-			console.log("들어옴?");
-			select3 = select3.options[select3.selectedIndex].value;
-			allData = { "sel1": select1, "sel2": select2, "sel3":select3 };
+		if(select2.length > 10 ){
+			allData = { "sel1": select1, "sel2": "0"};
+			if(select3.length > 0){
+				console.log("들어옴?");
+				select3 = select3.options[select3.selectedIndex].value;
+				allData = { "sel1": select1, "sel2": "0", "sel3":select3 };
+			}else{
+				allData = { "sel1": select1, "sel2": "0", "sel3":"0" };
+			}
 		}else{
-			allData = { "sel1": select1, "sel2": select2, "sel3":"0" };
+			if(select3.length > 0){
+				console.log("들어옴?");
+				select3 = select3.options[select3.selectedIndex].value;
+				allData = { "sel1": select1, "sel2": select2, "sel3":select3 };
+			}else{
+				allData = { "sel1": select1, "sel2": select2, "sel3":"0" };
+			}
 		}
+		console.log(allData)
 		
 		
 		

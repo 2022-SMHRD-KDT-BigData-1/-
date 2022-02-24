@@ -11,17 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pplus.model.DiaryDAO;
+import com.pplus.model.DiaryDTO;
 import com.pplus.model.EditorDAO;
 import com.pplus.model.EditorDTO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.ScheduleDTO;
 
 
-@WebServlet("/EditorDeleteCon")
-public class EditorDeleteCon implements iPCommand {
+@WebServlet("/DiaryDeleteCon")
+public class DiaryDeleteCon implements iPCommand {
 
 
-	
+
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -30,33 +32,35 @@ public class EditorDeleteCon implements iPCommand {
 		HttpSession session = request.getSession();
 		
 		PMemberDTO member = (PMemberDTO)session.getAttribute("member");
-		EditorDAO editorDAO = new EditorDAO();
+		DiaryDAO diaryDAO = new DiaryDAO();
 		
 		String[] list = request.getParameterValues("list");
 		int cnt = 0;
 		
 		for (int i = 0; i < list.length; i++) {
-			cnt = editorDAO.editorDelete(member.getMember_nick(), Integer.parseInt(list[i]));
+			cnt = diaryDAO.diaryDelete(member.getMember_nick(), Integer.parseInt(list[i]));
 		}
 		
 		if(cnt > 0) {
 			ScheduleDTO schedule = (ScheduleDTO)session.getAttribute("schedule");
 			
-			ArrayList<EditorDTO> editorlist = editorDAO.editorSelectAll(member.getMember_nick(), schedule.getSchedule_num());
-			ArrayList<EditorDTO> editoralllist = editorDAO.memberEditorSelectAll(member.getMember_nick());
+			ArrayList<DiaryDTO> diarylist = diaryDAO.diarySelectAll(member.getMember_nick(), schedule.getSchedule_num());
+			ArrayList<DiaryDTO> diaryalllist = diaryDAO.memberDiarySelectAll(member.getMember_nick());
 			
-			session.setAttribute("editorlist", editorlist);
-			session.setAttribute("editoralllist", editoralllist);
+			session.setAttribute("diarylist", diarylist);
+			session.setAttribute("diaryalllist", diaryalllist);
 			
-			response.sendRedirect("editorindex.jsp");
+			response.sendRedirect("diaryindex.jsp");
 			
 		}else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
-			out.print("alert('에디터를 삭제하는데 실패하셨습니다.');");
-			out.print("location.href='editorindex.jsp';");
+			out.print("alert('일기를 삭제하는데 실패하셨습니다.');");
+			out.print("location.href='diaryindex.jsp';");
 			out.print("</script>");
 		}
 	}
+		
+	
 
 }

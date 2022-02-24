@@ -279,7 +279,7 @@
         <!-- 일기 목록 -->
   <div class="container">
     <h1 style="text-align: center;">
-      [ 일기 ] 
+      [ 일기 ]
 <!--       <i class="fas fa-book"></i>
  -->    </h1>
     <br>
@@ -297,19 +297,18 @@
           </tr>
         </thead>
         <body>
-        <c:forEach var="i" items="${sessionScope.diarylist }">
-        <tr>
-          <td><div class="form-check">
-              <input class="form-check-input" type="radio"
+         <c:forEach var="i" items="${sessionScope.diarylist }">
+       <tr>
+          <td><div class="fo              <input class="form-check-input" type="radio"
                 name="flexRadioDefault" id="flexRadioDefault1"> <label
+}"> <label
                 class="form-check-label" for="flexRadioDefault1"> </label>
             </div></td>
 					<td>
 						<input value="${i.diary_num }" style="display: none;" name="num">
 						<input value="${i.member_nick }" style="display: none;" name="nick">
-						${j += 1}
-					</td>
-					<td>
+						${j = j +						${j += 1}
+		<td>
 						${i.diary_date }
 					</td>
 					<td>
@@ -327,8 +326,8 @@
     <div class="page">
       <div class="text-center">
         <a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
-          class="btn btn-dark">선택 삭제</a>
-          <a href="#"
+          class="b          class="btn btn-dark">선택 삭제</a>
+"#"
           class="btn btn-dark">선택 보기</a>
       </div>
       <br>
@@ -404,8 +403,7 @@
         ></script>
       </div>
     </div>
-
-    <!-- ##### Footer Area Start ##### -->
+    <script type="text/javascrtart ##### -->
   
     <!-- ##### Footer Area End ##### -->
 
