@@ -219,13 +219,18 @@ body {
 					<div class="form">
 					<form action="">
 						<i class="fa fa-search"></i> <input type="text"
-							class="form-control form-input" value="${param.searchWord}" name="searchWord" id="searchWord">
+							class="form-control form-input" value="${param.searchWord}" name="searchWord" id="searchWord" style="height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+    padding-top: 54px;
+    margin-top: 90px;">
 						<div class="text-center"><span class="left-pan">
 					<a class="btn" id="q">검색</a>
 				</span></div>
 				</form>
-				<div class="col-12">
+				<div class="col-12" style="flex: 0 0 100%; width: 75rem; padding-right: 250px; margin-left: -132px">
 							<div class=" ">
+							<br>
 								<h4>[도서검색]</h4>
 							</div>
 
@@ -242,8 +247,8 @@ body {
 										<tbody style="text-align: center;">
 											<tr>
 
-												<td><a href="#"><img src="${i.book_img}"></a></td>
-												<td class="wish-num" >
+												<td><a href="BookintCon?num=${i.book_num}"><img src="${i.book_img}" style="height: 13rem;"></a></td>
+												<td class="wish-num" style="font-size: 20px;">
 														${i.book_title }</td>
 												<td><div style="font-size:20px">${i.book_author }</div></td>
 

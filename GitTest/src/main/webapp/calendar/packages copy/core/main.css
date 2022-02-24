@@ -114,7 +114,7 @@ hr.fc-divider {
 
 .fc th {
   text-align: center;
-      background-color: #ffe38e;
+      background-color: #FFA076;
 }
 
 .fc th,
@@ -566,7 +566,7 @@ TODO: more distinction between this file and common.css
 .fc-unthemed .fc-popover,
 .fc-unthemed .fc-list-view,
 .fc-unthemed .fc-list-heading td {
-  border-color: black;
+  border-color: #dee2e6;
 }
 
 .fc-unthemed .fc-popover {
@@ -791,15 +791,15 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 .fc-button-group > .fc-button:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  background-color: #fbb710;
-  border-color: #fbb710;
+  background-color: black;
+  border-color: black;
 }
 
 .fc-button-group > .fc-button:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-   background-color: #fbb710;
-    border-color: #fbb710;
+   background-color: black;
+    border-color: black;
 }
 
 /* Popover
