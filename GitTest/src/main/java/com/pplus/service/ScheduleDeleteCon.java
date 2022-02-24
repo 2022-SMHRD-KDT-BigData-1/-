@@ -25,9 +25,9 @@ public class ScheduleDeleteCon implements iPCommand {
 		
 		PMemberDTO member = (PMemberDTO)session.getAttribute("member");
 		
-		String[] num = request.getParameterValues("num");
+		String[] list = request.getParameterValues("list");
 		
-		System.out.println(num[1]+11);
+		System.out.println(list[0]);
 		
 	}
 

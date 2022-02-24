@@ -1,6 +1,39 @@
+<%@page import="com.pplus.model.BookDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.pplus.model.BookDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+BookDAO bookDAO = new BookDAO();
+ArrayList<BookDTO> bklist = new ArrayList<BookDTO>();
+
+int pageSize = 10;
+String pageNum = request.getParameter("pageNum");
+String searchWord = request.getParameter("searchWord");
+pageContext.setAttribute("searchWord", searchWord);
+
+
+if (pageNum == null){ // 클릭한게 없으면 1번 페이지
+	pageNum = "1";
+}
+
+int currentPage = Integer.parseInt(pageNum);
+
+// 해당 페이지에서 시작할 레코드 / 마지막 레코드
+int startRow = (currentPage - 1) * pageSize + 1;
+int endRow = currentPage * pageSize;
+
+int count = 0;
+count = bookDAO.getCount(searchWord); // 데이터베이스에 저장된 총 갯수
+
+ 
+if(count > 0){
+	bklist = bookDAO.getList(startRow, endRow, searchWord);
+	pageContext.setAttribute("bklist", bklist);
+	
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -205,7 +238,7 @@ body {
 										<th class="text-center">저자</th>
 									</tr>
 
-									<c:forEach var="i" items="${requestScope.books }">
+									<c:forEach var="i" items="${bklist }">
 										<tbody style="text-align: center;">
 											<tr>
 
@@ -218,6 +251,70 @@ body {
 										</tbody>
 									</c:forEach>
 								</table>
+								<nav aria-label="Page navigation example">
+					<div class="text-center">
+						<ul class="pagination" style="justify-content: center;">
+							
+							<%
+								if(count > 0){
+									// 총 페이지의 수
+									int pageCount = count / pageSize + (count%pageSize == 0 ? 0 : 1);
+									
+									// 한 페이지에 보여줄 페이지 블럭(링크) 수
+									int pageBlock = 10;
+									// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
+									int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
+									int endPage = startPage + pageBlock - 1;
+									
+									// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
+									if(endPage > pageCount){
+										endPage = pageCount;
+									}
+									
+									if(startPage > pageBlock){ // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
+								
+							
+							%>
+										<li class="page-item">
+											<a class="page-link" href="search1.jsp?pageNum=<%= startPage - 10 %>&searchWord=<%=searchWord %>" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+											<span class="sr-only">Previous</span>
+											</a>
+										</li>
+									
+							<%
+								}
+										for(int i=startPage; i <= endPage; i++){ // 페이지 블록 번호
+											if(i == currentPage){ // 현재 페이지에는 링크를 설정하지 않음
+							
+							%>				
+											<%=i %>
+											
+								<%									
+											}else{ // 현재 페이지가 아닌 경우 링크 설정
+								%>	
+											<li class="page-item">
+												<a class="page-link" href="search1.jsp?pageNum=<%=i%>&searchWord=<%=searchWord %>"><%=i %></a>
+											</li>
+											<%	
+								}
+							} // for end
+							
+							if(endPage < pageCount){ // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
+					%>
+										<li class="page-item">
+											<a class="page-link" href="search1.jsp?pageNum=${startPage + 10 }$searchWord=<%=searchWord %>" aria-label="Next"> 
+												<span aria-hidden="true">&raquo;</span> 
+												<span class="sr-only">Next</span>
+											</a>
+										</li>
+										<%}
+							}
+							%>
+							
+						</ul>
+					</div>
+				</nav>
 								
 							</div>
 						</div>

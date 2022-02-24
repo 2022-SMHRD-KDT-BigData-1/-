@@ -67,7 +67,7 @@
 			</c:forEach>
 				<tr>
 					<td colspan="8" align="center">
-						<a href="scheduleindex2.jsp"><input type="submit" id="delete" value="선택삭제" onsubmit="return ck()"></a>
+						<button type="button" id="delete">선택삭제</button>
 					</td>
 				</tr>
 		</table>
@@ -76,23 +76,30 @@
 		<script type="text/javascript" >
 			
 		$(document).ready(function() {
-			var list = [];
-			function ck() {
+			
+			
+				$("#delete").click(function () {
+					var list = [];
+					 var val = document.getElementsByName("delete");
+					  var size = val.length;
+					    for(var i = 0; i < size; i++){
+					        if(val[i].checked == true){
+					        	list.push(val[i].value);
+					        	console.log("체크체크");
+					        }
+					    }
+					    location.href='ScheduleDeleteCon.do?list='+list;
+					    console.log(list);
+				});
 				
 				 
 				 //set initial state.
-				  $('.delete').val($(this).is(':checked'));
+				//  $('.delete').val($(this).is(':checked'));
 				 
 				  
 				  
-				  var val = document.getElementsByName("delete");
-				  var size = val.length;
-				    for(var i = 0; i < size; i++){
-				        if(val[i].checked == true){
-				        	list.push(val[i.value]);
-				        }
-				    }
-			}
+				 
+			
 			
 
 		/* 	  $('.delete').change(function() {

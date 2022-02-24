@@ -286,4 +286,66 @@ public class BookDAO {
 			}
 			return book_part;
 		}
+		public int getCount(String searchWord) {
+			
+			int total = 0;
+			connect();
+			
+			sql = "select count(*) from book where book_title like ?";
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, "%"+searchWord+"%");
+				
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					total = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			
+			return total;
+		}
+		public ArrayList<BookDTO> getList(int start, int end, String searchWord){
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			connect();
+			
+			sql = "select * from (select rownum as rn, book_num, book_title, book_price, "
+					+ "book_img, book_author, book_publisher, book_description, book_page, book_pubdate, "
+					+ "book_isbn, book_part1, book_part2, book_part3 from "
+					+ "(select * from book where book_title like ? order by book_num desc )) where rn between ? and ?";
+			try {
+				psmt = conn.prepareStatement(sql);
+				
+				psmt.setString(1,  "%"+searchWord+"%");
+				psmt.setInt(2, start);
+				psmt.setInt(3, end);
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					
+					list.add(new BookDTO(rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), 
+							rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getString(11), 
+							rs.getString(12), rs.getString(13), rs.getString(14)));
+					System.out.println("test");
+				}
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			
+			return list;
+		}
 }

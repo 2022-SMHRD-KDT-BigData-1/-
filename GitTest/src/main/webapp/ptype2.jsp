@@ -343,18 +343,31 @@
 	
 	function j() {
 		
+		
+		
+		
 		var select1 = document.getElementById("sel1");
 		select1 = select1.options[select1.selectedIndex].value;
-		
+		console.log(select1)
 		
 		var select2 = document.getElementById("sel2");
 		select2 = select2.options[select2.selectedIndex].value;
+		console.log(select2)
+		
 		
 		var select3 = document.getElementById("sel3");
-		select3 = select3.options[select3.selectedIndex].value;
-		console.log(select3)
+		console.log(select3.length);
 		
-		var allData = { "type1": select1, "type2": select2, "type3":select3 };
+		var allData;
+		if(select3.length > 0){
+			console.log("들어옴?");
+			select3 = select3.options[select3.selectedIndex].value;
+			allData = { "type1": select1, "type2": select2, "type3":select3 };
+		}else{
+			allData = { "type1": select1, "type2": select2, "type3":"0" };
+		}
+		
+		
 		
 		$.ajax({
 	        url:"PTypeCon.do",
