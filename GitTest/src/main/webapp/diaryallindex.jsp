@@ -225,7 +225,7 @@ if (count > 0) {
 			<div>
 				<br>
 				<h1 style="text-align: center;">
-					MY 일기 <i class="fas fa-book"></i>
+					일기 <i class="fas fa-book"></i>
 				</h1>
 				<br>
 				<div class="container">

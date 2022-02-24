@@ -207,7 +207,7 @@ if (count > 0) {
 		<div style="width: 60%; margin-top: 180px; margin-left: 300px;">
 
 			<h1 style="text-align: center;">
-				할 일 목록 <i class="fas fa-solid fa-list-ul"></i>
+				[ 할 일 ]<!-- <i class="fas fa-solid fa-list-ul"></i> -->
 			</h1>
 			<br>
 			<div class="container">
