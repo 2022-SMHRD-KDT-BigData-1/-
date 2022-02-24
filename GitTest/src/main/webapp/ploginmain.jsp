@@ -170,7 +170,7 @@ if (member != null) {
                 <a class="dropdown-item" href="achieveall.jsp">전체 학습상황 조회</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">위시리스트</a>
+                <a class="dropdown-item" href="mywish.jsp">위시리스트</a>
               </li>
             </ul>
           </div>

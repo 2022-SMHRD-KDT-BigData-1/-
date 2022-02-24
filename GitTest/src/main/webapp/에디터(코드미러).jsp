@@ -92,6 +92,17 @@
 <style>
 .CodeMirror {
 	border: 1px solid #eee;
+margin-left:100px !important;
+}
+.CodeMirror-scroll{
+	display: inline-block !important;
+	position: inherit !important;
+	width: 950px !important;
+	margin-left:200px !important;
+}
+.CodeMirror.cm-s-default{
+	width:1000px;
+	margin-left:400px !important;
 }
 </style>
 </head>
@@ -245,7 +256,8 @@
 				</div>
 			</div>
 		</div>
-		<div style="width: 40%; margin: 50px; margin-bottom: 10%; margin-left: 15%">
+		<div
+			style="width: 40%; margin: 50px; margin-bottom: 10%; margin-left: 15%">
 			<!-- 에디터 -->
 			<div class="container">
 				<h1 class="text-center" style="padding: 115px 0 0 350px">[ 에디터
@@ -255,42 +267,44 @@
 					<span style="font-weight: bold; font-size: 25px">제목 </span> <input
 						type="text" name="title" placeholder="제목을 입력하세요." autofocus
 						style="width: 500; height: 50; font-size: 25px" />
-				</form>
 
-				<hr />
-				<div class="container m-5">
-					<script>
-						var myCodeMirror = CodeMirror(document.body, {
-							value : "\n",
-							mode : "javascript",
-							lineNumbers : "true",
-						});
-						var myCodeMirror = CodeMirror.fromTextArea(myTextArea,
-								{
-									lineNumber : true,
-								});
-					</script>
-				</div>
-				<br />
-				<div class="col text-center" style="padding-left: 400px;">
-					<a class="btn btn-primary" href="#" role="button">작성 완료</a>
-				</div>
+
+					<hr />
+					<div class="container m-5" >
+						<script>
+							var myCodeMirror = CodeMirror(document.body, {
+								value : "\n",
+								mode : "javascript",
+								lineNumbers : "true",
+							});
+							var myCodeMirror = CodeMirror.fromTextArea(
+									myTextArea, {
+										lineNumber : true,
+									});
+						</script>
+					</div>
+					<br />
+					<div class="col text-center" style="padding-left: 400px;">
+						<a class="btn btn-primary" href="#" role="button">작성 완료</a>
+					</div>
+				</form>
 			</div>
 		</div>
+	</div>
 
-		<!-- ##### Footer Area Start ##### -->
+	<!-- ##### Footer Area Start ##### -->
 
-		<!-- ##### Footer Area End ##### -->
-
-		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-		<script src="js/jquery/jquery-2.2.4.min.js"></script>
-		<!-- Popper js -->
-		<script src="js/popper.min.js"></script>
-		<!-- Bootstrap js -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Plugins js -->
-		<script src="js/plugins.js"></script>
-		<!-- Active js -->
-		<script src="js/active.js"></script>
+	<!-- ##### Footer Area End ##### -->
+	<script src="jquery-3.6.0.min.js"></script>
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>
