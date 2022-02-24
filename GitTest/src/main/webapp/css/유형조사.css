@@ -5,7 +5,7 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color:#FFFDE7;
+  background-color: white;
 }
 
 li.nav-item {
@@ -49,14 +49,17 @@ h1 {
   margin-left: 30px;
   margin-top: -28px;
   margin-top: -28px;
-  border: solid #fbb710;
+  border: solid #30467C;
 }
 
 .btn.btn-primary {
-  padding: 10px;
-  margin-top: 230px;
-  background-image: none;
-  background-color: #2d3842;
-  font-size: 18px;
-  margin-left: 260px;
+ padding: 10px;
+    margin-top: 230px;
+    background-image: none;
+    background-color: #FFA076;
+    font-size: 18px;
+    color: black;
+    border-color: #FFA076;
+    margin-left: 260px;
 }
+

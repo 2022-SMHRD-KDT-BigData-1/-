@@ -279,7 +279,7 @@
         <!-- 일기 목록 -->
   <div class="container">
     <h1 style="text-align: center;">
-      [ 일기 ] 
+      [ 일기 ]
 <!--       <i class="fas fa-book"></i>
  -->    </h1>
     <br>
