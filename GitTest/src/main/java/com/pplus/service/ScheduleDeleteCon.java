@@ -1,6 +1,9 @@
 package com.pplus.service;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pplus.model.EditorDTO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.ScheduleDAO;
+import com.pplus.model.ScheduleDTO;
 
 
 @WebServlet("/ScheduleDeleteCon")
@@ -25,24 +30,32 @@ public class ScheduleDeleteCon implements iPCommand {
 		HttpSession session = request.getSession();
 		
 		PMemberDTO member = (PMemberDTO)session.getAttribute("member");
-		int cnt=0;
-		String nick = member.getMember_nick();
-		ScheduleDAO scheduleDAO =new ScheduleDAO();
+		ScheduleDAO scheduleDAO = new ScheduleDAO();
 		
-		String[] scheduleNumList = request.getParameterValues("scheduleNumList");
-		int size = scheduleNumList.length;
-		for(int i=0; i<size;i++) {
-			cnt += scheduleDAO.scheduleDelete(nick, Integer.parseInt(scheduleNumList[i]));
+		String[] list = request.getParameterValues("list");
+		
+		int cnt = 0;
+		
+		for (int i = 0; i < list.length; i++) {
+			cnt = scheduleDAO.scheduleDelete(member.getMember_nick(), Integer.parseInt(list[i]));
 		}
 		
-		if(cnt>0) {
-			System.out.println("삭제성공");
+		if(cnt > 0) {
+	
+			
+			ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
+			
+			session.setAttribute("schedulelist", schedulelist);
+			
 			response.sendRedirect("scheduleindex.jsp");
-		} else {
-			System.out.println("삭제실패");
-			response.sendRedirect("scheduleindex.jsp");
+			
+		}else {
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('에디터를 삭제하는데 실패하셨습니다.');");
+			out.print("location.href='scheduleindex.jsp';");
+			out.print("</script>");
 		}
-		
 	}
 
 }

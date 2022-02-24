@@ -238,9 +238,8 @@ pageContext.setAttribute("schedulelist", schedulelist);
 									<td>
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												name="DeleteCheck" id="flexRadioDefault1"> <label
-												class="form-check-label" for="flexRadioDefault1"
-												value="${schedule.schedule_num }"> </label>
+												name="DeleteCheck" id="flexRadioDefault1" value="${schedule.schedule_num }"> <label
+												class="form-check-label" for="flexRadioDefault1"> </label>
 										</div>
 									</td>
 									<td>${j = j + 1}</td>
@@ -261,9 +260,9 @@ pageContext.setAttribute("schedulelist", schedulelist);
 					<div class="text-center">
 						<a href="#" class="btn btn-dark">선택 완료</a>
 					</div>
+					
 					<div class="text-center">
-						<input type="button" value="선택삭제" onclick="deleteValue();">
-						<a href="#" class="btn btn-dark">선택 삭제</a>
+						<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
 					</div>
 					<br>
 					<nav aria-label="Page navigation example">
@@ -333,8 +332,27 @@ pageContext.setAttribute("schedulelist", schedulelist);
 
 
 		</div>
+		    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 		<script>
-			$(function(){
+		$(document).ready(function() {
+			
+			
+			$("#delete").click(function () {
+				var list = [];
+				 var val = document.getElementsByName("DeleteCheck");
+				  var size = val.length;
+				    for(var i = 0; i < size; i++){
+				        if(val[i].checked == true){
+				        	list.push(val[i].value);
+				        	console.log("체크체크");
+				        }
+				    }
+				    location.href='ScheduleDeleteCon.do?list='+list;
+				    console.log(list);
+			});
+			 
+		}); 
+			/* $(function(){
 				var check= document.getElementsByName("DeleteCheck");
 				var DeleteCnt = check.length;
 				
@@ -388,7 +406,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 						}
 					});
 				}
-			}
+			} */
 
 		</script>
 		<script src="jquery-3.6.0.min.js"></script>
