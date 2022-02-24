@@ -279,9 +279,9 @@
         <!-- 일기 목록 -->
   <div class="container">
     <h1 style="text-align: center;">
-      MY 일기 
-      <i class="fas fa-book"></i>
-    </h1>
+      [ 일기 ] 
+<!--       <i class="fas fa-book"></i>
+ -->    </h1>
     <br>
     <div class="container" >
    <c:set value="<%= (currentPage-1)*10%>" var="j" />

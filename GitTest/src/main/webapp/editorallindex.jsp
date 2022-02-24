@@ -231,7 +231,7 @@ if (count > 0) {
 			<div>
 
 				<br>
-				<h1 style="text-align: center;">
+				<h1 style="text-align: center;"> 
 				 에디터 <i class="fas fa-laptop-code"></i>
 				</h1>
 				<br>

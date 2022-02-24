@@ -209,7 +209,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 			<div>
 
 				<h1 style="text-align: center;">
-					MY 스케줄 <i class="far fa-solid fa-calendar-check"></i>
+					스케줄 <i class="far fa-solid fa-calendar-check"></i>
 				</h1>
 				<br>
 				<div class="container">
