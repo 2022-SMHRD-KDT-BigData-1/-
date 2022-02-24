@@ -56,12 +56,29 @@
     <link rel="stylesheet" type="text/css" href="css1/util.css" />
     <link rel="stylesheet" type="text/css" href="css1/main.css" />
     <!--===============================================================================================-->
- 	
+ 	<!-- Template Main CSS File -->
+<link href="assets/css/style.css" rel="stylesheet">
  	
  
   </head>
   <body>
-    <header
+  
+  <header id="header" class="fixed-top header-scrolled">
+	
+			<nav id="navbar" class="navbar" style="justify-content: end">
+				<ul style= "padding-right:30px">
+					<li><a class="nav-link scrollto" href="#"
+						style="text-decoration: none">사이트 소개</a></li>
+					<li><a class="nav-link scrollto" href="plogin.jsp"
+						style="text-decoration: none">로그인</a></li>
+					<li><a class="nav-link scrollto" href="pjoin.jsp"
+						style="text-decoration: none">회원가입</a></li>
+						<li></li>
+				</ul>
+			</nav>
+		
+	</header>
+   <!--  <header
       class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
     >
       <a class="navbar-brand" href="poutmain.jsp">P+</a>
@@ -89,7 +106,7 @@
           </li>
         </ul>
       </div>
-    </header>
+    </header> -->
 
     <div class="limiter">
       <div class="container-login100">

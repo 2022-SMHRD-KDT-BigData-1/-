@@ -85,7 +85,7 @@
               aria-labelledby="dropdownMenuLink"
             >
               <li>
-                <a class="dropdown-item" href="#">유형 확인 및 재검사</a>
+                <a class="dropdown-item" href="ptype.jsp">유형 확인 및 재검사</a>
               </li>
             </ul>
           </div>

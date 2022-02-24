@@ -7,7 +7,7 @@
 <%@page import="com.pplus.model.PMemberDAO"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
@@ -40,7 +40,7 @@ pageContext.setAttribute("videolist", videolist);
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>P+(Planner¿¡ ProgrammingÀ» ´õÇÏ´Ù</title>
+<title>P+(Plannerì— Programmingì„ ë”í•˜ë‹¤</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -73,13 +73,13 @@ pageContext.setAttribute("videolist", videolist);
 	rel="stylesheet" />
 
 <!-- Css Styles -->
-<link rel="stylesheet" href="Ä³·¯¼¿/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="Ä³·¯¼¿/css/font-awesome.min.css"
+<link rel="stylesheet" href="ìºëŸ¬ì…€/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="ìºëŸ¬ì…€/css/font-awesome.min.css"
 	type="text/css" />
-<link rel="stylesheet" href="Ä³·¯¼¿/css/jquery-ui.min.css" type="text/css" />
-<link rel="stylesheet" href="Ä³·¯¼¿/css/owl.carousel.min.css"
+<link rel="stylesheet" href="ìºëŸ¬ì…€/css/jquery-ui.min.css" type="text/css" />
+<link rel="stylesheet" href="ìºëŸ¬ì…€/css/owl.carousel.min.css"
 	type="text/css" />
-<link rel="stylesheet" href="Ä³·¯¼¿/css/style.css" type="text/css" />
+<link rel="stylesheet" href="ìºëŸ¬ì…€/css/style.css" type="text/css" />
 
 
 </head>
@@ -93,11 +93,11 @@ pageContext.setAttribute("videolist", videolist);
 				<ul>
 					<li><a class="nav-link scrollto active" href="#hero"></a></li>
 					<li><a class="nav-link scrollto" href="#"
-						style="text-decoration: none">»çÀÌÆ® ¼Ò°³</a></li>
+						style="text-decoration: none">ì‚¬ì´íŠ¸ ì†Œê°œ</a></li>
 					<li><a class="nav-link scrollto" href="plogin.jsp"
-						style="text-decoration: none">·Î±×ÀÎ</a></li>
+						style="text-decoration: none">ë¡œê·¸ì¸</a></li>
 					<li><a class="nav-link scrollto" href="pjoin.jsp"
-						style="text-decoration: none">È¸¿ø°¡ÀÔ</a></li>
+						style="text-decoration: none">íšŒì›ê°€ì…</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -114,7 +114,7 @@ pageContext.setAttribute("videolist", videolist);
 				<div class="container">
 					<h1 class="hero-title mb-4">P+</h1>
 					<p class="hero-subtitle">
-						<span class="typed" data-typed-items="Planner¿¡ ProgrammingÀ» ´õÇÏ´Ù"></span>
+						<span class="typed" data-typed-items="Plannerì— Programmingì„ ë”í•˜ë‹¤"></span>
 					</p>
 				</div>
 			</div>
@@ -122,13 +122,13 @@ pageContext.setAttribute("videolist", videolist);
 	</div>
 
 	
-		<!-- ======= ÄÁÅÙÃ÷ ÃßÃµ  ======= -->
+		<!-- ======= ì»¨í…ì¸  ì¶”ì²œ  ======= -->
 		<section id="about" class="about-mf sect-pt4 route">
 			<div class="container">
 				<div class="my-5 container">
 					<div class="box-shadow-full" style="padding:5rem">
 						<div class="row mb-2">
-							<h1>Ã¥ ÃßÃµ</h1>
+							<h1>ì±… ì¶”ì²œ</h1>
 
 							<!-- Categories Section Begin -->
 
@@ -157,12 +157,12 @@ pageContext.setAttribute("videolist", videolist);
 				</div>
 			</div>
 
-			<!-- ¿µ»ó ÃßÃµ -->
+			<!-- ì˜ìƒ ì¶”ì²œ -->
 			<div class="container">
 				<div class="my-5 container">
 					<div class="box-shadow-full" style="padding:5rem">
 						<div class="row mb-2">
-							<h1>¿µ»ó ÃßÃµ</h1>
+							<h1>ì˜ìƒ ì¶”ì²œ</h1>
 							<div class="container" >
 								<div class="row">
 									<div class="categories__slider owl-carousel">
@@ -190,7 +190,7 @@ pageContext.setAttribute("videolist", videolist);
 				</div>
 				</div>
 		</section>
-		<!-- ÄÁÅÙÃ÷ ÃßÃµ ³¡³ª´Â ºÎºĞ -->
+		<!-- ì»¨í…ì¸  ì¶”ì²œ ëë‚˜ëŠ” ë¶€ë¶„ -->
 
 
 
@@ -218,14 +218,14 @@ pageContext.setAttribute("videolist", videolist);
 
 
 		<!-- Js Plugins -->
-		<script src="Ä³·¯¼¿/js/jquery-3.3.1.min.js"></script>
-		<script src="Ä³·¯¼¿/js/bootstrap.min.js"></script>
-		<script src="Ä³·¯¼¿/js/jquery.nice-select.min.js"></script>
-		<script src="Ä³·¯¼¿/js/jquery-ui.min.js"></script>
-		<script src="Ä³·¯¼¿/js/jquery.slicknav.js"></script>
-		<script src="Ä³·¯¼¿/js/mixitup.min.js"></script>
-		<script src="Ä³·¯¼¿/js/owl.carousel.min.js"></script>
-		<script src="Ä³·¯¼¿/js/main.js"></script>
+		<script src="ìºëŸ¬ì…€/js/jquery-3.3.1.min.js"></script>
+		<script src="ìºëŸ¬ì…€/js/bootstrap.min.js"></script>
+		<script src="ìºëŸ¬ì…€/js/jquery.nice-select.min.js"></script>
+		<script src="ìºëŸ¬ì…€/js/jquery-ui.min.js"></script>
+		<script src="ìºëŸ¬ì…€/js/jquery.slicknav.js"></script>
+		<script src="ìºëŸ¬ì…€/js/mixitup.min.js"></script>
+		<script src="ìºëŸ¬ì…€/js/owl.carousel.min.js"></script>
+		<script src="ìºëŸ¬ì…€/js/main.js"></script>
 </body>
 
 </html>

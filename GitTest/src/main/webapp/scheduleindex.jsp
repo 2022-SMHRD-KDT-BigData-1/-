@@ -81,7 +81,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 				<div class="dropdown nav-item active">
 					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
 					<span class="caret"></span>
-					</button>
+					
 					<ul class="dropdown-menu">
 						<li class="dropdown-header">스케줄</li>
 						<hr>
