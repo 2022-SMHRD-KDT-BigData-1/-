@@ -315,8 +315,8 @@
 					<c:forEach var="i" items="${editorlist }">
 						<tr>
 							<td><div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
+									<input class="form-check-input" type="checkbox"
+										name="flexRadioDefault" id="flexRadioDefault1" value="${i.editor_num }"> <label
 										class="form-check-label" for="flexRadioDefault1"> </label>
 								</div></td>
 							<td>
@@ -336,7 +336,7 @@
 			<br>
 			<div class="page">
 				<div class="text-center">
-					<a href="#" class="btn btn-dark">선택 완료</a>
+					<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
 				</div>
 				<br>
 				<nav aria-label="Page navigation example">
@@ -406,7 +406,27 @@
 			</div>
 	</div>
 	</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	
+	$("#delete").click(function () {
+		var list = [];
+		 var val = document.getElementsByName("flexRadioDefault");
+		  var size = val.length;
+		    for(var i = 0; i < size; i++){
+		        if(val[i].checked == true){
+		        	list.push(val[i].value);
+		        	console.log("체크체크");
+		        }
+		    }
+		    location.href='EditorDeleteCon.do?list='+list;
+		    console.log(list);
+	});
+	 
+}); 
 
+</script>
    
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->

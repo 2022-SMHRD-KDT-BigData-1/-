@@ -231,25 +231,31 @@ if (member != null) {
                                  <c:choose>
                                  <c:when test="${empty recbooklist1}">
                                     <c:forEach var="book" items="${booklist }">
+                                     <div class="col-lg-3">
+                                       <div class="categories__item set-bg" style= "height:350px">
                                        <h5>
                                           <a href="BookintCon?num=${book.book_num }"> 
-                                             <img src="${book.book_img}" width="80">
+                                             <img src="${book.book_img}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${book.book_title }</span>
                                           </a>
                                           <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
                                              <button type="button"><img src="heart0.png" style="width:40px"></button>
                                           </a>
                                        </h5>
+                                       </div>
+                                       </div>
                                     </c:forEach>
                                  </c:when>
                                  <c:otherwise>
                                     <c:forEach var="book" items="${booklist }">
                                     <c:set var="i" value="0"/>
+                                     <div class="col-lg-3">
+                                       <div class="categories__item set-bg" style= "height:350px">
                                     <h5>
                                      <c:forEach var="recbook" items="${recbooklist1 }">
                                        <c:choose>
                                           <c:when test="${book.book_num == recbook.book_num }">
                                              <a href="BookintCon?num=${book.book_num }"> 
-                                                <img src="${book.book_img}" width="80">
+                                                <img src="${book.book_img}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${book.book_title }</span>
                                              </a>
                                              <c:choose>
                                                 <c:when test="${recbook.contents_cnt == 1 }">
@@ -269,7 +275,7 @@ if (member != null) {
                                              <c:choose>
                                                 <c:when test="${fn:length(recbooklist1) == i}">
                                                  	<a href="BookintCon?num=${book.book_num }"> 
-                                                		<img src="${book.book_img}" width="80">
+                                                		<img src="${book.book_img}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${book.book_title }</span>
                                              		</a>
                                                    <a href="WishCon.do?num=${book.book_num}&recbooknum=0">
                                                       <button type="button"><img src="heart0.png" style="width:40px"></button>
@@ -280,6 +286,8 @@ if (member != null) {
                                        </c:choose>
                                     </c:forEach>
                                     </h5>
+                                    </div>
+                                    </div>
                                     </c:forEach>
                                  </c:otherwise>
                                  </c:choose>
@@ -338,19 +346,25 @@ if (member != null) {
                                  <c:choose>
                                     <c:when test="${empty recvideolist1}">
                                     <c:forEach var="video" items="${videolist }">
+                                    <div class="col-lg-3">
+                                       <div class="categories__item set-bg" style="height:180px">
                                        <h5>
                                           <a href="VideointCon?num=${video.video_num}"> 
-                                             <img src="${video.video_thumbnail}" width="80">
+                                             <img src="${video.video_thumbnail}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${video.video_title }</span>
                                           </a>
                                           <a href="WishVideoCon.do?num=${video.video_num}&recvideonum=0">
                                              <button type="button"><img src="heart0.png" style="width:40px"></button>
                                           </a>
                                        </h5>
+                                       </div>
+                                       </div>
                                     </c:forEach>
                                     </c:when>
                                     <c:otherwise>
                                      <c:forEach var="video" items="${videolist }">
                                      <c:set var="i" value="0"/>
+                                     <div class="col-lg-3">
+                                       <div class="categories__item set-bg" style="height:180px">
                                      <h5>
                                         <c:forEach var="recvideo" items="${recvideolist1 }">
                                           <c:choose>
@@ -373,7 +387,7 @@ if (member != null) {
                                                 <c:choose>
                                                    <c:when test="${fn:length(recvideolist1) == i}">
                                                    	<a href="VideointCon?num=${video.video_num}"> 
-		                                             	<img src="${video.video_thumbnail}" width="80">
+		                                             	<img src="${video.video_thumbnail}" width="80"><span style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${video.video_title }</span>
 		                                          	</a>
                                                       <a href="WishVideoCon.do?num=${video.video_num}&recvideonum=0">
                                                          <button type="button"><img src="heart0.png" style="width:40px"></button>
@@ -384,6 +398,8 @@ if (member != null) {
                                           </c:choose>
                                        </c:forEach>
                                     </h5>
+                                    </div>
+                                    </div>
                                     </c:forEach>
                                     </c:otherwise>
                                  </c:choose>

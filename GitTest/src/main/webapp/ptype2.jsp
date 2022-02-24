@@ -362,9 +362,9 @@
 		if(select3.length > 0){
 			console.log("들어옴?");
 			select3 = select3.options[select3.selectedIndex].value;
-			allData = { "type1": select1, "type2": select2, "type3":select3 };
+			allData = { "sel1": select1, "sel2": select2, "sel3":select3 };
 		}else{
-			allData = { "type1": select1, "type2": select2, "type3":"0" };
+			allData = { "sel1": select1, "sel2": select2, "sel3":"0" };
 		}
 		
 		
