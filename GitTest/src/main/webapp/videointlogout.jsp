@@ -38,7 +38,7 @@
       <header id="header" class="fixed-top header-scrolled">
 	
 			<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 1500px" href="ploginmain.jsp"><img style="width: 40px"
+			<a style="padding-right: 1500px" href="poutmain.jsp"><img style="width: 40px"
 				src="image/p+만.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"

@@ -40,13 +40,14 @@ pageContext.setAttribute("videolist", videolist);
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>P+(Planner에 Programming을 더하다</title>
+<!-- Title  -->
+<title>P+(Programming에 Planner를 더하다.)</title>
+<!-- Favicon  -->
+<link rel="icon" href="image/p+만.png" />
 <meta content="" name="description">
 <meta content="" name="keywords">
 
-<!-- Favicons -->
-<link href="assets/img/favicon.png" rel="icon">
-<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
 
 <!-- Vendor CSS Files -->
 <link href="assets/vendor/bootstrap/css/bootstrap.min.css"
@@ -88,9 +89,9 @@ pageContext.setAttribute("videolist", videolist);
 
 	<!-- ======= Header ======= -->
 	<header id="header" class="fixed-top">
-		<div class="container d-flex justify-content-end">
+		<div class="d-flex justify-content-end">
 			<nav id="navbar" class="navbar">
-				<ul>
+				<ul style="padding-right:30px">
 					<li><a class="nav-link scrollto active" href="#hero"></a></li>
 					<li><a class="nav-link scrollto" href="#"
 						style="text-decoration: none">사이트 소개</a></li>
