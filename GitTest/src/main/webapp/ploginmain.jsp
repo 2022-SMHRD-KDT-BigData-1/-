@@ -61,10 +61,9 @@ if (member != null) {
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>Amado - Furniture Ecommerce Template | Cart</title>
-
+<title>P+(Programming에 Planner를 더하다.)</title>
 <!-- Favicon  -->
-<link rel="icon" href="img/core-img/favicon.ico" />
+<link rel="icon" href="image/p+만.png" />
 
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
@@ -180,7 +179,7 @@ if (member != null) {
 
 	<div class="cart-table-area section-padding-100">
 		<div class="row py-5">
-			<div class="container px-4" style="background-color: #656166;">
+			<div class="container px-4" style="background-color: #45494c;">
 				<br />
 				<div class="text-center">
 					<h1 class="display-4 fw-bolder" style="color: white">P+</h1>

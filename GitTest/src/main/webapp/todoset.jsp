@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<!-- Title  -->
+<title>P+(Programming에 Planner를 더하다.)</title>
+<!-- Favicon  -->
+<link rel="icon" href="image/p+만.png" />
 <style type="text/css">
 	 textarea {
     width: 100%;

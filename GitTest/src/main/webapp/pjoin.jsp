@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login V2</title>
+   <!-- Title  -->
+<title>P+(Programming에 Planner를 더하다.)</title>
+<!-- Favicon  -->
+<link rel="icon" href="image/p+만.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--===============================================================================================-->
@@ -56,40 +59,31 @@
     <link rel="stylesheet" type="text/css" href="css1/util.css" />
     <link rel="stylesheet" type="text/css" href="css1/main.css" />
     <!--===============================================================================================-->
+   
+   <!-- 상단바 css -->
+<link href="assets/css/style.css" rel="stylesheet">
     </head>
     
  
   <body>
 
-    <header
-    class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
-  >
-    <a class="navbar-brand" href="poutmain.jsp">P+</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">사이트 소개</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="plogin.jsp">로그인</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">회원가입</a>
-          </li>
-        </ul>
-    </div>
-  </header>
+    <header id="header" class="fixed-top header-scrolled">
+	
+			<nav id="navbar" class="navbar" style="justify-content: end">
+			<a style="padding-right: 1500px" href="ploginmain.jsp"><img style="width: 40px"
+				src="image/p+만.png"></a>
+				<ul style= "padding-right:30px">
+					<li><a class="nav-link scrollto" href="#"
+						style="text-decoration: none">사이트 소개</a></li>
+					<li><a class="nav-link scrollto" href="plogin.jsp"
+						style="text-decoration: none">로그인</a></li>
+					<li><a class="nav-link scrollto" href="pjoin.jsp"
+						style="text-decoration: none">회원가입</a></li>
+						<li></li>
+				</ul>
+			</nav>
+		
+	</header>
 
     <div class="limiter">
       <div class="container-login100">

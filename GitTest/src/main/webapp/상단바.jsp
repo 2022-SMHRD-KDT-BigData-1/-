@@ -14,7 +14,7 @@
 <body>
 	<header id="header" class="fixed-top header-scrolled">
 		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="#"><img style="width: 40px"
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
 				src="image/p+¸¸.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"

@@ -66,9 +66,12 @@
   <header id="header" class="fixed-top header-scrolled">
 	
 			<nav id="navbar" class="navbar" style="justify-content: end">
-				<ul style= "padding-right:30px">
-					<li><a class="nav-link scrollto" href="#"
-						style="text-decoration: none">사이트 소개</a></li>
+			<a style="padding-right: 1500px" href="ploginmain.jsp"><img style="width: 40px"
+				src="image/p+만.png"></a>
+			<ul style="padding-right: 30px">
+				<li><a class="nav-link scrollto" href="#"
+					style="text-decoration: none">사이트 소개</a></li>
+
 					<li><a class="nav-link scrollto" href="plogin.jsp"
 						style="text-decoration: none">로그인</a></li>
 					<li><a class="nav-link scrollto" href="pjoin.jsp"

@@ -43,34 +43,31 @@
 	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous">
-</head>
+<
+<!-- 상단바 css -->
+<link href="assets/css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-	<!-- Header Area Start -->
-	<header
-		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
-		<a class="navbar-brand" href="#">P+</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end"
-			id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">사이트
-						소개</a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="plogin.jsp">로그인</a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="pjoin.jsp">회원가입</a></li>
-			</ul>
-		</div>
+	 <header id="header" class="fixed-top header-scrolled">
+	
+			<nav id="navbar" class="navbar" style="justify-content: end">
+			<a style="padding-right: 1500px" href="ploginmain.jsp"><img style="width: 40px"
+				src="image/p+만.png"></a>
+			<ul style="padding-right: 30px">
+				<li><a class="nav-link scrollto" href="#"
+					style="text-decoration: none">사이트 소개</a></li>
+					<li><a class="nav-link scrollto" href="plogin.jsp"
+						style="text-decoration: none">로그인</a></li>
+					<li><a class="nav-link scrollto" href="pjoin.jsp"
+						style="text-decoration: none">회원가입</a></li>
+						<li></li>
+				</ul>
+			</nav>
+		
 	</header>
-
 
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">

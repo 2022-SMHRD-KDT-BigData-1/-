@@ -72,32 +72,34 @@ if (count > 0) {
 	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
 
+
+<!-- 상단바 css -->
+<link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-	<header
-		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
-		<a class="navbar-brand" href="#">P+</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end"
-			id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">사이트
-						소개</a></li>
+<header id="header" class="fixed-top header-scrolled">
+		<nav id="navbar" class="navbar" style="justify-content: end">
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
+				src="image/p+만.png"></a>
+			<ul style="padding-right: 30px">
+				<li><a class="nav-link scrollto" href="#"
+					style="text-decoration: none">사이트 소개</a></li>
+				<li></li>
 				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="컨텐츠추천.jsp">컨텐츠 추천</a>
+					<a style="text-decoration: none" class="nav-link dropdown-toggle"
+						href="컨텐츠추천.jsp">컨텐츠 추천</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">유형 확인 및 재검사</a></li>
+						<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및 재검사</a></li>
+						<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
 					</ul>
 				</div>
+
+				<li></li>
 				<div class="dropdown nav-item active">
 					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
 					<span class="caret"></span>
-					</button>
+
 					<ul class="dropdown-menu">
 						<li class="dropdown-header">스케줄</li>
 						<hr>
@@ -109,68 +111,45 @@ if (count > 0) {
 						<li class="dropdown-header">일정</li>
 						<hr>
 						<li><a href="dayplantodayset.jsp">등록</a></li>
-						<li><a href="dayplantodayinsex.jsp">전체 일정 목록</a></li>
+						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
 
 						<br>
 						<li class="divider"></li>
 						<li class="dropdown-header">조회</li>
 						<hr>
 						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryindex.jsp">전체 일기 목록</a></li>
-						<li><a href="todoindex.jsp">전체 할 일 목록</a></li>
-
-
+						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
 					</ul>
 				</div>
+				<li></li>
+				<div class="dropdown nav-item active">
+					<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="#">등록</a></li>
 
-
-
+						<li><a class="dropdown-item" href="#">목록</a></li>
+					</ul>
+				</div>
+				<li></li>
 				<div class="dropdown nav-item active">
 					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">회원정보 수정/탈퇴</a></li>
-						<li><a class="dropdown-item" href="#">전체 학습상황 조회</a></li>
+						<li><a class="dropdown-item" href="pupdate.jsp">회원정보
+								수정/탈퇴</a></li>
+						<li><a class="dropdown-item" href="achieveall.jsp">전체
+								학습상황 조회</a></li>
 						<li><a class="dropdown-item" href="#">위시리스트</a></li>
 					</ul>
 				</div>
-				<li class="nav-item active"><a class="nav-link" href="#">로그아웃</a>
-				</li>
-			</ul>
-		</div>
-	</header>
-	<!-- 회원탈퇴 Modal -->
-	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-		data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">
-						<!-- <i class="bi bi-exclamation-circle"></i> -->
-						<i class="bi bi-exclamation-circle-fill"></i> 회원 탈퇴
-					</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-								d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
-            <path fill-rule="evenodd"
-								d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
-          </svg>
-					</button>
-				</div>
-				<br>
-				<div class="modal-body text-center" style="font-size: 20px">
-					회원탈퇴 하시겠습니까?</div>
-				<br>
+				<li class="nav-item active"><a class="nav-link"
+					href="plogout.jsp">로그아웃</a></li>
 
-				<div class=" modal-footer ">
-					<a href="#" class="btn btn-primary ">확인</a>
-				</div>
-			</div>
-		</div>
-	</div>
+
+			</ul>
+		</nav>
+	</header>
+	
 
 
 
@@ -182,31 +161,19 @@ if (count > 0) {
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
+				<h6 class="widget-title mb-30">학습플래너</h6>
+				<br>
 				<!-- Widget Title -->
-				<h6 class="widget-title mb-30">마이페이지</h6>
-
+				<!--<h6 class="widget-title mb-30">스케줄</h6>
+ -->
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">회원 정보</a></li>
+						<li class="active" style="color: #fbb710"><a>스케줄</a></li>
 						<hr />
-						<li><a href="#">회원 정보 수정</a></li>
-						<a><li class="btn" data-bs-toggle="modal"
-							data-bs-target="#staticBackdrop">회원 탈퇴</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+						<li><a href="scheduleset.jsp">등록</a></li>
+						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
 
-			<!-- ##### Single Widget ##### -->
-			<div class="widget catagory mb-50">
-				<!--  Catagories  -->
-				<div class="catagories-menu">
-					<ul>
-						<li class="active"><a href="#">위시리스트</a></li>
-						<hr />
-						<li><a href="#">책</a></li>
-						<li><a href="#">영상</a></li>
 					</ul>
 				</div>
 			</div>
@@ -214,15 +181,35 @@ if (count > 0) {
 			<!-- ##### Single Widget ##### -->
 			<div class="widget category mb-50">
 				<!-- Widget Title -->
+				<!--<h6 class="widget-title mb-30">일정</h6>
+ -->
+				<!-- Widget Title -->
+
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">전체학습상황조회</a></li>
+						<li class="active" style="color: #fbb710"><a>일정</a></li>
 						<hr />
-						<li><a href="#">달력 체크</a></li>
-						<li><a href="#">차트</a></li>
-						<li><a href="#">전체 스케줄 목록</a></li>
+						<li><a href="dayplantodayset.jsp">등록</a></li>
+						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- ##### Single Widget ##### -->
+			<div class="widget category mb-50">
+				<!-- Widget Title -->
+				<!-- <h6 class="widget-title mb-30">일정</h6>
+ -->
+				<!-- Widget Title -->
+
+				<div class="catagories-menu">
+					<ul>
+						<li class="active" style="color: #fbb710"><a>조회</a></li>
+						<hr />
 						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="#">전체 일기 목록</a></li>
+						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
+
 					</ul>
 				</div>
 			</div>

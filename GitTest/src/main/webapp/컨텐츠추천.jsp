@@ -26,115 +26,91 @@
 <link rel="stylesheet" href="캐러셀/css/owl.carousel.min.css"
 	type="text/css" />
 <link rel="stylesheet" href="캐러셀/css/style.css" type="text/css" />
+
+<!-- 상단바 css -->
+<link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
 
-	 <header
-      class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top"
-    >
-      <a class="navbar-brand" href="#">P+</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">사이트 소개</a>
-          </li>
-          <div class="dropdown nav-item active">
-            <a class="nav-link dropdown-toggle" href="컨텐츠추천.jsp" >컨텐츠 추천</a>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuLink"
-            >
-              <li>
-                <a class="dropdown-item" href="#">유형 확인 및 재검사</a>
-              </li>
-            </ul>
-          </div>
-          <div class="dropdown nav-item active">
-            <a class="nav-link dropdown-toggle" href="학습플래너.jsp" >학습플래너</a>
-            <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li class="dropdown-header">스케줄</li>
-      <hr>
-      <li><a href="스케줄만_등록.jsp">등록</a></li>
-      <li><a href="전체스케줄목록.jsp">전체 스케줄 목록</a></li>
-              <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-              <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
-     <br>
-      <li class="divider"></li>
-      <li class="dropdown-header">일정</li>
-      <hr>
-      <li><a href="일정등록4번.jsp">등록</a></li>
-      <li><a href="#">전체 일정 목록</a></li>
-      <li><a href="전체에디터목록.jsp">전체 에디터 목록</a></li>
-      <li><a href="전체일기목록.jsp">전체 일기 목록</a></li>
-    </ul>
-          </div>
-          
-          <div class="dropdown nav-item active">
-            <a class="nav-link dropdown-toggle" href="#" >포트폴리오</a>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuLink"
-            >
-              <li>
-                <a class="dropdown-item" href="포폴등록할스케줄.jsp">등록</a>
-              </li>
-              
-              <li>
-                <a class="dropdown-item" href="포폴목록.jsp">목록</a>
-              </li>
-            </ul>
-          </div>
+	<header id="header" class="fixed-top header-scrolled">
+		<nav id="navbar" class="navbar" style="justify-content: end">
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
+				src="image/p+만.png"></a>
+			<ul style="padding-right: 30px">
+				<li><a class="nav-link scrollto" href="#"
+					style="text-decoration: none">사이트 소개</a></li>
+				<li></li>
+				<div class="dropdown nav-item active">
+					<a style="text-decoration: none" class="nav-link dropdown-toggle"
+						href="컨텐츠추천.jsp">컨텐츠 추천</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및 재검사</a></li>
+						<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
+					</ul>
+				</div>
 
-          <div class="dropdown nav-item active">
-            <a class="nav-link dropdown-toggle" href="#" >마이페이지</a>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuLink"
-            >
-              <li>
-                <a class="dropdown-item" href="#">회원정보 수정/탈퇴</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">전체 학습상황 조회</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">위시리스트</a>
-              </li>
-            </ul>
-          </div>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">로그아웃</a>
-          </li>
-        </ul>
-      </div>
-    </header>
+				<li></li>
+				<div class="dropdown nav-item active">
+					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
+					<span class="caret"></span>
+
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">스케줄</li>
+						<hr>
+						<li><a href="scheduleset.jsp">등록</a></li>
+						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+
+						<br>
+						<li class="divider"></li>
+						<li class="dropdown-header">일정</li>
+						<hr>
+						<li><a href="dayplantodayset.jsp">등록</a></li>
+						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
+
+						<br>
+						<li class="divider"></li>
+						<li class="dropdown-header">조회</li>
+						<hr>
+						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
+						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
+					</ul>
+				</div>
+				<li></li>
+				<div class="dropdown nav-item active">
+					<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="#">등록</a></li>
+
+						<li><a class="dropdown-item" href="#">목록</a></li>
+					</ul>
+				</div>
+				<li></li>
+				<div class="dropdown nav-item active">
+					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="pupdate.jsp">회원정보
+								수정/탈퇴</a></li>
+						<li><a class="dropdown-item" href="achieveall.jsp">전체
+								학습상황 조회</a></li>
+						<li><a class="dropdown-item" href="#">위시리스트</a></li>
+					</ul>
+				</div>
+				<li class="nav-item active"><a class="nav-link"
+					href="plogout.jsp">로그아웃</a></li>
+
+
+			</ul>
+		</nav>
+	</header>
     
 
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
 		<div class="mobile-nav">
-			<!-- Navbar Brand -->
-			<div class="amado-navbar-brand">
-				<a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-			</div>
-			<!-- Navbar Toggler -->
-			<div class="amado-navbar-toggler">
-				<span></span><span></span><span></span>
-			</div>
+			
 		</div>
 
 		
@@ -149,6 +125,7 @@
 				<div class="catagories-menu">
 					<ul>
 						<li><a href="#">유형확인 및 재검사</a></li>
+						<li><a href="#">책 검색</a></li>
 					</ul>
 				</div>
 			</div>
@@ -158,7 +135,7 @@
 		<div class="container p-5">
 			<div class="cart-table-area section-padding-100">
       <div class="row py-5">
-         <div class="container px-4" style="background-color: #656166;">
+         <div class="container px-4" style="background-color: #45494c;">
             <br />
             <div class="text-center">
                <h2 class="display-4 fw-bolder" style="color: white; font-size:40px; padding-bottom: 12px;">컴퓨터/IT > 컴퓨터공학 > 컴퓨터공학/과학개론</h2>

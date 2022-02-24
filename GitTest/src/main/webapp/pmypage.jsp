@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<!-- Title  -->
+<title>P+(Programming에 Planner를 더하다.)</title>
+<!-- Favicon  -->
+<link rel="icon" href="image/p+만.png" />
 </head>
 <body>
 	<a href="pupdate.jsp">회원탈퇴수정</a>
