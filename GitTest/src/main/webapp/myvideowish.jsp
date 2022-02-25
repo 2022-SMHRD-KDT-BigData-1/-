@@ -51,6 +51,12 @@ int endRow = currentPage * pageSize;
 
 int count = 0;
 count = recvideoDAO.getCount(member.getMember_nick()); // 데이터베이스에 저장된 총 갯수
+
+if (count > 0) {
+	wishlist = recvideoDAO.getList(startRow, endRow, member);
+	pageContext.setAttribute("wishlist", wishlist);
+
+}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -273,14 +279,14 @@ count = recvideoDAO.getCount(member.getMember_nick()); // 데이터베이스에 
 										</tr>
 									</thead>
 									<tbody style="text-align: center">
-										<c:set value="0" var="j" />
-										<c:forEach var="wish" items="${sessionScope.wishlistvideo }"
+										<c:set value="<%=(currentPage - 1) * 10%>" var="j" />
+										<c:forEach var="wish" items="${wishlist }"
 											varStatus="status">
 											<tr>
 												<td class="wish-num">
 													<div class="form-check">
 														<input class="form-check-input" type="radio"
-															name="flexRadioDefault" id="flexRadioDefault1" /> <label
+															name="flexRadioDefault" id="flexRadioDefault1" value="${wish.video_num }"/> <label
 															class="form-check-label" for="flexRadioDefault1">
 															<h5 style="padding-left: 20px">${j = j + 1 }</h5>
 														</label>
@@ -308,8 +314,7 @@ count = recvideoDAO.getCount(member.getMember_nick()); // 데이터베이스에 
 				</div>
 			</div>
 			<div class="text-center">
-				<a href="#" class="btn btn-dark">위시리스트 삭제</a> <a href="#"
-					class="btn btn-dark">스케줄 등록</a>
+				<a href="#" class="btn btn-dark" id="delete">위시리스트 삭제</a>
 			</div>
 			<br>
 			<nav aria-label="Page navigation example">
@@ -371,7 +376,28 @@ count = recvideoDAO.getCount(member.getMember_nick()); // 데이터베이스에 
 			</nav>
 		</div>
 	</div>
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
 
+			$("#delete").click(function() {
+				var list = [];
+				var val = document.getElementsByName("flexRadioDefault");
+				var size = val.length;
+				for (var i = 0; i < size; i++) {
+					if (val[i].checked == true) {
+						list.push(val[i].value);
+						console.log("체크체크");
+					}
+				}
+				location.href = 'WishVideoDeleteCon.do?list=' + list;
+				console.log(list);
+			});
+			
+			
+
+		});
+	</script>
 
 
 

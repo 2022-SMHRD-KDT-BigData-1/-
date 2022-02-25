@@ -48,6 +48,12 @@ int endRow = currentPage * pageSize;
 
 int count = 0;
 count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 저장된 총 갯수
+
+if (count > 0) {
+	wishlist = recbookDAO.getList(startRow, endRow, member);
+	pageContext.setAttribute("wishlist", wishlist);
+
+}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -276,14 +282,14 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 											</tr>
 										</thead>
 										<tbody style="text-align: center;">
-											<c:set value="0" var="j" />
-											<c:forEach var="wish" items="${sessionScope.wishlistbook }"
+											<c:set value="<%=(currentPage - 1) * 10%>" var="j" />
+											<c:forEach var="wish" items="${wishlist }"
 												varStatus="status">
 												<tr >
 													<td class="wish-num">
 														<div class="form-check">
 															<input class="form-check-input" type="radio"
-																name="flexRadioDefault" id="flexRadioDefault1" /> <label
+																name="flexRadioDefault" id="flexRadioDefault1" value="${wish.book_num }"/> <label
 																class="form-check-label" for="flexRadioDefault1">
 																<h5 style="padding-left: 20px">${j = j + 1 }</h5>
 															</label>
@@ -313,8 +319,8 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 					</div>
 				</div>
 				<div class="text-center">
-					<a href="#" class="btn btn-dark">위시리스트 삭제</a> <a href="#"
-						class="btn btn-dark">스케줄 등록</a>
+					<a href="#" class="btn btn-dark" id="delete">위시리스트 삭제</a> <a href="#"
+						class="btn btn-dark" id="schedule">스케줄 등록</a>
 				</div>
 				<br>
 				<nav aria-label="Page navigation example">
@@ -339,7 +345,7 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 								if (startPage > pageBlock) { // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
 							%>
 							<li class="page-item"><a class="page-link"
-								href="myvideowish.jsp?pageNum=<%=startPage - 10%>"
+								href="mybookwish.jsp?pageNum=<%=startPage - 10%>"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 									<span class="sr-only">Previous</span>
 							</a></li>
@@ -355,7 +361,7 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 							} else { // 현재 페이지가 아닌 경우 링크 설정
 							%>
 							<li class="page-item"><a class="page-link"
-								href="myvideowish.jsp?pageNum=<%=i%>"><%=i%></a></li>
+								href="mybookwish.jsp?pageNum=<%=i%>"><%=i%></a></li>
 							<%
 							}
 							} // for end
@@ -363,7 +369,7 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 							if (endPage < pageCount) { // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
 							%>
 							<li class="page-item"><a class="page-link"
-								href="myvideowish.jsp?pageNum=${startPage + 10 }"
+								href="mybookish.jsp?pageNum=${startPage + 10 }"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
 									class="sr-only">Next</span>
 							</a></li>
@@ -377,6 +383,37 @@ count = recbookDAO.getCount(member.getMember_nick()); // 데이터베이스에 �
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$("#delete").click(function() {
+				var list = [];
+				var val = document.getElementsByName("flexRadioDefault");
+				var size = val.length;
+				for (var i = 0; i < size; i++) {
+					if (val[i].checked == true) {
+						list.push(val[i].value);
+						console.log("체크체크");
+					}
+				}
+				location.href = 'WishBookDeleteCon.do?list=' + list;
+				console.log(list);
+			});
+			${"#schedule"}.click(function() {
+				var num = 0;
+				var val = document.getElementByName("flexRadioDefault");
+				if (val[i].checked == true) {
+					num = val[i].value;
+					console.log("체크체크");
+				}
+			})
+			location.href = 'Con.do?num=' + num;
+			console.log(list);
+			
+
+		});
+	</script>
 
 
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->

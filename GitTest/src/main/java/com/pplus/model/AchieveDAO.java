@@ -103,7 +103,7 @@ public class AchieveDAO {
 	public int achieveDelete(String nick, int num) {
 		connect();
 
-		sql = "delete from achieve where member_nick=? and seq_achieve_num=?";
+		sql = "delete from achieve where member_nick=? and seq_schedule_num=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);

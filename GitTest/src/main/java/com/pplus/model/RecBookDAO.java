@@ -138,6 +138,24 @@ public class RecBookDAO {
 		}
 		return cnt;
 	}
+	public int recBookDelete1(String nick, int book_num) {
+		connect();
+		sql = "delete from recommend_book where member_nick=? and book_num = ?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, book_num);
+
+			cnt = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
 
 	// recbook DB에 저장되어 있는 데이터들을 회원별로 가져오고싶기 때문에 회원에 닉네임을 통하여 찾기
 	// recBookSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecBookDTO> recbooklist
@@ -328,6 +346,42 @@ public int getCount( String nick) {
 		
 		return totalnum;
 	}
+public ArrayList<RecBookDTO> getList(int start, int end, PMemberDTO member){
+	
+	ArrayList<RecBookDTO> list = new ArrayList<RecBookDTO>();
+	
+	connect();
+	
+	sql = "select * from (select rownum as rn, member_nick, user_type1, user_type2, user_type3,  "
+			+ "book_title, book_price, book_img, book_author, book_publisher, book_description, book_page, book_pubdate, "
+			+ "book_isbn, contents_cnt, book_num from "
+			+ "(select * from recommend_book where member_nick = ? and contents_cnt=1 order by book_num desc )) where rn between ? and ?";
+	try {
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, member.getMember_nick());
+		psmt.setInt(2, start);
+		psmt.setInt(3, end);
+		rs = psmt.executeQuery();
+		
+		while(rs.next()) {
+			
+			list.add(new RecBookDTO(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
+					rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), 
+					rs.getString(13), rs.getString(14), rs.getInt(15), rs.getInt(16)));
+			
+		}
+		
+		
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		close();
+	}
+	
+	return list;
+}
 	
 	
 }

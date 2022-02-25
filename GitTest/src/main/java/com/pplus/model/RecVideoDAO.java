@@ -137,6 +137,25 @@ public class RecVideoDAO {
 		}
 		return cnt;
 	}
+	public int recVideoDelete1(String nick , int video_num) {
+		connect();
+		sql = "delete from recommend_video where member_nick=? and video_num = ?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, video_num);
+
+			cnt = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
 
 	// recvideo DB에 저장되어 있는 데이터들을 회원별로 가져오고싶기 때문에 회원에 닉네임을 통하여 찾기
 	// recvideoSelectAll에 입력 변수는 회원의 닉네임 출력 변수는 ArrayList<RecVideoDTO> list
@@ -323,6 +342,42 @@ public class RecVideoDAO {
 		
 		
 		return totalnum;
+	}
+	public ArrayList<RecVideoDTO> getList(int start, int end, PMemberDTO member){
+		
+		ArrayList<RecVideoDTO> list = new ArrayList<RecVideoDTO>();
+		
+		connect();
+		
+		sql = "select * from (select rownum as rn, member_nick, user_type1, user_type2, user_type3,  "
+				+ "video_title, video_upload, video_thumbnail, video_url, video_channel, video_hits, video_time, video_num, "
+				+ "contents_cnt from "
+				+ "(select * from recommend_video where member_nick = ? and contents_cnt=1 order by video_num desc )) where rn between ? and ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, member.getMember_nick());
+			psmt.setInt(2, start);
+			psmt.setInt(3, end);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				list.add(new RecVideoDTO(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), 
+						rs.getInt(13), rs.getInt(14)));
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return list;
 	}
 		
 }

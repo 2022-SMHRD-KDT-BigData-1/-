@@ -163,199 +163,199 @@
       $(document).ready(function () {
         //대분류
         var sel1 = {
-          " ": "선택",
-          p101: "컴퓨터공학",
-          p102: "IT일반",
-          p103: "컴퓨터입문/활용",
-          p104: "전산통계/해석",
-          p105: "OS",
-          p106: "네트워크",
-          p107: "보안/해킹",
-          p108: "데이터베이스",
-          p109: "게임",
-          p110: "웹 프로그래밍",
-          p111: "프로그래밍 언어",
-          p112: "모바일 프로그래밍",
-          p113: "OA/사무자동화",
-          p114: "웹사이트",
-          p115: "자격증/수험서",
+          null: "선택",
+          P101: "컴퓨터공학",
+          P102: "IT일반",
+          P103: "컴퓨터입문/활용",
+          P104: "전산통계/해석",
+          P105: "OS",
+          P106: "네트워크",
+          P107: "보안/해킹",
+          P108: "데이터베이스",
+          P109: "게임",
+          P110: "웹 프로그래밍",
+          P111: "프로그래밍 언어",
+          P112: "모바일 프로그래밍",
+          P113: "OA/사무자동화",
+          P114: "웹사이트",
+          P115: "자격증/수험서",
         };
 
         // 중분류
         //sel1이 p101일경우
         var sel2_1 = {
-          p201: "컴퓨터공학/과학개론",
-          p202: "소프트웨어공학",
-          p203: "마이크로프로세서",
-          p204: "자료구조/알고리즘",
-          p205: "인공지능",
+          P201: "컴퓨터공학/과학개론",
+          P202: "소프트웨어공학",
+          P203: "마이크로프로세서",
+          P204: "자료구조/알고리즘",
+          P205: "인공지능",
         };
 
         // 102
         var sel2_2 = {
-          p206: "IT일반서",
+          P206: "IT일반서",
         };
 
         // 103
         var sel2_3 = {
-          p207: "컴퓨터입문/활용",
-          p208: "인터넷입문/활용",
-          p209: "컴퓨터교육",
+          P207: "컴퓨터입문/활용",
+          P208: "인터넷입문/활용",
+          P209: "컴퓨터교육",
         };
 
         // 104
         var sel2_4 = {
-          p210: "전산통계/수치해석",
-          p211: "전산통계/빅데이터",
+          P210: "전산통계/수치해석",
+          P211: "전산통계/빅데이터",
         };
 
         // 105
         var sel2_5 = {
-          p212: "widows",
-          p213: "macos",
-          p214: "임베디드",
-          p215: "arm",
-          p216: "유닉스",
-          p217: "리눅스",
+          P212: "widows",
+          P213: "macos",
+          P214: "임베디드",
+          P215: "arm",
+          P216: "유닉스",
+          P217: "리눅스",
         };
 
         // 106
         var sel2_6 = {
-          p218: "네트워크 일반",
-          p219: "tcp/ip",
+          P218: "네트워크 일반",
+          P219: "tcp/ip",
         };
 
         // 108
         var sel2_8 = {
-          p220: "데이터베이스 일반",
-          p221: "oracle",
-          p222: "sql",
+          P220: "데이터베이스 일반",
+          P221: "oracle",
+          P222: "sql",
         };
 
         // 109
         var sel2_9 = {
-          p223: "게임기획",
-          p224: "모바일게임",
-          p225: "게임개발",
+          P223: "게임기획",
+          P224: "모바일게임",
+          P225: "게임개발",
         };
 
         // 110
         var sel2_10 = {
-          p226: "웹프로그래밍 일반",
-          p227: "html/css",
-          p228: "javascript",
-          p229: "jquery",
-          p230: "xml",
-          p231: "asp",
-          p232: "jsp",
-          p233: "php",
-          p234: "ajax",
-          p235: "flex",
+          P226: "웹프로그래밍 일반",
+          P227: "html/css",
+          P228: "javascript",
+          P229: "jquery",
+          P230: "xml",
+          P231: "asp",
+          P232: "jsp",
+          P233: "php",
+          P234: "ajax",
+          P235: "flex",
         };
 
         // 111
         var sel2_11 = {
-          p236: "프로그래밍 일반",
-          p237: "파이썬",
-          p238: "c",
-          p239: "C++",
-          p240: "C#",
-          p241: "visualbasic",
-          p242: "java",
-          p243: ".net",
+          P236: "프로그래밍 일반",
+          P237: "파이썬",
+          P238: "c",
+          P239: "C++",
+          P240: "C#",
+          P241: "visualbasic",
+          P242: "java",
+          P243: ".net",
         };
 
         // 112
         var sel2_12 = {
-          p244: "모바일 프로그래밍 일반",
-          p245: "아이폰/아이패드",
-          p246: "안드로이드",
-          p247: "모바일게임",
+          P244: "모바일 프로그래밍 일반",
+          P245: "아이폰/아이패드",
+          P246: "안드로이드",
+          P247: "모바일게임",
         };
 
         // 113
         var sel2_13 = {
-          p248: "엑셀",
-          p249: "파워포인트",
+          P248: "엑셀",
+          P249: "파워포인트",
         };
 
         // 114
         var sel2_14 = {
-          p250: "웹사이트 기획",
-          p251: "웹디자인",
-          p252: "웹서비스",
-          p253: "ux/ui",
-          p254: "트위터/페이스북",
-          p255: "블로그/홈페이지",
-          p256: "쇼핑몰/전자상거래",
-          p257: "웹제작도구",
+          P250: "웹사이트 기획",
+          P251: "웹디자인",
+          P252: "웹서비스",
+          P253: "ux/ui",
+          P254: "트위터/페이스북",
+          P255: "블로그/홈페이지",
+          P256: "쇼핑몰/전자상거래",
+          P257: "웹제작도구",
         };
 
         // 115
         var sel2_15 = {
-          p258: "사무자동화",
-          p259: "정보 네트워크 보안",
-          p260: "그래픽/디자인",
-          p261: "기타자격증",
+          P258: "사무자동화",
+          P259: "정보 네트워크 보안",
+          P260: "그래픽/디자인",
+          P261: "기타자격증",
         };
 
         // 소분류
         //sel2가 p205일경우
         var sel3_1 = {
-          p301: "인공지능 일반",
-          p302: "딥러닝/머신러닝",
+          P301: "인공지능 일반",
+          P302: "딥러닝/머신러닝",
         };
 
         // 218
         var sel3_2 = {
-          p303: "네트워크 일반",
-          p304: "Server",
-          p305: "지리정보",
+          P303: "네트워크 일반",
+          P304: "Server",
+          P305: "지리정보",
         };
 
         // 225
         var sel3_3 = {
-          p306: "유니티",
-          p307: "인리얼",
-          p308: "게임개발 일반",
+          P306: "유니티",
+          P307: "인리얼",
+          P308: "게임개발 일반",
         };
 
         // 243
         var sel3_4 = {
-          p309: ".NET 일반",
-          p310: "VisualC++.NET/VisualC#.NET",
-          p311: "ASP.NET",
+          P309: ".NET 일반",
+          P310: "VisualC++.NET/VisualC#.NET",
+          P311: "ASP.NET",
         };
 
         // 258
         var sel3_5 = {
-          p312: "워드프로세서",
-          p313: "컴퓨터활용능력",
-          p314: "사무자동화 산업기사",
-          p315: "ITQ",
-          p316: "DIAT",
-          p317: "MOS",
+          P312: "워드프로세서",
+          P313: "컴퓨터활용능력",
+          P314: "사무자동화 산업기사",
+          P315: "ITQ",
+          P316: "DIAT",
+          P317: "MOS",
         };
 
         // 259
         var sel3_6 = {
-          p318: "정보처리기사",
-          p319: "정보보안기사",
-          p320: "정보기기 운용기능사",
+          P318: "정보처리기사",
+          P319: "정보보안기사",
+          P320: "정보기기 운용기능사",
         };
 
         // 260
         var sel3_7 = {
-          p323: "컴퓨터그래픽스 운용기능사",
-          p324: "GTQ/웹디자인 기능사",
+          P323: "컴퓨터그래픽스 운용기능사",
+          P324: "GTQ/웹디자인 기능사",
         };
 
         // 261
         var sel3_8 = {
-          p325: "전자상거래 관리사",
-          p326: "e-test",
-          p327: "코딩",
-          p328: "컴퓨터자격증 일반",
+          P325: "전자상거래 관리사",
+          P326: "e-test",
+          P327: "코딩",
+          P328: "컴퓨터자격증 일반",
         };
 
         //sel1에 서버에서 받아온 값을 넣기위해..
@@ -390,37 +390,37 @@
           $("#sel3").hide();
           var option = $("#sel1 option:selected").val();
           var subSelName = "";
-          if (option == "p101") {
+          if (option == "P101") {
             subSelName = "sel2_1";
-          } else if (option == "p102") {
+          } else if (option == "P102") {
             subSelName = "sel2_2";
-          } else if (option == "p103") {
+          } else if (option == "P103") {
             subSelName = "sel2_3";
-          } else if (option == "p104") {
+          } else if (option == "P104") {
             subSelName = "sel2_4";
-          } else if (option == "p105") {
+          } else if (option == "P105") {
             subSelName = "sel2_5";
-          } else if (option == "p106") {
+          } else if (option == "P106") {
             subSelName = "sel2_6";
-          } else if (option == "p107") {
+          } else if (option == "P107") {
             // 운비 1) subSelName = "sel2_7"; ---> 객체가 없어서 에러가 발생해서
             // null값으로 집어넣고 retOption이라는 function안에 null값에 대한 처리를 집어넣었음!
             subSelName = null;
-          } else if (option == "p108") {
+          } else if (option == "P108") {
             subSelName = "sel2_8";
-          } else if (option == "p109") {
+          } else if (option == "P109") {
             subSelName = "sel2_9";
-          } else if (option == "p110") {
+          } else if (option == "P110") {
             subSelName = "sel2_10";
-          } else if (option == "p111") {
+          } else if (option == "P111") {
             subSelName = "sel2_11";
-          } else if (option == "p112") {
+          } else if (option == "P112") {
             subSelName = "sel2_12";
-          } else if (option == "p113") {
+          } else if (option == "P113") {
             subSelName = "sel2_13";
-          } else if (option == "p114") {
+          } else if (option == "P114") {
             subSelName = "sel2_14";
-          } else if (option == "p115") {
+          } else if (option == "P115") {
             subSelName = "sel2_15";
           } else {
             // 운비 3) sel1 선택을 클릭했을 때 어떤 기능을 수행할 건지
@@ -439,21 +439,21 @@
           $("#sel3").hide();
           var option = $("#sel2 option:selected").val();
           var subSelName = "";
-          if (option == "p205") {
+          if (option == "P205") {
             subSelName = "sel3_1";
-          } else if (option == "p218") {
+          } else if (option == "P218") {
             subSelName = "sel3_2";
-          } else if (option == "p225") {
+          } else if (option == "P225") {
             subSelName = "sel3_3";
-          } else if (option == "p243") {
+          } else if (option == "P243") {
             subSelName = "sel3_4";
-          } else if (option == "p258") {
+          } else if (option == "P258") {
             subSelName = "sel3_5";
-          } else if (option == "p259") {
+          } else if (option == "P259") {
             subSelName = "sel3_6";
-          } else if (option == "p260") {
+          } else if (option == "P260") {
             subSelName = "sel3_7";
-          } else if (option == "p261") {
+          } else if (option == "P261") {
             subSelName = "sel3_8";
           } else {
             $("#sel3").hide();
@@ -465,7 +465,6 @@
         retOption(sel2, "sel2");
       });
     </script>
-    <form action="PTypeCon.do" method="get">
    		<div class="d-flex justify-content-center" style="padding-left: 255px;  ">
 	      <!--대분류-->
 	      <select name="sel1" id="sel1" style="border: solid #30467C;
@@ -479,12 +478,78 @@
 	    </div>
 	
 	    <div class="d-flex justify-content-center">
-	      <button class="btn btn-primary" role="button" style="  margin-left: 260px;" >결과 확인</button>
+	      <button class="btn btn-primary" role="button" style="  margin-left: 260px;" onclick="j();">결과 확인</button>
 	    </div>
-    </form>
     </div>
     </div>
 <script src="jquery-3.6.0.min.js"></script>
+<script> 
+
+function j() {
+	
+	
+	var allData;
+	
+	var select1 = document.getElementById("sel1");
+	select1 = select1.options[select1.selectedIndex].value;
+	console.log(select1)
+	
+	var select2 = document.getElementById("sel2");
+	select2 = select2.options[select2.selectedIndex].value;
+	console.log(select2)
+	
+	
+	var select3 = document.getElementById("sel3");
+	console.log(select3.length);
+	
+	if(select2.length > 10 ){
+		allData = { "sel1": select1, "sel2": "0"};
+		if(select3.length > 0){
+			console.log("들어옴?");
+			select3 = select3.options[select3.selectedIndex].value;
+			allData = { "sel1": select1, "sel2": "0", "sel3":select3 };
+		}else{
+			allData = { "sel1": select1, "sel2": "0", "sel3":"0" };
+		}
+	}else{
+		if(select3.length > 0){
+			console.log("들어옴?");
+			select3 = select3.options[select3.selectedIndex].value;
+			allData = { "sel1": select1, "sel2": select2, "sel3":select3 };
+		}else{
+			allData = { "sel1": select1, "sel2": select2, "sel3":"0" };
+		}
+	}
+	console.log(allData)
+	
+	
+	
+	$.ajax({
+        url:"PTypeCon.do",
+        type:'POST',
+        data: allData,
+        success:function(data){
+        	if(data!=0){
+            alert("완료!");
+            console.log(data);
+            //window.opener.location.reload();
+            //self.close();
+            location.href = 'ploginmain.jsp';
+            }
+        	else {
+        		alert("실패!");
+        		location.href = 'ploginmain.jsp';
+        	}
+        },
+        error:function(){
+            alert("서버요청실패");
+            location.href = 'ploginmain.jsp';;
+        }
+    });
+	
+}
+	
+	</script>
 	
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
