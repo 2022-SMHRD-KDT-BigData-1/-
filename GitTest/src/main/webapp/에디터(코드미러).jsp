@@ -90,7 +90,7 @@
 <link rel="stylesheet" href="codemirror-5.65.1/lib/codemirror.css" />
 <script src="codemirror-5.65.1/mode/javascript/javascript.js"></script>
 <style>
-.CodeMirror {
+/*.CodeMirror {
 	border: 1px solid #eee;
 margin-left:100px !important;
 }
@@ -103,7 +103,7 @@ margin-left:100px !important;
 .CodeMirror.cm-s-default{
 	width:1000px;
 	margin-left:400px !important;
-}
+}*/
 </style>
 </head>
 
@@ -267,12 +267,13 @@ margin-left:100px !important;
 					<span style="font-weight: bold; font-size: 25px">제목 </span> <input
 						type="text" name="title" placeholder="제목을 입력하세요." autofocus
 						style="width: 500; height: 50; font-size: 25px" />
-
+					
 
 					<hr />
-					<div class="container m-5" >
+					<div class="container m-5" id='cm_here'>
 						<script>
-							var myCodeMirror = CodeMirror(document.body, {
+							//var myCodeMirror = CodeMirror(document.body, {
+							var myCodeMirror = CodeMirror(document.getElementById('cm_here'), {
 								value : "\n",
 								mode : "javascript",
 								lineNumbers : "true",

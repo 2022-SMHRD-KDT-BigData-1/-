@@ -62,14 +62,19 @@
    <script>
      document.addEventListener("DOMContentLoaded", function () {
        var calendarEl = document.getElementById("calendar");
+       
+		var event={title: "ÀÚ¹Ù", start:"2022-02-25", end:"2022-02-26"};
+		var eventlist= [];
+		eventlist.push(event);
 
        var calendar = new FullCalendar.Calendar(calendarEl, {
          plugins: ["interaction", "dayGrid"],
          locale : 'ko',
-         defaultDate: "2020-02-12",
+         
          editable: true,
          eventLimit: true, // allow "more" link when too many events
-         events: [
+         events: eventlist 
+        	 /* [
            {
              title: "All Day Event",
              start: "2020-02-01",
@@ -123,8 +128,8 @@
              title: "Click for Google",
              url: "http://google.com/",
              start: "2020-02-28",
-           },
-         ],
+           }, 
+         ]*/,
        });
 
        calendar.render();

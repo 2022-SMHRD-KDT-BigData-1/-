@@ -22,9 +22,11 @@ pageContext.setAttribute("schedule", schedule);
 TodoDAO todoDAO = new TodoDAO();
 ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 todolist = todoDAO.todoSelectAll(nick, schedule_num);
+int todocnt= todolist.size();
 pageContext.setAttribute("todolist", todolist);
+pageContext.setAttribute("todocnt", todocnt);
 // check->1 -> o check->0 ->x
-String todostring="";
+/* String todostring="";
 for(int i=0; i<todolist.size(); i++){
    if(i != todolist.size()-1){
       todostring +=todolist.get(i).getTodo_title();
@@ -43,7 +45,7 @@ for(int i=0; i<todolist.size(); i++){
       }
    }
 }
-pageContext.setAttribute("todostring", todostring);
+pageContext.setAttribute("todostring", todostring); */
 
 %>
 <!DOCTYPE html>
@@ -278,7 +280,29 @@ body {
    <script src="js/jquery/jquery-2.2.4.min.js"></script>
    <script>
    var todostring = '<%=(String)pageContext.getAttribute("todostring") %>';
+   var todocnt ='<%=(Integer)pageContext.getAttribute("todocnt") %>';
    console.log(todostring);
+	var event={title: "자바", start:"2022-02-25", end:"2022-02-26"};
+	var eventlist= [{
+		title : "${schedule.schedule_name}",
+		start : "${schedule.schedule_start}",
+		end : "${schedule.schedule_end}",
+	},
+	{
+		title : "공부하는 책 : ${schedule.book_title}",
+		start : "${schedule.schedule_start}",
+		end : "${schedule.schedule_end}",
+	}, {
+		title : "공부할 페이지 : ${schedule.schedule_day_page}",
+		start : "${schedule.schedule_start}",
+		end : "${schedule.schedule_end}",
+	}];
+	for (var i=0; i<todocnt;i++){
+		
+	}
+	
+	
+	eventlist.push(event);
 
    $(document).ready(function() {
        var calendarEl = document.getElementById("calendar");
