@@ -288,7 +288,7 @@ img {
 }
 
 .mt-50 {
-	margin-top: 50px !important;
+	margin-top: 85px !important;
 }
 
 .mt-70 {
@@ -578,7 +578,7 @@ img {
 	padding: 0 7px;
 	font-size: 18px;
 	line-height: 56px;
-	background-color: #fbb710;
+	background-color: #FFA076;
 	font-weight: 400;
 }
 
@@ -1455,7 +1455,7 @@ img {
   .line {
 	width: 80px;
 	height: 3px;
-	background-color: #fbb710;
+	background-color: #FFA076;
 	margin-bottom: 15px;
 	display: block;
 }
