@@ -175,7 +175,7 @@ public class TodoDAO {
 		ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 		connect();
 
-		sql = "select * from todo where member_nick=? and seq_schedule_num=?";
+		sql = "select seq_todo_num, todo_title, to_char(todo_date,'yyyy-mm-dd'), seq_schedule_num, seq_dayplan_num, member_nick, todo_check from todo where member_nick=? and seq_schedule_num=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);

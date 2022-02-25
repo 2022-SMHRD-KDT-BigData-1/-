@@ -17,4 +17,10 @@ public class TodoDTO {
 	private int dayplan_num;
 	private String member_nick;
 	private int todo_check;
+	
+//	@Override
+//	public String toString() {
+//		
+//		return "{\"title\":\"" +this.todo_title+ "\"}";
+//	}
 }

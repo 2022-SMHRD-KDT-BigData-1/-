@@ -1,3 +1,7 @@
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="com.google.gson.JsonArray"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.awt.PageAttributes"%>
 <%@page import="com.pplus.model.TodoDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pplus.model.TodoDAO"%>
@@ -5,7 +9,7 @@
 <%@page import="com.pplus.model.ScheduleDAO"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
@@ -16,36 +20,18 @@ String nick = member.getMember_nick();
 
 String num = request.getParameter("num");
 
-int schedule_num =   schedule.getSchedule_num();
+int schedule_num = schedule.getSchedule_num();
 pageContext.setAttribute("schedule", schedule);
 
 TodoDAO todoDAO = new TodoDAO();
 ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 todolist = todoDAO.todoSelectAll(nick, schedule_num);
-int todocnt= todolist.size();
+int todocnt = todolist.size();
 pageContext.setAttribute("todolist", todolist);
 pageContext.setAttribute("todocnt", todocnt);
-// check->1 -> o check->0 ->x
-/* String todostring="";
-for(int i=0; i<todolist.size(); i++){
-   if(i != todolist.size()-1){
-      todostring +=todolist.get(i).getTodo_title();
-      if(todolist.get(i).getTodo_check()==1){
-         todostring += " o";
-      } else {
-         todostring += " x";
-      }
-      todostring +=", ";
-   } else{
-      todostring +=todolist.get(i).getTodo_title();
-      if(todolist.get(i).getTodo_check()==1){
-         todostring += " o";
-      } else {
-         todostring += " x";
-      }
-   }
-}
-pageContext.setAttribute("todostring", todostring); */
+
+// Gson 객체 만들기 --> 자바의 데이터를 json타입으로 바꾸어 주는 역할
+Gson gson = new Gson();
 
 %>
 <!DOCTYPE html>
@@ -55,7 +41,7 @@ pageContext.setAttribute("todostring", todostring); */
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
-   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
@@ -68,33 +54,33 @@ pageContext.setAttribute("todostring", todostring); */
 
 <title>Hello, world!</title>
 <link rel="stylesheet"
-   href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-   integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
-   crossorigin="anonymous">
+	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+	crossorigin="anonymous">
 
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 
 <script
-   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-   integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-   crossorigin="anonymous"></script>
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+	crossorigin="anonymous"></script>
 <script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-   integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-   crossorigin="anonymous"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+	crossorigin="anonymous"></script>
 <!-- Google fonts-->
 <link
-   href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
-   rel="stylesheet" type="text/css" />
+	href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
+	rel="stylesheet" type="text/css" />
 <link
-   href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
-   rel="stylesheet" type="text/css" />
+	href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
+	rel="stylesheet" type="text/css" />
 
 <!-- Google Font -->
 <link
-   href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
-   rel="stylesheet" />
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+	rel="stylesheet" />
 <link href="calendar/packages copy/core/main.css" rel="stylesheet" />
 <link href="calendar/packages copy/daygrid/main.css" rel="stylesheet" />
 <script src="calendar/packages copy/core/main.js"></script>
@@ -106,13 +92,13 @@ pageContext.setAttribute("todostring", todostring); */
 <link href="assets/css/style.css" rel="stylesheet">
 <style>
 body {
-   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-   font-size: 14px;
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
 }
 
 #calendar {
-   max-width: 900px;
-   margin: 0 auto;
+	max-width: 900px;
+	margin: 0 auto;
 }
 </style>
 
@@ -120,10 +106,10 @@ body {
 </head>
 
 <body>
-  <header id="header" class="fixed-top header-scrolled">
+	<header id="header" class="fixed-top header-scrolled">
 		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img
+				style="width: 40px" src="image/p+만.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>
@@ -191,16 +177,14 @@ body {
 			</ul>
 		</nav>
 	</header>
-  
-   <!-- ##### Main Content Wrapper Start ##### -->
-   <div class="main-content-wrapper d-flex clearfix">
-      <!-- Mobile Nav (max width 767px)-->
-      <div class="mobile-nav">
-        
-      </div>
+
+	<!-- ##### Main Content Wrapper Start ##### -->
+	<div class="main-content-wrapper d-flex clearfix">
+		<!-- Mobile Nav (max width 767px)-->
+		<div class="mobile-nav"></div>
 
 
-    	<div class="shop_sidebar_area">
+		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<h6 class="widget-title mb-30">학습플래너</h6>
@@ -257,98 +241,87 @@ body {
 				</div>
 			</div>
 		</div>
-      <div style="width: 80%; margin-top: 7%; margin-left: 70px;">
+		<div style="width: 80%; margin-top: 7%; margin-left: 70px;">
 
-         <!-- Option 1: Bootstrap Bundle with Popper -->
-         <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+			<!-- Option 1: Bootstrap Bundle with Popper -->
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
 
-         <!-- 달력 -->
-         <div class="container">
-            <div class="col-md-10">
-               <div class="container col-md-6 p-3">
-                  <div class="row"></div>
-               </div>
-               <div id="calendar"></div>
-            </div>
-         </div>
-      </div>
-   </div>
-   
-   <script src="js/jquery/jquery-2.2.4.min.js"></script>
-   <script>
-   var todostring = '<%=(String)pageContext.getAttribute("todostring") %>';
-   var todocnt ='<%=(Integer)pageContext.getAttribute("todocnt") %>';
-   console.log(todostring);
-	var event={title: "자바", start:"2022-02-25", end:"2022-02-26"};
-	var eventlist= [{
-		title : "${schedule.schedule_name}",
-		start : "${schedule.schedule_start}",
-		end : "${schedule.schedule_end}",
-	},
-	{
-		title : "공부하는 책 : ${schedule.book_title}",
-		start : "${schedule.schedule_start}",
-		end : "${schedule.schedule_end}",
-	}, {
-		title : "공부할 페이지 : ${schedule.schedule_day_page}",
-		start : "${schedule.schedule_start}",
-		end : "${schedule.schedule_end}",
-	}];
-	for (var i=0; i<todocnt;i++){
-		
-	}
-	
-	
-	eventlist.push(event);
+			<!-- 달력 -->
+			<div class="container">
+				<div class="col-md-10">
+					<div class="container col-md-6 p-3">
+						<div class="row"></div>
+					</div>
+					<div id="calendar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-   $(document).ready(function() {
-       var calendarEl = document.getElementById("calendar");
-   // 어딘가에 점또는 세미콜론 안찍혀있는 오류가 떴어요
-       var calendar = new FullCalendar.Calendar(calendarEl, {
-         initialView : "dayGridMonth",
-         plugins: ["interaction", "dayGrid"],
-         locale : 'ko',
-         editable: true,
-         eventLimit: true, // allow "more" link when too many events
-         events: [
-              {
-               title: "${schedule.schedule_name}",
-               start: "${schedule.schedule_start}",
-               end: "${schedule.schedule_end}",
-            },
-            
-            {
-                title: "공부하는 책 : ${schedule.book_title}",
-                start: "${schedule.schedule_start}",
-                end: "${schedule.schedule_end}",
-             },
-             {
-                 title: "공부할 페이지 : ${schedule.schedule_day_page}",
-                 start: "${schedule.schedule_start}",
-                 end: "${schedule.schedule_end}",
-             },        
-             {
-                title : "오늘 할 일 : "+ todostring,
-                start : "${schedule.schedule_start}",
-                end: "${schedule.schedule_end}",
-             },   
-         ],
-       });
-         calendar.render(); 
-     });
-   </script>
-   <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-   
-   <!-- Popper js -->
-   <script src="js/popper.min.js"></script>
-   <!-- Bootstrap js -->
-   <script src="js/bootstrap.min.js"></script>
-   <!-- Plugins js -->
-   <script src="js/plugins.js"></script>
-   <!-- Active js -->
-   <script src="js/active.js"></script>
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<script>
+
+   var gs = JSON.parse('<%=gson.toJson(todolist)%>');
+
+		var eventlist = [ {
+			title : "${schedule.schedule_name}",
+			start : "${schedule.schedule_start}",
+			end : "${schedule.schedule_end}",
+		}, {
+			title : "공부하는 책 : ${schedule.book_title}",
+			start : "${schedule.schedule_start}",
+			end : "${schedule.schedule_end}",
+		}, {
+			title : "공부할 페이지 : ${schedule.schedule_day_page}",
+			start : "${schedule.schedule_start}",
+			end : "${schedule.schedule_end}",
+		} ];
+
+		for (var i = 0; i < gs.length; i++) {
+			if (gs[i]['todo_check'] == 1) {
+				eventlist.push({
+					title : gs[i]['todo_title']+" o",
+					start : gs[i]['todo_date'],
+					end : gs[i]['todo_date']
+				});
+
+			} else {
+				eventlist.push({
+					title : gs[i]['todo_title']+" x",
+					start : gs[i]['todo_date'],
+					end : gs[i]['todo_date']
+				});
+
+			}
+
+		}
+
+		$(document).ready(function() {
+			var calendarEl = document.getElementById("calendar");
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				initialView : "dayGridMonth",
+				plugins : [ "interaction", "dayGrid" ],
+				locale : 'ko',
+				editable : true,
+				eventLimit : true, // allow "more" link when too many events
+				events : eventlist
+				,
+			});
+			calendar.render();
+		});
+	</script>
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>
