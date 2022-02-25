@@ -403,12 +403,15 @@ if (count > 0) {
 			${"#schedule"}.click(function() {
 				var num = 0;
 				var val = document.getElementByName("flexRadioDefault");
-				if (val[i].checked == true) {
-					num = val[i].value;
-					console.log("체크체크");
+				var size = val.length;
+				for (var i = 0; i < size; i++) {
+					if (val[i].checked == true) {
+						num = val[i].value;
+						console.log("체크체크");
+					}
 				}
 			})
-			location.href = 'Con.do?num=' + num;
+			/* location.href = 'Con.do?num=' + num; */
 			console.log(list);
 			
 

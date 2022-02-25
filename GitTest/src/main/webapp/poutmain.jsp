@@ -10,8 +10,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-PMemberDTO member = (PMemberDTO) session.getAttribute("member");
-
+PMemberDTO member = (PMemberDTO)session.getAttribute("member");
 PMemberDAO dao = new PMemberDAO();
 BookDAO bookDao = new BookDAO();
 VideoDAO videoDao = new VideoDAO();
