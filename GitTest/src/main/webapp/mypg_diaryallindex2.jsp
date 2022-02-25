@@ -232,8 +232,7 @@ if (count > 0) {
 			  <li><a href="#">위시리스트</a></li>
 			  <li><a href="#">전체학습상황조회</a></li>
 			</ul>
-						
-			
+					
 		</div>
 
 				</div>
