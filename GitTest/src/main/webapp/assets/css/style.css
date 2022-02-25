@@ -641,6 +641,12 @@ a:hover {
   .mobile-nav-toggle {
     display: block;
   }
+	.navbar a.icon{
+		display: none;
+	}
+	.navbar a.ham{
+		display : block;
+	}
 
   .navbar ul {
     display: none;
