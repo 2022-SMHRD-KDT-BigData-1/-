@@ -52,6 +52,7 @@ if (count > 0) {
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="css/버튼2.css" />
 
 
 <link rel="stylesheet"
@@ -207,110 +208,34 @@ if (count > 0) {
 			style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 100px;">
 			<br>
 			<!-- 일기 목록 -->
-			<div class="container">
-				<h1 style="text-align: center;">
-					일기 <i class="fas fa-book"></i>
-				</h1>
-				<br>
-				<div class="container">
-					<c:set value="<%=(currentPage - 1) * 10%>" var="j" />
-					<table
-						class="table table-bordered table-hover table-sm text-center ">
+<!-- 			<div class="container abc" style="padding-top: 90px">
+ -->
+			<!-- <div class=" px-4 px-lg-5 my-5">
+				<br> <a href="scheduleset.jsp" class="btn btn-lg black"
+					style="display: inline-block">
+					회원정보</a>
+			</div>
 
-						<thead class="table-warning ">
-							<tr>
-								<th></th>
-								<th class="text-center">No.</th>
-								<th class="text-center">작성일</th>
-								<th class="text-center">스케줄명</th>
-								<th class="text-center">일기 제목</th>
-							</tr>
-						</thead>
-						<body>
-							<c:forEach var="i" items="${diarylist }">
-								<tr>
-									<td><div class="form-check">
-											<input class="form-check-input" type="checkbox"
-												name="flexRadioDefault" id="flexRadioDefault1"
-												value="${i.diary_num }"> <label
-												class="form-check-label" for="flexRadioDefault1"> </label>
-										</div></td>
-									<td><input value="${i.diary_num }" style="display: none;"
-										name="num"> <input value="${i.member_nick }"
-										style="display: none;" name="nick"> ${j = j + 1}</td>
-									<td>${i.diary_date }</td>
-									<td>${sessionScope.schedule.schedule_name }</td>
-									<td>${i.diary_title }</td>
-								</tr>
-							</c:forEach>
-					</table>
-				</div>
+			<div class="container px-4 px-lg-5 my-5">
+				<br> <a href="#" class="btn btn-lg yellow"
+					style="display: inline-block">위시리스트</a>
+			</div>
 
-				<br>
-				<div class="page">
-					<div class="text-center">
-						<a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
-							class="btn btn-dark" id="delete">선택 삭제</a> <a href="#"
-							class="btn btn-dark">선택 보기</a>
-					</div>
-					<br>
-					<nav aria-label="Page navigation example">
-						<div class="text-center">
-							<ul class="pagination" style="justify-content: center;">
-								<%
-								if (count > 0) {
-									// 총 페이지의 수
-									int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			<div class="container px-4 px-lg-5 my-5">
+				<br> <a href="#" class="btn btn-lg black"
+					style="display: inline-block">
+					전체학습상황조회</a>
+			</div> -->
+			
+						<ul>
+			  <li><a href="#">회원정보</a></li>
+			  <li><a href="#">위시리스트</a></li>
+			  <li><a href="#">전체학습상황조회</a></li>
+			</ul>
+						
+			
+		</div>
 
-									// 한 페이지에 보여줄 페이지 블럭(링크) 수
-									int pageBlock = 10;
-									// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
-									int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
-									int endPage = startPage + pageBlock - 1;
-
-									// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
-									if (endPage > pageCount) {
-										endPage = pageCount;
-									}
-
-									if (startPage > pageBlock) { // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
-								%>
-								<li class="page-item"><a class="page-link"
-									href="diaryindex.jsp?pageNum=<%=startPage - 10%>"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										<span class="sr-only">Previous</span>
-								</a></li>
-
-								<%
-								}
-								for (int i = startPage; i <= endPage; i++) { // 페이지 블록 번호
-								if (i == currentPage) { // 현재 페이지에는 링크를 설정하지 않음
-								%>
-								<%=i%>
-
-								<%
-								} else { // 현재 페이지가 아닌 경우 링크 설정
-								%>
-								<li class="page-item"><a class="page-link"
-									href="diaryindex.jsp?pageNum=<%=i%>"><%=i%></a></li>
-								<%
-								}
-								} // for end
-
-								if (endPage < pageCount) { // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
-								%>
-								<li class="page-item"><a class="page-link"
-									href="diaryindex.jsp?pageNum=${startPage + 10 }"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										<span class="sr-only">Next</span>
-								</a></li>
-								<%
-								}
-								}
-								%>
-							</ul>
-						</div>
-					</nav>
 				</div>
 
 				<!-- Option 1: Bootstrap Bundle with Popper -->
@@ -320,7 +245,8 @@ if (count > 0) {
 					crossorigin="anonymous"></script>
 			</div>
 		</div>
-	
+		<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+		
 
 		<!-- ##### Footer Area Start ##### -->
 
