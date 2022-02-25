@@ -210,11 +210,14 @@
 	margin: 0;
 	padding: 0;
 }
-
+html{
+	height:100%
+}
 body {
 
   font-size: 16px;
   background-color: white;
+  height:100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -644,6 +647,7 @@ img {
 	transition-duration: 500ms;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
+	height:100%;
 }
 
 @media only screen and (max-width: 767px) {

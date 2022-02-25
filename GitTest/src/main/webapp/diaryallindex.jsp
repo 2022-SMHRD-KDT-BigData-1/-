@@ -70,6 +70,9 @@ if (count > 0) {
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+	crossorigin="anonymous"></script>
 
 <body>
 	<header id="header" class="fixed-top header-scrolled">

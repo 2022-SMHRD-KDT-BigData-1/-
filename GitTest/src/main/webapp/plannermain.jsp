@@ -30,6 +30,12 @@
 
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
+
+<style>
+html, body{
+height:100%;
+}
+</style>
 </head>
 
 <body>

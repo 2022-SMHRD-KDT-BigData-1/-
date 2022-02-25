@@ -1,22 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/core-style.css" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="css/유형조사.css" />
+
+<style>
+.study {
+   margin-bottom: -21px;
+   font-size: 25px;
+   font-weight: bold;
+   margin-left: 0;
+   width: none;
+}
+
+.userTitle {
+   margin-left: 0;
+}
+
+.btn.btn-primary {
+   padding: 5px;
+   margin-top: 20px;
+   background-image: none;
+   background-color: #FFA076;
+   font-size: 18px;
+   color: black;
+   border-color: #FFA076;
+   margin-left: 260px;
+}
+#sel1, #sel2, #sel3 {
+margin-left:0;
+width:237px;
+margin-left: 15px;
+
+}
+</style>
 </head>
 <body>
-	
-	
 
-    <div class="study">회원님이 공부하고 싶은 분야는 무엇인가요?</div>
 
-    <br /><br /><br />
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script>
-    $(document).ready(function () {
+   <script
+      src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+      $(document).ready(function () {
         //대분류
         var sel1 = {
           null: "선택",
@@ -321,103 +352,136 @@
         retOption(sel2, "sel2");
       });
     </script>
-   		<div class="d-flex justify-content-center" style="padding-left: 255px;  ">
-	      <!--대분류-->
-	      <select name="sel1" id="sel1" style="border: solid #30467C;
-	      ">
-	        선택
-	      </select>
-	      <!--중분류-->
-	      <select name="sel2" id="sel2" style="display: none; border: solid #30467C; "></select>
-	      <!--소분류-->
-	      <select name="sel3" id="sel3" style="display: none; border: solid #30467C;"></select>
-	    </div>
-	
-	    <div class="d-flex justify-content-center">
-	      <button class="btn btn-primary" role="button" style="  margin-left: 260px;" onclick="j();">결과 확인</button>
-	    </div>
-	
-	<script src="jquery-3.6.0.min.js"></script>
-	<script> 
+   <div class="main-content-wrapper d-flex clearfix">
+      <!-- Mobile Nav (max width 767px)-->
+      <div class="mobile-nav"></div>
 
-	
-	function j() {
-		
-		
-		var allData;
-		
-		var select1 = document.getElementById("sel1");
-		select1 = select1.options[select1.selectedIndex].value;
-		console.log(select1)
-		
-		var select2 = document.getElementById("sel2");
-		select2 = select2.options[select2.selectedIndex].value;
-		console.log(select2)
-		
-		
-		var select3 = document.getElementById("sel3");
-		console.log(select3.length);
-		
-		if(select2.length > 10 ){
-			allData = { "sel1": select1, "sel2": "0"};
-			if(select3.length > 0){
-				console.log("들어옴?");
-				select3 = select3.options[select3.selectedIndex].value;
-				allData = { "sel1": select1, "sel2": "0", "sel3":select3 };
-			}else{
-				allData = { "sel1": select1, "sel2": "0", "sel3":"0" };
-			}
-		}else{
-			if(select3.length > 0){
-				console.log("들어옴?");
-				select3 = select3.options[select3.selectedIndex].value;
-				allData = { "sel1": select1, "sel2": select2, "sel3":select3 };
-			}else{
-				allData = { "sel1": select1, "sel2": select2, "sel3":"0" };
-			}
-		}
-		console.log(allData)
-		
-		
-		
-		$.ajax({
-	        url:"PTypeCon.do",
-	        type:'POST',
-	        data: allData,
-	        success:function(data){
-	        	if(data!=0){
-	            alert("완료!");
-	            console.log(data);
-	            //window.opener.location.reload();
-	            //self.close();
-	            window.close();
-	            opener.parent.location.reload();
-	            }
-	        	else {
-	        		alert("실패!");
-	        		window.close();
-	        		opener.parent.location.reload();
-	        	}
-	        },
-	        error:function(){
-	            alert("서버요청실패");
-	            window.close();
-	            opener.parent.location.reload();
-	        }
-	    });
-		
-	}
-	
-	</script>
-	
-	<script>
-	
-	
-		
-	
-		
-	</script>
-	
-	
+
+      <div>
+         <!-- Option 1: Bootstrap Bundle with Popper -->
+         <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+         <h1 class="userTitle" style="font-size: 25px; padding-top: 30px">
+            <i class="fas fa-user-check"></i> 사용자 유형 조사
+         </h1>
+
+         <div class="study">회원님이 공부하고 싶은 분야는 무엇인가요?</div>
+
+         <br /> <br /> <br />
+
+         <form action="PTypeCon.do" method="get">
+            <div class="d-flex justify-content-center"
+               ">
+               <!--대분류-->
+               <select name="sel1" id="sel1" style="border: solid #30467C;">
+                  선택
+               </select>
+               <!--중분류-->
+               <select name="sel2" id="sel2"
+                  style="display: none; border: solid #30467C;"></select>
+               <!--소분류-->
+               <select name="sel3" id="sel3"
+                  style="display: none; border: solid #30467C;"></select>
+            </div>
+
+            <div style="padding-left:13%">
+               <button class="btn btn-primary" role="button"
+                  >결과 확인</button>
+            </div>
+         </form>
+      </div>
+   </div>
+   <script src="jquery-3.6.0.min.js"></script>
+   <script>
+      function j() {
+
+         var allData;
+
+         var select1 = document.getElementById("sel1");
+         select1 = select1.options[select1.selectedIndex].value;
+         console.log(select1)
+
+         var select2 = document.getElementById("sel2");
+         select2 = select2.options[select2.selectedIndex].value;
+         console.log(select2)
+
+         var select3 = document.getElementById("sel3");
+         console.log(select3.length);
+
+         if (select2.length > 10) {
+            allData = {
+               "sel1" : select1,
+               "sel2" : "0"
+            };
+            if (select3.length > 0) {
+               console.log("들어옴?");
+               select3 = select3.options[select3.selectedIndex].value;
+               allData = {
+                  "sel1" : select1,
+                  "sel2" : "0",
+                  "sel3" : select3
+               };
+            } else {
+               allData = {
+                  "sel1" : select1,
+                  "sel2" : "0",
+                  "sel3" : "0"
+               };
+            }
+         } else {
+            if (select3.length > 0) {
+               console.log("들어옴?");
+               select3 = select3.options[select3.selectedIndex].value;
+               allData = {
+                  "sel1" : select1,
+                  "sel2" : select2,
+                  "sel3" : select3
+               };
+            } else {
+               allData = {
+                  "sel1" : select1,
+                  "sel2" : select2,
+                  "sel3" : "0"
+               };
+            }
+         }
+         console.log(allData)
+
+         $.ajax({
+            url : "PTypeCon.do",
+            type : 'POST',
+            data : allData,
+            success : function(data) {
+               if (data != 0) {
+                  alert("완료!");
+                  console.log(data);
+                  //window.opener.location.reload();
+                  //self.close();
+                  window.close();
+                  opener.parent.location.reload();
+               } else {
+                  alert("실패!");
+                  window.close();
+                  opener.parent.location.reload();
+               }
+            },
+            error : function() {
+               alert("서버요청실패");
+               window.close();
+               opener.parent.location.reload();
+            }
+         });
+
+      }
+   </script>
+
+   <script>
+      
+   </script>
+
+
 </body>
 </html>
