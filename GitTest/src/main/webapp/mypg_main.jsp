@@ -1,44 +1,41 @@
-<%@page import="com.pplus.model.DiaryDTO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.pplus.model.DiaryDAO"%>
+<%@page import="com.pplus.model.ScheduleDAO"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@page import="com.pplus.model.ScheduleDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
-
-DiaryDAO diaryDAO = new DiaryDAO();
-ArrayList<DiaryDTO> diarylist = new ArrayList<DiaryDTO>();
+ArrayList<ScheduleDTO> schedulelist = (ArrayList<ScheduleDTO>) session.getAttribute("schedulelist");
+ScheduleDAO scheduleDAO = new ScheduleDAO();
 
 int pageSize = 10;
-String pageNum = request.getParameter("pageNum");
 
-if (pageNum == null) { // 클릭한게 없으면 1번 페이지
-	pageNum = "1";
+int total = schedulelist.size();
+
+pageContext.setAttribute("total", total);
+
+int lastpage = (int) Math.ceil((double) total / 10);
+pageContext.setAttribute("lastpage", lastpage);
+
+int rownum = total;
+pageContext.setAttribute("rownum", rownum);
+
+String view_page = request.getParameter("viewpage");// 현재 페이지
+if (view_page == null) {
+	view_page = "1";
 }
+int viewpage = Integer.parseInt(view_page);
 
-int currentPage = Integer.parseInt(pageNum);
+schedulelist = scheduleDAO.scheduleSelectAny(member.getMember_nick(), viewpage);
 
-// 해당 페이지에서 시작할 레코드 / 마지막 레코드
-int startRow = (currentPage - 1) * pageSize + 1;
-int endRow = currentPage * pageSize;
-
-int count = 0;
-count = diaryDAO.getCount(schedule.getSchedule_num()); // 데이터베이스에 저장된 총 갯수
-
-if (count > 0) {
-	diarylist = diaryDAO.getList(startRow, endRow, member, schedule);
-	pageContext.setAttribute("diarylist", diarylist);
-
-}
+pageContext.setAttribute("schedulelist", schedulelist);
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -49,31 +46,18 @@ if (count > 0) {
 <title>P+(Programming에 Planner를 더하다.)</title>
 <!-- Favicon  -->
 <link rel="icon" href="image/p+만.png" />
+
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="css/버튼2.css" />
+ <link rel="stylesheet" href="css/버튼test.css" />
 
-
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
-	crossorigin="anonymous">
-
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
 	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
+
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -150,7 +134,6 @@ if (count > 0) {
 	</header>
 
 
-
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
@@ -167,8 +150,7 @@ if (count > 0) {
 					<ul>
 						<li class="active"><a>회원 정보</a></li>
 						<hr />
-						<li><a href="pupdate.jsp">회원 정보
-								수정</a></li>
+						<li><a href="pupdate.jsp">회원 정보 수정</a></li>
 						<a><li class="btn" data-bs-toggle="modal"
 							data-bs-target="#staticBackdrop">회원 탈퇴</a>
 						</li>
@@ -204,62 +186,114 @@ if (count > 0) {
 				</div>
 			</div>
 		</div>
-		<div
-			style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 100px;">
-			<br>
-			<!-- 일기 목록 -->
-<!-- 			<div class="container abc" style="padding-top: 90px">
- -->
-			<!-- <div class=" px-4 px-lg-5 my-5">
+
+		<div class="container abc" style="padding-top: 90px">
+
+			 <div class=" px-4 px-lg-5 my-5">
 				<br> <a href="scheduleset.jsp" class="btn btn-lg black"
 					style="display: inline-block">
 					회원정보</a>
+			</div> 
+			
+
+			<div class="container px-4 px-lg-5 my-5">
+				<br> <a href="scheduleindex.jsp" class="btn btn-lg black"
+					style="display: inline-block"> 위시리스트</a>
 			</div>
 
 			<div class="container px-4 px-lg-5 my-5">
-				<br> <a href="#" class="btn btn-lg yellow"
-					style="display: inline-block">위시리스트</a>
-			</div>
-
-			<div class="container px-4 px-lg-5 my-5">
-				<br> <a href="#" class="btn btn-lg black"
+				<br> <a href="" class="btn btn-lg black"
 					style="display: inline-block">
 					전체학습상황조회</a>
-			</div> -->
-			
-						<ul>
-			  <li><a href="#">회원정보</a></li>
-			  <li><a href="#">위시리스트</a></li>
-			  <li><a href="#">전체학습상황조회</a></li>
-			</ul>
-					
-		</div>
-
-				</div>
-
-				<!-- Option 1: Bootstrap Bundle with Popper -->
-				<script
-					src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-					integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-					crossorigin="anonymous"></script>
 			</div>
+
 		</div>
-		<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	</div>
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			$("#delete").click(function() {
+				var list = [];
+				var val = document.getElementsByName("DeleteCheck");
+				var size = val.length;
+				for (var i = 0; i < size; i++) {
+					if (val[i].checked == true) {
+						list.push(val[i].value);
+						console.log("체크체크");
+					}
+				}
+				location.href = 'ScheduleDeleteCon.do?list=' + list;
+				console.log(list);
+			});
+
+		});
+		/* $(function(){
+			var check= document.getElementsByName("DeleteCheck");
+			var DeleteCnt = check.length;
+			
+			$("input[name='allCheck']").click(function(){
+				var check_list = $("input[name='DeleteCheck']");
+				console.log(2);
+				for(var i=0; i<check_list.length; i++){
+					check_list[i].checked=this.checked;
+					
+				}
+			};
+			
+			$("input[name='DeleteCheck']").click(function(){
+				if($("input[name='DeleteCheck']:checked").length==DeleteCnt){
+					$("input[name='allCheck']")[0].checked=true;
+				} else {
+					$("input[name='allCheck']")[0].checked=false;
+				}
+			};		
+		};
 		
-
-		<!-- ##### Footer Area Start ##### -->
-
-		<!-- ##### Footer Area End ##### -->
-
-		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-		<script src="js/jquery/jquery-2.2.4.min.js"></script>
-		<!-- Popper js -->
-		<script src="js/popper.min.js"></script>
-		<!-- Bootstrap js -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Plugins js -->
-		<script src="js/plugins.js"></script>
-		<!-- Active js -->
-		<script src="js/active.js"></script>
+		function deleteValue(){
+			var url="ScheduleDeleteCon.do";
+			var valuelist =new Array();
+			var schedulelist = $("input[name='DeleteCheck']");
+			
+			for(var i =0; i<list.length; i++) {
+				if(list[i].checked){
+					valuelist.push(schedulelist[i].value);
+				}
+			}
+			
+			if(valuelist.length==0){
+				alert("선택한 스케줄이 없습니다.");
+			} else {
+				var chk= confrim("정말 삭제하시겠습니까?");
+				$.ajax({
+					url : url,
+					type : "POST",
+					traditional : true,
+					data : {
+						valuelist : valuelist
+						},
+					success: function(jdata){
+						if(jdata == 1){
+							alert("삭제 성공");
+							location.replace("scheduleindex.jsp")
+						} else {
+							alert("삭제 실패")
+						}
+					}
+				});
+			}
+		} */
+	</script>
+	<script src="jquery-3.6.0.min.js"></script>
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>

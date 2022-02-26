@@ -252,8 +252,8 @@ pageContext.setAttribute("schedulelist", schedulelist);
 				<br>
 				<div class="page">
 					<div class="text-center">
-						<a href="#" class="btn btn-dark">선택 완료</a>	
-						<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
+<!-- 						<a href="#" class="btn btn-dark">선택 완료</a>	
+ -->						<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
 					</div>
 					<br>
 					<nav aria-label="Page navigation example">
