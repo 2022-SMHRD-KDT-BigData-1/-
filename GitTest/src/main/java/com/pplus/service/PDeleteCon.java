@@ -38,12 +38,12 @@ public class PDeleteCon  implements iPCommand {
 			System.out.println("Å»ÅðÇÑ id" + member.getMember_id());
 
 			session.invalidate();
-			response.sendRedirect("pmain.jsp");
+			response.sendRedirect("poutmain.jsp");
 		}else {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('È¸¿ø Å»ÅðÀ» ½ÇÆÐÇÏ¼Ì½À´Ï´Ù.');");
-			out.print("location.href='pmain.jsp';");
+			out.print("location.href='poutmain.jsp';");
 			out.print("</script>");
 		}
 		

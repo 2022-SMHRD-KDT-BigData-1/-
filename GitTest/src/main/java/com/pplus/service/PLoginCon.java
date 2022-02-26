@@ -69,11 +69,9 @@ public class PLoginCon implements iPCommand {
 			ArrayList<RecVideoDTO> recvideolist = recvideodao.recVideoSelectAll(member);
 			ArrayList<RecVideoDTO> recvideolist1 = recvideodao.recVideoSelectAll2(member);
 			ArrayList<ScheduleDTO> schedulelist = scheduleDAO.scheduleSelectAll(member.getMember_nick());
-			ArrayList<AchieveDTO> achievelist = achieveDAO.achieveSelectAll(member.getMember_nick());
 			ArrayList<EditorDTO> editoralllist = editorDAO.memberEditorSelectAll(member.getMember_nick());
 			ArrayList<DiaryDTO> diaryalllist = diaryDAO.memberDiarySelectAll(member.getMember_nick());
 			
-			session.setAttribute("achievelist", achievelist);
 			session.setAttribute("schedulelist", schedulelist);
 			session.setAttribute("recbooklist", recbooklist);
 			session.setAttribute("recbooklist1", recbooklist1);
