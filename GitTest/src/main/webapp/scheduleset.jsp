@@ -232,7 +232,7 @@
 		</div>
 
 		<div class="" style="width: 40%; margin-top: 100px; margin-left: 25%;">
-			<h1 style="font-weight: bold;">스케줄 등록</h1>
+			<h1>스케줄 등록</h1>
 			<br>
 			<!-- Option 1: Bootstrap Bundle with Popper -->
 			<script
@@ -266,21 +266,38 @@
 			<hr>
 			<br>
 			<div class="container">
-				<h1 style="font-weight: bold;">스케줄</h1>
+				<h3 style="font-weight: bold;">스케줄</h3>
 				<form action="ScheduleCon.do" method="post">
 					<div id="viewwish">
 						위시리스트에서 도서 선정
-
-						<div class="input-group mb-3">
-							<input type="text" class="form-control" aria-label="bookname"
-								aria-describedby="button-addon2" id="wishbook_title"
-								name="wishbook_title" onclick="mybook()" placeholder="위시리스트"
-								class="btn btn-dark"> <br> <input type="button"
-								value="위시리스트" onclick="mybook()"> <input type="text"
-								id="wishbook_num" style="display: none;" name="wishbook_num">
-							<input type="text" id="wishbook_page" style="display: none;"
-								name="wishbook_page">
-						</div>
+						
+						<c:choose>
+							<c:when test="${empty requestScope.bk }">
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" aria-label="bookname"
+										aria-describedby="button-addon2" id="wishbook_title"
+										name="wishbook_title" onclick="mybook()" placeholder="위시리스트"
+										class="btn btn-dark"> <br> <input type="button"
+										value="위시리스트" onclick="mybook()"> <input type="text"
+										id="wishbook_num" style="display: none;" name="wishbook_num">
+									<input type="text" id="wishbook_page" style="display: none;"
+										name="wishbook_page">
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" aria-label="bookname"
+										aria-describedby="button-addon2" id="wishbook_title" value="${requestScope.bk.book_title }"
+										name="wishbook_title" onclick="mybook()" placeholder="${requestScope.bk.book_title }"
+										class="btn btn-dark"> <br> <input type="button"
+										value="위시리스트" onclick="mybook()"> <input type="text"
+										id="wishbook_num" style="display: none;" name="wishbook_num" value="${requestScope.bk.book_num }">
+									<input type="text" id="wishbook_page" style="display: none;"
+										name="wishbook_page" value="${requestScope.bk.book_page }">
+								</div>
+							</c:otherwise>
+						</c:choose>
+						
 						스케줄 이름 : <input type="text" class="form-control" name="title"
 							placeholder="스케줄 이름을 입력하세요." /> <br> 학습 시작일 <input
 							type="date" name="start" id="Date1" onchange="call()"
@@ -290,7 +307,7 @@
 						학습일 수 <input type="text" class="form-control" id="day1" size="6"
 							style="text-align: center;" name="day" readonly="readonly" /> <br>
 						<div class="text-center">
-							<input type="submit" class="btn btn-dark"
+							<input type="submit" class="btn btn-primary"
 								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 								value="스케줄 등록">
 						</div>

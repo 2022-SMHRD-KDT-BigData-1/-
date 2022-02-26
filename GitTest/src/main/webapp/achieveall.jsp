@@ -180,7 +180,7 @@
 				<br>
 
 				<div class=" modal-footer ">
-					<a href="#" class="btn btn-primary ">확인</a>
+					<a href="PDeleteCon.do" class="btn btn-primary ">확인</a>
 					</button>
 				</div>
 			</div>
@@ -242,7 +242,7 @@
 			</div>
 		</div>
 <div class="iframebox" style="position:absolute;left:+220px;top:+800px">
-	<iframe src="achievindex" ></iframe>
+	<iframe src="achievindex.jsp" ></iframe>
 </div>
 
 
