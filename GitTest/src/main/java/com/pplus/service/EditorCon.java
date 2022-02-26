@@ -27,8 +27,10 @@ public class EditorCon implements iPCommand {
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
 
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String title = request.getParameter("editor_title");
+		System.out.println("에디터 제목" + title);
+		String content = request.getParameter("editor_content");
+		System.out.println("에디터 내용" + content);
 
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");

@@ -263,21 +263,21 @@ margin-left:100px !important;
 				<h1 class="text-center" style="padding: 115px 0 0 350px">[ 에디터
 					]</h1>
 				<br>
-				<form action="EditorCon.do" method="post">
+				
 					<span style="font-weight: bold; font-size: 25px">제목 </span> <input
-						type="text" name="title" placeholder="제목을 입력하세요." autofocus
+						type="text" id="title" placeholder="제목을 입력하세요." autofocus
 						style="width: 500; height: 50; font-size: 25px" />
 
 
 					<hr />
-					<div class="container m-5" id='cm_here'>class</div>
+					<div class="container m-5" id='cm_here'></div>
 					<br />
 					<div class="col text-center" style="padding-left: 400px;">
 						<!-- <input type="submit" value="작성완료"> -->
-						<a class="btn btn-primary" href="EditorCon.do" role="button">작성
+						<a class="btn btn-primary" id="form_button" role="button">작성
 							완료</a>
 					</div>
-				</form>
+			
 			</div>
 		</div>
 	</div>
@@ -286,18 +286,60 @@ margin-left:100px !important;
 		//var myCodeMirror = CodeMirror(document.body, {
 		var myCodeMirror = CodeMirror(document.getElementById('cm_here'), {
 
-			value : "\n",
+			 value : "\n", // DB에 저장된 데이터를 입력할 수 있는 곳
 			mode : "javascript",
 			lineNumbers : "true",
 		});
-		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
+
+/* 		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
 			lineNumber : true,
-		});
+		}); */
+		
+	/* 	
+		console.log(editor);
+		const form = new FormData();
+		form.append('editor_content', editor);
+		 */
+ 		$('#form_button').click(function(){
+ 			
+ 			var title=document.getElementById("title").value;
+ 			console.log(title);
+			var content= myCodeMirror.getValue();
+			console.log(content);
+/* 			var form = new FormData();
+			form.append("editor_title", title);
+			form.append("editor_content", content); */
+			$.ajax({
+				url:"EditorCon.do",
+				type:"POST",
+				data: {"editor_title": title, "editor_content": content},
+				datatype:'json',	
+				success : function(result){
+					alert("서버요청성공");
+		            },
+		         error : function(){
+		            alert("서버요청실패");
+		         },
+				})
+			});
+
+			/* 
+			form.method = "POST";
+			form.action = "EditorCon.do";
+			
+			
+			
+			form.submit(); */
+			/* }); */
+		
+		
+		// var myCodeMirror =myCodeMirror.doc.setValue("원하는 내용");
+		// 을 통해서 원하는 내용을 넣을수 있다고도 하네요
 
 	</script>
 	<script>
-	StringReader result=new StringReader(TestArea.getText());
-	console.log(result);
+		
+		
 	</script>
 	<!-- ##### Footer Area Start ##### -->
 
