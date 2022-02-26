@@ -217,7 +217,7 @@ if (count > 0) {
 			</div>
 		</div>
 
-		<div style="width: 60%; margin-top: 180px; margin-left: 300px;">
+		<div style="width: 60%; margin-top: 110px; margin-left: 300px;">
 
 			<h1 style="text-align: center;">
 				할 일 <i class="fas fa-solid fa-list-ul"></i>
@@ -275,9 +275,9 @@ if (count > 0) {
 				</table>
 			</div>
 			<br>
-			<div class="text-center" style="padding-left: 36%">
-				<a href="#" class="btn btn-primary">목록 보기</a>
-				<a href="#" class="btn btn-primary" id="delete">선택 삭제</a>
+			<div class="text-center" >
+				<a href="#" class="btn btn-dark">목록 보기</a>
+				<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
 			</div>
 		</div>
 	</div>

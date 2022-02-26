@@ -320,26 +320,7 @@ if (count > 0) {
 					crossorigin="anonymous"></script>
 			</div>
 		</div>
-		<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-
-				$("#delete").click(function() {
-					var list = [];
-					var val = document.getElementsByName("flexRadioDefault");
-					var size = val.length;
-					for (var i = 0; i < size; i++) {
-						if (val[i].checked == true) {
-							list.push(val[i].value);
-							console.log("체크체크");
-						}
-					}
-					location.href = 'DiaryDeleteCon.do?list=' + list;
-					console.log(list);
-				});
-
-			});
-		</script>
+	
 
 		<!-- ##### Footer Area Start ##### -->
 
