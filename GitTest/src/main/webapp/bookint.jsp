@@ -6,16 +6,15 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	BookDTO book = (BookDTO)session.getAttribute("book");
-	BookDAO bookDAO = new BookDAO();
-	
-	String book_part1 = bookDAO.bookPart1(book.getUser_type1());
-	String book_part2 = bookDAO.bookPart2(book.getUser_type2());
-	String book_part3 = bookDAO.bookPart3(book.getUser_type3());
-	pageContext.setAttribute("book_part1", book_part1);
-	pageContext.setAttribute("book_part2", book_part2);
-	pageContext.setAttribute("book_part3", book_part3);
-	
+BookDTO book = (BookDTO) session.getAttribute("book");
+BookDAO bookDAO = new BookDAO();
+
+String book_part1 = bookDAO.bookPart1(book.getUser_type1());
+String book_part2 = bookDAO.bookPart2(book.getUser_type2());
+String book_part3 = bookDAO.bookPart3(book.getUser_type3());
+pageContext.setAttribute("book_part1", book_part1);
+pageContext.setAttribute("book_part2", book_part2);
+pageContext.setAttribute("book_part3", book_part3);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,8 +44,8 @@
 	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous">
-	
-	<!-- 상단바 css -->
+
+<!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -56,8 +55,8 @@
 
 	<header id="header" class="fixed-top header-scrolled">
 		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img
+				style="width: 40px" src="image/p+만.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>
@@ -135,40 +134,7 @@
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
-				<!-- 회원탈퇴 Modal -->
-				<div class="modal fade" id="staticBackdrop"
-					data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-					aria-labelledby="staticBackdropLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="staticBackdropLabel">
-									<!-- <i class="bi bi-exclamation-circle"></i> -->
-									<i class="bi bi-exclamation-circle-fill"></i> 회원 탈퇴
-								</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-										fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-											d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
-            <path fill-rule="evenodd"
-											d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
-          </svg>
-								</button>
-							</div>
-							<br>
-							<div class="modal-body text-center" style="font-size: 20px;">
-								회원탈퇴 하시겠습니까?</div>
-							<br>
 
-							<div class=" modal-footer ">
-								<a href="#" class="btn btn-primary ">확인</a>
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
 
 
 
@@ -181,9 +147,9 @@
 					<!--  Catagories  -->
 					<div class="catagories-menu">
 						<ul>
-							<li class="active" style="color: #fbb710"><a>컨텐츠 추천</a></li>
-							<hr />
-							<li><a href="#">유형 확인 및 재검사</a></li>
+							<li style="color: #fbb710"><a
+								href="bookint(content_rec).jsp">컨텐츠 추천</a></li>
+							<li><a href="ptype.jsp">유형 확인 및 재검사</a></li>
 
 						</ul>
 					</div>
@@ -197,8 +163,8 @@
 						<ul>
 							<li class="active" style="color: #fbb710"><a>위시리스트</a></li>
 							<hr />
-							<li><a href="mybookwish.jsp">책</a></li>
-							<li><a href="myvideowish.jsp">영상</a></li>
+							<li><a href="bookint(bookwish).jsp">책</a></li>
+							<li><a href="bookint(videowish).jsp">영상</a></li>
 						</ul>
 					</div>
 				</div>
@@ -269,31 +235,23 @@
 
 							<div style="padding-left: 40%; padding-top: 30px;">
 								<c:choose>
-				                 	<c:when test="${recbook.contents_cnt == 1 }">
-				                 		<a href="WishCon2.do?num=${book.book_num}&recbooknum=1">
-						                  <button
-						                    type="submit"
-						                    name="addtocart"
-						                    value="5"
-						                    class="btn amado-btn"
-						                  >
-						                  <i class="fas fa-heart"></i> 위시리스트
-						                  </button>
-						                  </a>
-				                 	</c:when>
-				                 	<c:otherwise>
-				                 		<a href="WishCon2.do?num=${book.book_num}&recbooknum=0">
-						                  <button
-						                    type="submit"
-						                    name="addtocart"
-						                    value="5"
-						                    class="btn amado-btn"
-						                  >
-						                  <i class="fas fa-heart"></i> 위시리스트
-						                  </button>
-						                  </a>
-				                 	</c:otherwise>
-                			 </c:choose>
+									<c:when test="${recbook.contents_cnt == 1 }">
+										<a href="WishCon2.do?num=${book.book_num}&recbooknum=1">
+											<button type="submit" name="addtocart" value="5"
+												class="btn amado-btn">
+												<i class="fas fa-heart"></i> 위시리스트
+											</button>
+										</a>
+									</c:when>
+									<c:otherwise>
+										<a href="WishCon2.do?num=${book.book_num}&recbooknum=0">
+											<button type="submit" name="addtocart" value="5"
+												class="btn amado-btn">
+												<i class="fas fa-heart"></i> 위시리스트
+											</button>
+										</a>
+									</c:otherwise>
+								</c:choose>
 							</div>
 
 						</div>
