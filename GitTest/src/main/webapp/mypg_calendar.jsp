@@ -361,13 +361,11 @@
             <ul>
               <li class="active"><a href="#">전체학습상황조회</a></li>
               <hr />
-              <li><a href="#">달력 체크</a></li>
-              <li><a href="#">차트</a></li>
-              <li><a href="#">전체 스케줄 목록</a></li>
-              <li>
-                <a href="#">전체 에디터 목록</a>
-              </li>
-              <li><a href="#">전체 일기 목록</a></li>
+              <li><a href="mypg_calendar.jsp">달력 체크</a></li>
+						<li><a href="achieveall.jsp">차트</a></li>
+						<li><a href="mypg_scheduleindex.jsp">전체 스케줄 목록</a></li>
+						<li><a href="mypg_editorallindex.jsp">전체 에디터 목록</a></li>
+						<li><a href="mypg_diaryallindex.jsp">전체 일기 목록</a></li>
             </ul>
           </div>
 

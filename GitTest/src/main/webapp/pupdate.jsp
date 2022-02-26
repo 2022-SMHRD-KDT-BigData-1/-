@@ -160,7 +160,7 @@
 						<!--  <input type="submit" class="login100-form-btn" value="회원가입"> -->
 
 						<button type="submit" class="login100-form-btn"
-							onclick="location.href='PJoinCon.do'">회원가입</button>
+							onclick="location.href='PUpdateCon.do'">수정완료</button>
 					</div>
 				</form>
 			</div>

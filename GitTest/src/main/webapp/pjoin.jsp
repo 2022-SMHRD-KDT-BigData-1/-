@@ -125,7 +125,7 @@
               class="wrap-input100 validate-input"
               data-validate="Valid email is: a@b.c"
             >
-              <input class="input100" type="text" name="nick" id="input_nick" placeholder="닉네입을 입력하세요."/>
+              <input class="input100" type="text" name="nick" id="input_nick" placeholder="닉네임을 입력하세요."/>
               <span
                 class="focus-input100"
                 data-placeholder=""
