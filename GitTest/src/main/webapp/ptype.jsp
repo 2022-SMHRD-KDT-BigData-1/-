@@ -478,14 +478,14 @@
 	    </div>
 	
 	    <div class="d-flex justify-content-center">
-	      <button class="btn btn-primary" role="button" style="  margin-left: 260px;" onclick="j();">결과 확인</button>
+	      <button class="btn btn-primary" role="button" style="  margin-left: 260px;" onclick="c();">결과 확인</button>
 	    </div>
     </div>
     </div>
 <script src="jquery-3.6.0.min.js"></script>
 <script> 
 
-function j() {
+function c() {
 	
 	
 	var allData;

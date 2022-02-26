@@ -27,6 +27,7 @@ import com.pplus.model.VideoDTO;
 public class PTypeCon implements iPCommand {
 
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   
       request.setCharacterEncoding("utf-8");
       response.setContentType("text/html; charset=utf-8");
       HttpSession session = request.getSession();
@@ -42,12 +43,25 @@ public class PTypeCon implements iPCommand {
       System.out.println("test3"+sel3);
       
       PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+      
+      if(sel3 == null) {
+    	  sel3 = "0";
+      }
 
       PMemberDAO dao = new PMemberDAO();
-
-      member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), member.getMember_name(), sel1, sel2, sel3);
       
-      int cnt = dao.pmemberTypeSet(member);
+      int cnt = 0;
+      
+      if(member.getUser_type1() == null) {
+    	  member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), member.getMember_name(), sel1, sel2, sel3);
+          
+          cnt = dao.pmemberTypeSet(member);
+      }else {
+    	  member = new PMemberDTO(member.getMember_id(), null, member.getMember_nick(), member.getMember_name(), sel1, sel2, sel3);
+    	  
+    	  cnt = dao.pmemberTypeUpdate(member);
+      }
+      
       System.out.println(member.toString());
       BookDAO bookDao =new BookDAO();
       VideoDAO videoDao =new VideoDAO();

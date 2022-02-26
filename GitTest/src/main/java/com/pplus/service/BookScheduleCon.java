@@ -37,7 +37,7 @@ public class BookScheduleCon implements iPCommand {
 			out.print("</script>");
 		}else {
 			request.setAttribute("bk", bk);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("scheduleset2.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("scheduleset.jsp");
 			dispatcher.forward(request, response);
 		}
 		

@@ -57,6 +57,28 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <link href="assets/css/style.css" rel="stylesheet">
+<style type="text/css">
+.iframebox {
+
+ position: absolute;
+
+ width: 100%;
+
+ padding-bottom: 56.25%;
+
+}
+
+.iframebox iframe {
+
+ position: absolute;
+
+ width: 50%;
+
+ height: 50%;
+
+}​
+
+</style>
 </head>
 
 <body>
@@ -219,6 +241,9 @@
 				</div>
 			</div>
 		</div>
+<div class="iframebox" style="position:absolute;left:+220px;top:+800px">
+	<iframe src="achievindex" ></iframe>
+</div>
 
 
 		<div style="width: 80%; margin-top: 10%; margin-left: 70px;">

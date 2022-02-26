@@ -319,8 +319,8 @@ if (count > 0) {
 					</div>
 				</div>
 				<div class="text-center">
-					<a href="#" class="btn btn-dark" id="delete">위시리스트 삭제</a> <a href="#"
-						class="btn btn-dark" id="schedule">스케줄 등록</a>
+					<a href="#" class="btn btn-dark" id="delete">위시리스트 삭제</a>
+					<a href="#" class="btn btn-dark" id="sc">스케줄 등록</a>
 				</div>
 				<br>
 				<nav aria-label="Page navigation example">
@@ -400,9 +400,10 @@ if (count > 0) {
 				location.href = 'WishBookDeleteCon.do?list=' + list;
 				console.log(list);
 			});
-			${"#schedule"}.click(function() {
+			
+			$("#sc").click(function() {
 				var num = 0;
-				var val = document.getElementByName("flexRadioDefault");
+				var val = document.getElementsByName("flexRadioDefault");
 				var size = val.length;
 				for (var i = 0; i < size; i++) {
 					if (val[i].checked == true) {
@@ -410,9 +411,10 @@ if (count > 0) {
 						console.log("체크체크");
 					}
 				}
-			})
-			/* location.href = 'Con.do?num=' + num; */
-			console.log(list);
+				location.href = 'BookScheduleCon.do?num=' + num;
+				console.log(num);
+			});
+			
 			
 
 		});

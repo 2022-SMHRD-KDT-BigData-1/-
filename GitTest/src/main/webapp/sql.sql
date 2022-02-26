@@ -391,6 +391,7 @@ insert into member_type values('¹Ùº¸','P101','P202','')
 select¹®
 
 select * from member
+select * from member_type
 select * from book
 select * from member_type
 select * from recommend_book

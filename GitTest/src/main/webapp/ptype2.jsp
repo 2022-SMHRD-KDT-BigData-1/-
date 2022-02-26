@@ -374,7 +374,7 @@ margin-left: 15px;
 
          <form action="PTypeCon.do" method="get">
             <div class="d-flex justify-content-center"
-               ">
+               >
                <!--대분류-->
                <select name="sel1" id="sel1" style="border: solid #30467C;">
                   선택
@@ -388,7 +388,7 @@ margin-left: 15px;
             </div>
 
             <div style="padding-left:13%">
-               <button class="btn btn-primary" role="button"
+               <button class="btn btn-primary" role="button" id="j"
                   >결과 확인</button>
             </div>
          </form>
@@ -396,86 +396,73 @@ margin-left: 15px;
    </div>
    <script src="jquery-3.6.0.min.js"></script>
    <script>
-      function j() {
+   $("#j").off("click").on('click', function() {
+	   var allData;
 
-         var allData;
+       var select1 = document.getElementById("sel1");
+       select1 = select1.options[select1.selectedIndex].value;
+       console.log(select1)
 
-         var select1 = document.getElementById("sel1");
-         select1 = select1.options[select1.selectedIndex].value;
-         console.log(select1)
+       var select2 = document.getElementById("sel2");
+       select2 = select2.options[select2.selectedIndex].value;
+       console.log(select2)
 
-         var select2 = document.getElementById("sel2");
-         select2 = select2.options[select2.selectedIndex].value;
-         console.log(select2)
+       var select3 = document.getElementById("sel3");
+       console.log(select3.length);
 
-         var select3 = document.getElementById("sel3");
-         console.log(select3.length);
+       if (select2.length > 10) {
+          allData = {
+             "sel1" : select1,
+             "sel2" : "0"
+          };
+          if (select3.length > 0) {
+             console.log("들어옴?");
+             select3 = select3.options[select3.selectedIndex].value;
+             allData = { "sel1" : select1, "sel2" : "0", "sel3" : select3};
+          } else {
+             allData = {"sel1" : select1, "sel2" : "0", "sel3" : "0"};
+          }
+       } else {
+          if (select3.length > 0) {
+             console.log("들어옴?");
+             select3 = select3.options[select3.selectedIndex].value;
+             allData = {"sel1" : select1, "sel2" : select2, "sel3" : select3};
+          } else {
+             allData = {"sel1" : select1, "sel2" : select2, "sel3" : "0"};
+          }
+       }
+       console.log(allData)
 
-         if (select2.length > 10) {
-            allData = {
-               "sel1" : select1,
-               "sel2" : "0"
-            };
-            if (select3.length > 0) {
-               console.log("들어옴?");
-               select3 = select3.options[select3.selectedIndex].value;
-               allData = {
-                  "sel1" : select1,
-                  "sel2" : "0",
-                  "sel3" : select3
-               };
-            } else {
-               allData = {
-                  "sel1" : select1,
-                  "sel2" : "0",
-                  "sel3" : "0"
-               };
-            }
-         } else {
-            if (select3.length > 0) {
-               console.log("들어옴?");
-               select3 = select3.options[select3.selectedIndex].value;
-               allData = {
-                  "sel1" : select1,
-                  "sel2" : select2,
-                  "sel3" : select3
-               };
-            } else {
-               allData = {
-                  "sel1" : select1,
-                  "sel2" : select2,
-                  "sel3" : "0"
-               };
-            }
-         }
-         console.log(allData)
+       $.ajax({
+          url : "PTypeCon.do",
+          type : 'POST',
+          data : allData,
+          success : function(data) {
+             if (data != 0) {
+                alert("완료!");
+                console.log(data);
+                //window.opener.location.reload();
+                //self.close();
+                window.close();
+                opener.parent.location.reload();
+             } else {
+                alert("실패!");
+                window.close();
+                opener.parent.location.reload();
+             }
+          },
+          error : function() {
+             alert("서버요청실패");
+             window.close();
+             opener.parent.location.reload();
+          }
+       });
+	}
+      /* function j() {
 
-         $.ajax({
-            url : "PTypeCon.do",
-            type : 'POST',
-            data : allData,
-            success : function(data) {
-               if (data != 0) {
-                  alert("완료!");
-                  console.log(data);
-                  //window.opener.location.reload();
-                  //self.close();
-                  window.close();
-                  opener.parent.location.reload();
-               } else {
-                  alert("실패!");
-                  window.close();
-                  opener.parent.location.reload();
-               }
-            },
-            error : function() {
-               alert("서버요청실패");
-               window.close();
-               opener.parent.location.reload();
-            }
-         });
+         
 
-      }
+      } */
    </script>
 
    <script>
