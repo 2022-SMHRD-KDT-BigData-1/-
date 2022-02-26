@@ -89,6 +89,11 @@ if (count > 0) {
 
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
+<style>
+ .table-bordered th {
+    border: 0px solid #dee2e6;
+}
+</style>
 
 </head>
 
@@ -266,7 +271,7 @@ if (count > 0) {
 				<div class="container">
 					<c:set value="<%=(currentPage - 1) * 10%>" var="j" />
 					<table
-						class="table table-bordered table-hover table-sm text-center ">
+						class="table table-bordered table-hover table-sm text-center " >
 
 						<thead class="table-warning ">
 							<tr>

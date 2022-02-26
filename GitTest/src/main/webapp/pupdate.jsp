@@ -158,9 +158,20 @@
 					<div class="wrap-login100-form-btn">
 						<div class="login100-form-bgbtn"></div>
 						<!--  <input type="submit" class="login100-form-btn" value="회원가입"> -->
-
-						<button type="submit" class="login100-form-btn"
-							onclick="location.href='PUpdateCon.do'">수정완료</button>
+						 
+							<button type="submit" class="login100-form-btn"
+								onclick="location.href='PUpdateCon.do'">수정완료</button>
+							</div>
+							
+						<br>
+							<div class="wrap-login100-form-btn">
+						<div class="login100-form-bgbtn"></div>
+							<div>
+							<button type="submit" class="login100-form-btn"
+								onclick="location.href='PUpdateCon.do'">수정완료</button>
+							</div>
+							</div>
+							
 					</div>
 				</form>
 			</div>
