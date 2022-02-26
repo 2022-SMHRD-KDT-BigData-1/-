@@ -36,9 +36,7 @@
 	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+
 <!-- <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -89,49 +87,49 @@ include summernote-ko-KR
 <script src="codemirror-5.65.1/lib/codemirror.js"></script>
 <link rel="stylesheet" href="codemirror-5.65.1/lib/codemirror.css" />
 <script src="codemirror-5.65.1/mode/javascript/javascript.js"></script>
+
 <style>
-/*.CodeMirror {
-	border: 1px solid #eee;
-margin-left:100px !important;
-}
-.CodeMirror-scroll{
-	display: inline-block !important;
-	position: inherit !important;
-	width: 950px !important;
-	margin-left:200px !important;
-}
-.CodeMirror.cm-s-default{
-	width:1000px;
-	margin-left:400px !important;
-}*/
+.bt{
+    background-color: #FFA076;
+    font-family: -webkit-body;
+   
+    border-style: none;
+    height: 36px;
+    width: 91px;
+    border-radius: 3px;
+    color: white;
+    }
 </style>
+
+
+
+<!-- 상단바 css -->
+<link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-
-	<header
-		class="navbar navbar-expand navbar-dark bg-dark bd-navbar fixed-top">
-		<a class="navbar-brand" href="#">P+</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end"
-			id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">사이트
-						소개</a></li>
+<header id="header" class="fixed-top header-scrolled">
+		<nav id="navbar" class="navbar" style="justify-content: end">
+			<a style="padding-right: 57%" href="ploginmain.jsp"><img
+				style="width: 40px" src="image/p+만.png"></a>
+			<ul style="padding-right: 30px">
+				<li><a class="nav-link scrollto" href="#"
+					style="text-decoration: none">사이트 소개</a></li>
+				<li></li>
 				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="컨텐츠추천.jsp">컨텐츠 추천</a>
+					<a style="text-decoration: none" class="nav-link dropdown-toggle"
+						href="컨텐츠추천.jsp">컨텐츠 추천</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">유형 확인 및 재검사</a></li>
+						<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및 재검사</a></li>
+						<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
 					</ul>
 				</div>
+
+				<li></li>
 				<div class="dropdown nav-item active">
 					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
 					<span class="caret"></span>
-					</button>
+
 					<ul class="dropdown-menu">
 						<li class="dropdown-header">스케줄</li>
 						<hr>
@@ -143,42 +141,46 @@ margin-left:100px !important;
 						<li class="dropdown-header">일정</li>
 						<hr>
 						<li><a href="dayplantodayset.jsp">등록</a></li>
-						<li><a href="dayplantodayinsex.jsp">전체 일정 목록</a></li>
+						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
 
 						<br>
 						<li class="divider"></li>
 						<li class="dropdown-header">조회</li>
 						<hr>
-						<li><a href="editorindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryindex.jsp">전체 일기 목록</a></li>
-						<li><a href="todoindex.jsp">전체 할 일 목록</a></li>
-
-
+						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
+						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
 					</ul>
 				</div>
-
+				<li></li>
 				<div class="dropdown nav-item active">
 					<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="포폴등록할스케줄.jsp">등록</a></li>
+						<li><a class="dropdown-item" href="#">등록</a></li>
 
-						<li><a class="dropdown-item" href="포폴목록.jsp">목록</a></li>
+						<li><a class="dropdown-item" href="#">목록</a></li>
 					</ul>
 				</div>
-
+				<li></li>
 				<div class="dropdown nav-item active">
 					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">회원정보 수정/탈퇴</a></li>
-						<li><a class="dropdown-item" href="#">전체 학습상황 조회</a></li>
+						<li><a class="dropdown-item" href="pupdate.jsp">회원정보
+								수정/탈퇴</a></li>
+						<li><a class="dropdown-item" href="achieveall.jsp">전체
+								학습상황 조회</a></li>
 						<li><a class="dropdown-item" href="#">위시리스트</a></li>
 					</ul>
 				</div>
-				<li class="nav-item active"><a class="nav-link" href="#">로그아웃</a>
-				</li>
+				<li class="nav-item active"><a class="nav-link"
+					href="plogout.jsp">로그아웃</a></li>
+
+
 			</ul>
-		</div>
+		</nav>
 	</header>
+
+	
 
 
 
@@ -186,73 +188,83 @@ margin-left:100px !important;
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
 		<div class="mobile-nav">
-			<!-- Navbar Brand -->
-			<div class="amado-navbar-brand">
-				<a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-			</div>
-			<!-- Navbar Toggler -->
-			<div class="amado-navbar-toggler">
-				<span></span><span></span><span></span>
-			</div>
+		
 		</div>
 
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<!-- Widget Title -->
-				<h6 class="widget-title mb-30">스케줄</h6>
 
-				<!--  Catagories  -->
-				<div class="catagories-menu">
-					<ul>
-						<li class="active"><a href="#">달력</a></li>
-						<hr />
-					</ul>
-				</div>
-			</div>
 
-			<!-- ##### Single Widget ##### -->
-			<div class="widget catagory mb-50">
-				<!-- Widget Title -->
-				<!-- <h6 class="widget-title mb-30">스케줄</h6> -->
+				<!-- ##### Single Widget ##### -->
+				<div class="widget catagory mb-50">
+					<!-- Widget Title -->
 
-				<!--  Catagories  -->
-				<div class="catagories-menu">
-					<ul>
-						<li class="active"><a href="#">에디터</a></li>
-						<hr />
-						<li><a href="#">작성</a></li>
-						<li><a href="#">목록</a></li>
-					</ul>
-					</ul>
-				</div>
-			</div>
+					<h6 class="widget-title mb-30">스케줄</h6>
 
-			<!-- ##### Single Widget ##### -->
-			<div class="widget category mb-50">
-				<!-- Widget Title -->
-				<!-- <h6 class="widget-title mb-30">일정</h6> -->
-
-				<!-- Widget Title -->
-
-				<div class="catagories-menu">
-					<ul>
-						<li class="active"><a href="#">일기</a></li>
-						<hr />
-						<li><a href="#">작성</a></li>
-						<li><a href="#">목록</a></li>
-					</ul>
+					<!--  Catagories  -->
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a></a></li>
+							<li><a href="schedule.jsp">달력</a></li>
+							<hr />
+						</ul>
+					</div>
 				</div>
 
-				<br />
+				<!-- ##### Single Widget ##### -->
+				<div class="widget catagory mb-50">
+					<!-- Widget Title -->
+					<!-- <h6 class="widget-title mb-30">스케줄</h6> -->
 
-				<div class="catagories-menu">
-					<ul>
-						<li class="active"><a href="#">학습진행상황</a></li>
-						<hr />
-					</ul>
-					<br> <br> <br> <br> <br> <br> <br>
-					<br> <br> <br>
+					<!--  Catagories  -->
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a>에디터</a></li>
+							<hr>
+							<li><a href="editorset.jsp">에디터 작성</a></li>
+							<li><a href="editorindex.jsp">에디터 목록</a></li>
+						</ul>
+
+					</div>
+				</div>
+
+				<!-- ##### Single Widget ##### -->
+				<div class="widget category mb-50">
+
+					<!-- Widget Title -->
+
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a>일기</a></li>
+							<hr>
+							<li><a href="diaryset.jsp">작성</a></li>
+							<li><a href="diaryindex.jsp">일기 목록</a></li>
+						</ul>
+					</div>
+
+					<div class="widget catagory mb-50">
+						<div class="catagories-menu">
+							<ul>
+								<li class="active"><a>오늘 할 일</a></li>
+								<hr>
+								<li><a href="todoset.jsp">작성</a></li>
+								<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="catagories-menu">
+						<ul>
+							<li class="active"><a></a></li>
+							<li><a href="achieve.jsp">학습진행상황</a></li>
+							<hr />
+						</ul>
+
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -263,21 +275,20 @@ margin-left:100px !important;
 				<h1 class="text-center" style="padding: 115px 0 0 350px">[ 에디터
 					]</h1>
 				<br>
-				<form action="EditorCon.do" method="post">
+				
 					<span style="font-weight: bold; font-size: 25px">제목 </span> <input
-						type="text" name="title" placeholder="제목을 입력하세요." autofocus
+						type="text" id="title" placeholder="제목을 입력하세요." autofocus
 						style="width: 500; height: 50; font-size: 25px" />
 
 
 					<hr />
-					<div class="container m-5" id='cm_here'>class</div>
+					<div class="container m-5" id='cm_here'></div>
 					<br />
 					<div class="col text-center" style="padding-left: 400px;">
 						<!-- <input type="submit" value="작성완료"> -->
-						<a class="btn btn-primary" href="EditorCon.do" role="button">작성
-							완료</a>
+						<input class="bt" type="submit" value="작성완료">
 					</div>
-				</form>
+			
 			</div>
 		</div>
 	</div>
@@ -286,18 +297,60 @@ margin-left:100px !important;
 		//var myCodeMirror = CodeMirror(document.body, {
 		var myCodeMirror = CodeMirror(document.getElementById('cm_here'), {
 
-			value : "\n",
+			 value : "\n", // DB에 저장된 데이터를 입력할 수 있는 곳
 			mode : "javascript",
 			lineNumbers : "true",
 		});
-		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
+
+/* 		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
 			lineNumber : true,
-		});
+		}); */
+		
+	/* 	
+		console.log(editor);
+		const form = new FormData();
+		form.append('editor_content', editor);
+		 */
+ 		$('#form_button').click(function(){
+ 			
+ 			var title=document.getElementById("title").value;
+ 			console.log(title);
+			var content= myCodeMirror.getValue();
+			console.log(content);
+/* 			var form = new FormData();
+			form.append("editor_title", title);
+			form.append("editor_content", content); */
+			$.ajax({
+				url:"EditorCon.do",
+				type:"POST",
+				data: {"editor_title": title, "editor_content": content},
+				datatype:'json',	
+				success : function(result){
+					alert("서버요청성공");
+		            },
+		         error : function(){
+		            alert("서버요청실패");
+		         },
+				})
+			});
+
+			/* 
+			form.method = "POST";
+			form.action = "EditorCon.do";
+			
+			
+			
+			form.submit(); */
+			/* }); */
+		
+		
+		// var myCodeMirror =myCodeMirror.doc.setValue("원하는 내용");
+		// 을 통해서 원하는 내용을 넣을수 있다고도 하네요
 
 	</script>
 	<script>
-	StringReader result=new StringReader(TestArea.getText());
-	console.log(result);
+		
+		
 	</script>
 	<!-- ##### Footer Area Start ##### -->
 

@@ -295,7 +295,7 @@ margin-left:100px !important;
 					<br />
 					<div class="col text-center" style="padding-left: 400px;">
 						<!-- <input type="submit" value="작성완료"> -->
-						<a class="btn btn-dark" id="form_button" role="button" style="color:white">작성
+						<a class="btn btn-dark" id="form_button" role="button" style="color:white">수정
 							완료</a>
 					</div>
 			

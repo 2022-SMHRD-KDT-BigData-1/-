@@ -1,41 +1,5 @@
-<%@page import="com.pplus.model.PMemberDTO"%>
-<%@page import="com.pplus.model.EditorDTO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.pplus.model.EditorDAO"%>
-<%@page import="com.pplus.model.ScheduleDTO"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-   pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%
-ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
-PMemberDTO member = (PMemberDTO) session.getAttribute("member");
-
-EditorDAO editorDAO = new EditorDAO();
-ArrayList<EditorDTO> editorlist = new ArrayList<EditorDTO>();
-
-int pageSize = 10;
-String pageNum = request.getParameter("pageNum");
-
-if (pageNum == null) { // 클릭한게 없으면 1번 페이지
-   pageNum = "1";
-}
-
-int currentPage = Integer.parseInt(pageNum);
-
-// 해당 페이지에서 시작할 레코드 / 마지막 레코드
-int startRow = (currentPage - 1) * pageSize + 1;
-int endRow = currentPage * pageSize;
-
-int count = 0;
-count = editorDAO.getCount(schedule.getSchedule_num()); // 데이터베이스에 저장된 총 갯수
-
-if (count > 0) {
-   editorlist = editorDAO.getList(startRow, endRow, member, schedule);
-   pageContext.setAttribute("editorlist", editorlist);
-
-}
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +18,7 @@ if (count > 0) {
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
 
-
+<title>Hello, world!</title>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
@@ -71,9 +35,58 @@ if (count > 0) {
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
 	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
+
+
+<!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    /> -->
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+	rel="stylesheet" />
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+<!-- include summernote-ko-KR -->
+<script src="/summernote/lang/summernote-ko-KR.js"></script>
+
+<!--코드 미러-->
+<!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
+<link rel="stylesheet" type="text/css"
+	href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css" />
+<link rel="stylesheet" type="text/css"
+	href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css" />
+<script type="text/javascript"
+	src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
+<script type="text/javascript"
+	src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
+<script type="text/javascript"
+	src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
+
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -151,11 +164,12 @@ if (count > 0) {
 
 
 
+
+
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
 		<div class="mobile-nav"></div>
-
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
@@ -233,144 +247,63 @@ if (count > 0) {
 				</div>
 			</div>
 		</div>
-		<div
-			style="width: 80%; margin: 50px; margin-bottom: 10%; margin-top: 100px;">
-			<br>
-			<!-- <h1>스케줄 등록</h1> -->
-			<!-- 에디터 목록 -->
+
+		<div class=""
+			style="width: 40%; margin: 50px; margin-bottom: 10%; margin-left: 15%">
+			<!-- 에디터 -->
 			<div class="container">
-				<h1 style="text-align: center;">
-					[ 에디터 ]
-					<!--      <i class="fas fa-laptop-code"></i>
- -->
-				</h1>
+				<h1 class="text-center" style="padding: 50px 0 0 350px">[ 일기 ]</h1>
 				<br>
-				<div class="container">
-					<c:set value="<%=(currentPage - 1) * 10%>" var="j" />
-					<table
-						class="table table-bordered table-hover table-sm text-center " >
+				<form action="#" method="get">
+					<span style="font-weight: bold; font-size: 25px">제목 </span> <input
+						type="text" name="title" placeholder="제목을 입력하세요." autofocus
+						style="width: 500; height: 50; font-size: 25px" />
+				</form>
 
-						<thead class="table-warning ">
-							<tr>
-								<th></th>
-								<th class="text-center">No.</th>
-								<th class="text-center">작성일</th>
-								<th class="text-center">스케줄명</th>
-								<th class="text-center">에디터 제목</th>
-								<th class="text-center">조회</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="i" items="${editorlist }">
-								<tr>
-									<td><div class="form-check">
-											<input class="form-check-input" type="checkbox"
-												name="flexRadioDefault" id="flexRadioDefault1"
-												value="${i.editor_num }"> <label
-												class="form-check-label" for="flexRadioDefault1"> </label>
-										</div></td>
-									<td><input value="${i.editor_num }" style="display: none;"
-										name="num"> <input value="${i.member_nick }"
-										style="display: none;" name="nick"> ${j = j + 1}</td>
-									<td>${i.editor_date}</td>
-									<td>${sessionScope.schedule.schedule_name }</td>
-									<td>${i.editor_title }</td>
-									<td><a
-										href="editorupdate.jsp" style="font-size: 16px;"><i class="fas fa-solid fa-arrow-pointer"></i>이동</a></td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+				<hr />
 
-				<br>
-				<div class="page">
-					<div class="text-center">
-						<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
-					</div>
-					<br>
-					<nav aria-label="Page navigation example">
-						<div class="text-center">
-							<ul class="pagination" style="justify-content: center;">
+				<form method="post">
+					<textarea id="summernote" name="editordata"></textarea>
+				</form>
+				<script>
+					$("#summernote").summernote(
+							{
+								placeholder : "내용을 입력하세요.",
+								// 에디터 한글 설정
+								lang : "ko-KR",
+								tabsize : 2,
+								height : 550,
+								width : 1200,
+								focus : true,
 
-								<%
-								if (count > 0) {
-									// 총 페이지의 수
-									int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-
-									// 한 페이지에 보여줄 페이지 블럭(링크) 수
-									int pageBlock = 10;
-									// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
-									int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
-									int endPage = startPage + pageBlock - 1;
-
-									// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
-									if (endPage > pageCount) {
-										endPage = pageCount;
-									}
-
-									if (startPage > pageBlock) { // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
-								%>
-								<li class="page-item"><a class="page-link"
-									href="editorindex.jsp?pageNum=<%=startPage - 10%>"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										<span class="sr-only">Previous</span>
-								</a></li>
-
-								<%
-								}
-								for (int i = startPage; i <= endPage; i++) { // 페이지 블록 번호
-								if (i == currentPage) { // 현재 페이지에는 링크를 설정하지 않음
-								%>
-								<%=i%>
-
-								<%
-								} else { // 현재 페이지가 아닌 경우 링크 설정
-								%>
-								<li class="page-item"><a class="page-link"
-									href="editorindex.jsp?pageNum=<%=i%>"><%=i%></a></li>
-								<%
-								}
-								} // for end
-
-								if (endPage < pageCount) { // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
-								%>
-								<li class="page-item"><a class="page-link"
-									href="editorindex.jsp?pageNum=${startPage + 10 }"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										<span class="sr-only">Next</span>
-								</a></li>
-								<%
-								}
-								}
-								%>
-
-							</ul>
-						</div>
-					</nav>
+								fontNames : [ "Arial", "Arial Black",
+										"Comic Sans MS", "Courier New",
+										"맑은 고딕", "궁서", "굴림체", "굴림", "돋음체",
+										"바탕체", ],
+								codemirror : {
+									// codemirror options
+									theme : "monokai",
+								},
+							});
+				</script>
+				<br />
+				<div class="col text-center" style="padding-left: 400px;">
+					<a class="btn btn-dark" href="#" role="button">수정 완료</a>
 				</div>
 			</div>
+			<div style="width: 80%; margin-top: 10%; margin-left: 70px;">
+
+				<!-- Option 1: Bootstrap Bundle with Popper -->
+				<script
+					src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+					integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+					crossorigin="anonymous"></script>
+			</div>
 		</div>
-		<script type="text/javascript">
-			$(document).ready(function() {
 
-				$("#delete").click(function() {
-					var list = [];
-					var val = document.getElementsByName("flexRadioDefault");
-					var size = val.length;
-					for (var i = 0; i < size; i++) {
-						if (val[i].checked == true) {
-							list.push(val[i].value);
-							console.log("체크체크");
-						}
-					}
-					location.href = 'EditorDeleteCon.do?list=' + list;
-					console.log(list);
-				});
+		<!-- ##### Footer Area Start ##### -->
 
-			});
-		</script>
-
+		<!-- ##### Footer Area End ##### -->
 
 		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 		<script src="js/jquery/jquery-2.2.4.min.js"></script>

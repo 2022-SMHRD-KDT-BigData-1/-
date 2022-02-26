@@ -243,7 +243,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 									<td>${schedule.schedule_day_page }</td>
 									<td></td>
 									<td><a
-										href="ScheduleIndexCon.do?num=${schedule.schedule_num }" style="font-size: 16px;"><i class="far fa-hand-point-up"></i> 이동</button></a></td>
+										href="ScheduleIndexCon.do?num=${schedule.schedule_num }" style="font-size: 16px;"> 이동</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

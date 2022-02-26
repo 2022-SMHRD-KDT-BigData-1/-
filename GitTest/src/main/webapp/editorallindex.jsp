@@ -234,6 +234,8 @@ if (count > 0) {
 								<th class="text-center">작성일</th>
 								<th class="text-center">스케줄명</th>
 								<th class="text-center">에디터 제목</th>
+							    <th class="text-center">조회</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -253,6 +255,8 @@ if (count > 0) {
 										<td>${i.editor_date}</td>
 										<td>${s.schedule_name }</td>
 										<td>${i.editor_title }</td>
+										<td><a
+										href="#" style="font-size: 16px;"> 이동</button></a></td>
 									</tr>
 								</c:when>
 							</c:choose>
@@ -265,7 +269,6 @@ if (count > 0) {
 				<br>
 				<div class="page">
 					<div class="text-center">
-						<a href="#" class="btn btn-dark">선택 수정</a> 
 						<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
 					</div>
 					<br>

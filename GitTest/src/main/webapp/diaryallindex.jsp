@@ -155,7 +155,7 @@ if (count > 0) {
 		<!-- Mobile Nav (max width 767px)-->
 		<div class="mobile-nav"></div>
 
-	<div class="shop_sidebar_area">
+		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<h6 class="widget-title mb-30">학습플래너</h6>
@@ -229,6 +229,8 @@ if (count > 0) {
 								<th class="text-center">작성일</th>
 								<th class="text-center">스케줄명</th>
 								<th class="text-center">일기 제목</th>
+								<th class="text-center">조회</th>
+
 							</tr>
 						</thead>
 						<body>
@@ -251,6 +253,8 @@ if (count > 0) {
 												<td>${i.diary_date }</td>
 												<td>${s.schedule_name }</td>
 												<td>${i.diary_title }</td>
+												<td><a
+										href="diaryupdate.jsp" style="font-size: 16px;"> 이동</button></a></td>
 											</tr>
 										</c:when>
 									</c:choose>
@@ -262,7 +266,7 @@ if (count > 0) {
 				<br>
 				<div class="page">
 					<div class="text-center">
-						<a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
+						<a href="#"
 							class="btn btn-dark" id="delete">선택 삭제</a>
 					</div>
 					<br>
