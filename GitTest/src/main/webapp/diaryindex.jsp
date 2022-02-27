@@ -275,7 +275,7 @@ if (count > 0) {
 									<td>${sessionScope.schedule.schedule_name }</td>
 									<td>${i.diary_title }</td>
 									<td><a
-										href="diaryupdate.jsp" style="font-size: 16px;"> 이동</a></td>
+										href="DiarySelectCon.do?num=${i.diary_num }" style="font-size: 16px;"> 이동</a></td>
 								</tr>
 							</c:forEach>
 					</table>

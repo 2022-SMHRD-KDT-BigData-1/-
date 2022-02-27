@@ -93,7 +93,6 @@ public class PTypeCon implements iPCommand {
             session.setAttribute("recbooklist", recbooklist);
             session.setAttribute("recvideolist", recvideolist);
             out.print(cnt+"");
-            response.sendRedirect("ploginmain.jsp");
          
          }
          

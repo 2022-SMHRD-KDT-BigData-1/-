@@ -267,20 +267,21 @@
 			<div class="container" style="padding-top:10%">
 				<h1 class="text-center" style="padding: 50px 0 0 350px">[ 일기 ]</h1>
 				<br>
-				<form action="DiaryCon.do" method="post">
+				<form action="DiaryUpdateCon.do" method="post">
 					<span style="font-weight: bold; font-size: 25px">제목 </span> <input
 						type="text" name="title" placeholder="제목을 입력하세요." autofocus
-						style="width: 500; height: 50; font-size: 25px" /> <br>
+						style="width: 500; height: 50; font-size: 25px"  value="${sessionScope.diary.diary_title }"/> <br>
 					<br>
 					<hr />
 
-					<textarea  placeholder="내용을 입력하세요." rows="15" cols="150" name="content"></textarea>
+					<textarea  placeholder="내용을 입력하세요." rows="15" cols="150" name="content">${sessionScope.diary.diary_content }</textarea>
 
 					<br />
 					<br>
 					<div class="col text-center" style="padding-left: 400px;">
 						<input class="bt" type="submit" value="수정완료">
 					</div>
+				</form>
 			</div>
 
 			<!-- <div style="width: 80%; margin-top: 10%; margin-left: 70px;"> -->

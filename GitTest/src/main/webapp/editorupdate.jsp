@@ -1,5 +1,12 @@
+<%@page import="com.google.gson.Gson"%>
+<%@page import="com.pplus.model.EditorDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%EditorDTO editor = (EditorDTO)session.getAttribute("editor");
+	pageContext.setAttribute("editor", editor);
+	Gson gson = new Gson();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,6 +117,9 @@ margin-left:100px !important;
 </head>
 
 <body>
+<script>
+	
+</script>
 <header id="header" class="fixed-top header-scrolled">
 		<nav id="navbar" class="navbar" style="justify-content: end">
 			<a style="padding-right: 57%" href="ploginmain.jsp"><img
@@ -287,11 +297,12 @@ margin-left:100px !important;
 				
 					<span style="font-weight: bold; font-size: 25px">제목 </span> <input
 						type="text" id="title" placeholder="제목을 입력하세요." autofocus
-						style="width: 500; height: 50; font-size: 25px" />
+						style="width: 500; height: 50; font-size: 25px" value="${sessionScope.editor.editor_title }"/>
 
 
 					<hr />
-					<div class="container m-5" id='cm_here'></div>
+					<div class="container m-5" id='cm_here'>
+					</div>
 					<br />
 					<div class="col text-center" style="padding-left: 400px;">
 						<!-- <input type="submit" value="작성완료"> -->
@@ -302,47 +313,54 @@ margin-left:100px !important;
 			</div>
 		</div>
 	</div>
-
 	<script>
 		//var myCodeMirror = CodeMirror(document.body, {
-		var myCodeMirror = CodeMirror(document.getElementById('cm_here'), {
 
-			 value : "\n", // DB에 저장된 데이터를 입력할 수 있는 곳
-			mode : "javascript",
-			lineNumbers : "true",
-		});
-
-/* 		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
+ 		/* var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
 			lineNumber : true,
-		}); */
+		});  */
+		var str = `<%= editor.getEditor_content()%>`;
+		console.log(str);  
+		/* 	window.onload=function(){ */
+				var myCodeMirror = CodeMirror(document.getElementById('cm_here'), {
+					
+					value : "\n", // DB에 저장된 데이터를 입력할 수 있는 곳 
+					mode : "javascript",
+					lineNumbers : "true",
+				});
+			 	myCodeMirror.doc.setValue(str);
+				
+				
+				$('#form_button').click(function(){
+		 			var title=document.getElementById("title").value;
+		 			console.log(title);
+					var content= myCodeMirror.getValue();
+					console.log(content);
+		/* 			var form = new FormData();
+					form.append("editor_title", title);
+					form.append("editor_content", content); */
+					$.ajax({
+						url:"EditorUpdateCon.do",
+						type:"POST",
+						data: {"editor_title": title, "editor_content": content},
+						datatype:'json',	
+						success : function(result){
+							location.href='editorindex.jsp';
+				            },
+				         error : function(){
+				            alert("서버요청실패");
+				         },
+						})
+					});
+			/* } */
 		
+		 
 	/* 	
 		console.log(editor);
 		const form = new FormData();
 		form.append('editor_content', editor);
 		 */
- 		$('#form_button').click(function(){
- 			
- 			var title=document.getElementById("title").value;
- 			console.log(title);
-			var content= myCodeMirror.getValue();
-			console.log(content);
-/* 			var form = new FormData();
-			form.append("editor_title", title);
-			form.append("editor_content", content); */
-			$.ajax({
-				url:"EditorCon.do",
-				type:"POST",
-				data: {"editor_title": title, "editor_content": content},
-				datatype:'json',	
-				success : function(result){
-					alert("서버요청성공");
-		            },
-		         error : function(){
-		            alert("서버요청실패");
-		         },
-				})
-			});
+ 		
 
 			/* 
 			form.method = "POST";
@@ -354,7 +372,7 @@ margin-left:100px !important;
 			/* }); */
 		
 		
-		// var myCodeMirror =myCodeMirror.doc.setValue("원하는 내용");
+		
 		// 을 통해서 원하는 내용을 넣을수 있다고도 하네요
 
 	</script>

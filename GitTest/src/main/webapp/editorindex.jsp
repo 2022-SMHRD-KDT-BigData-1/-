@@ -276,7 +276,7 @@ if (count > 0) {
 									<td>${sessionScope.schedule.schedule_name }</td>
 									<td>${i.editor_title }</td>
 									<td><a
-										href="editorupdate.jsp" style="font-size: 16px;">이동</a></td>
+										href="EditorSelectCon.do?num=${i.editor_num }" style="font-size: 16px;">이동</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -351,6 +351,7 @@ if (count > 0) {
 				</div>
 			</div>
 		</div>
+		<script src="jquery-3.6.0.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 

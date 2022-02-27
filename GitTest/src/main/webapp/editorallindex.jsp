@@ -256,7 +256,7 @@ if (count > 0) {
 										<td>${s.schedule_name }</td>
 										<td>${i.editor_title }</td>
 										<td><a
-										href="#" style="font-size: 16px;"> 이동</a></td>
+										href="EditorSelectCon.do?num=${i.editor_num }" style="font-size: 16px;"> 이동</a></td>
 									</tr>
 								</c:when>
 							</c:choose>

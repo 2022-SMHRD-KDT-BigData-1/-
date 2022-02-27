@@ -26,6 +26,7 @@ public class EditorCon implements iPCommand {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
 
 		String title = request.getParameter("editor_title");
 		System.out.println("에디터 제목" + title);
@@ -51,7 +52,7 @@ public class EditorCon implements iPCommand {
 				
 				ArrayList<EditorDTO> editorlist = dao.editorSelectAll(member.getMember_nick(), schedule.getSchedule_num());
 				session.setAttribute("editorlist", editorlist);
-				response.sendRedirect("schedule.jsp");
+				out.print(cnt);
 				
 			}else {
 				AchieveDTO achieve = (AchieveDTO)session.getAttribute("achieve");
@@ -77,7 +78,7 @@ public class EditorCon implements iPCommand {
 					session.setAttribute("achieve", achieve);
 					session.setAttribute("achievelist", achievelist);
 					session.setAttribute("editorlist", editorlist);
-					response.sendRedirect("schedule.jsp");
+					out.print(cnt);
 					// 우선 메인 페이지로 가게 햇고 경우에 따라서 다른 페이지로 가게 하면 괼것 같습니다
 				}
 
@@ -85,7 +86,6 @@ public class EditorCon implements iPCommand {
 			}
 			
 		} else {
-			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('에디터 등록을 실패하셨습니다.');");
 			out.print("location.href='pmain.jsp';");
