@@ -20,7 +20,7 @@
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="css/버튼.css">
+<link rel="stylesheet" href="css/버튼test.css">
 
 
 

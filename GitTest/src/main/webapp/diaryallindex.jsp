@@ -254,7 +254,7 @@ if (count > 0) {
 												<td>${s.schedule_name }</td>
 												<td>${i.diary_title }</td>
 												<td><a
-										href="diaryupdate.jsp" style="font-size: 16px;"> 이동</button></a></td>
+										href="diaryupdate.jsp" style="font-size: 16px;"> 이동</a></td>
 											</tr>
 										</c:when>
 									</c:choose>

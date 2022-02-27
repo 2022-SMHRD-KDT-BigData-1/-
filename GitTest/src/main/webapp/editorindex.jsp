@@ -276,7 +276,7 @@ if (count > 0) {
 									<td>${sessionScope.schedule.schedule_name }</td>
 									<td>${i.editor_title }</td>
 									<td><a
-										href="editorupdate.jsp" style="font-size: 16px;"><i class="fas fa-solid fa-arrow-pointer"></i>이동</a></td>
+										href="editorupdate.jsp" style="font-size: 16px;">이동</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
