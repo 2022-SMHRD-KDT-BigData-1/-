@@ -372,7 +372,6 @@ margin-left: 15px;
 
          <br /> <br /> <br />
 
-         <form action="PTypeCon.do" method="get">
             <div class="d-flex justify-content-center"
                >
                <!--대분류-->
@@ -391,7 +390,6 @@ margin-left: 15px;
                <button class="btn btn-primary" role="button" id="j"
                   >결과 확인</button>
             </div>
-         </form>
       </div>
    </div>
    <script src="jquery-3.6.0.min.js"></script>
@@ -457,7 +455,7 @@ margin-left: 15px;
              opener.parent.location.reload();
           }
        });
-	}
+	})
       /* function j() {
 
          
