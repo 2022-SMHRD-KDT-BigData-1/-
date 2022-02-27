@@ -111,11 +111,42 @@
 				</div>
 				<li class="nav-item active"><a class="nav-link"
 					href="plogout.jsp">로그아웃</a></li>
-
-
 			</ul>
 		</nav>
 	</header>
+<!-- 회원탈퇴 Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">
+						<!-- <i class="bi bi-exclamation-circle"></i> -->
+						<i class="bi bi-exclamation-circle-fill"></i> 회원 탈퇴
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+								d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+            <path fill-rule="evenodd"
+								d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+          </svg>
+					</button>
+				</div>
+				<br>
+				<div class="modal-body text-center" style="font-size: 20px">
+					회원탈퇴 하시겠습니까?</div>
+				<br>
+
+				<div class=" modal-footer ">
+					<a href="#" class="btn btn-primary ">확인</a>
+				</div>
+			</div>
+		</div>
+	</div>	
 
 	<div class="limiter">
 		<div class="container-login100">
@@ -164,13 +195,7 @@
 							</div>
 							
 						<br>
-							<div class="wrap-login100-form-btn">
-						<div class="login100-form-bgbtn"></div>
-							<div>
-							<button type="submit" class="login100-form-btn"
-								onclick="location.href='PUpdateCon.do'">수정완료</button>
-							</div>
-							</div>
+						<a href="#" style="float: right;" >회원 탈퇴</a>
 							
 					</div>
 				</form>
