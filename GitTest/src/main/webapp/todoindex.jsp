@@ -287,7 +287,7 @@ body {
 							<th class="text-center">스케줄명</th>
 							<th class="text-center">할 일 날짜</th>
 							<th class="text-center">할 일 제목</th>
-							<th class="text-center">할 일 체크</th>
+ 							<th class="text-center">조회</th>
 						</tr>
 					</thead>
 
@@ -306,14 +306,16 @@ body {
 								<td>${i.todo_date }</td>
 								
 								<td>${i.todo_title }</td>
-								<c:choose>
+								<%-- <c:choose>
 									<c:when test="${i.todo_check ==1}">
 										<td><input class="myCheck" type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}" checked></td>
 									</c:when>
 									<c:otherwise>
 										<td><input class="myCheck"  type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}"></td>
 									</c:otherwise>
-								</c:choose>
+								</c:choose> --%>
+								<td><a
+										href="todoset.jsp" style="font-size: 16px;"> 이동</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -321,11 +323,11 @@ body {
 			</div>
 			<br>
 			<div class="page">
-				<div class="text-center">
+				<!-- <div class="text-center">
 					<a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
 						class="btn btn-dark" id="delete">선택 삭제</a> <a href="#" class="btn btn-dark">선택
 						보기</a>
-				</div>
+				</div> -->
 				<br>
 				<nav aria-label="Page navigation example">
 					<div class="text-center">

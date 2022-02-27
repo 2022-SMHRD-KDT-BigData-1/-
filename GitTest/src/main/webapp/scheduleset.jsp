@@ -90,7 +90,7 @@
 				<br>
 
 				<div class=" modal-footer ">
-					<a href="#" class="btn btn-primary ">이전 페이지</a>
+					<a href="#" class="btn btn-dark ">이전 페이지</a>
 				</div>
 			</div>
 		</div>
@@ -266,7 +266,7 @@
 			<hr>
 			<br>
 			<div class="container">
-				<h3 style="font-weight: bold;">스케줄</h3>
+				<h1>스케줄</h1>
 				<form action="ScheduleCon.do" method="post">
 					<div id="viewwish">
 						위시리스트에서 도서 선정
@@ -307,7 +307,7 @@
 						학습일 수 <input type="text" class="form-control" id="day1" size="6"
 							style="text-align: center;" name="day" readonly="readonly" /> <br>
 						<div class="text-center">
-							<input type="submit" class="btn btn-primary"
+							<input type="submit" class="btn btn-dark"
 								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 								value="스케줄 등록">
 						</div>
@@ -336,7 +336,7 @@
 						학습일 수 <input type="text" class="form-control" id="day2" size="6"
 							style="text-align: center;" name="day" readonly="readonly" /> <br>
 						<div class="text-center">
-							<input type="submit" class="btn btn-primary"
+							<input type="submit" class="btn btn-dark"
 								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 								value="스케줄 등록">
 						</div>
@@ -365,7 +365,7 @@
 						학습일 수 <input type="text" class="form-control" id="day3" size="6"
 							style="text-align: center;" name="day" readonly="readonly" /> <br>
 						<div class="text-center">
-							<input type="submit" class="btn btn-primary"
+							<input type="submit" class="btn btn-dark"
 								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 								value="스케줄 등록">
 						</div>

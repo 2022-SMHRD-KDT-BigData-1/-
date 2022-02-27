@@ -87,6 +87,19 @@
 
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
+
+<style>
+.bt{
+    background-color: #FFA076;
+    font-family: -webkit-body;
+   
+    border-style: none;
+    height: 36px;
+    width: 91px;
+    border-radius: 3px;
+    color: white;
+    }
+</style>
 </head>
 
 <body>
@@ -248,72 +261,55 @@
 			</div>
 		</div>
 
-		<div class=""
+		<div
 			style="width: 40%; margin: 50px; margin-bottom: 10%; margin-left: 15%">
 			<!-- 에디터 -->
-			<div class="container">
+			<div class="container" style="padding-top:10%">
 				<h1 class="text-center" style="padding: 50px 0 0 350px">[ 일기 ]</h1>
 				<br>
-				<form action="#" method="get">
+				<form action="DiaryCon.do" method="post">
 					<span style="font-weight: bold; font-size: 25px">제목 </span> <input
 						type="text" name="title" placeholder="제목을 입력하세요." autofocus
-						style="width: 500; height: 50; font-size: 25px" />
-				</form>
+						style="width: 500; height: 50; font-size: 25px" /> <br>
+					<br>
+					<hr />
 
-				<hr />
+					<textarea  placeholder="내용을 입력하세요." rows="15" cols="150" name="content"></textarea>
 
-				<form method="post">
-					<textarea id="summernote" name="editordata"></textarea>
-				</form>
-				<script>
-					$("#summernote").summernote(
-							{
-								placeholder : "내용을 입력하세요.",
-								// 에디터 한글 설정
-								lang : "ko-KR",
-								tabsize : 2,
-								height : 550,
-								width : 1200,
-								focus : true,
-
-								fontNames : [ "Arial", "Arial Black",
-										"Comic Sans MS", "Courier New",
-										"맑은 고딕", "궁서", "굴림체", "굴림", "돋음체",
-										"바탕체", ],
-								codemirror : {
-									// codemirror options
-									theme : "monokai",
-								},
-							});
-				</script>
-				<br />
-				<div class="col text-center" style="padding-left: 400px;">
-					<a class="btn btn-dark" href="#" role="button">수정 완료</a>
-				</div>
+					<br />
+					<br>
+					<div class="col text-center" style="padding-left: 400px;">
+						<input class="bt" type="submit" value="수정완료">
+					</div>
 			</div>
-			<div style="width: 80%; margin-top: 10%; margin-left: 70px;">
 
-				<!-- Option 1: Bootstrap Bundle with Popper -->
-				<script
-					src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-					integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-					crossorigin="anonymous"></script>
-			</div>
+			<!-- <div style="width: 80%; margin-top: 10%; margin-left: 70px;"> -->
+
+
+
+
+			<!-- Option 1: Bootstrap Bundle with Popper -->
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
 		</div>
+	</div>
 
-		<!-- ##### Footer Area Start ##### -->
 
-		<!-- ##### Footer Area End ##### -->
+	<!-- ##### Footer Area Start ##### -->
 
-		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-		<script src="js/jquery/jquery-2.2.4.min.js"></script>
-		<!-- Popper js -->
-		<script src="js/popper.min.js"></script>
-		<!-- Bootstrap js -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Plugins js -->
-		<script src="js/plugins.js"></script>
-		<!-- Active js -->
-		<script src="js/active.js"></script>
+	<!-- ##### Footer Area End ##### -->
+
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>

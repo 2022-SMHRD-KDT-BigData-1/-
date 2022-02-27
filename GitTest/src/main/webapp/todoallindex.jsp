@@ -236,7 +236,7 @@ if (count > 0) {
 						<th class="text-center">스케줄명</th>
 						<th class="text-center">할 일 날짜</th>
 						<th class="text-center">할 일 제목</th>
-						<th class="text-center">할 일 체크</th>
+						<th class="text-center">조회</th>
 						</tr>
 					</thead>
 
@@ -257,15 +257,17 @@ if (count > 0) {
 									<td>${s.schedule_name }</td>
 									<td>${i.todo_date }</td>								
 									<td>${i.todo_title }</td>
-									<c:choose>
+									<%-- <c:choose>
 										<c:when test="${i.todo_check ==1}">
 											<td><input class="myCheck" type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}" checked></td>
 										</c:when>
 										<c:otherwise>
 											<td><input class="myCheck"  type="checkbox" id="${i.todo_num}" name="checkbox" value="${i.todo_num}"></td>
 										</c:otherwise>
-									</c:choose>
-									
+									</c:choose> --%>
+									<td><a
+										href="todoset.jsp" style="font-size: 16px;"> 이동</a></td>
+
 								</tr>
 							</c:when>
 						</c:choose>
@@ -275,10 +277,10 @@ if (count > 0) {
 				</table>
 			</div>
 			<br>
-			<div class="text-center" >
+			<!-- <div class="text-center" >
 				<a href="#" class="btn btn-dark">목록 보기</a>
 				<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
