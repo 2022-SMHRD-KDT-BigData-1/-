@@ -1,5 +1,38 @@
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="com.google.gson.JsonArray"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.awt.PageAttributes"%>
+<%@page import="com.pplus.model.TodoDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.pplus.model.TodoDAO"%>
+<%@page import="com.pplus.model.ScheduleDTO"%>
+<%@page import="com.pplus.model.ScheduleDAO"%>
+<%@page import="com.pplus.model.PMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
+ScheduleDAO scheduleDao = new ScheduleDAO();
+
+String nick = member.getMember_nick();
+
+String num = request.getParameter("num");
+
+int schedule_num = schedule.getSchedule_num();
+pageContext.setAttribute("schedule", schedule);
+
+TodoDAO todoDAO = new TodoDAO();
+ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
+todolist = todoDAO.todoSelectAll(nick, schedule_num);
+int todocnt = todolist.size();
+pageContext.setAttribute("todolist", todolist);
+pageContext.setAttribute("todocnt", todocnt);
+
+// Gson 객체 만들기 --> 자바의 데이터를 json타입으로 바꾸어 주는 역할
+Gson gson = new Gson();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,85 +68,40 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
 	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link
+	href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
+	rel="stylesheet" type="text/css" />
 
-
-<!-- <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    /> -->
-<link rel="stylesheet" type="text/css" href="style.css" />
-
-<!-- jQuery library -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-
-<!-- <link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+<!-- Google Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet" />
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<link href="calendar/packages copy/core/main.css" rel="stylesheet" />
+<link href="calendar/packages copy/daygrid/main.css" rel="stylesheet" />
+<script src="calendar/packages copy/core/main.js"></script>
+<script src="calendar/packages copy/interaction/main.js"></script>
+<script src="calendar/packages copy/daygrid/main.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
 
-include summernote-ko-KR
-<script src="/summernote/lang/summernote-ko-KR.js"></script>
- -->
-<!--코드 미러-->
-<!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
-<link rel="stylesheet" type="text/css"
-	href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css" />
-<link rel="stylesheet" type="text/css"
-	href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css" />
-<script type="text/javascript"
-	src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
-<script type="text/javascript"
-	src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
-<script type="text/javascript"
-	src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
-<script src="codemirror-5.65.1/lib/codemirror.js"></script>
-<link rel="stylesheet" href="codemirror-5.65.1/lib/codemirror.css" />
-<script src="codemirror-5.65.1/mode/javascript/javascript.js"></script>
-<style>
-/*.CodeMirror {
-	border: 1px solid #eee;
-margin-left:100px !important;
-}
-.CodeMirror-scroll{
-	display: inline-block !important;
-	position: inherit !important;
-	width: 950px !important;
-	margin-left:200px !important;
-}
-.CodeMirror.cm-s-default{
-	width:1000px;
-	margin-left:400px !important;
-}*/
-.bt {
-	background-color: #FFA076;
-	font-family: -webkit-body;
-	border-style: none;
-	height: 36px;
-	width: 91px;
-	border-radius: 3px;
-	color: white;
-}
-</style>
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
+<style>
+body {
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#calendar {
+	max-width: 900px;
+	margin: 0 auto;
+}
+</style>
+
+
 </head>
 
 <body>
@@ -189,23 +177,11 @@ margin-left:100px !important;
 		</nav>
 	</header>
 
-
-
-
-
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
-		<div class="mobile-nav">
-			<!-- Navbar Brand -->
-			<div class="amado-navbar-brand">
-				<a href="index.html"><img src="img/core-img/logo.png" alt="" /></a>
-			</div>
-			<!-- Navbar Toggler -->
-			<div class="amado-navbar-toggler">
-				<span></span><span></span><span></span>
-			</div>
-		</div>
+		<div class="mobile-nav"></div>
+
 
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
@@ -284,101 +260,37 @@ margin-left:100px !important;
 				</div>
 			</div>
 		</div>
-		<div
-			style="width: 40%; margin: 50px; margin-bottom: 10%; margin-left: 15%">
-			<!-- 에디터 -->
-			<div class="container">
-				<h1 class="text-center" style="padding: 115px 0 0 350px">[ 에디터
-					]</h1>
-				<br> <span style="font-weight: bold; font-size: 25px">제목
-				</span> <input type="text" id="title" placeholder="제목을 입력하세요." autofocus
-					style="width: 500; height: 50; font-size: 25px" />
 
+		<div style="width: 80%; margin-top: 3%; margin-left: 70px;">
 
-				<hr />
-				<div class="container m-5" id='cm_here'></div>
-				<br />
-				<div class="col text-center" style="padding-left: 400px;">
-					<!-- <input type="submit" value="작성완료"> -->
-					<input class="bt" type="submit" value="작성완료"> </a>
+			<!-- Option 1: Bootstrap Bundle with Popper -->
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
+
+			<div class="row my-5 py-5">
+				<div class="container px-4"
+					style="background-color: #656166; width: 40%;">
+					<div class="text-center">
+						<h1 class="display-4 fw-bolder" style="color: white">2022.01.11</h1>
+					</div>
 				</div>
-
 			</div>
-		</div>
-	</div>
 
-	<script>
-		//var myCodeMirror = CodeMirror(document.body, {
-		var myCodeMirror = CodeMirror(document.getElementById('cm_here'), {
-
-			value : "\n", // DB에 저장된 데이터를 입력할 수 있는 곳
-			mode : "javascript",
-			lineNumbers : "true",
-		});
-
-		/* 		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
-		 lineNumber : true,
-		 }); */
-
-		/* 	
-			console.log(editor);
-			const form = new FormData();
-			form.append('editor_content', editor);
-		 */
-		$('#form_button').click(function() {
-
-			var title = document.getElementById("title").value;
-			console.log(title);
-			var content = myCodeMirror.getValue();
-			console.log(content);
-			/* 			var form = new FormData();
-			 form.append("editor_title", title);
-			 form.append("editor_content", content); */
-			$.ajax({
-				url : "EditorCon.do",
-				type : "POST",
-				data : {
-					"editor_title" : title,
-					"editor_content" : content
-				},
-				datatype : 'json',
-				success : function(result) {
-					alert("서버요청성공");
-				},
-				error : function() {
-					alert("서버요청실패");
-				},
-			})
-		});
-
-		/* 
-		form.method = "POST";
-		form.action = "EditorCon.do";
+			<!-- gggggggggggggggggggggg -->
 		
-		
-		
-		form.submit(); */
-		/* }); */
 
-		// var myCodeMirror =myCodeMirror.doc.setValue("원하는 내용");
-		// 을 통해서 원하는 내용을 넣을수 있다고도 하네요
-	</script>
-	<script>
-		
-	</script>
-	<!-- ##### Footer Area Start ##### -->
 
-	<!-- ##### Footer Area End ##### -->
-	<script src="jquery-3.6.0.min.js"></script>
-	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-	<script src="js/jquery/jquery-2.2.4.min.js"></script>
-	<!-- Popper js -->
-	<script src="js/popper.min.js"></script>
-	<!-- Bootstrap js -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Plugins js -->
-	<script src="js/plugins.js"></script>
-	<!-- Active js -->
-	<script src="js/active.js"></script>
+						<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+
+						<!-- Popper js -->
+						<script src="js/popper.min.js"></script>
+						<!-- Bootstrap js -->
+						<script src="js/bootstrap.min.js"></script>
+						<!-- Plugins js -->
+						<script src="js/plugins.js"></script>
+						<!-- Active js -->
+						<script src="js/active.js"></script>
 </body>
 </html>

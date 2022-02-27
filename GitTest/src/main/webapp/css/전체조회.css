@@ -16,7 +16,7 @@
 } */
 
 #goal-chart {
-  margin-top: -10rem;
+  margin-top: -13rem;
   margin-left: 8rem;
 }
 
@@ -31,12 +31,12 @@
 #goal {
   /* padding-left: 0rem; */
   width: 100%;
-  padding-top: 4rem;
+  padding-top: 33rem;
 }
 
 #ed {
   margin-top: 0.5rem !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 3.5rem !important;
   margin-left: 60rem;
   width: 80%;
 }
