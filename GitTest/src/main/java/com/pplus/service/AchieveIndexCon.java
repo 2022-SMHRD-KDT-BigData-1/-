@@ -33,31 +33,41 @@ public class AchieveIndexCon implements iPCommand {
 	    PMemberDTO member = (PMemberDTO)session.getAttribute("member");
 	    
 	    String[] result2 = request.getParameterValues("result2[]");
-		System.out.println("리절트"+result2[0]);
-		
-		
-		AchieveDAO achieveDAO = new AchieveDAO();
-		
-		ArrayList<AchieveDTO> achievelist1 = new ArrayList<AchieveDTO>();
-		ArrayList<AchieveDTO> achievelist = achieveDAO.achieveSelectAll(member.getMember_nick());
-		
-		System.out.println(achievelist);
-		for(int i = 0; i < achievelist.size(); i++) {
-			for(int j = 0; j < result2.length; j++) {
-				if(achievelist.get(i).getSchedule_num() == Integer.parseInt(result2[j])) {
-					achievelist1.add(achievelist.get(i));
-					
+	    
+	    if(result2 == null) {
+	    	ArrayList<AchieveDTO> achievelist1 = new ArrayList<AchieveDTO>();
+	    	session.setAttribute("achievelist", achievelist1);
+	    	int cnt = 1;
+			out.print(cnt);
+	    	
+	    }else {
+	    	System.out.println("리절트"+result2[0]);
+			
+			
+			AchieveDAO achieveDAO = new AchieveDAO();
+			
+			ArrayList<AchieveDTO> achievelist1 = new ArrayList<AchieveDTO>();
+			ArrayList<AchieveDTO> achievelist = achieveDAO.achieveSelectAll(member.getMember_nick());
+			
+			System.out.println(achievelist);
+			for(int i = 0; i < achievelist.size(); i++) {
+				for(int j = 0; j < result2.length; j++) {
+					if(achievelist.get(i).getSchedule_num() == Integer.parseInt(result2[j])) {
+						achievelist1.add(achievelist.get(i));
+						
+					}
 				}
 			}
-		}
-		System.out.println(achievelist1);
-		int cnt = 0;
-		if(achievelist1 != null) {
-			session.setAttribute("achievelist", achievelist1);
-			cnt = 1;
-			out.print(cnt);
-			System.out.println(cnt);
-		}
+			System.out.println(achievelist1);
+			int cnt = 0;
+			if(achievelist1 != null) {
+				session.setAttribute("achievelist", achievelist1);
+				cnt = 1;
+				out.print(cnt);
+				System.out.println(cnt);
+			}
+			
+	    }
 		
 	}
 

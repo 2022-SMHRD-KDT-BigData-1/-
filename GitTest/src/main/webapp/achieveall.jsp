@@ -244,7 +244,7 @@
 <div class="iframebox" style="position:absolute;left:+220px;top:+800px">
 	<iframe src="achievindex.jsp" ></iframe>
 </div>
-
+		
 
 		<div style="width: 80%; margin-top: 10%; margin-left: 70px;">
 			<!---달성률-->
@@ -254,11 +254,17 @@
 					<br />
 					<div class="container">
 						<div class="row">
+						<c:forEach var="s" items="${sessionScope.schedulelist }">
 							<c:forEach var="i" items="${sessionScope.achievelist }" varStatus="status">
-							<div class="col-md-2 col-sm-6 col-xs-12">
-								<div class="demo1 font-weight:bold" data-percent="${i.achieve_study_day / i.schedule_num_day * 100}"></div>
-								<h3 class="sc-name">${sessionScope.schedulelist[status.index].schedule_name }</h3>
-							</div>
+							<c:choose>
+								<c:when test="${s.schedule_num == i.schedule_num }">
+									<div class="col-md-2 col-sm-6 col-xs-12">
+									<div class="demo1 font-weight:bold" data-percent="${i.achieve_study_day / i.schedule_num_day * 100}"></div>
+									<h3 class="sc-name">${s.schedule_name }</h3>
+									</div>
+								</c:when>
+							</c:choose>
+							</c:forEach>
 							</c:forEach>
 						</div>
 					</div>
@@ -293,8 +299,20 @@
 				var data = [];
 				var color = [];
 			 "<% 
-			 	for ( int i = 0; i < achievelist.size(); i++){ %>"
-			 		title.push("<%= schedulelist.get(i).getSchedule_name() %>");
+			 if(achievelist == null ){ %>
+				 var head = 0;
+				 data.push(head);
+				 var RGB_1 = Math.floor(Math.random() * (255 + 1));
+			 		var RGB_2 = Math.floor(Math.random() * (255 + 1)); 
+			 		var RGB_3 = Math.floor(Math.random() * (255 + 1));
+			 		var strRGBA = "rgba(" + RGB_1 + ',' + RGB_2 + ',' + RGB_3 + ",0.3)";
+			 		color.push(strRGBA);
+			<% }else{
+				for(int j = 0; j<schedulelist.size(); j++){
+				 for ( int i = 0; i < achievelist.size(); i++){ 
+				 	if(schedulelist.get(j).getSchedule_num() == achievelist.get(i).getSchedule_num()){
+				 %>"
+			 		title.push("<%= schedulelist.get(j).getSchedule_name() %>");
 			 		 var studyDay = "<%=achievelist.get(i).getAchieve_study_day() %>";
 	                 var numDay = "<%= achievelist.get(i).getSchedule_num_day() %>";
 	                 var head = studyDay / numDay * 100;
@@ -307,9 +325,15 @@
 			 		color.push(strRGBA);
 			 		console.log(<%=Integer.parseInt(achievelist.get(i).getSchedule_num_day()) %>);
 
-			 	"<% }	%>"
+			 	"<% }
+				 }
+				 }
+				}%>"
 			 	console.log(title);
 			 	console.log(data);
+			 
+			 
+			 	
 			
 					new Chart(document.getElementById("horizontalBar"), {
 						type : "horizontalBar",
@@ -363,11 +387,21 @@
 			<script>
 			var editorCount = [];
 			var diaryCount = [];
-			"<% for(int i = 0; i < schedulelist.size(); i++){ %>"
+			"<%if(achievelist != null){
+			for(int i = 0; i < schedulelist.size(); i++){
+				for(int j = 0; j < achievelist.size(); j++) {
+					if(schedulelist.get(i).getSchedule_num() == achievelist.get(j).getSchedule_num()){
+				%>"
 				editorCount.push("<%=editorDAO.getCount(schedulelist.get(i).getSchedule_num())%>");
 				diaryCount.push("<%=diaryDAO.getCount(schedulelist.get(i).getSchedule_num())%>");
 				
-				 "<% }%>"
+				 "<%} 
+				}
+			}
+				 }else { %>"
+				 editorCount.push(0);
+				 	diaryCount.push(0);
+				"<% }%>"
 				const mydata = editorCount;
 				const mydataHalf = diaryCount;
 				var ctx = document.getElementsByClassName("myChart");
