@@ -199,7 +199,7 @@ height:100%;
 			</div>
 
 			<div class="container px-4 px-lg-5 my-5">
-				<br> <a href="scheduleindex.jsp" class="btn btn-lg yellow"
+				<br> <a href="scheduleindex.jsp" class="btn btn-lg black"
 					style="display: inline-block"> 스케줄 목록</a>
 			</div>
 
@@ -210,7 +210,7 @@ height:100%;
 			</div>
 
 			<div class="container px-4 px-lg-5 my-5">
-				<br> <a href="dayplantodayindex.jsp" class="btn btn-lg yellow"
+				<br> <a href="dayplantodayindex.jsp" class="btn btn-lg black"
 					style="display: inline-block">일정 목록</a>
 			</div>
 
