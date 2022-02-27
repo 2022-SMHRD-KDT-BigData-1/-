@@ -32,7 +32,6 @@ pageContext.setAttribute("todocnt", todocnt);
 
 // Gson 객체 만들기 --> 자바의 데이터를 json타입으로 바꾸어 주는 역할
 Gson gson = new Gson();
-
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -184,7 +183,7 @@ body {
 		<div class="mobile-nav"></div>
 
 
- 	<div class="shop_sidebar_area">
+		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<!-- Widget Title -->
@@ -261,8 +260,8 @@ body {
 				</div>
 			</div>
 		</div>
-		
-		<div style="width: 80%; margin-top: 7%; margin-left: 70px;">
+
+		<div style="width: 80%; margin-top: 3%; margin-left: 70px;">
 
 			<!-- Option 1: Bootstrap Bundle with Popper -->
 			<script
@@ -270,79 +269,28 @@ body {
 				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 				crossorigin="anonymous"></script>
 
-			<!-- 달력 -->
-			<div class="container">
-				<div class="col-md-10">
-					<div class="container col-md-6 p-3">
-						<div class="row"></div>
+			<div class="row my-5 py-5">
+				<div class="container px-4"
+					style="background-color: #656166; width: 40%;">
+					<div class="text-center">
+						<h1 class="display-4 fw-bolder" style="color: white">2022.01.11</h1>
 					</div>
-					<div id="calendar"></div>
 				</div>
 			</div>
-		</div>
-	</div>
 
-	<script src="js/jquery/jquery-2.2.4.min.js"></script>
-	<script>
+			<!-- gggggggggggggggggggggg -->
+		
 
-   var gs = JSON.parse('<%=gson.toJson(todolist)%>');
 
-		var eventlist = [ {
-			title : "${schedule.schedule_name}",
-			start : "${schedule.schedule_start}",
-			end : "${schedule.schedule_end}",
-		}, {
-			title : "공부하는 책 : ${schedule.book_title}",
-			start : "${schedule.schedule_start}",
-			end : "${schedule.schedule_end}",
-		}, {
-			title : "공부할 페이지 : ${schedule.schedule_day_page}",
-			start : "${schedule.schedule_start}",
-			end : "${schedule.schedule_end}",
-		} ];
+						<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 
-		for (var i = 0; i < gs.length; i++) {
-			if (gs[i]['todo_check'] == 1) {
-				eventlist.push({
-					title : gs[i]['todo_title']+" o",
-					start : gs[i]['todo_date'],
-					end : gs[i]['todo_date']
-				});
-
-			} else {
-				eventlist.push({
-					title : gs[i]['todo_title']+" x",
-					start : gs[i]['todo_date'],
-					end : gs[i]['todo_date']
-				});
-
-			}
-
-		}
-
-		$(document).ready(function() {
-			var calendarEl = document.getElementById("calendar");
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView : "dayGridMonth",
-				plugins : [ "interaction", "dayGrid" ],
-				locale : 'ko',
-				editable : true,
-				eventLimit : true, // allow "more" link when too many events
-				events : eventlist
-				,
-			});
-			calendar.render();
-		});
-	</script>
-	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-
-	<!-- Popper js -->
-	<script src="js/popper.min.js"></script>
-	<!-- Bootstrap js -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Plugins js -->
-	<script src="js/plugins.js"></script>
-	<!-- Active js -->
-	<script src="js/active.js"></script>
+						<!-- Popper js -->
+						<script src="js/popper.min.js"></script>
+						<!-- Bootstrap js -->
+						<script src="js/bootstrap.min.js"></script>
+						<!-- Plugins js -->
+						<script src="js/plugins.js"></script>
+						<!-- Active js -->
+						<script src="js/active.js"></script>
 </body>
 </html>

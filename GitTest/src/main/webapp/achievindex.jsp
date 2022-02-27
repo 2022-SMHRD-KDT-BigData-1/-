@@ -15,22 +15,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container" style="padding-top: 90px">
+	<div class="container" style="padding-top: 75px; font-size: 25px">
 			<div>
 				<br>
-				<h1 style="text-align: center;">
+				<h1 style="text-align: center; margin-top: -75px; font-size: 38px;">
 					스케줄 <i class="fas fa-book"></i>
 				</h1>
+				<hr style="color: #dee2e6;">
 				<br>
-				<div class="container">
+				<div class="container" style="font-size: x-large; margin-top: -5%;">
 					<table
-						class="table table-bordered table-hover table-sm text-center ">
+						class="table table-bordered table-hover table-sm text-center " style="margin-left: 20rem;">
 
 						<thead class="table-warning ">
 							<tr>
 								<th></th>
 								<th class="text-center">No.</th>
 								<th class="text-center">스케줄명</th>
+							<br>
 							</tr>
 						</thead>
 							
