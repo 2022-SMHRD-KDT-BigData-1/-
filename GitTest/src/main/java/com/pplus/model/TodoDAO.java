@@ -327,5 +327,65 @@ public class TodoDAO {
 		}
 		return cnt;
 	}
+	
+	public ArrayList<TodoDTO> getTodayList(int start, int end, PMemberDTO member, ScheduleDTO schedule) {
+
+		ArrayList<TodoDTO> list = new ArrayList<TodoDTO>();
+
+		connect();
+
+		sql = "select * from (select rownum as rn, seq_todo_num, todo_title,"
+				+ "todo_date, seq_schedule_num, seq_dayplan_num, member_nick, todo_check from "
+				+ "(select * from todo where member_nick = ? and seq_schedule_num = ? and to_char(todo_date,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') order by seq_todo_num desc )) where rn between ? and ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, member.getMember_nick());
+			psmt.setInt(2, schedule.getSchedule_num());
+			psmt.setInt(3, start);
+			psmt.setInt(4, end);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				list.add(new TodoDTO(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6),
+						rs.getString(7), rs.getInt(8)));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return list;
+	}
+	
+	public int getTodayCount(int num) {
+
+		int totalnum = 0;
+
+		connect();
+
+		sql = "select count(*) from todo where seq_schedule_num = ? and to_char(todo_date,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd')";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, num);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				totalnum = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return totalnum;
+	}
 
 }

@@ -1,5 +1,39 @@
+<%@page import="com.pplus.model.TodoDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.pplus.model.TodoDAO"%>
+<%@page import="com.pplus.model.PMemberDTO"%>
+<%@page import="com.pplus.model.ScheduleDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
+PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+
+TodoDAO todoDAO = new TodoDAO();
+ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
+
+int pageSize = 5;
+String pageNum = request.getParameter("pageNum");
+
+if (pageNum == null) {
+	pageNum = "1";
+}
+
+int currentPage = Integer.parseInt(pageNum);
+
+int startRow = (currentPage - 1) * pageSize + 1;
+int endRow = currentPage * pageSize;
+
+int count = 0;
+count = todoDAO.getCount(schedule.getSchedule_num());
+
+if (count > 0) {
+	todolist = todoDAO.getTodayList(startRow, endRow, member, schedule);
+	pageContext.setAttribute("todolist", todolist);
+
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
