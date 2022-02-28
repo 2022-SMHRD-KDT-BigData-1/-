@@ -300,68 +300,67 @@ margin-left:100px !important;
 				<br />
 				<div class="col text-center" style="padding-left: 400px;">
 					<!-- <input type="submit" value="작성완료"> -->
-					<input class="bt" type="submit" value="작성완료"> </a>
+					<input class="bt" type="submit" value="작성완료" id="form_button">
 				</div>
 
 			</div>
 		</div>
 	</div>
 
-	<script>
+<script>
 		//var myCodeMirror = CodeMirror(document.body, {
 		var myCodeMirror = CodeMirror(document.getElementById('cm_here'), {
 
-			value : "\n", // DB에 저장된 데이터를 입력할 수 있는 곳
+			 value : "\n", // DB에 저장된 데이터를 입력할 수 있는 곳
 			mode : "javascript",
 			lineNumbers : "true",
 		});
 
-		/* 		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
-		 lineNumber : true,
-		 }); */
-
-		/* 	
-			console.log(editor);
-			const form = new FormData();
-			form.append('editor_content', editor);
+/* 		var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
+			lineNumber : true,
+		}); */
+		
+	/* 	
+		console.log(editor);
+		const form = new FormData();
+		form.append('editor_content', editor);
 		 */
-		$('#form_button').click(function() {
-
-			var title = document.getElementById("title").value;
-			console.log(title);
-			var content = myCodeMirror.getValue();
+ 		$('#form_button').click(function(){
+ 			
+ 			var title=document.getElementById("title").value;
+ 			console.log(title);
+			var content= myCodeMirror.getValue();
 			console.log(content);
-			/* 			var form = new FormData();
-			 form.append("editor_title", title);
-			 form.append("editor_content", content); */
+/* 			var form = new FormData();
+			form.append("editor_title", title);
+			form.append("editor_content", content); */
 			$.ajax({
-				url : "EditorCon.do",
-				type : "POST",
-				data : {
-					"editor_title" : title,
-					"editor_content" : content
-				},
-				datatype : 'json',
-				success : function(result) {
-					alert("서버요청성공");
-				},
-				error : function() {
-					alert("서버요청실패");
-				},
-			})
-		});
+				url:"EditorCon.do",
+				type:"POST",
+				data: {"editor_title": title, "editor_content": content},
+				datatype:'json',	
+				success : function(result){
+					location.href='editorindex.jsp';				
+		            },
+		         error : function(){
+		            alert("서버요청실패");
+		         },
+				})
+			});
 
-		/* 
-		form.method = "POST";
-		form.action = "EditorCon.do";
+			/* 
+			form.method = "POST";
+			form.action = "EditorCon.do";
+			
+			
+			
+			form.submit(); */
+			/* }); */
 		
 		
-		
-		form.submit(); */
-		/* }); */
-
 		// var myCodeMirror =myCodeMirror.doc.setValue("원하는 내용");
 		// 을 통해서 원하는 내용을 넣을수 있다고도 하네요
+
 	</script>
 	<script>
 		

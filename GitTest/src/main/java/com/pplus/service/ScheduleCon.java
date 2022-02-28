@@ -16,6 +16,8 @@ import com.pplus.model.AchieveDTO;
 import com.pplus.model.PMemberDTO;
 import com.pplus.model.ScheduleDAO;
 import com.pplus.model.ScheduleDTO;
+import com.pplus.model.TodoDAO;
+import com.pplus.model.TodoDTO;
 
 
 @WebServlet("/ScheduleCon")
@@ -75,7 +77,7 @@ public class ScheduleCon implements iPCommand {
 		int cnt = dao.scheduleSet(new ScheduleDTO(0, title, start, day, end, page, null, member.getMember_nick(), book_num,
 				book_Title, book_page));
 		
-		
+		TodoDAO todoDAO = new TodoDAO();
 	
 		
 		if(cnt > 0) {
@@ -89,6 +91,17 @@ public class ScheduleCon implements iPCommand {
 				
 				ArrayList<ScheduleDTO> schedulelist = dao.scheduleSelectAll(member.getMember_nick());
 				ArrayList<AchieveDTO> achievelist  = achievedao.achieveSelectAll(member.getMember_nick());
+				TodoDTO todo = new TodoDTO();
+				for (int i = 0; i < Integer.parseInt(day); i ++) {
+					if(i == 0) {
+						todo = new TodoDTO(0, "하루 학습 분량: "+page+"P", null, schedule.getSchedule_num(), 0, member.getMember_nick(), 0);
+						int cnt2 = todoDAO.todoSet(todo);
+					}else {
+						todo = new TodoDTO(0, "하루 학습 분량: "+page+"P", "sysdate+" + i, schedule.getSchedule_num(), 0, member.getMember_nick(), 0);
+						int cnt2 = todoDAO.todoSet2(todo);
+					}
+					
+				}
 				
 				session.setAttribute("achieveelist", achievelist);
 				session.setAttribute("schedulelist", schedulelist);

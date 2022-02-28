@@ -72,6 +72,30 @@ public class TodoDAO {
 		}
 		return cnt;
 	}
+	public int todoSet2(TodoDTO todo) {
+		connect();
+		sql = "insert into todo values(seq_todo_num.nextval,?,?,?,?,?,default)";
+
+		cnt = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, todo.getTodo_title());
+			psmt.setString(2, todo.getTodo_date());
+			psmt.setInt(3, todo.getSchedule_num());
+			psmt.setInt(4, todo.getDayplan_num());
+			psmt.setString(5, todo.getMember_nick());
+
+			cnt = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
 
 	// todo DB에 있는 하나의 todo 데이터를 수정하기 휘해서 회원의 닉네임, 투두 번호로 비교하여 찾기
 	// 찾은 데이터를 수정 할 투두 제목, 투두 내용을 입력
