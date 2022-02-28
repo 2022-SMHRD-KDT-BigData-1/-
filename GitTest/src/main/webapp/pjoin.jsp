@@ -66,6 +66,48 @@
     
  
   <body>
+  
+      <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              회원가입 성공
+              <i class="far fa-smile"></i>            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <br>
+          <div class="modal-body text-center" style="font-size: 20px;" >
+            회원가입을 축하합니다.
+            <br>
+            P+의 닉네임은 q입니다.<br>
+            P+의 아이디는 q입니다.
+
+            <br />
+        </div>
+          <br>
+
+          <div class=" modal-footer ">
+            <a href="ploginmain.jsp" class="btn btn-primary ">메인으로</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <header id="header" class="fixed-top header-scrolled">
 	
@@ -73,7 +115,7 @@
 			<a style="padding-right: 1500px" href="poutmain.jsp"><img style="width: 40px"
 				src="image/p+만.png"></a>
 				<ul style= "padding-right:30px">
-					<li><a class="nav-link scrollto" href="#"
+						<li><a class="nav-link scrollto" href="#"
 						style="text-decoration: none">사이트 소개</a></li>
 					<li><a class="nav-link scrollto" href="plogin.jsp"
 						style="text-decoration: none">로그인</a></li>
@@ -158,7 +200,7 @@
           
         </div>
       </div>
-    </div>
+   
     <font id="checkId" size="2"></font>
     <font id="checkNick" size="2"></font>
 

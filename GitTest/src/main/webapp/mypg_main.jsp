@@ -58,13 +58,17 @@ pageContext.setAttribute("schedulelist", schedulelist);
 
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
+
+<style>
+
+</style>
 </head>
 
 <body>
 	<header id="header" class="fixed-top header-scrolled">
 		<nav id="navbar" class="navbar" style="justify-content: end">
 			<a style="padding-right: 57%" href="ploginmain.jsp"><img
-				style="width: 40px" src="image/p+만.png"></a>
+				style="width: 40px" src="image/p+만1.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>

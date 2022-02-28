@@ -7,19 +7,18 @@
 @import url(../css/jquery-ui.min.css);
 @import url(../css/nice-select.css);
 @import url(../css/font-awesome.min.css);
-@font-face { 
+/* @font-face { 
   font-family: "helveticaneuebold";
   src: url("../fonts/helvetica_neu_bold-webfont.woff2") format("woff2"),
     url("../fonts/helvetica_neu_bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-}
+} */
 @font-face {
-  font-family: "helveticaneuemedium";
-  src: url("../fonts/helveticaneue_medium-webfont.woff2") format("woff2"),
-    url("../fonts/helveticaneue_medium-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 /* :: 2.0 Import All CSS */
 /* :: 3.0 Base CSS */
@@ -226,8 +225,9 @@ html{
 	height:100%
 }
 body {
-
-  font-size: 16px;
+	
+font-family:'paybooc-Bold';
+  font-size: 20px;
   background-color: white;
   height:100%;
 }
