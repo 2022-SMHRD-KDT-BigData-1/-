@@ -4,16 +4,15 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	BookDTO book = (BookDTO)session.getAttribute("book");
-	BookDAO bookDAO = new BookDAO();
-	
-	String book_part1 = bookDAO.bookPart1(book.getUser_type1());
-	String book_part2 = bookDAO.bookPart2(book.getUser_type2());
-	String book_part3 = bookDAO.bookPart3(book.getUser_type3());
-	pageContext.setAttribute("book_part1", book_part1);
-	pageContext.setAttribute("book_part2", book_part2);
-	pageContext.setAttribute("book_part3", book_part3);
-	
+BookDTO book = (BookDTO) session.getAttribute("book");
+BookDAO bookDAO = new BookDAO();
+
+String book_part1 = bookDAO.bookPart1(book.getUser_type1());
+String book_part2 = bookDAO.bookPart2(book.getUser_type2());
+String book_part3 = bookDAO.bookPart3(book.getUser_type3());
+pageContext.setAttribute("book_part1", book_part1);
+pageContext.setAttribute("book_part2", book_part2);
+pageContext.setAttribute("book_part3", book_part3);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,22 +50,22 @@
 
 <body>
 
-	 <header id="header" class="fixed-top header-scrolled">
-	
-			<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 1500px" href="poutmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
+	<header id="header" class="fixed-top header-scrolled">
+
+		<nav id="navbar" class="navbar">
+			<a style="padding-left: 15px" href="ploginmain.jsp"><img
+				style="width: 50px" src="image/p+만1.png"></a>
 			<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>
-					<li><a class="nav-link scrollto" href="plogin.jsp"
-						style="text-decoration: none">로그인</a></li>
-					<li><a class="nav-link scrollto" href="pjoin.jsp"
-						style="text-decoration: none">회원가입</a></li>
-						<li></li>
-				</ul>
-			</nav>
-		
+				<li><a class="nav-link scrollto" href="plogin.jsp"
+					style="text-decoration: none">로그인</a></li>
+				<li><a class="nav-link scrollto" href="pjoin.jsp"
+					style="text-decoration: none">회원가입</a></li>
+				<li></li>
+			</ul>
+		</nav>
+
 	</header>
 
 	<!-- ##### Main Content Wrapper Start ##### -->
