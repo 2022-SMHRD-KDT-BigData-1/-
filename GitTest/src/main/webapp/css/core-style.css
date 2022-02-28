@@ -48,6 +48,14 @@
 #demo{
 	    background-color: black;
 }
+#demo a{
+	color:white;
+	
+}
+#demo a:hover, #demo a:focus{
+	color: #FFA076;
+	
+}
 
 .container abc{
 	 content: "";

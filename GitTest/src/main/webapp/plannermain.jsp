@@ -71,7 +71,7 @@ html, body {
 		<header id="header" class="fixed-top header-scrolled">
 			<nav id="navbar" class="navbar">
 				<a style="padding-left: 15px" href="ploginmain.jsp"><img
-					style="width: 40px" src="image/p+만1.png"></a>
+					style="width: 50px" src="image/p+만1.png"></a>
 				<ul style="padding-right: 30px">
 					<li><a class="nav-link scrollto" href="#"
 						style="text-decoration: none">사이트 소개</a></li>
