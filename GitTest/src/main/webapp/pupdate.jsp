@@ -195,7 +195,7 @@
 							</div>
 							
 						<br>
-						<a href="#" style="float: right;" >회원 탈퇴</a>
+						<a href="pdelete.jsp" style="float: right;" >회원 탈퇴</a>
 							
 					</div>
 				</form>

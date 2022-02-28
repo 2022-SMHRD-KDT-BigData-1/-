@@ -90,7 +90,7 @@ if (count > 0) {
 <script src="calendar/packages copy/daygrid/main.js"></script>
 <script src="jquery-3.6.0.min.js"></script>
 
-<style>
+<!-- <style>
 body {
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 	font-size: 14px;
@@ -101,7 +101,7 @@ body {
 	margin: 0 auto;
 }
 </style>
-
+ -->
 
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
@@ -274,13 +274,13 @@ body {
 				[ 할 일 ]<!-- <i class="fas fa-solid fa-list-ul"></i> -->
 			</h1>
 			<br>
-			<div class="container">
+			<div class="container" style="font-size: 20px; ">
 				<c:set value="<%=(currentPage - 1) * 10%>" var="j" />
 				<table
 					class="table table-bordered table-hover table-sm text-center ">
 
 
-					<thead class="table-warning ">
+					<thead class="table-warning " >
 						<tr>
 							<th class="text-center">선택</th>
 							<th class="text-center">No.</th>

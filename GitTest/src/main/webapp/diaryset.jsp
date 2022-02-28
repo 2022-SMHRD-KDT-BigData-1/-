@@ -274,7 +274,7 @@
 					<br>
 					<hr />
 
-					<textarea  placeholder="내용을 입력하세요." rows="15" cols="150" name="content"></textarea>
+					<textarea  placeholder="내용을 입력하세요." rows="15" cols="90" name="content"></textarea>
 
 					<br />
 					<br>

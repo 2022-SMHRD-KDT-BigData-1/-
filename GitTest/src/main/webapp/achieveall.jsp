@@ -78,7 +78,8 @@
  width: 50%;
 
  height: 32%;
- border: 3px solid black;
+ border: 2px solid black;
+ border-radius: 15px
 
 }​
 
