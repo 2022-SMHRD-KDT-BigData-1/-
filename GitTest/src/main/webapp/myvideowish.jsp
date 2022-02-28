@@ -100,117 +100,142 @@ if (count > 0) {
 </head>
 
 <body>
-	<header id="header" class="fixed-top header-scrolled">
-		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img
-				style="width: 40px" src="image/p+만.png"></a>
-			<ul style="padding-right: 30px">
-				<li><a class="nav-link scrollto" href="#"
-					style="text-decoration: none">사이트 소개</a></li>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a style="text-decoration: none" class="nav-link dropdown-toggle"
-						href="컨텐츠추천.jsp">컨텐츠 추천</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및 재검사</a></li>
-						<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
-					</ul>
-				</div>
+	<div class="main-content-wrapper d-flex clearfix">
+		<!-- Mobile Nav (max width 767px)-->
+		<div class="mobile-nav">
+			<!-- Navbar Brand -->
+			<div class="amado-navbar-brand">
+				<a href="index.html"><img src="image/p+만1.png" alt="" /></a>
+			</div>
+			<!-- Navbar Toggler -->
+			<div class="amado-navbar-toggler">
+				<button type="button" class="btn" data-toggle="collapse"
+					data-target="#demo" style="background-color: black">
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+		</div>
+		<div class="collapse navbar-collapse" id="demo">
+			<ul class="navbar-nav">
 
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
-					<span class="caret"></span>
-
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">스케줄</li>
-						<hr>
-						<li><a href="scheduleset.jsp">등록</a></li>
-						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">일정</li>
-						<hr>
-						<li><a href="dayplantodayset.jsp">등록</a></li>
-						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">조회</li>
-						<hr>
-						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
-						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
-					</ul>
-				</div>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">등록</a></li>
-
-						<li><a class="dropdown-item" href="#">목록</a></li>
-					</ul>
-				</div>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="pupdate.jsp">회원정보
-								수정/탈퇴</a></li>
-						<li><a class="dropdown-item" href="achieveall.jsp">전체
-								학습상황 조회</a></li>
-						<li><a class="dropdown-item" href="#">위시리스트</a></li>
-					</ul>
-				</div>
+				<li clas="nav-item"><a class="nav-link" href="#">사이트 소개</a></li>
+				<li clas="nav-item"><a class="nav-link" href="컨텐츠추천.jsp">컨텐츠
+						추천</a></li>
+				<li clas="nav-item"><a class="nav-link" href="plannermain.jsp">학습플래너</a></li>
+				<li clas="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
+				<li clas="nav-item"><a class="nav-link" href="mypg_main.jsp">마이페이지</a></li>
 				<li class="nav-item active"><a class="nav-link"
 					href="plogout.jsp">로그아웃</a></li>
-
-
 			</ul>
-		</nav>
-	</header>
-	<!-- 회원탈퇴 Modal -->
-	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-		data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">
-						<!-- <i class="bi bi-exclamation-circle"></i> -->
-						<i class="bi bi-exclamation-circle-fill"></i> 회원 탈퇴
-					</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-								d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
-            <path fill-rule="evenodd"
-								d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
-          </svg>
-					</button>
-				</div>
-				<br>
-				<div class="modal-body text-center" style="font-size: 20px">
-					회원탈퇴 하시겠습니까?</div>
-				<br>
+		</div>
+		<header id="header" class="fixed-top header-scrolled">
+			<nav id="navbar" class="navbar">
+				<a style="padding-left: 15px" href="ploginmain.jsp"><img
+					style="width: 50px" src="image/p+만1.png"></a>
+				<ul style="padding-right: 30px">
+					<li><a class="nav-link scrollto" href="#"
+						style="text-decoration: none">사이트 소개</a></li>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a style="text-decoration: none" class="nav-link dropdown-toggle"
+							href="컨텐츠추천.jsp">컨텐츠 추천</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및
+									재검사</a></li>
+							<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
+						</ul>
+					</div>
 
-				<div class=" modal-footer ">
-					<a href="#" class="btn btn-primary ">확인</a>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
+						<span class="caret"></span>
+
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">스케줄</li>
+							<hr>
+							<li><a href="scheduleset.jsp">등록</a></li>
+							<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+
+							<br>
+							<li class="divider"></li>
+							<li class="dropdown-header">일정</li>
+							<hr>
+							<li><a href="dayplantodayset.jsp">등록</a></li>
+							<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
+
+							<br>
+							<li class="divider"></li>
+							<li class="dropdown-header">조회</li>
+							<hr>
+							<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
+							<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+							<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
+						</ul>
+					</div>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="#">등록</a></li>
+
+							<li><a class="dropdown-item" href="#">목록</a></li>
+						</ul>
+					</div>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="mypg_main.jsp">마이페이지</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="pupdate.jsp">회원정보
+									수정/탈퇴</a></li>
+							<li><a class="dropdown-item" href="achieveall.jsp">전체
+									학습상황 조회</a></li>
+							<li><a class="dropdown-item" href="mybookwish.jsp">위시리스트</a></li>
+						</ul>
+					</div>
+					<li class="nav-item active"><a class="nav-link"
+						href="plogout.jsp">로그아웃</a></li>
+
+
+				</ul>
+			</nav>
+		</header>
+		<!-- 회원탈퇴 Modal -->
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+			data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">
+							<!-- <i class="bi bi-exclamation-circle"></i> -->
+							<i class="bi bi-exclamation-circle-fill"></i> 회원 탈퇴
+						</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+								fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+									d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+            <path fill-rule="evenodd"
+									d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+          </svg>
+						</button>
+					</div>
+					<br>
+					<div class="modal-body text-center" style="font-size: 20px">
+						회원탈퇴 하시겠습니까?</div>
+					<br>
+
+					<div class=" modal-footer ">
+						<a href="#" class="btn btn-primary ">확인</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
 
 
-	<!-- ##### Main Content Wrapper Start ##### -->
-	<div class="main-content-wrapper d-flex clearfix">
-		<!-- Mobile Nav (max width 767px)-->
-		<div class="mobile-nav"></div>
 
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
@@ -280,13 +305,13 @@ if (count > 0) {
 									</thead>
 									<tbody style="text-align: center">
 										<c:set value="<%=(currentPage - 1) * 10%>" var="j" />
-										<c:forEach var="wish" items="${wishlist }"
-											varStatus="status">
+										<c:forEach var="wish" items="${wishlist }" varStatus="status">
 											<tr>
 												<td class="wish-num">
 													<div class="form-check">
 														<input class="form-check-input" type="radio"
-															name="flexRadioDefault" id="flexRadioDefault1" value="${wish.video_num }"/> <label
+															name="flexRadioDefault" id="flexRadioDefault1"
+															value="${wish.video_num }" /> <label
 															class="form-check-label" for="flexRadioDefault1">
 															<h5 style="padding-left: 20px">${j = j + 1 }</h5>
 														</label>
@@ -376,8 +401,8 @@ if (count > 0) {
 			</nav>
 		</div>
 	</div>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
 		$(document).ready(function() {
 
 			$("#delete").click(function() {
@@ -393,8 +418,6 @@ if (count > 0) {
 				location.href = 'WishVideoDeleteCon.do?list=' + list;
 				console.log(list);
 			});
-			
-			
 
 		});
 	</script>

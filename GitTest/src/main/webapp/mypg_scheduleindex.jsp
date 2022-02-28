@@ -60,85 +60,106 @@ pageContext.setAttribute("schedulelist", schedulelist);
 </head>
 
 <body>
-	<header id="header" class="fixed-top header-scrolled">
-		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
-			<ul style="padding-right: 30px">
-				<li><a class="nav-link scrollto" href="#"
-					style="text-decoration: none">사이트 소개</a></li>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a style="text-decoration: none" class="nav-link dropdown-toggle"
-						href="컨텐츠추천.jsp">컨텐츠 추천</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및 재검사</a></li>
-						<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
-					</ul>
-				</div>
-
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
-					<span class="caret"></span>
-
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">스케줄</li>
-						<hr>
-						<li><a href="scheduleset.jsp">등록</a></li>
-						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">일정</li>
-						<hr>
-						<li><a href="dayplantodayset.jsp">등록</a></li>
-						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">조회</li>
-						<hr>
-						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
-						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
-					</ul>
-				</div>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">등록</a></li>
-
-						<li><a class="dropdown-item" href="#">목록</a></li>
-					</ul>
-				</div>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="pupdate.jsp">회원정보
-								수정/탈퇴</a></li>
-						<li><a class="dropdown-item" href="achieveall.jsp">전체
-								학습상황 조회</a></li>
-						<li><a class="dropdown-item" href="#">위시리스트</a></li>
-					</ul>
-				</div>
-				<li class="nav-item active"><a class="nav-link"
-					href="plogout.jsp">로그아웃</a></li>
-
-
-			</ul>
-		</nav>
-	</header>
-
-
-	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
 		<div class="mobile-nav">
-			
+			<!-- Navbar Brand -->
+			<div class="amado-navbar-brand">
+				<a href="index.html"><img src="image/p+만1.png" alt="" /></a>
+			</div>
+			<!-- Navbar Toggler -->
+			<div class="amado-navbar-toggler">
+				<button type="button" class="btn" data-toggle="collapse"
+					data-target="#demo" style="background-color: black">
+					<span></span><span></span><span></span>
+				</button>
+			</div>
 		</div>
+		<div class="collapse navbar-collapse" id="demo">
+			<ul class="navbar-nav">
+
+				<li clas="nav-item"><a class="nav-link" href="#">사이트 소개</a></li>
+				<li clas="nav-item"><a class="nav-link" href="컨텐츠추천.jsp">컨텐츠
+						추천</a></li>
+				<li clas="nav-item"><a class="nav-link" href="plannermain.jsp">학습플래너</a></li>
+				<li clas="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
+				<li clas="nav-item"><a class="nav-link" href="mypg_main.jsp">마이페이지</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="plogout.jsp">로그아웃</a></li>
+			</ul>
+		</div>
+		<header id="header" class="fixed-top header-scrolled">
+			<nav id="navbar" class="navbar">
+				<a style="padding-left: 15px" href="ploginmain.jsp"><img
+					style="width: 50px" src="image/p+만1.png"></a>
+				<ul style="padding-right: 30px">
+					<li><a class="nav-link scrollto" href="#"
+						style="text-decoration: none">사이트 소개</a></li>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a style="text-decoration: none" class="nav-link dropdown-toggle"
+							href="컨텐츠추천.jsp">컨텐츠 추천</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및
+									재검사</a></li>
+							<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
+						</ul>
+					</div>
+
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
+						<span class="caret"></span>
+
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">스케줄</li>
+							<hr>
+							<li><a href="scheduleset.jsp">등록</a></li>
+							<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+
+							<br>
+							<li class="divider"></li>
+							<li class="dropdown-header">일정</li>
+							<hr>
+							<li><a href="dayplantodayset.jsp">등록</a></li>
+							<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
+
+							<br>
+							<li class="divider"></li>
+							<li class="dropdown-header">조회</li>
+							<hr>
+							<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
+							<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+							<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
+						</ul>
+					</div>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="#">등록</a></li>
+
+							<li><a class="dropdown-item" href="#">목록</a></li>
+						</ul>
+					</div>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="mypg_main.jsp">마이페이지</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="pupdate.jsp">회원정보
+									수정/탈퇴</a></li>
+							<li><a class="dropdown-item" href="achieveall.jsp">전체
+									학습상황 조회</a></li>
+							<li><a class="dropdown-item" href="mybookwish.jsp">위시리스트</a></li>
+						</ul>
+					</div>
+					<li class="nav-item active"><a class="nav-link"
+						href="plogout.jsp">로그아웃</a></li>
+
+
+				</ul>
+			</nav>
+		</header>
 
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
@@ -151,8 +172,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 					<ul>
 						<li class="active"><a>회원 정보</a></li>
 						<hr />
-						<li><a href="pupdate.jsp">회원 정보
-								수정</a></li>
+						<li><a href="pupdate.jsp">회원 정보 수정</a></li>
 						<a><li class="btn" data-bs-toggle="modal"
 							data-bs-target="#staticBackdrop">회원 탈퇴</a>
 						</li>
@@ -222,7 +242,8 @@ pageContext.setAttribute("schedulelist", schedulelist);
 									<td>
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												name="DeleteCheck" id="flexRadioDefault1" value="${schedule.schedule_num }"> <label
+												name="DeleteCheck" id="flexRadioDefault1"
+												value="${schedule.schedule_num }"> <label
 												class="form-check-label" for="flexRadioDefault1"> </label>
 										</div>
 									</td>
@@ -233,7 +254,10 @@ pageContext.setAttribute("schedulelist", schedulelist);
 									<td>${schedule.schedule_day_page }</td>
 									<td></td>
 									<td><a
-										href="ScheduleIndexCon.do?num=${schedule.schedule_num }" style="font-size: 16px;"> 이동</button></a></td>
+										href="ScheduleIndexCon.do?num=${schedule.schedule_num }"
+										style="font-size: 16px;"> 이동
+											</button>
+									</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -242,8 +266,9 @@ pageContext.setAttribute("schedulelist", schedulelist);
 				<br>
 				<div class="page">
 					<div class="text-center">
-<!-- 						<a href="#" class="btn btn-dark">선택 완료</a>
- -->						<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
+						<!-- 						<a href="#" class="btn btn-dark">선택 완료</a>
+ -->
+						<a href="#" class="btn btn-dark" id="delete">선택 삭제</a>
 					</div>
 					<br>
 					<nav aria-label="Page navigation example">
@@ -309,97 +334,95 @@ pageContext.setAttribute("schedulelist", schedulelist);
 				</div>
 
 			</div>
-
-
-
 		</div>
-		    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-		<script>
+
+
+	</div>
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script>
 		$(document).ready(function() {
-			
-			
-			$("#delete").click(function () {
+
+			$("#delete").click(function() {
 				var list = [];
-				 var val = document.getElementsByName("DeleteCheck");
-				  var size = val.length;
-				    for(var i = 0; i < size; i++){
-				        if(val[i].checked == true){
-				        	list.push(val[i].value);
-				        	console.log("체크체크");
-				        }
-				    }
-				    location.href='ScheduleDeleteCon.do?list='+list;
-				    console.log(list);
+				var val = document.getElementsByName("DeleteCheck");
+				var size = val.length;
+				for (var i = 0; i < size; i++) {
+					if (val[i].checked == true) {
+						list.push(val[i].value);
+						console.log("체크체크");
+					}
+				}
+				location.href = 'ScheduleDeleteCon.do?list=' + list;
+				console.log(list);
 			});
-			 
-		}); 
-			/* $(function(){
-				var check= document.getElementsByName("DeleteCheck");
-				var DeleteCnt = check.length;
-				
-				$("input[name='allCheck']").click(function(){
-					var check_list = $("input[name='DeleteCheck']");
-					console.log(2);
-					for(var i=0; i<check_list.length; i++){
-						check_list[i].checked=this.checked;
-						
-					}
-				};
-				
-				$("input[name='DeleteCheck']").click(function(){
-					if($("input[name='DeleteCheck']:checked").length==DeleteCnt){
-						$("input[name='allCheck']")[0].checked=true;
-					} else {
-						$("input[name='allCheck']")[0].checked=false;
-					}
-				};		
+
+		});
+		/* $(function(){
+			var check= document.getElementsByName("DeleteCheck");
+			var DeleteCnt = check.length;
+			
+			$("input[name='allCheck']").click(function(){
+				var check_list = $("input[name='DeleteCheck']");
+				console.log(2);
+				for(var i=0; i<check_list.length; i++){
+					check_list[i].checked=this.checked;
+					
+				}
 			};
 			
-			function deleteValue(){
-				var url="ScheduleDeleteCon.do";
-				var valuelist =new Array();
-				var schedulelist = $("input[name='DeleteCheck']");
-				
-				for(var i =0; i<list.length; i++) {
-					if(list[i].checked){
-						valuelist.push(schedulelist[i].value);
-					}
-				}
-				
-				if(valuelist.length==0){
-					alert("선택한 스케줄이 없습니다.");
+			$("input[name='DeleteCheck']").click(function(){
+				if($("input[name='DeleteCheck']:checked").length==DeleteCnt){
+					$("input[name='allCheck']")[0].checked=true;
 				} else {
-					var chk= confrim("정말 삭제하시겠습니까?");
-					$.ajax({
-						url : url,
-						type : "POST",
-						traditional : true,
-						data : {
-							valuelist : valuelist
-							},
-						success: function(jdata){
-							if(jdata == 1){
-								alert("삭제 성공");
-								location.replace("scheduleindex.jsp")
-							} else {
-								alert("삭제 실패")
-							}
-						}
-					});
+					$("input[name='allCheck']")[0].checked=false;
 				}
-			} */
-
-		</script>
-		<script src="jquery-3.6.0.min.js"></script>
-		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-		<script src="js/jquery/jquery-2.2.4.min.js"></script>
-		<!-- Popper js -->
-		<script src="js/popper.min.js"></script>
-		<!-- Bootstrap js -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Plugins js -->
-		<script src="js/plugins.js"></script>
-		<!-- Active js -->
-		<script src="js/active.js"></script>
+			};		
+		};
+		
+		function deleteValue(){
+			var url="ScheduleDeleteCon.do";
+			var valuelist =new Array();
+			var schedulelist = $("input[name='DeleteCheck']");
+			
+			for(var i =0; i<list.length; i++) {
+				if(list[i].checked){
+					valuelist.push(schedulelist[i].value);
+				}
+			}
+			
+			if(valuelist.length==0){
+				alert("선택한 스케줄이 없습니다.");
+			} else {
+				var chk= confrim("정말 삭제하시겠습니까?");
+				$.ajax({
+					url : url,
+					type : "POST",
+					traditional : true,
+					data : {
+						valuelist : valuelist
+						},
+					success: function(jdata){
+						if(jdata == 1){
+							alert("삭제 성공");
+							location.replace("scheduleindex.jsp")
+						} else {
+							alert("삭제 실패")
+						}
+					}
+				});
+			}
+		} */
+	</script>
+	<script src="jquery-3.6.0.min.js"></script>
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>

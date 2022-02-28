@@ -76,84 +76,106 @@ if (count > 0) {
 </head>
 
 <body>
-	<header id="header" class="fixed-top header-scrolled">
-		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img
-				style="width: 40px" src="image/p+만.png"></a>
-			<ul style="padding-right: 30px">
-				<li><a class="nav-link scrollto" href="#"
-					style="text-decoration: none">사이트 소개</a></li>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a style="text-decoration: none" class="nav-link dropdown-toggle"
-						href="컨텐츠추천.jsp">컨텐츠 추천</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및 재검사</a></li>
-						<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
-					</ul>
-				</div>
-
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
-					<span class="caret"></span>
-
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">스케줄</li>
-						<hr>
-						<li><a href="scheduleset.jsp">등록</a></li>
-						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">일정</li>
-						<hr>
-						<li><a href="dayplantodayset.jsp">등록</a></li>
-						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">조회</li>
-						<hr>
-						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
-						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
-					</ul>
-				</div>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">등록</a></li>
-
-						<li><a class="dropdown-item" href="#">목록</a></li>
-					</ul>
-				</div>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="pupdate.jsp">회원정보
-								수정/탈퇴</a></li>
-						<li><a class="dropdown-item" href="achieveall.jsp">전체
-								학습상황 조회</a></li>
-						<li><a class="dropdown-item" href="#">위시리스트</a></li>
-					</ul>
-				</div>
-				<li class="nav-item active"><a class="nav-link"
-					href="plogout.jsp">로그아웃</a></li>
-
-
-			</ul>
-		</nav>
-	</header>
-
-
-
-	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
-		<div class="mobile-nav"></div>
+		<div class="mobile-nav">
+			<!-- Navbar Brand -->
+			<div class="amado-navbar-brand">
+				<a href="index.html"><img src="image/p+만1.png" alt="" /></a>
+			</div>
+			<!-- Navbar Toggler -->
+			<div class="amado-navbar-toggler">
+				<button type="button" class="btn" data-toggle="collapse"
+					data-target="#demo" style="background-color: black">
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+		</div>
+		<div class="collapse navbar-collapse" id="demo">
+			<ul class="navbar-nav">
+
+				<li clas="nav-item"><a class="nav-link" href="#">사이트 소개</a></li>
+				<li clas="nav-item"><a class="nav-link" href="컨텐츠추천.jsp">컨텐츠
+						추천</a></li>
+				<li clas="nav-item"><a class="nav-link" href="plannermain.jsp">학습플래너</a></li>
+				<li clas="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
+				<li clas="nav-item"><a class="nav-link" href="mypg_main.jsp">마이페이지</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="plogout.jsp">로그아웃</a></li>
+			</ul>
+		</div>
+		<header id="header" class="fixed-top header-scrolled">
+			<nav id="navbar" class="navbar">
+				<a style="padding-left: 15px" href="ploginmain.jsp"><img
+					style="width: 50px" src="image/p+만1.png"></a>
+				<ul style="padding-right: 30px">
+					<li><a class="nav-link scrollto" href="#"
+						style="text-decoration: none">사이트 소개</a></li>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a style="text-decoration: none" class="nav-link dropdown-toggle"
+							href="컨텐츠추천.jsp">컨텐츠 추천</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및
+									재검사</a></li>
+							<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
+						</ul>
+					</div>
+
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
+						<span class="caret"></span>
+
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">스케줄</li>
+							<hr>
+							<li><a href="scheduleset.jsp">등록</a></li>
+							<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+
+							<br>
+							<li class="divider"></li>
+							<li class="dropdown-header">일정</li>
+							<hr>
+							<li><a href="dayplantodayset.jsp">등록</a></li>
+							<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
+
+							<br>
+							<li class="divider"></li>
+							<li class="dropdown-header">조회</li>
+							<hr>
+							<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
+							<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+							<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
+						</ul>
+					</div>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="#">등록</a></li>
+
+							<li><a class="dropdown-item" href="#">목록</a></li>
+						</ul>
+					</div>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="mypg_main.jsp">마이페이지</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="pupdate.jsp">회원정보
+									수정/탈퇴</a></li>
+							<li><a class="dropdown-item" href="achieveall.jsp">전체
+									학습상황 조회</a></li>
+							<li><a class="dropdown-item" href="mybookwish.jsp">위시리스트</a></li>
+						</ul>
+					</div>
+					<li class="nav-item active"><a class="nav-link"
+						href="plogout.jsp">로그아웃</a></li>
+
+
+				</ul>
+			</nav>
+		</header>
 
 		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
@@ -256,28 +278,28 @@ if (count > 0) {
 								<th class="text-center">스케줄명</th>
 								<th class="text-center">일기 제목</th>
 								<th class="text-center">조회</th>
-								
+
 							</tr>
 						</thead>
-						
-							<c:forEach var="i" items="${diarylist }">
-								<tr>
-									<td><div class="form-check">
-											<input class="form-check-input" type="checkbox"
-												name="flexRadioDefault" id="flexRadioDefault1"
-												value="${i.diary_num }"> <label
-												class="form-check-label" for="flexRadioDefault1"> </label>
-										</div></td>
-									<td><input value="${i.diary_num }" style="display: none;"
-										name="num"> <input value="${i.member_nick }"
-										style="display: none;" name="nick"> ${j = j + 1}</td>
-									<td>${i.diary_date }</td>
-									<td>${sessionScope.schedule.schedule_name }</td>
-									<td>${i.diary_title }</td>
-									<td><a
-										href="DiarySelectCon.do?num=${i.diary_num }" style="font-size: 16px;"> 이동</a></td>
-								</tr>
-							</c:forEach>
+
+						<c:forEach var="i" items="${diarylist }">
+							<tr>
+								<td><div class="form-check">
+										<input class="form-check-input" type="checkbox"
+											name="flexRadioDefault" id="flexRadioDefault1"
+											value="${i.diary_num }"> <label
+											class="form-check-label" for="flexRadioDefault1"> </label>
+									</div></td>
+								<td><input value="${i.diary_num }" style="display: none;"
+									name="num"> <input value="${i.member_nick }"
+									style="display: none;" name="nick"> ${j = j + 1}</td>
+								<td>${i.diary_date }</td>
+								<td>${sessionScope.schedule.schedule_name }</td>
+								<td>${i.diary_title }</td>
+								<td><a href="DiarySelectCon.do?num=${i.diary_num }"
+									style="font-size: 16px;"> 이동</a></td>
+							</tr>
+						</c:forEach>
 					</table>
 				</div>
 
@@ -345,48 +367,49 @@ if (count > 0) {
 						</div>
 					</nav>
 				</div>
-
-				<!-- Option 1: Bootstrap Bundle with Popper -->
-				<script
-					src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-					integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-					crossorigin="anonymous"></script>
 			</div>
+
+			<!-- Option 1: Bootstrap Bundle with Popper -->
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
 		</div>
-		<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
+	</div>
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
 
-				$("#delete").click(function() {
-					var list = [];
-					var val = document.getElementsByName("flexRadioDefault");
-					var size = val.length;
-					for (var i = 0; i < size; i++) {
-						if (val[i].checked == true) {
-							list.push(val[i].value);
-							console.log("체크체크");
-						}
+			$("#delete").click(function() {
+				var list = [];
+				var val = document.getElementsByName("flexRadioDefault");
+				var size = val.length;
+				for (var i = 0; i < size; i++) {
+					if (val[i].checked == true) {
+						list.push(val[i].value);
+						console.log("체크체크");
 					}
-					location.href = 'DiaryDeleteCon.do?list=' + list;
-					console.log(list);
-				});
-
+				}
+				location.href = 'DiaryDeleteCon.do?list=' + list;
+				console.log(list);
 			});
-		</script>
 
-		<!-- ##### Footer Area Start ##### -->
+		});
+	</script>
 
-		<!-- ##### Footer Area End ##### -->
+	<!-- ##### Footer Area Start ##### -->
 
-		<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-		<script src="js/jquery/jquery-2.2.4.min.js"></script>
-		<!-- Popper js -->
-		<script src="js/popper.min.js"></script>
-		<!-- Bootstrap js -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Plugins js -->
-		<script src="js/plugins.js"></script>
-		<!-- Active js -->
-		<script src="js/active.js"></script>
+	<!-- ##### Footer Area End ##### -->
+
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>

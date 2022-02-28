@@ -11,7 +11,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--===============================================================================================-->
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="vendor/bootstrap/css/bootstrap.min.css" />
@@ -42,14 +42,15 @@
 
 <!-- 상단바 css -->
 <link href="assets/css/style.css" rel="stylesheet">
+
 </head>
 <body>
 
 <header id="header" class="fixed-top header-scrolled">
-		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
-			<ul style="padding-right: 30px">
+		<nav id="navbar" class="navbar">
+				<a style="padding-left: 15px" href="ploginmain.jsp"><img
+					style="width: 50px" src="image/p+만1.png"></a>
+				<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>
 				<li></li>
@@ -100,13 +101,13 @@
 				</div>
 				<li></li>
 				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
+					<a class="nav-link dropdown-toggle" href="mypg_main.jsp">마이페이지</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 						<li><a class="dropdown-item" href="pupdate.jsp">회원정보
 								수정/탈퇴</a></li>
 						<li><a class="dropdown-item" href="achieveall.jsp">전체
 								학습상황 조회</a></li>
-						<li><a class="dropdown-item" href="#">위시리스트</a></li>
+						<li><a class="dropdown-item" href="mybookwish.jsp">위시리스트</a></li>
 					</ul>
 				</div>
 				<li class="nav-item active"><a class="nav-link"
