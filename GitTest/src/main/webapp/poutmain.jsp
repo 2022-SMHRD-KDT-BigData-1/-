@@ -112,7 +112,7 @@ pageContext.setAttribute("videolist", videolist);
 		<div class="hero-content display-table">
 			<div class="table-cell">
 				<div class="container">
-					<h1 class="hero-title mb-4"><img style="width: 40px"
+					<h1 class="hero-title mb-4"><img style="width: 80px"
 				src="image/p+만1.png"></h1>
 					<p class="hero-subtitle">
 						<span class="typed" data-typed-items="Planner에 Programming을 더하다"></span>
