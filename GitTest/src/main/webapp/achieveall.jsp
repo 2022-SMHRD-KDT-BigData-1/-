@@ -66,7 +66,10 @@
 
  padding-bottom: 56.25%;
 
+ padding-top: 5%;
+ 
 }
+
 
 .iframebox iframe {
 
@@ -74,7 +77,8 @@
 
  width: 50%;
 
- height: 50%;
+ height: 32%;
+ border: 3px solid black;
 
 }​
 
@@ -190,6 +194,9 @@
 
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
+		<div class="iframebox" style="position:absolute;left:+620px;/* top:+800px */">
+	<iframe src="achievindex.jsp" ></iframe>
+</div>
 		<!-- Mobile Nav (max width 767px)-->
 		<div class="mobile-nav"></div>
 
@@ -241,10 +248,7 @@
 				</div>
 			</div>
 		</div>
-<div class="iframebox" style="position:absolute;left:+220px;top:+800px">
-	<iframe src="achievindex.jsp" ></iframe>
-</div>
-		
+<!-- 아이프레임 자리 -->
 
 		<div style="width: 80%; margin-top: 10%; margin-left: 70px;">
 			<!---달성률-->

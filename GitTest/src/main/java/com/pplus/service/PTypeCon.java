@@ -89,10 +89,11 @@ public class PTypeCon implements iPCommand {
          System.out.println(sel1 + ", " + sel2 + ", " + sel3);
          System.out.println(member.toString());
          session.setAttribute("member", member);
+         
          if (cnt2>0) {
             session.setAttribute("recbooklist", recbooklist);
             session.setAttribute("recvideolist", recvideolist);
-            out.print(cnt+"");
+            out.print(cnt2);
          
          }
          
