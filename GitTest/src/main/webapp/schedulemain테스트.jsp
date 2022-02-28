@@ -99,6 +99,18 @@ body {
 	max-width: 900px;
 	margin: 0 auto;
 }
+#tetetetetee{
+	position: relative !important;
+    right: 560px !important; 
+    width: 525px !important;
+    padding-bottom: 55px;	
+}
+
+#calendar2.fc.fc-ltr.fc-unthemed{
+	width: 110%;
+	height: 26rem;	
+}
+
 </style>
 
 
@@ -277,20 +289,189 @@ body {
 					</div>
 				</div>
 			</div>
-
 			<!-- gggggggggggggggggggggg -->
-		
+
+			<div class="container">
+				<div class="row">
+					<!-- 공간1 -->
+					<div class="col-lg-5">
+						<div id="box5">
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h1 class="m-0 font-weight-bold text-primary text-center">학습상황조회</h1>
+								</div>
+								<div class="card-body ">
+
+									<h2 class="font-weight-bold">
+										학습 중인 책 이름 : <span class="float-center">Java</span>
+									</h2>
+
+									<h2 class="font-weight-bold">
+										남은 기간 : <span class="float-center">D-9</span>
+									</h2>
+
+									<h2 class="font-weight-bold">
+										남은 분량 : <span class="float-center">165P</span>
+									</h2>
+
+									<h2 class="font-weight-bold">
+										전체 페이지 : <span class="float-center">300P</span>
+									</h2>
 
 
-						<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+									<h2 class="font-weight-bold">
+										하루 학습 분량 : <span class="float-center">15P</span>
+									</h2>
+								</div>
+							</div>
+						</div>
+						<!-- 공간2,달력1 -->
+							<div id="box6">
+								<div id="calendar1">
+									<script src="js/jquery/jquery-2.2.4.min.js"></script>
+									<script>
+									
+									   var gs = JSON.parse('<%=gson.toJson(todolist)%>');
+									
+											var eventlist = [ {
+												title : "${schedule.schedule_name}",
+												start : "${schedule.schedule_start}",
+												end : "${schedule.schedule_end}",
+											}, {
+												title : "공부하는 책 : ${schedule.book_title}",
+												start : "${schedule.schedule_start}",
+												end : "${schedule.schedule_end}",
+											}, {
+												title : "공부할 페이지 : ${schedule.schedule_day_page}",
+												start : "${schedule.schedule_start}",
+												end : "${schedule.schedule_end}",
+											} ];
+									
+											for (var i = 0; i < gs.length; i++) {
+												if (gs[i]['todo_check'] == 1) {
+													eventlist.push({
+														title : gs[i]['todo_title']+" o",
+														start : gs[i]['todo_date'],
+														end : gs[i]['todo_date']
+													});
+									
+												} else {
+													eventlist.push({
+														title : gs[i]['todo_title']+" x",
+														start : gs[i]['todo_date'],
+														end : gs[i]['todo_date']
+													});
+									
+												}
+									
+											}
+									
+											$(document).ready(function() {
+												var calendarEl = document.getElementById("calendar2");
+												var calendar = new FullCalendar.Calendar(calendarEl, {
+													initialView : "dayGridMonth",
+													plugins : [ "interaction", "dayGrid" ],
+													locale : 'ko',
+													editable : true,
+													eventLimit : true, // allow "more" link when too many events
+													events : eventlist
+													,
+												});
+												calendar.render();
+											});
+										</script>
+								</div>
+							</div>
+						</div>
+						<!-- 공간3,달력2 -->
+				<div class="col-lg-7">
+							<div id="box1">							
+								<div id="calendar2">
+									<script src="js/jquery/jquery-2.2.4.min.js"></script>
+									<script>
+									
+									   var gs = JSON.parse('<%=gson.toJson(todolist)%>');
+									
+											var eventlist = [ {
+												title : "${schedule.schedule_name}",
+												start : "${schedule.schedule_start}",
+												end : "${schedule.schedule_end}",
+											}, {
+												title : "공부하는 책 : ${schedule.book_title}",
+												start : "${schedule.schedule_start}",
+												end : "${schedule.schedule_end}",
+											}, {
+												title : "공부할 페이지 : ${schedule.schedule_day_page}",
+												start : "${schedule.schedule_start}",
+											end : "${schedule.schedule_end}",
+											} ];
+									
+											for (var i = 0; i < gs.length; i++) {
+												if (gs[i]['todo_check'] == 1) {
+													eventlist.push({
+														title : gs[i]['todo_title']+" o",
+														start : gs[i]['todo_date'],
+														end : gs[i]['todo_date']
+													});
+									
+												} else {
+													eventlist.push({
+														title : gs[i]['todo_title']+" x",
+														start : gs[i]['todo_date'],
+														end : gs[i]['todo_date']
+													});
+									
+												}
+									
+											}
+									
+											$(document).ready(function() {
+												var calendarEl = document.getElementById("tetetetetee");
+												var calendar = new FullCalendar.Calendar(calendarEl, {
+													initialView : "dayGridMonth",
+													plugins : [ "interaction", "dayGrid" ],
+													locale : 'ko',
+													editable : true,
+													eventLimit : true, // allow "more" link when too many events
+													events : eventlist,
+													height: '900px'
+													,
+												});
+												calendar.render();
+												
+												//스타일 직접 넣기
+												//캘린더 영역 찾기
+												var calendar2 = document.getElementById("calendar2");
+												$(calendar2).find('.fc-day-header.fc-widget-header').css('padding','10px 0px');
+												$(calendar2).find('.fc-scroller.fc-day-grid-container').css('height', '760px');
+												$(calendar2).find('.fc-row.fc-week.fc-widget-content.fc-rigid').css('height','130px');
+												
+											
+											});
+										</script>
+								</div>
+								
+								
+								
+								<div id="tetetetetee">
+							</div>
+							 </div>
+						</div>					
+						</div>
+				</div>
+			</div>
+		</div>
 
-						<!-- Popper js -->
-						<script src="js/popper.min.js"></script>
-						<!-- Bootstrap js -->
-						<script src="js/bootstrap.min.js"></script>
-						<!-- Plugins js -->
-						<script src="js/plugins.js"></script>
-						<!-- Active js -->
-						<script src="js/active.js"></script>
+
+	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>
