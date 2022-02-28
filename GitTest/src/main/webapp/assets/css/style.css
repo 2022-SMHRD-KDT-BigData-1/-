@@ -60,13 +60,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-	color: #1e1e1e;
+	color:#4e4e4e;
 	text-decoration: none;
 	transition: all 0.5s ease-in-out;
+	font-size:20px;
 }
 
 a:hover {
-	color: #0078ff;
+	color: #FFA076;
 	text-decoration: none;
 	transition: all 0.5s ease-in-out;
 }
@@ -658,7 +659,7 @@ rotate(
 /**
 * Mobile Navigation 
 */
-.mobile-nav-toggle {
+/* .mobile-nav-toggle {
 	color: #fff;
 	font-size: 28px;
 	cursor: pointer;
@@ -782,7 +783,7 @@ rotate(
 
 .navbar-mobile .dropdown>.dropdown-active {
 	display: block;
-}
+} */
 
 /*--------------------------------------------------------------
 # Hero Section
