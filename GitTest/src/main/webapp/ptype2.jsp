@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="style.css" />
 <link rel="stylesheet" href="css/유형조사.css" />
 
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
 <style>
 .study {
    margin-bottom: -21px;
@@ -364,7 +366,7 @@ margin-left: 15px;
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 
-         <h1 class="userTitle" style="font-size: 25px; padding-top: 30px">
+         <h1 class="userTitle" style="font-size: 25px; padding-top: 30px; padding-left: 35px;">
             <i class="fas fa-user-check"></i> 사용자 유형 조사
          </h1>
 

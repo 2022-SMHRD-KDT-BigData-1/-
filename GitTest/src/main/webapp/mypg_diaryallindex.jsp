@@ -224,6 +224,7 @@ if (count > 0) {
 								<th class="text-center">작성일</th>
 								<th class="text-center">스케줄명</th>
 								<th class="text-center">일기 제목</th>
+								<th class="text-center">조회</th>
 							</tr>
 						</thead>
 						<body>
@@ -241,6 +242,8 @@ if (count > 0) {
 									<td>${i.diary_date }</td>
 									<td>${sessionScope.schedule.schedule_name }</td>
 									<td>${i.diary_title }</td>
+									<td><a
+										href="DiarySelectCon.do?num=${i.diary_num }" style="font-size: 16px;"> 이동</a></td>
 								</tr>
 							</c:forEach>
 					</table>
@@ -249,9 +252,8 @@ if (count > 0) {
 				<br>
 				<div class="page">
 					<div class="text-center">
-						<a href="#" class="btn btn-dark" con>선택 수정</a> <a href="#"
-							class="btn btn-dark" id="delete">선택 삭제</a> <a href="#"
-							class="btn btn-dark">선택 보기</a>
+						 <a href="#"
+							class="btn btn-dark" id="delete">선택 삭제</a> 
 					</div>
 					<br>
 					<nav aria-label="Page navigation example">
