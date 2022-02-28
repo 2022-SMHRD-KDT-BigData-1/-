@@ -131,8 +131,6 @@ html, body {
 				</div>
 				<li class="nav-item active"><a class="nav-link"
 					href="plogout.jsp">로그아웃</a></li>
-
-
 			</ul>
 		</nav>
 	</header>
@@ -159,6 +157,9 @@ html, body {
 					<li><a href="#">로그아웃</a></li>
 				</ul>
 			</div>
+			
+			
+			
 		</nav>
 	</div>
 	<script src="js/jquery-2.1.3.min.js"></script>
