@@ -13,8 +13,7 @@ String pageNum = request.getParameter("pageNum");
 String searchWord = request.getParameter("searchWord");
 pageContext.setAttribute("searchWord", searchWord);
 
-
-if (pageNum == null){ // 클릭한게 없으면 1번 페이지
+if (pageNum == null) { // 클릭한게 없으면 1번 페이지
 	pageNum = "1";
 }
 
@@ -27,11 +26,10 @@ int endRow = currentPage * pageSize;
 int count = 0;
 count = bookDAO.getCount(searchWord); // 데이터베이스에 저장된 총 갯수
 
- 
-if(count > 0){
+if (count > 0) {
 	bklist = bookDAO.getList(startRow, endRow, searchWord);
 	pageContext.setAttribute("bklist", bklist);
-	
+
 }
 %>
 <!DOCTYPE html>
@@ -49,7 +47,7 @@ if(count > 0){
 <!-- Favicon  -->
 <link rel="icon" href="image/p+만.png" />
 <!-- Core Style CSS -->
-<link rel="stylesheet" href="css/core-style.css"/>
+<link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
 
 <link rel="stylesheet"
@@ -62,8 +60,9 @@ if(count > 0){
 
 <style>
 body {
-    background: #d1d5db
+	background: #d1d5db
 }
+
 .height {
 	height: 100vh
 }
@@ -124,7 +123,7 @@ body {
 			<!-- Navbar Toggler -->
 			<div class="amado-navbar-toggler">
 				<button type="button" class="btn" data-toggle="collapse"
-					data-target="#demo" style="background-color:black">
+					data-target="#demo" style="background-color: black">
 					<span></span><span></span><span></span>
 				</button>
 			</div>
@@ -217,7 +216,7 @@ body {
 
 
 
-		<div class="shop_sidebar_area" style="bg-color:#f5f7fa">
+		<div class="shop_sidebar_area" style="bg-color: #f5f7fa">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<!-- Widget Title -->
@@ -234,24 +233,25 @@ body {
 
 		</div>
 
-		<div class="container" style="bg-color:#fbb710">
+		<div class="container" style="bg-color: #fbb710">
 			<div
 				class="row height d-flex justify-content-center align-items-center">
 				<div class="col-md-6">
 					<div class="form">
-					<form action="">
-						<i class="fa fa-search"></i> <input type="text"
-							class="form-control form-input" value="${param.searchWord}" name="searchWord" id="searchWord" style="height: 55px;
-    text-indent: 33px;
-    border-radius: 10px;
-    margin-top: 90px;">
-						<div class="text-center"><span class="left-pan">
-					<a class="btn" id="q">검색</a>
-				</span></div>
-				</form>
-				<div class="col-12" style="flex: 0 0 100%; width: 75rem; padding-right: 250px; margin-left: -132px">
+						<form action="">
+							<i class="fa fa-search"></i> <input type="text"
+								class="form-control form-input" value="${param.searchWord}"
+								name="searchWord" id="searchWord"
+								style="height: 55px; text-indent: 33px; border-radius: 10px; margin-top: 90px;">
+							<div class="text-center">
+								<span class="left-pan"> <a class="btn" id="q">검색</a>
+								</span>
+							</div>
+						</form>
+						<div class="col-12"
+							style="flex: 0 0 100%; width: 75rem; padding-right: 250px; margin-left: -132px">
 							<div class=" ">
-							<br>
+								<br>
 								<h4>[도서검색]</h4>
 							</div>
 
@@ -268,80 +268,77 @@ body {
 										<tbody style="text-align: center;">
 											<tr>
 
-												<td><a href="BookintCon?num=${i.book_num}"><img src="${i.book_img}" style="height: 13rem;"></a></td>
+												<td><a href="BookintCon?num=${i.book_num}"><img
+														src="${i.book_img}" style="height: 13rem;"></a></td>
 												<td class="wish-num" style="font-size: 20px;">
-														${i.book_title }</td>
-												<td><div style="font-size:20px">${i.book_author }</div></td>
+													${i.book_title }</td>
+												<td><div style="font-size: 20px">${i.book_author }</div></td>
 
 											</tr>
 										</tbody>
 									</c:forEach>
 								</table>
 								<nav aria-label="Page navigation example">
-					<div class="text-center">
-						<ul class="pagination" style="justify-content: center;">
-							
-							<%
-								if(count > 0){
-									// 총 페이지의 수
-									int pageCount = count / pageSize + (count%pageSize == 0 ? 0 : 1);
-									
-									// 한 페이지에 보여줄 페이지 블럭(링크) 수
-									int pageBlock = 10;
-									// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
-									int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
-									int endPage = startPage + pageBlock - 1;
-									
-									// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
-									if(endPage > pageCount){
-										endPage = pageCount;
-									}
-									
-									if(startPage > pageBlock){ // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
-								
-							
-							%>
-										<li class="page-item">
-											<a class="page-link" href="search1.jsp?pageNum=<%= startPage - 10 %>&searchWord=<%=searchWord %>" aria-label="Previous">
-											<span aria-hidden="true">&laquo;</span>
-											<span class="sr-only">Previous</span>
-											</a>
-										</li>
-									
-							<%
-								}
-										for(int i=startPage; i <= endPage; i++){ // 페이지 블록 번호
-											if(i == currentPage){ // 현재 페이지에는 링크를 설정하지 않음
-							
-							%>				
-											<%=i %>
-											
-								<%									
-											}else{ // 현재 페이지가 아닌 경우 링크 설정
-								%>	
-											<li class="page-item">
-												<a class="page-link" href="search1.jsp?pageNum=<%=i%>&searchWord=<%=searchWord %>"><%=i %></a>
+									<div class="text-center">
+										<ul class="pagination" style="justify-content: center;">
+
+											<%
+											if (count > 0) {
+												// 총 페이지의 수
+												int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+												// 한 페이지에 보여줄 페이지 블럭(링크) 수
+												int pageBlock = 10;
+												// 한 페이지에 보여줄 시작 및 끝 번호(예 : 1, 2, 3 ~ 10 / 11, 12, 13 ~ 20)
+												int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+												int endPage = startPage + pageBlock - 1;
+
+												// 마지막 페이지가 총 페이지 수 보다 크면 endPage를 pageCount로 할당
+												if (endPage > pageCount) {
+													endPage = pageCount;
+												}
+
+												if (startPage > pageBlock) { // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
+											%>
+											<li class="page-item"><a class="page-link"
+												href="search1.jsp?pageNum=<%=startPage - 10%>&searchWord=<%=searchWord%>"
+												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+													<span class="sr-only">Previous</span>
+											</a></li>
+
+											<%
+											}
+											for (int i = startPage; i <= endPage; i++) { // 페이지 블록 번호
+											if (i == currentPage) { // 현재 페이지에는 링크를 설정하지 않음
+											%>
+											<%=i%>
+
+											<%
+											} else { // 현재 페이지가 아닌 경우 링크 설정
+											%>
+											<li class="page-item"><a class="page-link"
+												href="search1.jsp?pageNum=<%=i%>&searchWord=<%=searchWord%>"><%=i%></a>
 											</li>
-											<%	
-								}
-							} // for end
-							
-							if(endPage < pageCount){ // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
-					%>
-										<li class="page-item">
-											<a class="page-link" href="search1.jsp?pageNum=${startPage + 10 }$searchWord=<%=searchWord %>" aria-label="Next"> 
-												<span aria-hidden="true">&raquo;</span> 
-												<span class="sr-only">Next</span>
-											</a>
-										</li>
-										<%}
-							}
-							%>
-							
-						</ul>
-					</div>
-				</nav>
-								
+											<%
+											}
+											} // for end
+
+											if (endPage < pageCount) { // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
+											%>
+											<li class="page-item"><a class="page-link"
+												href="search1.jsp?pageNum=${startPage + 10 }$searchWord=<%=searchWord %>"
+												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+													<span class="sr-only">Next</span>
+											</a></li>
+											<%
+											}
+											}
+											%>
+
+										</ul>
+									</div>
+								</nav>
+
 							</div>
 						</div>
 					</div>
@@ -353,15 +350,19 @@ body {
 	<!-- ##### Main Content Wrapper End ##### -->
 	<script src="jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-	 $(document).ready(function() {
-		 $("#q").click(function () {
-			 var searchWord = $("#searchWord").val();
-			 location.href='Search.do?keyWord=book_title&searchWord='+searchWord;
-				console.log(searchWord);
-		}) 
-	});
-	
-	
+		$(document)
+				.ready(
+						function() {
+							$("#q")
+									.click(
+											function() {
+												var searchWord = $(
+														"#searchWord").val();
+												location.href = 'Search.do?keyWord=book_title&searchWord='
+														+ searchWord;
+												console.log(searchWord);
+											})
+						});
 	</script>
 
 	<!-- ##### Footer Area Start ##### -->
