@@ -81,12 +81,38 @@ if (member != null) {
 </head>
 
 <body>
+		<!-- Mobile Nav (max width 767px)-->
+		<div class="mobile-nav">
+			<!-- Navbar Brand -->
+			<div class="amado-navbar-brand">
+				<a href="index.html"><img src="image/p+만1.png" alt="" /></a>
+			</div>
+			<!-- Navbar Toggler -->
+			<div class="amado-navbar-toggler">
+				<button type="button" class="btn" data-toggle="collapse"
+					data-target="#demo" style="background-color:black">
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+		</div>
+		<div class="collapse navbar-collapse" id="demo">
+			<ul class="navbar-nav">
 
+				<li clas="nav-item"><a class="nav-link" href="#">사이트 소개</a></li>
+				<li clas="nav-item"><a class="nav-link" href="컨텐츠추천.jsp">컨텐츠
+						추천</a></li>
+				<li clas="nav-item"><a class="nav-link" href="plannermain.jsp">학습플래너</a></li>
+				<li clas="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
+				<li clas="nav-item"><a class="nav-link" href="mypg_main.jsp">마이페이지</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="plogout.jsp">로그아웃</a></li>
+			</ul>
+		</div>
 	<header id="header" class="fixed-top header-scrolled">
-		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="#"><img style="width: 40px"
-				src="image/p+만.png"></a>
-			<ul style="padding-right: 30px">
+			<nav id="navbar" class="navbar">
+				<a style="padding-left: 15px" href="ploginmain.jsp"><img
+					style="width: 50px" src="image/p+만1.png"></a>
+				<ul style="padding-right: 30px">
 				<c:choose>
 					<c:when test="${member.member_id=='admin'}">
 						<li><a class="nav-link scrollto" href="#"
@@ -146,12 +172,12 @@ if (member != null) {
 						</div>
 						<li></li>
 						<div class="dropdown nav-item active">
-							<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
+							<a class="nav-link dropdown-toggle" href="mypg_main.jsp">마이페이지</a>
 							<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 								<li><a class="dropdown-item" href="pupdate.jsp">회원정보 수정/탈퇴</a></li>
 								<li><a class="dropdown-item" href="achieveall.jsp">전체
 										학습상황 조회</a></li>
-								<li><a class="dropdown-item" href="#">위시리스트</a></li>
+								<li><a class="dropdown-item" href="mybookwish.jsp">위시리스트</a></li>
 							</ul>
 						</div>
 						<li class="nav-item active"><a class="nav-link" href="plogout.jsp">로그아웃</a>

@@ -3,11 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login V2</title>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+   <!-- Title  -->
+<title>P+(Programming에 Planner를 더하다.)</title>
+<!-- Favicon  -->
+<link rel="icon" href="image/p+만.png" />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
@@ -65,10 +68,10 @@
   
   <header id="header" class="fixed-top header-scrolled">
 	
-			<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 1500px" href="poutmain.jsp"><img style="width: 40px"
-				src="image/p+만.png"></a>
-			<ul style="padding-right: 30px">
+		<nav id="navbar" class="navbar">
+				<a style="padding-left: 15px" href="ploginmain.jsp"><img
+					style="width: 50px" src="image/p+만1.png"></a>
+				<ul style="padding-right: 30px">
 				<li><a class="nav-link scrollto" href="#"
 					style="text-decoration: none">사이트 소개</a></li>
 

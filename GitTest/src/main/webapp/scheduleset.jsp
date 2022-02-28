@@ -97,283 +97,311 @@
 	</div>
 
 
-	<header id="header" class="fixed-top header-scrolled">
-		<nav id="navbar" class="navbar" style="justify-content: end">
-			<a style="padding-right: 57%" href="ploginmain.jsp"><img
-				style="width: 40px" src="image/p+만.png"></a>
-			<ul style="padding-right: 30px">
-				<li><a class="nav-link scrollto" href="#"
-					style="text-decoration: none">사이트 소개</a></li>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a style="text-decoration: none" class="nav-link dropdown-toggle"
-						href="컨텐츠추천.jsp">컨텐츠 추천</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및 재검사</a></li>
-						<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
-					</ul>
-				</div>
-
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
-					<span class="caret"></span>
-
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">스케줄</li>
-						<hr>
-						<li><a href="scheduleset.jsp">등록</a></li>
-						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">일정</li>
-						<hr>
-						<li><a href="dayplantodayset.jsp">등록</a></li>
-						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
-
-						<br>
-						<li class="divider"></li>
-						<li class="dropdown-header">조회</li>
-						<hr>
-						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
-						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
-					</ul>
-				</div>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">등록</a></li>
-
-						<li><a class="dropdown-item" href="#">목록</a></li>
-					</ul>
-				</div>
-				<li></li>
-				<div class="dropdown nav-item active">
-					<a class="nav-link dropdown-toggle" href="#">마이페이지</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="pupdate.jsp">회원정보
-								수정/탈퇴</a></li>
-						<li><a class="dropdown-item" href="achieveall.jsp">전체
-								학습상황 조회</a></li>
-						<li><a class="dropdown-item" href="#">위시리스트</a></li>
-					</ul>
-				</div>
-				<li class="nav-item active"><a class="nav-link"
-					href="plogout.jsp">로그아웃</a></li>
-
-
-			</ul>
-		</nav>
-	</header>
-
-
-	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
-		<div class="mobile-nav"></div>
-		<div class="shop_sidebar_area">
-			<!-- ##### Single Widget ##### -->
-			<div class="widget catagory mb-50">
-				<h6 class="widget-title mb-30">학습플래너</h6>
-				<br>
-				<!-- Widget Title -->
-				<!--<h6 class="widget-title mb-30">스케줄</h6>
- -->
-				<!--  Catagories  -->
-				<div class="catagories-menu">
-					<ul>
-						<li class="active" style="color: #fbb710"><a>스케줄</a></li>
-						<hr />
-						<li><a href="scheduleset.jsp">등록</a></li>
-						<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
-
-					</ul>
-				</div>
+		<div class="mobile-nav">
+			<!-- Navbar Brand -->
+			<div class="amado-navbar-brand">
+				<a href="index.html"><img src="image/p+만1.png" alt="" /></a>
 			</div>
-
-			<!-- ##### Single Widget ##### -->
-			<div class="widget category mb-50">
-				<!-- Widget Title -->
-				<!--<h6 class="widget-title mb-30">일정</h6>
- -->
-				<!-- Widget Title -->
-
-				<div class="catagories-menu">
-					<ul>
-						<li class="active" style="color: #fbb710"><a>일정</a></li>
-						<hr />
-						<li><a href="dayplantodayset.jsp">등록</a></li>
-						<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<!-- ##### Single Widget ##### -->
-			<div class="widget category mb-50">
-				<!-- Widget Title -->
-				<!-- <h6 class="widget-title mb-30">일정</h6>
- -->
-				<!-- Widget Title -->
-
-				<div class="catagories-menu">
-					<ul>
-						<li class="active" style="color: #fbb710"><a>조회</a></li>
-						<hr />
-						<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
-						<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
-						<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
-
-					</ul>
-				</div>
+			<!-- Navbar Toggler -->
+			<div class="amado-navbar-toggler">
+				<button type="button" class="btn" data-toggle="collapse"
+					data-target="#demo" style="background-color: black">
+					<span></span><span></span><span></span>
+				</button>
 			</div>
 		</div>
+		<div class="collapse navbar-collapse" id="demo">
+			<ul class="navbar-nav">
 
-		<div class="" style="width: 40%; margin-top: 100px; margin-left: 25%;">
-			<h1>스케줄 등록</h1>
-			<br>
-			<!-- Option 1: Bootstrap Bundle with Popper -->
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-				crossorigin="anonymous"></script>
+				<li clas="nav-item"><a class="nav-link" href="#">사이트 소개</a></li>
+				<li clas="nav-item"><a class="nav-link" href="컨텐츠추천.jsp">컨텐츠
+						추천</a></li>
+				<li clas="nav-item"><a class="nav-link" href="plannermain.jsp">학습플래너</a></li>
+				<li clas="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
+				<li clas="nav-item"><a class="nav-link" href="mypg_main.jsp">마이페이지</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="plogout.jsp">로그아웃</a></li>
+			</ul>
+		</div>
+		<header id="header" class="fixed-top header-scrolled">
+			<nav id="navbar" class="navbar">
+				<a style="padding-left: 15px" href="ploginmain.jsp"><img
+					style="width: 50px" src="image/p+만1.png"></a>
+				<ul style="padding-right: 30px">
+					<li><a class="nav-link scrollto" href="#"
+						style="text-decoration: none">사이트 소개</a></li>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a style="text-decoration: none" class="nav-link dropdown-toggle"
+							href="컨텐츠추천.jsp">컨텐츠 추천</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="ptype.jsp">유형 확인 및
+									재검사</a></li>
+							<li><a class="dropdown-item" href="search1.jsp">책 검색</a></li>
+						</ul>
+					</div>
 
-			<div class="check" style="line-height: 2">
-				<div class="form-check">
-					<input class="form-check-input " type="radio" value="wish"
-						name="serviceType" checked="checked" id="flexRadioDefault1">
-					<label class="form-check-label" for="flexRadioDefault1">
-						위시리스트에서 찾기 </label>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="plannermain.jsp">학습플래너</a>
+						<span class="caret"></span>
+
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">스케줄</li>
+							<hr>
+							<li><a href="scheduleset.jsp">등록</a></li>
+							<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+
+							<br>
+							<li class="divider"></li>
+							<li class="dropdown-header">일정</li>
+							<hr>
+							<li><a href="dayplantodayset.jsp">등록</a></li>
+							<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
+
+							<br>
+							<li class="divider"></li>
+							<li class="dropdown-header">조회</li>
+							<hr>
+							<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
+							<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+							<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
+						</ul>
+					</div>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="#">포트폴리오</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="#">등록</a></li>
+
+							<li><a class="dropdown-item" href="#">목록</a></li>
+						</ul>
+					</div>
+					<li></li>
+					<div class="dropdown nav-item active">
+						<a class="nav-link dropdown-toggle" href="mypg_main.jsp">마이페이지</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="pupdate.jsp">회원정보
+									수정/탈퇴</a></li>
+							<li><a class="dropdown-item" href="achieveall.jsp">전체
+									학습상황 조회</a></li>
+							<li><a class="dropdown-item" href="mybookwish.jsp">위시리스트</a></li>
+						</ul>
+					</div>
+					<li class="nav-item active"><a class="nav-link"
+						href="plogout.jsp">로그아웃</a></li>
+
+
+				</ul>
+			</nav>
+		</header>
+
+			<div class="shop_sidebar_area">
+				<!-- ##### Single Widget ##### -->
+				<div class="widget catagory mb-50">
+					<h6 class="widget-title mb-30">학습플래너</h6>
+					<br>
+					<!-- Widget Title -->
+					<!--<h6 class="widget-title mb-30">스케줄</h6>
+ -->
+					<!--  Catagories  -->
+					<div class="catagories-menu">
+						<ul>
+							<li class="active" style="color: #fbb710"><a>스케줄</a></li>
+							<hr />
+							<li><a href="scheduleset.jsp">등록</a></li>
+							<li><a href="scheduleindex.jsp">전체 스케줄 목록</a></li>
+
+						</ul>
+					</div>
 				</div>
 
-				<div class="form-check">
-					<input class="form-check-input" type="radio" value="search"
-						name="serviceType" id="flexRadioDefault2"> <label
-						class="form-check-label" for="flexRadioDefault2"> 전체 도서 검색
-					</label>
+				<!-- ##### Single Widget ##### -->
+				<div class="widget category mb-50">
+					<!-- Widget Title -->
+					<!--<h6 class="widget-title mb-30">일정</h6>
+ -->
+					<!-- Widget Title -->
+
+					<div class="catagories-menu">
+						<ul>
+							<li class="active" style="color: #fbb710"><a>일정</a></li>
+							<hr />
+							<li><a href="dayplantodayset.jsp">등록</a></li>
+							<li><a href="dayplantodayindex.jsp">전체 일정 목록</a></li>
+						</ul>
+					</div>
 				</div>
 
-				<div class="form-check">
-					<input class="form-check-input" type="radio" value="user"
-						name="serviceType" id="flexRadioDefault3"> <label
-						class="form-check-label" for="flexRadioDefault3"> 보유 도서 정보
-						입력 </label>
+				<!-- ##### Single Widget ##### -->
+				<div class="widget category mb-50">
+					<!-- Widget Title -->
+					<!-- <h6 class="widget-title mb-30">일정</h6>
+ -->
+					<!-- Widget Title -->
+
+					<div class="catagories-menu">
+						<ul>
+							<li class="active" style="color: #fbb710"><a>조회</a></li>
+							<hr />
+							<li><a href="editorallindex.jsp">전체 에디터 목록</a></li>
+							<li><a href="diaryallindex.jsp">전체 일기 목록</a></li>
+							<li><a href="todoallindex.jsp">전체 할 일 목록</a></li>
+
+						</ul>
+					</div>
 				</div>
 			</div>
-			<br>
-			<hr>
-			<br>
-			<div class="container">
-				<h1>스케줄</h1>
-				<form action="ScheduleCon.do" method="post">
-					<div id="viewwish">
-						위시리스트에서 도서 선정
-						
-						<c:choose>
-							<c:when test="${empty requestScope.bk }">
-								<div class="input-group mb-3">
-									<input type="text" class="form-control" aria-label="bookname"
-										aria-describedby="button-addon2" id="wishbook_title"
-										name="wishbook_title" onclick="mybook()" placeholder="위시리스트"
-										class="btn btn-dark"> <br> <input type="button"
-										value="위시리스트" onclick="mybook()"> <input type="text"
-										id="wishbook_num" style="display: none;" name="wishbook_num">
-									<input type="text" id="wishbook_page" style="display: none;"
-										name="wishbook_page">
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="input-group mb-3">
-									<input type="text" class="form-control" aria-label="bookname"
-										aria-describedby="button-addon2" id="wishbook_title" value="${requestScope.bk.book_title }"
-										name="wishbook_title" onclick="mybook()" placeholder="${requestScope.bk.book_title }"
-										class="btn btn-dark"> <br> <input type="button"
-										value="위시리스트" onclick="mybook()"> <input type="text"
-										id="wishbook_num" style="display: none;" name="wishbook_num" value="${requestScope.bk.book_num }">
-									<input type="text" id="wishbook_page" style="display: none;"
-										name="wishbook_page" value="${requestScope.bk.book_page }">
-								</div>
-							</c:otherwise>
-						</c:choose>
-						
-						스케줄 이름 : <input type="text" class="form-control" name="title"
-							placeholder="스케줄 이름을 입력하세요." /> <br> 학습 시작일 <input
-							type="date" name="start" id="Date1" onchange="call()"
-							class="form-control" placeholder="date input" /> <br> 학습
-						종료일 <input type="date" name="end" id="Date2" onchange="call()"
-							class="form-control" placeholder="date input" /> <br> 예상
-						학습일 수 <input type="text" class="form-control" id="day1" size="6"
-							style="text-align: center;" name="day" readonly="readonly" /> <br>
-						<div class="text-center">
-							<input type="submit" class="btn btn-dark"
-								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-								value="스케줄 등록">
-						</div>
+
+			<div class=""
+				style="width: 40%; margin-top: 100px; margin-left: 25%;">
+				<h1>스케줄 등록</h1>
+				<br>
+				<!-- Option 1: Bootstrap Bundle with Popper -->
+				<script
+					src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+					integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+					crossorigin="anonymous"></script>
+
+				<div class="check" style="line-height: 2">
+					<div class="form-check">
+						<input class="form-check-input " type="radio" value="wish"
+							name="serviceType" checked="checked" id="flexRadioDefault1">
+						<label class="form-check-label" for="flexRadioDefault1">
+							위시리스트에서 찾기 </label>
 					</div>
-				</form>
+
+					<div class="form-check">
+						<input class="form-check-input" type="radio" value="search"
+							name="serviceType" id="flexRadioDefault2"> <label
+							class="form-check-label" for="flexRadioDefault2"> 전체 도서
+							검색 </label>
+					</div>
+
+					<div class="form-check">
+						<input class="form-check-input" type="radio" value="user"
+							name="serviceType" id="flexRadioDefault3"> <label
+							class="form-check-label" for="flexRadioDefault3"> 보유 도서
+							정보 입력 </label>
+					</div>
+				</div>
+				<br>
+				<hr>
+				<br>
+				<div class="container">
+					<h1>스케줄</h1>
+					<form action="ScheduleCon.do" method="post">
+						<div id="viewwish">
+							위시리스트에서 도서 선정
+
+							<c:choose>
+								<c:when test="${empty requestScope.bk }">
+									<div class="input-group mb-3">
+										<input type="text" class="form-control" aria-label="bookname"
+											aria-describedby="button-addon2" id="wishbook_title"
+											name="wishbook_title" onclick="mybook()" placeholder="위시리스트"
+											class="btn btn-dark"> <br> <input type="button"
+											value="위시리스트" onclick="mybook()"> <input type="text"
+											id="wishbook_num" style="display: none;" name="wishbook_num">
+										<input type="text" id="wishbook_page" style="display: none;"
+											name="wishbook_page">
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="input-group mb-3">
+										<input type="text" class="form-control" aria-label="bookname"
+											aria-describedby="button-addon2" id="wishbook_title"
+											value="${requestScope.bk.book_title }" name="wishbook_title"
+											onclick="mybook()"
+											placeholder="${requestScope.bk.book_title }"
+											class="btn btn-dark"> <br> <input type="button"
+											value="위시리스트" onclick="mybook()"> <input type="text"
+											id="wishbook_num" style="display: none;" name="wishbook_num"
+											value="${requestScope.bk.book_num }"> <input
+											type="text" id="wishbook_page" style="display: none;"
+											name="wishbook_page" value="${requestScope.bk.book_page }">
+									</div>
+								</c:otherwise>
+							</c:choose>
+
+							스케줄 이름 : <input type="text" class="form-control" name="title"
+								placeholder="스케줄 이름을 입력하세요." /> <br> 학습 시작일 <input
+								type="date" name="start" id="Date1" onchange="call()"
+								class="form-control" placeholder="date input" /> <br> 학습
+							종료일 <input type="date" name="end" id="Date2" onchange="call()"
+								class="form-control" placeholder="date input" /> <br> 예상
+							학습일 수 <input type="text" class="form-control" id="day1" size="6"
+								style="text-align: center;" name="day" readonly="readonly" /> <br>
+							<div class="text-center">
+								<input type="submit" class="btn btn-dark" data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop" value="스케줄 등록">
+							</div>
+						</div>
+					</form>
 
 
-				<form action="ScheduleCon.do" method="post">
-					<div id="viewsearch">
-						전체 도서에서 선정
-						<div class="input-group mb-3">
-							<input type="text" id="book_title" class="form-control"
-								onclick="book()" placeholder="전체 도서 목록" name="book_title"
-								aria-label="bookname"> <input type="button"
-								value="도서 검색" onclick="book()"><br> <input
-								type="text" id="book_num" style="display: none;" name="book_num">
-							<input type="text" id="book_page" style="display: none;"
-								name="book_page">
+					<form action="ScheduleCon.do" method="post">
+						<div id="viewsearch">
+							전체 도서에서 선정
+							<div class="input-group mb-3">
+								<input type="text" id="book_title" class="form-control"
+									onclick="book()" placeholder="전체 도서 목록" name="book_title"
+									aria-label="bookname"> <input type="button"
+									value="도서 검색" onclick="book()"><br> <input
+									type="text" id="book_num" style="display: none;"
+									name="book_num"> <input type="text" id="book_page"
+									style="display: none;" name="book_page">
+							</div>
+							스케줄 이름 : <input type="text" class="form-control" name="title"
+								placeholder="스케줄 이름을 입력하세요." /> <br> 학습 시작일 <input
+								type="date" name="start" id="Date3" onchange="call2()"
+								class="form-control" placeholder="date input" /> <br> 학습
+							종료일 <input type="date" name="end" id="Date4" onchange="call2()"
+								class="form-control" placeholder="date input" /> <br> 예상
+							학습일 수 <input type="text" class="form-control" id="day2" size="6"
+								style="text-align: center;" name="day" readonly="readonly" /> <br>
+							<div class="text-center">
+								<input type="submit" class="btn btn-dark" data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop" value="스케줄 등록">
+							</div>
 						</div>
-						스케줄 이름 : <input type="text" class="form-control" name="title"
-							placeholder="스케줄 이름을 입력하세요." /> <br> 학습 시작일 <input
-							type="date" name="start" id="Date3" onchange="call2()"
-							class="form-control" placeholder="date input" /> <br> 학습
-						종료일 <input type="date" name="end" id="Date4" onchange="call2()"
-							class="form-control" placeholder="date input" /> <br> 예상
-						학습일 수 <input type="text" class="form-control" id="day2" size="6"
-							style="text-align: center;" name="day" readonly="readonly" /> <br>
-						<div class="text-center">
-							<input type="submit" class="btn btn-dark"
-								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-								value="스케줄 등록">
-						</div>
-					</div>
-				</form>
-				<!-- 일단 끝 -->
+					</form>
+					<!-- 일단 끝 -->
 
-				<form action="ScheduleCon.do" method="post">
-					<div id="viewuser">
-						<span>보유 도서 정보 입력</span> 도서 제목
-						<div class="input-group mb-3">
-							<input type="text" class="form-control" name="searchbook_title"
-								placeholder="도서 제목을 입력하세요." aria-label="bookname">
+					<form action="ScheduleCon.do" method="post">
+						<div id="viewuser">
+							<span>보유 도서 정보 입력</span> 도서 제목
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" name="searchbook_title"
+									placeholder="도서 제목을 입력하세요." aria-label="bookname">
+							</div>
+							도서 페이지 수
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" name="searchbook_page"
+									placeholder="도서 페이지를 입력하세요." aria-label="bookname">
+							</div>
+							스케줄 이름 : <input type="text" class="form-control" name="title"
+								placeholder="스케줄 이름을 입력하세요." /> <br> 학습 시작일 <input
+								type="date" name="start" id="Date5" onchange="call3()"
+								class="form-control" placeholder="date input" /> <br> 학습
+							종료일 <input type="date" name="end" id="Date6" onchange="call3()"
+								class="form-control" placeholder="date input" /> <br> 예상
+							학습일 수 <input type="text" class="form-control" id="day3" size="6"
+								style="text-align: center;" name="day" readonly="readonly" /> <br>
+							<div class="text-center">
+								<input type="submit" class="btn btn-dark" data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop" value="스케줄 등록">
+							</div>
 						</div>
-						도서 페이지 수
-						<div class="input-group mb-3">
-							<input type="text" class="form-control" name="searchbook_page"
-								placeholder="도서 페이지를 입력하세요." aria-label="bookname">
-						</div>
-						스케줄 이름 : <input type="text" class="form-control" name="title"
-							placeholder="스케줄 이름을 입력하세요." /> <br> 학습 시작일 <input
-							type="date" name="start" id="Date5" onchange="call3()"
-							class="form-control" placeholder="date input" /> <br> 학습
-						종료일 <input type="date" name="end" id="Date6" onchange="call3()"
-							class="form-control" placeholder="date input" /> <br> 예상
-						학습일 수 <input type="text" class="form-control" id="day3" size="6"
-							style="text-align: center;" name="day" readonly="readonly" /> <br>
-						<div class="text-center">
-							<input type="submit" class="btn btn-dark"
-								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-								value="스케줄 등록">
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
+
+
 
 	<script langauge="javascript">
 		function call() {
