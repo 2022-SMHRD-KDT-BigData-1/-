@@ -217,7 +217,7 @@ pageContext.setAttribute("book_part3", book_part3);
 
 				<div class="row">
 					<div class="col-12 col-lg-6">
-						<div class="single_product_thumb" style="padding-left: 140px;">
+						<div class="single_product_thumb" >
 							<div class="book_thumbnail">
 								<img class="bk-img" src="${book.book_img }" alt="" />
 							</div>
