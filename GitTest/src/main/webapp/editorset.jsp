@@ -304,7 +304,7 @@ include summernote-ko-KR
 					<br />
 					<div class="col text-center" style="padding-left: 400px;">
 						<!-- <input type="submit" value="작성완료"> -->
-						<input class="bt" type="submit" value="작성완료">
+						<input class="bt" type="submit" value="작성완료" id="form_button">
 					</div>
 			
 			</div>
@@ -344,7 +344,7 @@ include summernote-ko-KR
 				data: {"editor_title": title, "editor_content": content},
 				datatype:'json',	
 				success : function(result){
-					alert("서버요청성공");
+					location.href='editorindex.jsp';				
 		            },
 		         error : function(){
 		            alert("서버요청실패");

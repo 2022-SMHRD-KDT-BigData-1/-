@@ -1,3 +1,6 @@
+<%@page import="com.pplus.model.EditorDTO"%>
+<%@page import="com.pplus.model.EditorDAO"%>
+<%@page import="com.pplus.model.AchieveDTO"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="com.google.gson.JsonArray"%>
 <%@page import="com.google.gson.Gson"%>
@@ -14,7 +17,12 @@
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
+AchieveDTO achieve = (AchieveDTO) session.getAttribute("achieve");
+
 ScheduleDAO scheduleDao = new ScheduleDAO();
+EditorDAO editorDAO = new EditorDAO();
+
+ArrayList<EditorDTO> editorlist = editorDAO.editorSelectAll2(member.getMember_nick(), schedule.getSchedule_num());
 
 String nick = member.getMember_nick();
 
@@ -29,6 +37,7 @@ todolist = todoDAO.todoSelectAll(nick, schedule_num);
 int todocnt = todolist.size();
 pageContext.setAttribute("todolist", todolist);
 pageContext.setAttribute("todocnt", todocnt);
+pageContext.setAttribute("editorlist", editorlist);
 
 // Gson 객체 만들기 --> 자바의 데이터를 json타입으로 바꾸어 주는 역할
 Gson gson = new Gson();
@@ -302,24 +311,24 @@ body {
 								<div class="card-body ">
 
 									<h2 class="font-weight-bold">
-										학습 중인 책 이름 : <span class="float-center">${schedule.schedule_title }</span>
+										학습 중인 책 이름 : <span class="float-center">${sessionScope.schedule.schedule_name }</span>
 									</h2>
 
 									<h2 class="font-weight-bold">
-										남은 기간 : <span class="float-center">D-9</span>
+										남은 기간 : <span class="float-center" id="dday"></span>
 									</h2>
 
 									<h2 class="font-weight-bold">
-										남은 분량 : <span class="float-center">165P</span>
+										남은 분량 : <span class="float-center" id="page">165P</span>
 									</h2>
 
 									<h2 class="font-weight-bold">
-										전체 페이지 : <span class="float-center">300P</span>
+										전체 페이지 : <span class="float-center" id="bookPage">300P</span>
 									</h2>
 
 
 									<h2 class="font-weight-bold">
-										하루 학습 분량 : <span class="float-center">15P</span>
+										하루 학습 분량 : <span class="float-center" id="todoPage">15P</span>
 									</h2>
 								</div>
 							</div>
@@ -389,40 +398,20 @@ body {
 									<script src="js/jquery/jquery-2.2.4.min.js"></script>
 									<script>
 									
-									   var gs = JSON.parse('<%=gson.toJson(todolist)%>');
-									
-											var eventlist = [ {
-												title : "${schedule.schedule_name}",
-												start : "${schedule.schedule_start}",
-												end : "${schedule.schedule_end}",
-											}, {
-												title : "공부하는 책 : ${schedule.book_title}",
-												start : "${schedule.schedule_start}",
-												end : "${schedule.schedule_end}",
-											}, {
-												title : "공부할 페이지 : ${schedule.schedule_day_page}",
-												start : "${schedule.schedule_start}",
-											end : "${schedule.schedule_end}",
+									   	var gs1 = JSON.parse('<%= gson.toJson(editorlist)%>');
+									   
+										var eventlist1 = [ {
 											} ];
+										
+										for(var i = 0; i <gs1.length; i++){
+											   eventlist1.push({
+												   title : gs1[i]['editor_title'],
+												   start : gs1[i]['editor_date'],
+											   });
+										   }
+										console.log()
 									
-											for (var i = 0; i < gs.length; i++) {
-												if (gs[i]['todo_check'] == 1) {
-													eventlist.push({
-														title : gs[i]['todo_title']+" o",
-														start : gs[i]['todo_date'],
-														end : gs[i]['todo_date']
-													});
-									
-												} else {
-													eventlist.push({
-														title : gs[i]['todo_title']+" x",
-														start : gs[i]['todo_date'],
-														end : gs[i]['todo_date']
-													});
-									
-												}
-									
-											}
+										
 									
 											$(document).ready(function() {
 												var calendarEl = document.getElementById("tetetetetee");
@@ -432,7 +421,7 @@ body {
 													locale : 'ko',
 													editable : true,
 													eventLimit : true, // allow "more" link when too many events
-													events : eventlist,
+													events : eventlist1,
 													height: '900px'
 													,
 												});
@@ -463,9 +452,17 @@ body {
 
 <script src="jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-	let today = new Date();   
-
+	let today = new Date();
+	var Dday = new Date("<%= schedule.getSchedule_end() %>"); 
+	
+	var gap = Dday.getTime() - today.getTime();
+	var result = Math.floor(gap / (1000 * 60 * 60 * 24));
+	
 	$("#day").text(today.toLocaleDateString());
+	$("#dday").text("D"+" - " + result);
+	$("#page").text("<%= achieve.getBook_page() - achieve.getAchieve_study_page() + "P"%>");
+	$("#bookPage").text("<%= achieve.getBook_page() +"P"%>" );
+	$("#todoPage").text("<%= schedule.getSchedule_day_page() +"P"%>" );
 	
 	
 	</script>

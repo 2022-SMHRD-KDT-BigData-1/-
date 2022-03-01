@@ -313,7 +313,7 @@ if (count > 0) {
 									if (startPage > pageBlock) { // 페이지 블록수보다 startPage가 클경우 이전 링크 생성
 								%>
 								<li class="page-item"><a class="page-link"
-									href="diaryindex.jsp?pageNum=<%=startPage - 10%>"
+									href="diaryallindex.jsp?pageNum=<%=startPage - 10%>"
 									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 										<span class="sr-only">Previous</span>
 								</a></li>
@@ -329,7 +329,7 @@ if (count > 0) {
 								} else { // 현재 페이지가 아닌 경우 링크 설정
 								%>
 								<li class="page-item"><a class="page-link"
-									href="diaryindex.jsp?pageNum=<%=i%>"><%=i%></a></li>
+									href="diaryallindex.jsp?pageNum=<%=i%>"><%=i%></a></li>
 								<%
 								}
 								} // for end
@@ -337,7 +337,7 @@ if (count > 0) {
 								if (endPage < pageCount) { // 현재 블록의 마지막 페이지보다 페이지 전체 블록수가 클경우 다음 링크 생성
 								%>
 								<li class="page-item"><a class="page-link"
-									href="diaryindex.jsp?pageNum=${startPage + 10 }"
+									href="diaryallindex.jsp?pageNum=${startPage + 10 }"
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 										<span class="sr-only">Next</span>
 								</a></li>

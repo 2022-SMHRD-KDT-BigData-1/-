@@ -197,6 +197,31 @@ public class EditorDAO {
 
 		return editorlist;
 	}
+	public ArrayList<EditorDTO> editorSelectAll2(String nick, int num) {
+		ArrayList<EditorDTO> editorlist = new ArrayList<EditorDTO>();
+		connect();
+
+		sql = "select seq_editor_num, editor_title, editor_content, to_char(sysdate, 'yyyy-mm-dd'), seq_schedule_num, "
+				+ "seq_dayplan_num, member_nick from editor where member_nick=? and seq_schedule_num=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				editorlist.add(new EditorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getInt(6), rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return editorlist;
+	}
 	// editor DB에 저장되어 있는 회원에 모든 일기를 가지고 오기 위해서
 	// memberEditorSelectAll에 입력 변수는 회원의 닉네임(string) 출력 변수는 ArrayList<EditorDTO> editorlist
 	public ArrayList<EditorDTO> memberEditorSelectAll(String nick) {
