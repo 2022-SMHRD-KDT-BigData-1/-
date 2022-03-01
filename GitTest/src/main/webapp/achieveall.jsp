@@ -80,7 +80,6 @@
  height: 32%;
  border: 2px solid black;
  border-radius: 15px
-
 }​
 
 </style>

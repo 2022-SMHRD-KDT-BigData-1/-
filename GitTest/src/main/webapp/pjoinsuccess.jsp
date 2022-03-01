@@ -8,18 +8,51 @@
 <title>P+(Programming에 Planner를 더하다.)</title>
 <!-- Favicon  -->
 <link rel="icon" href="image/p+만.png" />
+<link rel="stylesheet" type="text/css" href="css1/util.css" />
+<link rel="stylesheet" type="text/css" href="css1/main.css" />
+<style>
+.wrap-login100 {
+	border: solid 4px #30467c;
+	width: 490px;
+	height: 490px;
+	padding: 30px 55px 33px 55px;
+	text-align: center;
+}
+
+.joinsuc {
+line-height:2;}
+
+#main{
+background-color: black;
+    font-family: -webkit-body;
+   
+    border-style: none;
+    height: 33px;
+    width: 95px;
+    border-radius: 3px;
+    color: white;
+
+}
+</style>
 </head>
 <body>
-	<div>
-		<nav>
-		<ul>
-			<li><h1>환영합니다!</h1></li>
-			<li>회원가입을 축하합니다.</li>
-			<li>P+의 닉네임은 ${requestScope.nick }입니다.</li>
-			<li>P+의 아이디는 ${requestScope.id }입니다.</li>
-			<li><button onclick='location.href="poutmain.jsp"'>메인으로</button></li>
-		</ul>
-		</nav>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<ul>
+					<li class="joinsuc"><img src="image/p+만1.png" width="180"
+						style="display: block; margin: auto;"></li>
+					<li class="joinsuc"><h1>환영합니다!</h1></li>
+					<li class="joinsuc"><h2>p+ 회원이 되신 것을 축하합니다.</h2></li>
+					<li class="joinsuc"><h2>아이디는 ${requestScope.id }입니다.</h2></li>
+					<li class="joinsuc"><h2>닉네임은 ${requestScope.nick }입니다.</h2></li>
+					<br>
+					<li class="joinsuc"><button onclick='location.href="poutmain.jsp"'><h2 id="main">메인으로</h2></button></li>
+					
+				</ul>
+			</div>
+		</div>
 	</div>
-</body> 
+</body>
 </html>

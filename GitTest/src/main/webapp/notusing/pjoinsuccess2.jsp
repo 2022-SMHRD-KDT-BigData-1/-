@@ -14,13 +14,25 @@
 .wrap-login100 {
 	border: solid 4px #30467c;
 	width: 490px;
-	height: 470px;
+	height: 490px;
 	padding: 30px 55px 33px 55px;
 	text-align: center;
 }
 
 .joinsuc {
 line-height:2;}
+
+#main{
+background-color: black;
+    font-family: -webkit-body;
+   
+    border-style: none;
+    height: 33px;
+    width: 95px;
+    border-radius: 3px;
+    color: white;
+
+}
 </style>
 </head>
 <body>
@@ -35,7 +47,9 @@ line-height:2;}
 					<li class="joinsuc"><h2>p+ 회원이 되신 것을 축하합니다.</h2></li>
 					<li class="joinsuc"><h2>아이디는 ${requestScope.id }입니다.</h2></li>
 					<li class="joinsuc"><h2>닉네임은 ${requestScope.nick }입니다.</h2></li>
-					<li class="joinsuc"><button onclick='location.href="poutmain.jsp"'><u>메인으로</u></button></li>
+					<br>
+					<li class="joinsuc"><button onclick='location.href="poutmain.jsp"'><h2 id="main">메인으로</h2></button></li>
+					
 				</ul>
 			</div>
 		</div>
