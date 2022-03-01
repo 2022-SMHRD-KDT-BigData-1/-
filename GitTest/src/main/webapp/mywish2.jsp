@@ -24,7 +24,10 @@ session.setAttribute("wishlistvideo", wishlistvideo);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<!-- Title  -->
+<title>P+(Programming에 Planner를 더하다.)</title>
+<!-- Favicon  -->
+<link rel="icon" href="image/p+만.png" />
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
 <link rel="stylesheet" href="style.css" />
@@ -53,7 +56,7 @@ session.setAttribute("wishlistvideo", wishlistvideo);
 										</a>
 									</td>
 									<td>
-										<a href="javascript:sendBookValues1('${wish.book_title}', '${wish.book_num}', '${wish.book_page}' )"> 
+										<a href="javascript:sendBookValues1('${wish.book_title}', '${wish.book_num}', '${wish.book_page}' )" style="font-size: 20px;"> 
 											스케줄 등록
 										</a>
 									</td>

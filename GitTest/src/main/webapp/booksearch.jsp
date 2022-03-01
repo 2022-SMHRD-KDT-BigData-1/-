@@ -15,10 +15,9 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>Amado - Furniture Ecommerce Template | Shop</title>
-
+<title>P+(Programming에 Planner를 더하다.)</title>
 <!-- Favicon  -->
-<link rel="icon" href="img/core-img/favicon.ico" />
+<link rel="icon" href="image/p+만.png" />
 
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
@@ -68,7 +67,8 @@
 									<option value="book_title">제목</option>
 									<option value="book_author">저자</option>
 								</select> <input type="text" name="searchWord"> <input
-									type="submit" value="검색">
+									type="submit" value="검색" style="background-color: #FFA076;
+    width: 55px;">
 							</form>
 						</div>
 						<div class="col-12">
