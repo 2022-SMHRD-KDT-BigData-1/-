@@ -242,7 +242,8 @@ body {
 							<i class="fa fa-search"></i> <input type="text"
 								class="form-control form-input" value="${param.searchWord}"
 								name="searchWord" id="searchWord"
-								style="height: 55px; text-indent: 33px; border-radius: 10px; margin-top: 90px;">
+								style="height: 55px; text-indent: 33px; border-radius: 10px; margin-top: 90px; 	border: solid
+								">
 							<div class="text-center">
 								<span class="left-pan"> <a class="btn" id="q">검색</a>
 								</span>

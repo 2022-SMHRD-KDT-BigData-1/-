@@ -11,7 +11,7 @@ ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 
 DiaryDAO diaryDAO = new DiaryDAO();
-ArrayList<DiaryDTO> diarylist = new ArrayList<DiaryDTO>();
+ArrayList<DiaryDTO> diaryalllist = new ArrayList<DiaryDTO>();
 
 int pageSize = 10;
 String pageNum = request.getParameter("pageNum");
@@ -27,11 +27,11 @@ int startRow = (currentPage - 1) * pageSize + 1;
 int endRow = currentPage * pageSize;
 
 int count = 0;
-count = diaryDAO.getCount(schedule.getSchedule_num()); // 데이터베이스에 저장된 총 갯수
+count = diaryDAO.getCount2(member.getMember_nick()); // 데이터베이스에 저장된 총 갯수
 
 if (count > 0) {
-	diarylist = diaryDAO.getList(startRow, endRow, member, schedule);
-	pageContext.setAttribute("diarylist", diarylist);
+	diaryalllist = diaryDAO.memberDiarySelectAll(member.getMember_nick());
+	pageContext.setAttribute("diaryalllist", diaryalllist);
 
 }
 %>
@@ -249,7 +249,7 @@ if (count > 0) {
 							</tr>
 						</thead>
 						<body>
-							<c:forEach var="i" items="${diarylist }">
+							<c:forEach var="i" items="${diaryalllist }">
 								<tr>
 									<td><div class="form-check">
 											<input class="form-check-input" type="checkbox"

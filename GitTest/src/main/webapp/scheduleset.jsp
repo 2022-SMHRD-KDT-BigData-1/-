@@ -61,42 +61,6 @@
 					});
 				});
 	</script>
-	<!-- Modal -->
-	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-		data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">
-						<!-- <i class="bi bi-exclamation-circle"></i> -->
-						<i class="bi bi-exclamation-circle-fill"></i> 학습일 안내
-					</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-								d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
-            <path fill-rule="evenodd"
-								d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
-          </svg>
-					</button>
-				</div>
-				<br>
-				<div class="modal-body text-center" style="font-size: 20px;">
-					예상 학습일 30일 이상 90일 이하일 때 <br> 스케줄 등록 가능합니다. <br /> 다시 설정해 주세요
-				</div>
-				<br>
-
-				<div class=" modal-footer ">
-					<a href="#" class="btn btn-dark ">이전 페이지</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
 	<div class="main-content-wrapper d-flex clearfix">
 		<!-- Mobile Nav (max width 767px)-->
 		<div class="mobile-nav">
@@ -303,7 +267,7 @@
 											aria-describedby="button-addon2" id="wishbook_title"
 											name="wishbook_title" onclick="mybook()" placeholder="위시리스트"
 											class="btn btn-dark"> <br> <input type="button"
-											value="위시리스트" onclick="mybook()"> <input type="text"
+											value="위시리스트" onclick="mybook()"style="background-color: #FFA076;"> <input type="text"
 											id="wishbook_num" style="display: none;" name="wishbook_num">
 										<input type="text" id="wishbook_page" style="display: none;"
 											name="wishbook_page">
@@ -349,7 +313,7 @@
 								<input type="text" id="book_title" class="form-control"
 									onclick="book()" placeholder="전체 도서 목록" name="book_title"
 									aria-label="bookname"> <input type="button"
-									value="도서 검색" onclick="book()"><br> <input
+									value="도서 검색" onclick="book()" style="background-color: #FFA076;"><br> <input
 									type="text" id="book_num" style="display: none;"
 									name="book_num"> <input type="text" id="book_page"
 									style="display: none;" name="book_page">
