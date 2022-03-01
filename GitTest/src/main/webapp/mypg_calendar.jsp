@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page import="com.pplus.model.ScheduleDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<% 
+	ArrayList<ScheduleDTO> schedulelist = (ArrayList<ScheduleDTO>)session.getAttribute("schedulelist");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +16,9 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>P+(Programming¿¡ Planner¸¦ ´õÇÏ´Ù.)</title>
+<title>P+(Programmingì— Plannerë¥¼ ë”í•˜ë‹¤.)</title>
 <!-- Favicon  -->
-<link rel="icon" href="image/p+¸¸.png" />
+<link rel="icon" href="image/p+ë§Œ.png" />
 
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css" />
@@ -56,14 +61,22 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
 		var calendarEl = document.getElementById("calendar");
+	
 
-		var event = {
-			title : "ÀÚ¹Ù",
-			start : "2022-02-25",
-			end : "2022-02-26"
-		};
 		var eventlist = [];
+		
+		'<% for(int i = 0; i < schedulelist.size(); i++){ %>'
+			var color = "#" + Math.round(Math.random()*0xffffff).toString(16);
+		
+		var event = {
+			title : "<%= schedulelist.get(i).getSchedule_name()%>",
+			start : "<%= schedulelist.get(i).getSchedule_start() %>",
+			end : "<%= schedulelist.get(i).getSchedule_end()%>",
+			backgroundColor : color,
+			borderColor : color,
+		};
 		eventlist.push(event);
+		'<% } %>'
 
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			plugins : [ "interaction", "dayGrid" ],
@@ -71,63 +84,7 @@
 
 			editable : true,
 			eventLimit : true, // allow "more" link when too many events
-			events : eventlist
-			/* [
-			{
-			title: "All Day Event",
-			start: "2020-02-01",
-			},
-			{
-			title: "Long Event",
-			start: "2020-02-07",
-			end: "2020-02-10",
-			},
-			{
-			groupId: 999,
-			title: "Repeating Event",
-			start: "2020-02-09T16:00:00",
-			},
-			{
-			groupId: 999,
-			title: "Repeating Event",
-			start: "2020-02-16T16:00:00",
-			},
-			{
-			title: "Conference",
-			start: "2020-02-11",
-			end: "2020-02-13",
-			},
-			{
-			title: "Meeting",
-			start: "2020-02-12T10:30:00",
-			end: "2020-02-12T12:30:00",
-			},
-			{
-			title: "Lunch",
-			start: "2020-02-12T12:00:00",
-			},
-			{
-			title: "Meeting",
-			start: "2020-02-12T14:30:00",
-			},
-			{
-			title: "Happy Hour",
-			start: "2020-02-12T17:30:00",
-			},
-			{
-			title: "Dinner",
-			start: "2020-02-12T20:00:00",
-			},
-			{
-			title: "Birthday Party",
-			start: "2020-02-13T07:00:00",
-			},
-			{
-			title: "Click for Google",
-			url: "http://google.com/",
-			start: "2020-02-28",
-			}, 
-			]*/,
+			events : eventlist,
 		});
 
 		calendar.render();
@@ -149,7 +106,7 @@ body {
 </head>
 
 <body>
-	<!-- È¸¿øÅ»Åğ Modal -->
+	<!-- íšŒì›íƒˆí‡´ Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -158,7 +115,7 @@ body {
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">
 						<!-- <i class="bi bi-exclamation-circle"></i> -->
-						<i class="bi bi-exclamation-circle-fill"></i> È¸¿ø Å»Åğ
+						<i class="bi bi-exclamation-circle-fill"></i> íšŒì› íƒˆí‡´
 					</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close">
@@ -173,11 +130,11 @@ body {
 				</div>
 				<br>
 				<div class="modal-body text-center" style="font-size: 20px;">
-					È¸¿øÅ»Åğ ÇÏ½Ã°Ú½À´Ï±î?</div>
+					íšŒì›íƒˆí‡´ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?</div>
 				<br>
 
 				<div class=" modal-footer ">
-					<a href="#" class="btn btn-primary ">È®ÀÎ</a>
+					<a href="#" class="btn btn-primary ">í™•ì¸</a>
 					</button>
 				</div>
 			</div>
@@ -191,7 +148,7 @@ body {
 		<div class="mobile-nav">
 			<!-- Navbar Brand -->
 			<div class="amado-navbar-brand">
-				<a href="index.html"><img src="image/p+¸¸1.png" alt="" /></a>
+				<a href="index.html"><img src="image/p+ë§Œ1.png" alt="" /></a>
 			</div>
 			<!-- Navbar Toggler -->
 			<div class="amado-navbar-toggler">
@@ -204,83 +161,83 @@ body {
 		<div class="collapse navbar-collapse" id="demo">
 			<ul class="navbar-nav">
 
-				<li clas="nav-item"><a class="nav-link" href="#">»çÀÌÆ® ¼Ò°³</a></li>
-				<li clas="nav-item"><a class="nav-link" href="ÄÁÅÙÃ÷ÃßÃµ.jsp">ÄÁÅÙÃ÷
-						ÃßÃµ</a></li>
-				<li clas="nav-item"><a class="nav-link" href="plannermain.jsp">ÇĞ½ÀÇÃ·¡³Ê</a></li>
-				<li clas="nav-item"><a class="nav-link" href="#">Æ÷Æ®Æú¸®¿À</a></li>
-				<li clas="nav-item"><a class="nav-link" href="mypg_main.jsp">¸¶ÀÌÆäÀÌÁö</a></li>
+				<li clas="nav-item"><a class="nav-link" href="#">ì‚¬ì´íŠ¸ ì†Œê°œ</a></li>
+				<li clas="nav-item"><a class="nav-link" href="ì»¨í…ì¸ ì¶”ì²œ.jsp">ì»¨í…ì¸ 
+						ì¶”ì²œ</a></li>
+				<li clas="nav-item"><a class="nav-link" href="plannermain.jsp">í•™ìŠµí”Œë˜ë„ˆ</a></li>
+				<li clas="nav-item"><a class="nav-link" href="#">í¬íŠ¸í´ë¦¬ì˜¤</a></li>
+				<li clas="nav-item"><a class="nav-link" href="mypg_main.jsp">ë§ˆì´í˜ì´ì§€</a></li>
 				<li class="nav-item active"><a class="nav-link"
-					href="plogout.jsp">·Î±×¾Æ¿ô</a></li>
+					href="plogout.jsp">ë¡œê·¸ì•„ì›ƒ</a></li>
 			</ul>
 		</div>
 		<header id="header" class="fixed-top header-scrolled">
 			<nav id="navbar" class="navbar">
 				<a style="padding-left: 15px" href="ploginmain.jsp"><img
-					style="width: 50px" src="image/p+¸¸1.png"></a>
+					style="width: 50px" src="image/p+ë§Œ1.png"></a>
 				<ul style="padding-right: 30px">
 					<li><a class="nav-link scrollto" href="#"
-						style="text-decoration: none">»çÀÌÆ® ¼Ò°³</a></li>
+						style="text-decoration: none">ì‚¬ì´íŠ¸ ì†Œê°œ</a></li>
 					<li></li>
 					<div class="dropdown nav-item active">
 						<a style="text-decoration: none" class="nav-link dropdown-toggle"
-							href="ÄÁÅÙÃ÷ÃßÃµ.jsp">ÄÁÅÙÃ÷ ÃßÃµ</a>
+							href="ì»¨í…ì¸ ì¶”ì²œ.jsp">ì»¨í…ì¸  ì¶”ì²œ</a>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<li><a class="dropdown-item" href="ptype.jsp">À¯Çü È®ÀÎ ¹×
-									Àç°Ë»ç</a></li>
-							<li><a class="dropdown-item" href="search1.jsp">Ã¥ °Ë»ö</a></li>
+							<li><a class="dropdown-item" href="ptype.jsp">ìœ í˜• í™•ì¸ ë°
+									ì¬ê²€ì‚¬</a></li>
+							<li><a class="dropdown-item" href="search1.jsp">ì±… ê²€ìƒ‰</a></li>
 						</ul>
 					</div>
 
 					<li></li>
 					<div class="dropdown nav-item active">
-						<a class="nav-link dropdown-toggle" href="plannermain.jsp">ÇĞ½ÀÇÃ·¡³Ê</a>
+						<a class="nav-link dropdown-toggle" href="plannermain.jsp">í•™ìŠµí”Œë˜ë„ˆ</a>
 						<span class="caret"></span>
 
 						<ul class="dropdown-menu">
-							<li class="dropdown-header">½ºÄÉÁÙ</li>
+							<li class="dropdown-header">ìŠ¤ì¼€ì¤„</li>
 							<hr>
-							<li><a href="scheduleset.jsp">µî·Ï</a></li>
-							<li><a href="scheduleindex.jsp">ÀüÃ¼ ½ºÄÉÁÙ ¸ñ·Ï</a></li>
+							<li><a href="scheduleset.jsp">ë“±ë¡</a></li>
+							<li><a href="scheduleindex.jsp">ì „ì²´ ìŠ¤ì¼€ì¤„ ëª©ë¡</a></li>
 
 							<br>
 							<li class="divider"></li>
-							<li class="dropdown-header">ÀÏÁ¤</li>
+							<li class="dropdown-header">ì¼ì •</li>
 							<hr>
-							<li><a href="dayplantodayset.jsp">µî·Ï</a></li>
-							<li><a href="dayplantodayindex.jsp">ÀüÃ¼ ÀÏÁ¤ ¸ñ·Ï</a></li>
+							<li><a href="dayplantodayset.jsp">ë“±ë¡</a></li>
+							<li><a href="dayplantodayindex.jsp">ì „ì²´ ì¼ì • ëª©ë¡</a></li>
 
 							<br>
 							<li class="divider"></li>
-							<li class="dropdown-header">Á¶È¸</li>
+							<li class="dropdown-header">ì¡°íšŒ</li>
 							<hr>
-							<li><a href="editorallindex.jsp">ÀüÃ¼ ¿¡µğÅÍ ¸ñ·Ï</a></li>
-							<li><a href="diaryallindex.jsp">ÀüÃ¼ ÀÏ±â ¸ñ·Ï</a></li>
-							<li><a href="todoallindex.jsp">ÀüÃ¼ ÇÒ ÀÏ ¸ñ·Ï</a></li>
+							<li><a href="editorallindex.jsp">ì „ì²´ ì—ë””í„° ëª©ë¡</a></li>
+							<li><a href="diaryallindex.jsp">ì „ì²´ ì¼ê¸° ëª©ë¡</a></li>
+							<li><a href="todoallindex.jsp">ì „ì²´ í•  ì¼ ëª©ë¡</a></li>
 						</ul>
 					</div>
 					<li></li>
 					<div class="dropdown nav-item active">
-						<a class="nav-link dropdown-toggle" href="#">Æ÷Æ®Æú¸®¿À</a>
+						<a class="nav-link dropdown-toggle" href="#">í¬íŠ¸í´ë¦¬ì˜¤</a>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<li><a class="dropdown-item" href="#">µî·Ï</a></li>
+							<li><a class="dropdown-item" href="#">ë“±ë¡</a></li>
 
-							<li><a class="dropdown-item" href="#">¸ñ·Ï</a></li>
+							<li><a class="dropdown-item" href="#">ëª©ë¡</a></li>
 						</ul>
 					</div>
 					<li></li>
 					<div class="dropdown nav-item active">
-						<a class="nav-link dropdown-toggle" href="mypg_main.jsp">¸¶ÀÌÆäÀÌÁö</a>
+						<a class="nav-link dropdown-toggle" href="mypg_main.jsp">ë§ˆì´í˜ì´ì§€</a>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<li><a class="dropdown-item" href="pupdate.jsp">È¸¿øÁ¤º¸
-									¼öÁ¤/Å»Åğ</a></li>
-							<li><a class="dropdown-item" href="achieveall.jsp">ÀüÃ¼
-									ÇĞ½À»óÈ² Á¶È¸</a></li>
-							<li><a class="dropdown-item" href="mybookwish.jsp">À§½Ã¸®½ºÆ®</a></li>
+							<li><a class="dropdown-item" href="pupdate.jsp">íšŒì›ì •ë³´
+									ìˆ˜ì •/íƒˆí‡´</a></li>
+							<li><a class="dropdown-item" href="achieveall.jsp">ì „ì²´
+									í•™ìŠµìƒí™© ì¡°íšŒ</a></li>
+							<li><a class="dropdown-item" href="mybookwish.jsp">ìœ„ì‹œë¦¬ìŠ¤íŠ¸</a></li>
 						</ul>
 					</div>
 					<li class="nav-item active"><a class="nav-link"
-						href="plogout.jsp">·Î±×¾Æ¿ô</a></li>
+						href="plogout.jsp">ë¡œê·¸ì•„ì›ƒ</a></li>
 
 
 				</ul>
@@ -291,18 +248,19 @@ body {
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<!-- Widget Title -->
-				<h6 class="widget-title mb-30">¸¶ÀÌÆäÀÌÁö</h6>
+				<h6 class="widget-title mb-30">ë§ˆì´í˜ì´ì§€</h6>
 
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">È¸¿ø Á¤º¸</a></li>
+						<li class="active"><a href="#">íšŒì› ì •ë³´</a></li>
 						<hr />
-						<li><a href="login-form-v2/Login_v2/È¸¿øÁ¤º¸ ¼öÁ¤.html">È¸¿ø
-								Á¤º¸ ¼öÁ¤</a></li>
+						<li><a href="login-form-v2/Login_v2/íšŒì›ì •ë³´ ìˆ˜ì •.html">íšŒì›
+								ì •ë³´ ìˆ˜ì •</a></li>
 						<a><li class="btn" data-bs-toggle="modal"
-							data-bs-target="#staticBackdrop">È¸¿ø Å»Åğ</a>
-						</li>
+							data-bs-target="#staticBackdrop">íšŒì› íƒˆí‡´</li>
+							</a>
+						
 					</ul>
 				</div>
 			</div>
@@ -313,10 +271,10 @@ body {
 				<!--  Catagories  -->
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">À§½Ã¸®½ºÆ®</a></li>
+						<li class="active"><a href="#">ìœ„ì‹œë¦¬ìŠ¤íŠ¸</a></li>
 						<hr />
-						<li><a href="#">Ã¥</a></li>
-						<li><a href="#">¿µ»ó</a></li>
+						<li><a href="#">ì±…</a></li>
+						<li><a href="#">ì˜ìƒ</a></li>
 					</ul>
 				</div>
 			</div>
@@ -326,13 +284,13 @@ body {
 
 				<div class="catagories-menu">
 					<ul>
-						<li class="active"><a href="#">ÀüÃ¼ÇĞ½À»óÈ²Á¶È¸</a></li>
+						<li class="active"><a href="#">ì „ì²´í•™ìŠµìƒí™©ì¡°íšŒ</a></li>
 						<hr />
-						<li><a href="mypg_calendar.jsp">´Ş·Â Ã¼Å©</a></li>
-						<li><a href="achieveall.jsp">Â÷Æ®</a></li>
-						<li><a href="mypg_scheduleindex.jsp">ÀüÃ¼ ½ºÄÉÁÙ ¸ñ·Ï</a></li>
-						<li><a href="mypg_editorallindex.jsp">ÀüÃ¼ ¿¡µğÅÍ ¸ñ·Ï</a></li>
-						<li><a href="mypg_diaryallindex.jsp">ÀüÃ¼ ÀÏ±â ¸ñ·Ï</a></li>
+						<li><a href="mypg_calendar.jsp">ë‹¬ë ¥ ì²´í¬</a></li>
+						<li><a href="achieveall.jsp">ì°¨íŠ¸</a></li>
+						<li><a href="mypg_scheduleindex.jsp">ì „ì²´ ìŠ¤ì¼€ì¤„ ëª©ë¡</a></li>
+						<li><a href="mypg_editorallindex.jsp">ì „ì²´ ì—ë””í„° ëª©ë¡</a></li>
+						<li><a href="mypg_diaryallindex.jsp">ì „ì²´ ì¼ê¸° ëª©ë¡</a></li>
 					</ul>
 				</div>
 
@@ -347,7 +305,7 @@ body {
 				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 				crossorigin="anonymous"></script>
 
-			<!-- ´Ş·Â -->
+			<!-- ë‹¬ë ¥ -->
 			<div class="container">
 				<div class="col-md-10">
 					<div class="container col-md-6 p-3">

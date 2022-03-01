@@ -267,7 +267,7 @@ body {
 								<li class="active"><a>오늘 할 일</a></li>
 								<hr>
 								<li><a href="todoset.jsp">작성</a></li>
-								<li><a href="todoindex.jsp">오늘 할 일 목록</a></li>
+								<li><a href="todoindex.jsp">전체 할 일 목록</a></li>
 							</ul>
 						</div>
 					</div>

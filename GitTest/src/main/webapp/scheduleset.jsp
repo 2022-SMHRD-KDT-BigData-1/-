@@ -12,7 +12,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>P+(Programming에 Planner를 더하다.)</title>
+<title>P+(Programming에 Planner를 더하다.)</title> 
 <!-- Favicon  -->
 <link rel="icon" href="image/p+만.png" />
 
