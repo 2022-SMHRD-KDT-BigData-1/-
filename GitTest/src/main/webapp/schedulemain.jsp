@@ -1,3 +1,6 @@
+<%@page import="com.pplus.model.EditorDTO"%>
+<%@page import="com.pplus.model.EditorDAO"%>
+<%@page import="com.pplus.model.AchieveDTO"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="com.google.gson.JsonArray"%>
 <%@page import="com.google.gson.Gson"%>
@@ -14,7 +17,12 @@
 <%
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
+AchieveDTO achieve = (AchieveDTO) session.getAttribute("achieve");
+
 ScheduleDAO scheduleDao = new ScheduleDAO();
+EditorDAO editorDAO = new EditorDAO();
+
+ArrayList<EditorDTO> editorlist = editorDAO.editorSelectAll2(member.getMember_nick(), schedule.getSchedule_num());
 
 String nick = member.getMember_nick();
 
@@ -29,10 +37,10 @@ todolist = todoDAO.todoSelectAll(nick, schedule_num);
 int todocnt = todolist.size();
 pageContext.setAttribute("todolist", todolist);
 pageContext.setAttribute("todocnt", todocnt);
+pageContext.setAttribute("editorlist", editorlist);
 
 // Gson 객체 만들기 --> 자바의 데이터를 json타입으로 바꾸어 주는 역할
 Gson gson = new Gson();
-
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,8 +108,19 @@ body {
 	max-width: 900px;
 	margin: 0 auto;
 }
-</style>
+#tetetetetee{
+	position: relative !important;
+    right: 560px !important; 
+    width: 525px !important;
+    padding-bottom: 55px;	
+}
 
+#calendar2.fc.fc-ltr.fc-unthemed{
+	width: 110%;
+	height: 26rem;	
+}
+
+</style>
 
 </head>
 
@@ -184,7 +203,7 @@ body {
 		<div class="mobile-nav"></div>
 
 
- 	<div class="shop_sidebar_area">
+		<div class="shop_sidebar_area">
 			<!-- ##### Single Widget ##### -->
 			<div class="widget catagory mb-50">
 				<!-- Widget Title -->
@@ -261,8 +280,8 @@ body {
 				</div>
 			</div>
 		</div>
-		
-		<div style="width: 80%; margin-top: 7%; margin-left: 70px;">
+
+		<div style="width: 80%; margin-top: 3%; margin-left: 70px;">
 
 			<!-- Option 1: Bootstrap Bundle with Popper -->
 			<script
@@ -270,69 +289,188 @@ body {
 				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 				crossorigin="anonymous"></script>
 
-			<!-- 달력 -->
-			<div class="container">
-				<div class="col-md-10">
-					<div class="container col-md-6 p-3">
-						<div class="row"></div>
+			<div class="row my-5 py-5">
+				<div class="container px-4"
+					style="background-color: #656166; width: 40%;">
+					<div class="text-center">
+						<h1 class="display-4 fw-bolder" style="color: white" id="day">20</h1>
 					</div>
-					<div id="calendar"></div>
+				</div>
+			</div>
+			<!-- gggggggggggggggggggggg -->
+
+			<div class="container">
+				<div class="row">
+					<!-- 공간1 -->
+					<div class="col-lg-5">
+						<div id="box5">
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h1 class="m-0 font-weight-bold text-primary text-center">학습상황조회</h1>
+								</div>
+								<div class="card-body ">
+
+									<h2 class="font-weight-bold">
+										학습 중인 책 이름 : <span class="float-center">${sessionScope.schedule.schedule_name }</span>
+									</h2>
+
+									<h2 class="font-weight-bold">
+										남은 기간 : <span class="float-center" id="dday"></span>
+									</h2>
+
+									<h2 class="font-weight-bold">
+										남은 분량 : <span class="float-center" id="page">165P</span>
+									</h2>
+
+									<h2 class="font-weight-bold">
+										전체 페이지 : <span class="float-center" id="bookPage">300P</span>
+									</h2>
+
+
+									<h2 class="font-weight-bold">
+										하루 학습 분량 : <span class="float-center" id="todoPage">15P</span>
+									</h2>
+								</div>
+							</div>
+						</div>
+						<!-- 공간2,달력1 -->
+							<div id="box6">
+								<div id="calendar1">
+									<script src="js/jquery/jquery-2.2.4.min.js"></script>
+									<script>
+									
+									   var gs = JSON.parse('<%=gson.toJson(todolist)%>');
+									
+											var eventlist = [ {
+												title : "${schedule.schedule_name}",
+												start : "${schedule.schedule_start}",
+												end : "${schedule.schedule_end}",
+											}, {
+												title : "공부하는 책 : ${schedule.book_title}",
+												start : "${schedule.schedule_start}",
+												end : "${schedule.schedule_end}",
+											}, {
+												title : "공부할 페이지 : ${schedule.schedule_day_page}",
+												start : "${schedule.schedule_start}",
+												end : "${schedule.schedule_end}",
+											} ];
+									
+											for (var i = 0; i < gs.length; i++) {
+												if (gs[i]['todo_check'] == 1) {
+													eventlist.push({
+														title : gs[i]['todo_title']+" o",
+														start : gs[i]['todo_date'],
+														end : gs[i]['todo_date']
+													});
+									
+												} else {
+													eventlist.push({
+														title : gs[i]['todo_title']+" x",
+														start : gs[i]['todo_date'],
+														end : gs[i]['todo_date']
+													});
+									
+												}
+									
+											}
+									
+											$(document).ready(function() {
+												var calendarEl = document.getElementById("calendar2");
+												var calendar = new FullCalendar.Calendar(calendarEl, {
+													initialView : "dayGridMonth",
+													plugins : [ "interaction", "dayGrid" ],
+													locale : 'ko',
+													editable : true,
+													eventLimit : true, // allow "more" link when too many events
+													events : eventlist
+													,
+												});
+												calendar.render();
+											});
+										</script>
+								</div>
+							</div>
+						</div>
+						<!-- 공간3,달력2 -->
+				<div class="col-lg-7">
+							<div id="box1">							
+								<div id="calendar2">
+									<script src="js/jquery/jquery-2.2.4.min.js"></script>
+									<script>
+<%-- 									   	var gs1 = JSON.parse(`<%= gson.toJson(editorlist) %>`); 
+ --%>									   '<% for(int i = 0; i < editorlist.size(); i++){ %>'
+										var eventlist1 = [ {
+ 											start : '<%= editorlist.get(i).getEditor_date() %>',
+ 											backgroundColor : "#69F0AE",
+ 											borderColor :"#69F0AE"
+ 										
+									} ];
+									   '<% } %>'
+										
+										/* for(var i = 0; i < gs1.length; i++){
+											   eventlist1.push({
+												   title : gs1[i]['editor_title'],
+												   start : gs1[i]['editor_date'],
+											   });
+										   } */
+										console.log(eventlist1);
+									
+										
+									
+											$(document).ready(function() {
+												var calendarEl = document.getElementById("tetetetetee");
+												var calendar = new FullCalendar.Calendar(calendarEl, {
+													initialView : "dayGridMonth",
+													plugins : [ "interaction", "dayGrid" ],
+													locale : 'ko',
+													editable : true,
+													eventLimit : true, // allow "more" link when too many events
+													events : eventlist1,
+													height: '900px',
+													
+
+												});
+											
+												calendar.render();
+												
+												//스타일 직접 넣기
+												//캘린더 영역 찾기
+												var calendar2 = document.getElementById("calendar2");
+												$(calendar2).find('.fc-day-header.fc-widget-header').css('padding','10px 0px');
+												$(calendar2).find('.fc-scroller.fc-day-grid-container').css('height', '760px');
+												$(calendar2).find('.fc-row.fc-week.fc-widget-content.fc-rigid').css('height','130px');
+												
+											
+											});
+										</script>
+								</div>
+								
+								
+								
+								<div id="tetetetetee">
+							</div>
+							 </div>
+						</div>					
+						</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<script src="js/jquery/jquery-2.2.4.min.js"></script>
-	<script>
-
-   var gs = JSON.parse('<%=gson.toJson(todolist)%>');
-
-		var eventlist = [ {
-			title : "${schedule.schedule_name}",
-			start : "${schedule.schedule_start}",
-			end : "${schedule.schedule_end}",
-		}, {
-			title : "공부하는 책 : ${schedule.book_title}",
-			start : "${schedule.schedule_start}",
-			end : "${schedule.schedule_end}",
-		}, {
-			title : "공부할 페이지 : ${schedule.schedule_day_page}",
-			start : "${schedule.schedule_start}",
-			end : "${schedule.schedule_end}",
-		} ];
-
-		for (var i = 0; i < gs.length; i++) {
-			if (gs[i]['todo_check'] == 1) {
-				eventlist.push({
-					title : gs[i]['todo_title']+" o",
-					start : gs[i]['todo_date'],
-					end : gs[i]['todo_date']
-				});
-
-			} else {
-				eventlist.push({
-					title : gs[i]['todo_title']+" x",
-					start : gs[i]['todo_date'],
-					end : gs[i]['todo_date']
-				});
-
-			}
-
-		}
-
-		$(document).ready(function() {
-			var calendarEl = document.getElementById("calendar");
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView : "dayGridMonth",
-				plugins : [ "interaction", "dayGrid" ],
-				locale : 'ko',
-				editable : true,
-				eventLimit : true, // allow "more" link when too many events
-				events : eventlist
-				,
-			});
-			calendar.render();
-		});
+<script src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+	let today = new Date();
+	var Dday = new Date("<%= schedule.getSchedule_end() %>"); 
+	
+	var gap = Dday.getTime() - today.getTime();
+	var result = Math.floor(gap / (1000 * 60 * 60 * 24));
+	
+	$("#day").text(today.toLocaleDateString());
+	$("#dday").text("D"+" - " + result);
+	$("#page").text("<%= achieve.getBook_page() - achieve.getAchieve_study_page() + "P"%>");
+	$("#bookPage").text("<%= achieve.getBook_page() +"P"%>" );
+	$("#todoPage").text("<%= schedule.getSchedule_day_page() +"P"%>" );
+	
+	
 	</script>
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 
