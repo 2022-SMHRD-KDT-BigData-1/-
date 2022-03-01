@@ -214,23 +214,23 @@ pageContext.setAttribute("schedulelist", schedulelist);
 			</div>
 		</div>
 
-		<div class="container abc" style="padding-top: 90px">
+		<div class="container" style="padding-top: 90px">
 
 			 <div class=" px-4 px-lg-5 my-5">
-				<br> <a href="#" class="btn btn-lg black"
-					style="display: inline-block">
+				<br> <a href="pupdate.jsp" class="btn btn-lg black"
+					>
 					회원정보</a>
 			</div> 
 			
 
 			<div class="container px-4 px-lg-5 my-5">
-				<br> <a href="#" class="btn btn-lg black"
-					style="display: inline-block"> 위시리스트</a>
+				<br> <a href="mybookwish.jsp" class="btn btn-lg black"
+					> 위시리스트</a>
 			</div>
 
 			<div class="container px-4 px-lg-5 my-5">
-				<br> <a href="" class="btn btn-lg black"
-					style="display: inline-block">
+				<br> <a href="achieveall.jsp" class="btn btn-lg black"
+					>
 					전체학습상황조회</a>
 			</div>
 

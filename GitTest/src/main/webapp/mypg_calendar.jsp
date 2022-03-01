@@ -196,7 +196,7 @@ body {
 			<!-- Navbar Toggler -->
 			<div class="amado-navbar-toggler">
 				<button type="button" class="btn" data-toggle="collapse"
-					data-target="#demo" style="background-color: black">
+					data-target="#demo" style="background-color:black">
 					<span></span><span></span><span></span>
 				</button>
 			</div>
