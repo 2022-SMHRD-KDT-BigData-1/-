@@ -1,3 +1,4 @@
+<%@page import="com.pplus.model.AchieveDTO"%>
 <%@page import="com.pplus.model.TodoDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pplus.model.TodoDAO"%>
@@ -9,6 +10,8 @@
 <%
 ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
+AchieveDTO achieve = (AchieveDTO) session.getAttribute("achieve");
+TodoDAO todoDAO = new TodoDAO();
 
 TodoDAO todoDAO = new TodoDAO();
 ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
@@ -33,6 +36,8 @@ if (count > 0) {
 	pageContext.setAttribute("todolist", todolist);
 
 }
+
+todoDAO.todoSelect(member.getMember_nick(), );
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +109,7 @@ hr {
 		<div class="mobile-nav">
 			<!-- Navbar Brand -->
 			<div class="amado-navbar-brand">
-				<a href="index.html"><img src="image/p+만1.png" alt="" /></a>
+				<a href="ploginmain.jsp"><img src="image/p+만1.png" alt="" /></a>
 			</div>
 			<!-- Navbar Toggler -->
 			<div class="amado-navbar-toggler">
@@ -288,7 +293,7 @@ hr {
 						style="background-color: #656166; width: 40%;">
 						<br />
 						<div class="text-center">
-							<h1 class="display-4 fw-bolder" style="color: white">2022.01.11</h1>
+							<h1 class="display-4 fw-bolder" style="color: white" id="day">2022.01.11</h1>
 							<p class="lead fw-normal text-white-50 mb-0">
 								<!-- Planner에 Programming을 더하다 -->
 							</p>
@@ -308,24 +313,24 @@ hr {
 								<div class="card-body ">
 
 									<h2 class="font-weight-bold">
-										학습 중인 책 이름 : <span class="float-center">Java</span>
+										학습 중인 책 이름 : <span class="float-center">${sessionScope.schedule.schedule_name }</span>
 									</h2>
 
 									<h2 class="font-weight-bold">
-										남은 기간 : <span class="float-center">D-9</span>
+										남은 기간 : <span class="float-center" id="dday">D-9</span>
 									</h2>
 
 									<h2 class="font-weight-bold">
-										남은 분량 : <span class="float-center">165P</span>
+										남은 분량 : <span class="float-center" id="page">165P</span>
 									</h2>
 
 									<h2 class="font-weight-bold">
-										전체 페이지 : <span class="float-center">300P</span>
+										전체 페이지 : <span class="float-center" id="bookPage">300P</span>
 									</h2>
 
 
 									<h2 class="font-weight-bold">
-										하루 학습 분량 : <span class="float-center">15P</span>
+										하루 학습 분량 : <span class="float-center" id="todoPage">15P</span>
 									</h2>
 								</div>
 							</div>
@@ -361,14 +366,14 @@ hr {
 												</div>
 
 												<hr class="my-4">
-
+												<c:forEach var="i" items="${ }">
 												<ul
 													class="list-group list-group-horizontal rounded-0 bg-transparent">
 													<li
 														class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
 														<div class="form-check">
 															<input class="form-check-input me-0" type="checkbox"
-																value="" id="flexCheckChecked1" aria-label="..." checked />
+																value="" id="flexCheckChecked1" aria-label="..." />
 															<p class="lead fw-normal mb-0"
 																style="display: inline-block;">
 																157p 문제 1번 다시 풀어보기 <a href="#!" class="text-info"
@@ -387,52 +392,7 @@ hr {
 														</div>
 													</li>
 												</ul>
-
-												<ul
-													class="list-group list-group-horizontal rounded-0 bg-transparent">
-													<li
-														class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-														<div class="form-check">
-															<input class="form-check-input me-0" type="checkbox"
-																value="" id="flexCheckChecked1" aria-label="..." checked />
-															<p class="lead fw-normal mb-0"
-																style="display: inline-block;">
-																반복문 관련 유튜브 강의 2개 보기 <a href="#!" class="text-info"
-																	data-mdb-toggle="tooltip" title="Edit todo"><i
-																	class="fas fa-pencil-alt me-3"></i></a> <a href="#!"
-																	class="text-danger" data-mdb-toggle="tooltip"
-																	title="Delete todo"><i class="fas fa-trash-alt"></i></a>
-															</p>
-														</div>
-													</li>
-
-													<li
-														class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-														<div class="d-flex flex-row justify-content-end mb-1">
-
-														</div>
-													</li>
-												</ul>
-
-												<ul
-													class="list-group list-group-horizontal rounded-0 bg-transparent">
-													<li
-														class="list-group-item d-flex align-items-center ps-0   rounded-0 border-0 bg-transparent">
-														<div class="form-check">
-															<input class="form-check-input me-0" type="checkbox"
-																value="" id="flexCheckChecked1" aria-label="..." checked />
-															<p class="lead fw-normal mb-0"
-																style="display: inline-block;">
-																짧은글 영타 연습 30분 하기 <a href="#!" class="text-info"
-																	data-mdb-toggle="tooltip" title="Edit todo"><i
-																	class="fas fa-pencil-alt me-3"></i></a> <a href="#!"
-																	class="text-danger" data-mdb-toggle="tooltip"
-																	title="Delete todo"><i class="fas fa-trash-alt"></i></a>
-															</p>
-														</div>
-													</li>
-												</ul>
-
+												</c:forEach>
 											</div>
 										</div>
 									</div>
@@ -453,6 +413,22 @@ hr {
 			crossorigin="anonymous"></script>
 	</div>
 	</div>
+	<script src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+	let today = new Date();
+	var Dday = new Date("<%= schedule.getSchedule_end() %>"); 
+	
+	var gap = Dday.getTime() - today.getTime();
+	var result = Math.floor(gap / (1000 * 60 * 60 * 24));
+	
+	$("#day").text(today.toLocaleDateString());
+	$("#dday").text("D"+" - " + result);
+	$("#page").text("<%= achieve.getBook_page() - achieve.getAchieve_study_page() + "P"%>");
+	$("#bookPage").text("<%= achieve.getBook_page() +"P"%>" );
+	$("#todoPage").text("<%= schedule.getSchedule_day_page() +"P"%>" );
+	
+	
+	</script>
 
 	<!-- ##### Footer Area Start ##### -->
 

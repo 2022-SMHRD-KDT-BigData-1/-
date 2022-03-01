@@ -170,7 +170,29 @@ public class TodoDAO {
 		}
 		return todo;
 	}
+	public TodoDTO todoSelect1(String nick, int num) {
+		TodoDTO todo = null;
+		connect();
 
+		sql = "select * from todo where member_nick=? and seq_todo_num=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, nick);
+			psmt.setInt(2, num);
+
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				todo = new TodoDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getInt(7));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return todo;
+	}
 	public ArrayList<TodoDTO> todoDayplanSelectAll(String nick, int num) {
 		ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 		connect();
