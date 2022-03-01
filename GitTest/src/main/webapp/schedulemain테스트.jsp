@@ -398,18 +398,21 @@ body {
 									<script src="js/jquery/jquery-2.2.4.min.js"></script>
 									<script>
 									
-									   	var gs1 = JSON.parse('<%= gson.toJson(editorlist)%>');
-									   
+									   <%-- 	var gs1 = JSON.parse(`<%= gson.toJson(editorlist) %>`); --%>
+									   '<% for(int i = 0; i < editorlist.size(); i++){ %>'
 										var eventlist1 = [ {
+											title : '<%= editorlist.get(i).getEditor_title() %>',
+											start : '<%= editorlist.get(i).getEditor_date() %>',
 											} ];
+									   '<% } %>'
 										
-										for(var i = 0; i <gs1.length; i++){
+										/* for(var i = 0; i < gs1.length; i++){
 											   eventlist1.push({
 												   title : gs1[i]['editor_title'],
 												   start : gs1[i]['editor_date'],
 											   });
-										   }
-										console.log()
+										   } */
+										console.log(eventlist1);
 									
 										
 									
