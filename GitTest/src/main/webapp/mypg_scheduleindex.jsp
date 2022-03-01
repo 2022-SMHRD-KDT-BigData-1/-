@@ -35,7 +35,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="" />
+<meta charset="utf-8" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -413,7 +413,7 @@ pageContext.setAttribute("schedulelist", schedulelist);
 			}
 		} */
 	</script>
-	<script src="jquery-3.6.0.min.js"></script>
+	<!-- <script src="jquery-3.6.0.min.js"></script> -->
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->

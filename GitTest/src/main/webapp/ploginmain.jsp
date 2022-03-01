@@ -95,7 +95,7 @@ if (member != null) {
 				</button>
 			</div>
 		</div>
-		<div class="collapse navbar-collapse" id="demo">
+		<div class="collapse navbar-collapse" id="demo" style="padding-top: 70px">
 			<ul class="navbar-nav">
 
 				<li clas="nav-item"><a class="nav-link" href="#">사이트 소개</a></li>
