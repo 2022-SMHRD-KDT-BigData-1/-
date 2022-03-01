@@ -170,28 +170,27 @@ public class TodoDAO {
 		}
 		return todo;
 	}
-	public TodoDTO todoSelect1(String nick, int num) {
-		TodoDTO todo = null;
+	public ArrayList<TodoDTO> todoSelect1(String nick) {
+		ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
 		connect();
 
-		sql = "select * from todo where member_nick=? and seq_todo_num=?";
+		sql = "select * from todo where member_nick = ? and to_char(todo_date, 'yyyy-mm-dd') = to_char(sysdate, 'yyyy-mm-dd')";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, nick);
-			psmt.setInt(2, num);
 
 			rs = psmt.executeQuery();
-			if (rs.next()) {
-				todo = new TodoDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
-						rs.getString(6), rs.getInt(7));
+			while (rs.next()) {
+				todolist.add(new TodoDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getInt(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return todo;
+		return todolist;
 	}
 	public ArrayList<TodoDTO> todoDayplanSelectAll(String nick, int num) {
 		ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();

@@ -4,40 +4,16 @@
 <%@page import="com.pplus.model.TodoDAO"%>
 <%@page import="com.pplus.model.PMemberDTO"%>
 <%@page import="com.pplus.model.ScheduleDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 ScheduleDTO schedule = (ScheduleDTO) session.getAttribute("schedule");
 PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 AchieveDTO achieve = (AchieveDTO) session.getAttribute("achieve");
 TodoDAO todoDAO = new TodoDAO();
 
-TodoDAO todoDAO = new TodoDAO();
-ArrayList<TodoDTO> todolist = new ArrayList<TodoDTO>();
-
-int pageSize = 5;
-String pageNum = request.getParameter("pageNum");
-
-if (pageNum == null) {
-	pageNum = "1";
-}
-
-int currentPage = Integer.parseInt(pageNum);
-
-int startRow = (currentPage - 1) * pageSize + 1;
-int endRow = currentPage * pageSize;
-
-int count = 0;
-count = todoDAO.getCount(schedule.getSchedule_num());
-
-if (count > 0) {
-	todolist = todoDAO.getTodayList(startRow, endRow, member, schedule);
-	pageContext.setAttribute("todolist", todolist);
-
-}
-
-todoDAO.todoSelect(member.getMember_nick(), );
+ArrayList<TodoDTO> todolist = todoDAO.todoSelect1(member.getMember_nick());
+pageContext.setAttribute("todolist", todolist);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -364,34 +340,62 @@ hr {
 														</div>
 													</div>
 												</div>
-
 												<hr class="my-4">
-												<c:forEach var="i" items="${ }">
-												<ul
-													class="list-group list-group-horizontal rounded-0 bg-transparent">
-													<li
-														class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-														<div class="form-check">
-															<input class="form-check-input me-0" type="checkbox"
-																value="" id="flexCheckChecked1" aria-label="..." />
-															<p class="lead fw-normal mb-0"
-																style="display: inline-block;">
-																157p 문제 1번 다시 풀어보기 <a href="#!" class="text-info"
-																	data-mdb-toggle="tooltip" title="Edit todo"><i
-																	class="fas fa-pencil-alt me-3"></i></a> <a href="#!"
-																	class="text-danger" data-mdb-toggle="tooltip"
-																	title="Delete todo"><i class="fas fa-trash-alt"></i></a>
-															</p>
-														</div>
-													</li>
-
-													<li
-														class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-														<div class="d-flex flex-row justify-content-end mb-1">
-
-														</div>
-													</li>
-												</ul>
+												<c:forEach var="i" items="${todolist }">
+												<c:choose>
+													<c:when test="${i.todo_check == 1 }">
+														<ul
+															class="list-group list-group-horizontal rounded-0 bg-transparent">
+															<li
+																class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+																<div class="form-check">
+																	<input class="form-check-input me-0" type="checkbox"
+																		value="${i.todo_num }" id="flexCheckChecked1" aria-label="..." checked/>
+																	<p class="lead fw-normal mb-0"
+																		style="display: inline-block;">
+																	${i.todo_title }<a href="#!" class="text-info"
+																			data-mdb-toggle="tooltip" title="Edit todo"><i
+																			class="fas fa-pencil-alt me-3"></i></a> <a href="#!"
+																			class="text-danger" data-mdb-toggle="tooltip"
+																			title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+																	</p>
+																</div>
+															</li>
+		
+															<li
+																class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+																<div class="d-flex flex-row justify-content-end mb-1">
+																</div>
+															</li>
+														</ul>
+													</c:when>
+													<c:otherwise>
+															<ul
+															class="list-group list-group-horizontal rounded-0 bg-transparent">
+															<li
+																class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+																<div class="form-check">
+																	<input class="form-check-input me-0" type="checkbox"
+																		value="${i.todo_num }" id="flexCheckChecked1" aria-label="..." />
+																	<p class="lead fw-normal mb-0"
+																		style="display: inline-block;">
+																	${i.todo_title }<a href="#!" class="text-info"
+																			data-mdb-toggle="tooltip" title="Edit todo"><i
+																			class="fas fa-pencil-alt me-3"></i></a> <a href="#!"
+																			class="text-danger" data-mdb-toggle="tooltip"
+																			title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+																	</p>
+																</div>
+															</li>
+		
+															<li
+																class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+																<div class="d-flex flex-row justify-content-end mb-1">
+																</div>
+															</li>
+														</ul>
+													</c:otherwise>
+												</c:choose>
 												</c:forEach>
 											</div>
 										</div>
@@ -427,6 +431,40 @@ hr {
 	$("#bookPage").text("<%= achieve.getBook_page() +"P"%>" );
 	$("#todoPage").text("<%= schedule.getSchedule_day_page() +"P"%>" );
 	
+
+	$('.form-check-input.me-0').change(function() {
+		console.log("통신시도");
+		if(this.checked) {
+			console.log("체크확인" + this.value);
+			
+			$.ajax({
+				url : "CheckInputValue.do",
+				type : "post",
+				dataType : "json",
+				data : {"todo_num" : this.value, "value" : "1"},
+				success : function(data){
+					console.log("통신성공");
+				},
+				error : function(e){
+					console.log(e);
+				}
+			});
+		}else{
+			console.log("체크풀림");
+			$.ajax({
+				url : "CheckInputValue.do",
+				type : "post",
+				dataType : "json",
+				data : {"todo_num" : this.value, "value" : "0"},
+				success : function(data){
+					console.log("통신성공");
+				},
+				error : function(e){
+					console.log(e);
+				}
+			});
+		}
+	});
 	
 	</script>
 
