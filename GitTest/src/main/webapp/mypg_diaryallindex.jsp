@@ -250,22 +250,30 @@ if (count > 0) {
 						</thead>
 						<body>
 							<c:forEach var="i" items="${diaryalllist }">
-								<tr>
-									<td><div class="form-check">
-											<input class="form-check-input" type="checkbox"
-												name="flexRadioDefault" id="flexRadioDefault1"
-												value="${i.diary_num }"> <label
-												class="form-check-label" for="flexRadioDefault1"> </label>
-										</div></td>
-									<td><input value="${i.diary_num }" style="display: none;"
-										name="num"> <input value="${i.member_nick }"
-										style="display: none;" name="nick"> ${j = j + 1}</td>
-									<td>${i.diary_date }</td>
-									<td>${sessionScope.schedule.schedule_name }</td>
-									<td>${i.diary_title }</td>
-									<td><a href="DiarySelectCon.do?num=${i.diary_num }"
-										style="font-size: 16px;"> 이동</a></td>
-								</tr>
+								<c:forEach var="s" items="${schedulelist }">
+									<c:choose>
+										<c:when test="${i.schedule_num == s.schedule_num }">
+											<tr>
+												<td><div class="form-check">
+														<input class="form-check-input" type="checkbox"
+															name="flexRadioDefault" id="flexRadioDefault1"
+															value="${i.diary_num }"> <label
+															class="form-check-label" for="flexRadioDefault1">
+														</label>
+													</div></td>
+												<td><input value="${i.diary_num }"
+													style="display: none;" name="num"> <input
+													value="${i.member_nick }" style="display: none;"
+													name="nick"> ${j = j + 1}</td>
+												<td>${i.diary_date }</td>
+												<td>${s.schedule_name }</td>
+												<td>${i.diary_title }</td>
+												<td><a
+										href="DiarySelectCon.do?num=${i.diary_num }" style="font-size: 16px;"> 이동</a></td>
+											</tr>
+										</c:when>
+									</c:choose>
+								</c:forEach>
 							</c:forEach>
 					</table>
 				</div>
