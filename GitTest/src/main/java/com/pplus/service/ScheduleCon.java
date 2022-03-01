@@ -2,7 +2,12 @@ package com.pplus.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
 
 import com.pplus.model.AchieveDAO;
 import com.pplus.model.AchieveDTO;
@@ -70,6 +76,7 @@ public class ScheduleCon implements iPCommand {
 		PMemberDTO member = (PMemberDTO) session.getAttribute("member");
 		ScheduleDAO dao = new ScheduleDAO();
 		AchieveDAO achievedao = new AchieveDAO();
+		
 		System.out.println(member.getMember_nick());
 		
 		
@@ -78,7 +85,8 @@ public class ScheduleCon implements iPCommand {
 				book_Title, book_page));
 		
 		TodoDAO todoDAO = new TodoDAO();
-	
+		
+		
 		
 		if(cnt > 0) {
 			System.out.println("스케줄 제목" + title);
@@ -97,7 +105,10 @@ public class ScheduleCon implements iPCommand {
 						todo = new TodoDTO(0, "하루 학습 분량: "+page+"P", null, schedule.getSchedule_num(), 0, member.getMember_nick(), 0);
 						int cnt2 = todoDAO.todoSet(todo);
 					}else {
-						todo = new TodoDTO(0, "하루 학습 분량: "+page+"P", "sysdate+" + i, schedule.getSchedule_num(), 0, member.getMember_nick(), 0);
+						LocalDate nowDate = LocalDate.now();
+						LocalDate tomorrow = nowDate.plusDays(i);
+						
+						todo = new TodoDTO(0, "하루 학습 분량: "+page+"P", tomorrow.toString(), schedule.getSchedule_num(), 0, member.getMember_nick(), 0);
 						int cnt2 = todoDAO.todoSet2(todo);
 					}
 					

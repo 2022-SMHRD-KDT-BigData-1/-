@@ -44,26 +44,27 @@ session.setAttribute("wishlistvideo", wishlistvideo);
 								<th class="text-center">책</th>
 								<th class="text-center">등록하기</th>
 							</tr>
-							<tr>
-								<c:forEach var="wish" items="${wishlistbook}">
-									<tbody style="text-align: center;">
-
-
-										<td></td>
-										<td><a href="BookintCon?num=${wish.book_num }"> <img
-												src="${wish.book_img}" width="80">
-										</a></td>
-										<td><button
-												onclick="location.href='BookScheduleCon.do?num=${wish.book_num}'">스케줄
-												등록</button></td>
-							</tr>
-							</tbody>
+							<tbody style="text-align: center;">
+							<c:forEach var="wish" items="${wishlistbook}">
+								<tr>
+									<td>${j = j + 1 }</td>
+									<td><a href="javascript:sendBookValues1('${wish.book_title}', '${wish.book_num}', '${wish.book_page}' )"> 
+											<img src="${wish.book_img}" width="80">
+										</a>
+									</td>
+									<td>
+										<a href="javascript:sendBookValues1('${wish.book_title}', '${wish.book_num}', '${wish.book_page}' )"> 
+											스케줄 등록
+										</a>
+									</td>
+								</tr>
 							</c:forEach>
+							</tbody>
 						</table>
 						<script type="text/javascript">
-							function sendBookValues(name, num, page) {
+							function sendBookValues1(name, num, page) {
 								console.log(name);
-								opener.setBookValues(name, num, page);
+								opener.setBookValues1(name, num, page);
 								window.close();
 							}
 						</script>

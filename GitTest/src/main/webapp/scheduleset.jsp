@@ -456,7 +456,7 @@
 
 		}
 		function mybook() {
-			window.open("wishsearch.jsp", "ws",
+			window.open("mywish2.jsp", "ws",
 					"width=700, height=400, scrollbars=no, resizable=no");
 			// 위시리스트 페이지 만들면 넣기
 		}

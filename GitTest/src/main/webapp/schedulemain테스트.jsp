@@ -284,7 +284,7 @@ body {
 				<div class="container px-4"
 					style="background-color: #656166; width: 40%;">
 					<div class="text-center">
-						<h1 class="display-4 fw-bolder" style="color: white">2022.01.11</h1>
+						<h1 class="display-4 fw-bolder" style="color: white" id="day">20</h1>
 					</div>
 				</div>
 			</div>
@@ -302,7 +302,7 @@ body {
 								<div class="card-body ">
 
 									<h2 class="font-weight-bold">
-										학습 중인 책 이름 : <span class="float-center">Java</span>
+										학습 중인 책 이름 : <span class="float-center">${schedule.schedule_title }</span>
 									</h2>
 
 									<h2 class="font-weight-bold">
@@ -461,7 +461,14 @@ body {
 			</div>
 		</div>
 
+<script src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+	let today = new Date();   
 
+	$("#day").text(today.toLocaleDateString());
+	
+	
+	</script>
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 
 	<!-- Popper js -->
