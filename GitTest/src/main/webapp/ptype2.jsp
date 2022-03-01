@@ -359,7 +359,7 @@ margin-left: 15px;
     </script>
    <div class="main-content-wrapper d-flex clearfix">
       <!-- Mobile Nav (max width 767px)-->
-      <div class="mobile-nav"></div>
+      <!-- <div class="mobile-nav"></div> -->
 
 
       <div>

@@ -208,8 +208,10 @@ if (member != null) {
 			<div class="container px-4" style="background-color: #45494c;">
 				<br />
 				<div class="text-center">
-					<h1 class="display-4 fw-bolder" style="color: white">P+</h1>
-					<p class="lead fw-normal text-white-50 mb-0">Planner에
+<!-- 					<h1 class="display-4 fw-bolder" style="color: white">P+</h1>-->
+					<img
+					style="width: 70px" src="image/p+만1.png">
+ 					<p class="lead fw-normal text-white-50 mb-0">Planner에
 						Programming을 더하다</p>
 				</div>
 			</div>
